@@ -27,7 +27,7 @@
 | Step | Status | Template pole | Deliverable |
 |------|--------|---------------|-------------|
 | 7 | pending | **Nimbus** (SaaS) | Bento Render Matrix in `/omniqube` route |
-| 8 | pending | **Nimbus** (SaaS) | UI-Spinner atomic `components/charlotte/` |
+| 8 | in progress | **Nimbus** (SaaS) | 187aiEYE shell `app/187ai-eye` + `components/187ai-eye/` |
 | 9 | pending | **Nimbus** (SaaS) | A11y-Linting-Agent gate on all UI output |
 
 ## Phase IV — Infinite Session

@@ -102,6 +102,15 @@ Each of the 27 manifest prompts is also a standalone skill under
 directly when the user names a specific prompt ID (e.g., `a11y-linting-agent`,
 `xss-vulnerability-scanner`, `ml-systems-architect`).
 
+## Optional modules
+
+| Module | When to enable | Reference |
+|--------|----------------|-----------|
+| **Observability** | OTel traces, Langfuse, eval/security pillars | [`references/OBSERVABILITY-4.7.md`](references/OBSERVABILITY-4.7.md) |
+| **187aiEYE UI** | Standalone command surface for the Local Brain | `/187ai-eye` in 187webdesign |
+
+Observability defaults to `off`. Enable via vault YAML `observability.mode` or `E187WEB_OBSERVABILITY=minimal|full`. The `agent-charlotte` crawl extension is independent (`charlotte_crawl: true`).
+
 ## Child skill links
 
 - [187web-manifest — Master Prompt Manifest](../187web-manifest/SKILL.md)

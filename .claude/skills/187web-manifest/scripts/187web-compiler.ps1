@@ -122,22 +122,47 @@ if (-not $chosen) {
     exit 1
 }
 
+$obsMode = if ($env:E187WEB_OBSERVABILITY) { $env:E187WEB_OBSERVABILITY.ToLower() } else { "off" }
+if ($obsMode -notin @("off", "minimal", "full")) { $obsMode = "off" }
+
+$obsProfile = @{
+    mode            = $obsMode
+    content_capture = ($env:E187WEB_OBS_CONTENT_CAPTURE -eq "1")
+    eval            = ($obsMode -eq "full") -or ($env:E187WEB_OBS_EVAL -eq "1")
+    security        = ($obsMode -ne "off") -or ($env:E187WEB_OBS_SECURITY -eq "1")
+    charlotte_crawl = ($env:E187WEB_CHARLOTTE_CRAWL -eq "1")
+}
+
+$traceId = [guid]::NewGuid().ToString("n")
+
 $out = @{
-    ecosystem        = "187web"
-    manifest_version = $xml.manifest.version
-    power_mode       = $powerMode
-    cwd              = $cwd
-    prompt_id        = $chosen.id
-    alias            = $chosen.alias
-    layer            = $chosen.layer
-    layer_name       = $chosen.layer_name
-    skill            = $chosen.skill
-    persona          = $chosen.persona
-    directive        = $chosen.directive
-    vars             = $chosen.vars
-    neuro_toxin      = $chosen.neuro_toxin
-    compiler         = "187web-compiler.ps1"
-    compiled_at      = (Get-Date).ToUniversalTime().ToString("o")
+    ecosystem              = "187web"
+    product                = "187aiEYE"
+    manifest_version       = $xml.manifest.version
+    power_mode             = $powerMode
+    cwd                    = $cwd
+    prompt_id              = $chosen.id
+    alias                  = $chosen.alias
+    layer                  = $chosen.layer
+    layer_name             = $chosen.layer_name
+    skill                  = $chosen.skill
+    persona                = $chosen.persona
+    directive              = $chosen.directive
+    vars                   = $chosen.vars
+    neuro_toxin            = $chosen.neuro_toxin
+    observability_profile  = $obsProfile
+    active_agents          = @{
+        primary_skill   = $chosen.skill
+        primary_persona = $chosen.persona
+        sub_agents      = @(@{
+            id     = $chosen.id
+            alias  = $chosen.alias
+            status = "running"
+        })
+    }
+    trace_id               = $traceId
+    compiler               = "187web-compiler.ps1"
+    compiled_at            = (Get-Date).ToUniversalTime().ToString("o")
 }
 
 $json = $out | ConvertTo-Json -Depth 6

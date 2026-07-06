@@ -237,8 +237,21 @@ if not candidates:
     sys.exit(1)
 
 chosen = candidates[0]
+obs_mode = (__import__("os").environ.get("E187WEB_OBSERVABILITY") or "off").lower()
+if obs_mode not in ("off", "minimal", "full"):
+    obs_mode = "off"
+env = __import__("os").environ
+obs_profile = {
+    "mode": obs_mode,
+    "content_capture": env.get("E187WEB_OBS_CONTENT_CAPTURE") == "1",
+    "eval": obs_mode == "full" or env.get("E187WEB_OBS_EVAL") == "1",
+    "security": obs_mode != "off" or env.get("E187WEB_OBS_SECURITY") == "1",
+    "charlotte_crawl": env.get("E187WEB_CHARLOTTE_CRAWL") == "1",
+}
+trace_id = __import__("uuid").uuid4().hex
 out = {
     "ecosystem": "187web",
+    "product": "187aiEYE",
     "manifest_version": root.attrib.get("version", "2.0"),
     "power_mode": power_mode,
     "cwd": cwd,
@@ -251,6 +264,13 @@ out = {
     "directive": chosen.get("directive"),
     "vars": chosen.get("vars"),
     "neuro_toxin": chosen.get("neuro_toxin"),
+    "observability_profile": obs_profile,
+    "active_agents": {
+        "primary_skill": chosen.get("skill"),
+        "primary_persona": chosen.get("persona"),
+        "sub_agents": [{"id": chosen["id"], "alias": chosen.get("alias"), "status": "running"}],
+    },
+    "trace_id": trace_id,
     "compiler": "187web-compiler.sh",
     "compiled_at": __import__("datetime").datetime.now(__import__("datetime").timezone.utc).isoformat().replace("+00:00", "Z"),
 }

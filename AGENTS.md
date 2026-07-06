@@ -91,9 +91,11 @@ npm run db:seed
 ## Current state
 
 - `/` serves the dark Killer Web showcase.
+- `/187ai-eye` serves **187aiEYE** — standalone Local Brain command UI (multi-agent rail + module toggles).
 - `/templates` lists 14 industry templates.
 - `/resilience` demos unhappy-path states.
 - `/api/lead` persists leads when a database is available.
+- **Observability extension (v4.7):** optional module — see `.claude/skills/187web-ecosystem/references/OBSERVABILITY-4.7.md`.
 
 ## Notes for agents
 

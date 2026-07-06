@@ -19,7 +19,8 @@
     "db:push": "prisma db push",
     "db:migrate": "prisma migrate dev",
     "db:studio": "prisma studio",
-    "db:seed": "tsx prisma/seed.ts"
+    "db:seed": "tsx prisma/seed.ts",
+    "manifest:index": "python scripts/generate-manifest-index.py"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"

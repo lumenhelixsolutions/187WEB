@@ -1,0 +1,251 @@
+{
+  "ecosystem": "187web",
+  "product": "187aiEYE",
+  "manifest_version": "2.0",
+  "prompt_count": 27,
+  "prompts": [
+    {
+      "id": "document-summarization",
+      "alias": "TLDR_Toxin",
+      "layer": "1",
+      "layer_name": "native-os",
+      "skill": "widow-weaver",
+      "persona": null,
+      "power": "any"
+    },
+    {
+      "id": "linguistic-translation",
+      "alias": "Polyglot_Thread",
+      "layer": "1",
+      "layer_name": "native-os",
+      "skill": "widow-weaver",
+      "persona": null,
+      "power": "any"
+    },
+    {
+      "id": "tone-adjustment-polishing",
+      "alias": "Tone_Polish",
+      "layer": "1",
+      "layer_name": "native-os",
+      "skill": "widow-weaver",
+      "persona": null,
+      "power": "any"
+    },
+    {
+      "id": "pdf-dialogue",
+      "alias": "PDF_QA",
+      "layer": "1",
+      "layer_name": "native-os",
+      "skill": "widow-weaver",
+      "persona": null,
+      "power": "any"
+    },
+    {
+      "id": "generative-drafting",
+      "alias": "Draft_Venom",
+      "layer": "1",
+      "layer_name": "native-os",
+      "skill": "widow-weaver",
+      "persona": null,
+      "power": "any"
+    },
+    {
+      "id": "email-follow-up",
+      "alias": "Email_FollowUp",
+      "layer": "2",
+      "layer_name": "corporate-office",
+      "skill": "widow-weaver",
+      "persona": null,
+      "power": "any"
+    },
+    {
+      "id": "task-identification-extraction",
+      "alias": "Task_Extractor",
+      "layer": "2",
+      "layer_name": "corporate-office",
+      "skill": "widow-weaver",
+      "persona": null,
+      "power": "any"
+    },
+    {
+      "id": "stylistic-unification",
+      "alias": "Voice_Unify",
+      "layer": "2",
+      "layer_name": "corporate-office",
+      "skill": "widow-weaver",
+      "persona": null,
+      "power": "any"
+    },
+    {
+      "id": "annual-report-synthesizer",
+      "alias": "Report_Toxin",
+      "layer": "2",
+      "layer_name": "corporate-office",
+      "skill": "widow-weaver",
+      "persona": null,
+      "power": "any"
+    },
+    {
+      "id": "ml-systems-architect",
+      "alias": null,
+      "layer": "3",
+      "layer_name": "swarm-mind",
+      "skill": "swarm-mind",
+      "persona": "alpha-architect",
+      "power": "high"
+    },
+    {
+      "id": "llm-deployment-architect",
+      "alias": null,
+      "layer": "3",
+      "layer_name": "swarm-mind",
+      "skill": "swarm-mind",
+      "persona": "rag-weaver",
+      "power": "high"
+    },
+    {
+      "id": "multimodal-agent-designer",
+      "alias": null,
+      "layer": "3",
+      "layer_name": "swarm-mind",
+      "skill": "swarm-mind",
+      "persona": "ui-spinner",
+      "power": "high"
+    },
+    {
+      "id": "s-agent-spatial-architect",
+      "alias": null,
+      "layer": "3",
+      "layer_name": "swarm-mind",
+      "skill": "swarm-mind",
+      "persona": "spatial-architect",
+      "power": "high"
+    },
+    {
+      "id": "edge-ai-deployment-specialist",
+      "alias": null,
+      "layer": "3",
+      "layer_name": "swarm-mind",
+      "skill": "swarm-mind",
+      "persona": "edge-venom",
+      "power": "low"
+    },
+    {
+      "id": "ai-ethics-reviewer",
+      "alias": null,
+      "layer": "3",
+      "layer_name": "swarm-mind",
+      "skill": "swarm-mind",
+      "persona": "ethics-reviewer",
+      "power": "any"
+    },
+    {
+      "id": "ui-aesthetic-auditor",
+      "alias": null,
+      "layer": "4",
+      "layer_name": "viral-elegant",
+      "skill": "187webdesign",
+      "persona": null,
+      "power": "high"
+    },
+    {
+      "id": "user-journey-mapper",
+      "alias": null,
+      "layer": "4",
+      "layer_name": "viral-elegant",
+      "skill": "187web-manifest",
+      "persona": null,
+      "power": "any"
+    },
+    {
+      "id": "component-library-weaver",
+      "alias": null,
+      "layer": "4",
+      "layer_name": "viral-elegant",
+      "skill": "187webdev-design-system",
+      "persona": null,
+      "power": "high"
+    },
+    {
+      "id": "seo-semantic-optimizer",
+      "alias": null,
+      "layer": "4",
+      "layer_name": "viral-elegant",
+      "skill": "187web-manifest",
+      "persona": null,
+      "power": "any"
+    },
+    {
+      "id": "a11y-linting-agent",
+      "alias": null,
+      "layer": "4",
+      "layer_name": "viral-elegant",
+      "skill": "187webdev-qa",
+      "persona": null,
+      "power": "any"
+    },
+    {
+      "id": "persona-simulation-testing",
+      "alias": null,
+      "layer": "4",
+      "layer_name": "viral-elegant",
+      "skill": "187web-manifest",
+      "persona": null,
+      "power": "any"
+    },
+    {
+      "id": "copy-conversion-linter",
+      "alias": null,
+      "layer": "4",
+      "layer_name": "viral-elegant",
+      "skill": "187webdesign",
+      "persona": null,
+      "power": "any"
+    },
+    {
+      "id": "responsive-breakpoint-debugger",
+      "alias": null,
+      "layer": "4",
+      "layer_name": "viral-elegant",
+      "skill": "187web-manifest",
+      "persona": null,
+      "power": "high"
+    },
+    {
+      "id": "npu-performance-linter",
+      "alias": null,
+      "layer": "4",
+      "layer_name": "viral-elegant",
+      "skill": "187web-manifest",
+      "persona": "edge-venom",
+      "power": "low"
+    },
+    {
+      "id": "xss-vulnerability-scanner",
+      "alias": null,
+      "layer": "4",
+      "layer_name": "viral-elegant",
+      "skill": "187web-manifest",
+      "persona": "red-team-widow",
+      "power": "any"
+    },
+    {
+      "id": "state-machine-generator",
+      "alias": null,
+      "layer": "4",
+      "layer_name": "viral-elegant",
+      "skill": "187web-manifest",
+      "persona": null,
+      "power": "any"
+    },
+    {
+      "id": "auto-doc-generator",
+      "alias": null,
+      "layer": "4",
+      "layer_name": "viral-elegant",
+      "skill": "187web-manifest",
+      "persona": null,
+      "power": "any"
+    }
+  ]
+}
