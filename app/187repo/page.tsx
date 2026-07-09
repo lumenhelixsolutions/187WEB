@@ -4,11 +4,12 @@ import Link from "next/link";
 import { CopyButton } from "@/components/CopyButton";
 import { EcosystemFooter, EcosystemHeader } from "@/components/ecosystem/Chrome";
 import { Reveal } from "@/components/Reveal";
+import { skillShowcases } from "@/lib/skill-showcase-data";
 
 export const metadata: Metadata = {
-  title: "187REPO — slash-command reference for the 187 suite",
+  title: "187REPO — slash-command reference for the 187SKILLS suite",
   description:
-    "Complete /command reference for 187REPO, 187CRAFT, 187VIBE, and 187LAUNCH. Generate repositories, design UIs, add delight, and launch products.",
+    "Complete /command reference for the 187SKILLS suite: 187REPO, 187CRAFT, 187VIBE, 187LAUNCH, and 12 more short-name skills for free stacks, research, SEO, revenue, docs, learning, testing, access, versioning, and publishing.",
 };
 
 const nav = [
@@ -129,11 +130,12 @@ export default function RepoCommandPage() {
               187REPO command center
             </p>
             <h1 className="mt-6 text-[clamp(2.5rem,1.5rem+5vw,5rem)] font-bold leading-[0.98] tracking-tight text-white">
-              One slash for every layer of the <span className="text-[#39FF14]">187 suite.</span>
+              One slash for every layer of the <span className="text-[#39FF14]">187SKILLS suite.</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-white/60">
-              187REPO orchestrates, 187CRAFT designs, 187VIBE delights, and 187LAUNCH ships. Use the
-              reference below to route any request to the right skill.
+              187REPO orchestrates, 187CRAFT designs, 187VIBE delights, and 187LAUNCH ships — joined
+              by 12 more short-name skills for research, SEO, revenue, docs, learning, testing,
+              access, versioning, and publishing.
             </p>
             <div className="mt-10 flex flex-wrap justify-center gap-3">
               <a
@@ -295,6 +297,43 @@ export default function RepoCommandPage() {
               </a>
             </div>
           </Reveal>
+        </div>
+      </section>
+
+      <section className="border-t border-white/10 px-6 py-20 sm:py-28">
+        <div className="container-x">
+          <Reveal className="mx-auto mb-14 max-w-prose text-center">
+            <p className="inline-flex items-center justify-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-[#39FF14]">
+              <span className="h-px w-6 bg-[#39FF14]" aria-hidden="true" />
+              Extended 187SKILLS
+            </p>
+            <h2 className="mt-4 text-[clamp(1.9rem,1.2rem+2.6vw,3.25rem)] font-bold leading-[1.05] tracking-tight text-white">
+              Explore every short-name skill
+            </h2>
+          </Reveal>
+
+          <div className="mx-auto grid max-w-5xl gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {skillShowcases.map((skill, i) => (
+              <Reveal key={skill.id} delay={i * 60}>
+                <Link
+                  href={`/187${skill.id}`}
+                  className="group flex items-center gap-3 rounded-xl border border-white/10 bg-[#0A0C14] p-4 transition hover:bg-white/5"
+                >
+                  <span
+                    className="h-3 w-3 rounded-full"
+                    style={{ backgroundColor: skill.color, boxShadow: `0 0 10px ${skill.color}` }}
+                    aria-hidden="true"
+                  />
+                  <div>
+                    <h3 className="font-semibold text-white group-hover:text-[#39FF14]">
+                      {skill.name}
+                    </h3>
+                    <p className="text-sm text-white/50">{skill.tagline}</p>
+                  </div>
+                </Link>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </section>
 

@@ -6,7 +6,7 @@ import { Reveal } from "@/components/Reveal";
 export const metadata: Metadata = {
   title: "Install 187web — cross-platform CLI installer",
   description:
-    "Install the 187web ecosystem on Windows or Linux in one command. Manifest, compiler, shell hook, and 27 prompt skills — wired to your environment.",
+    "Install the 187web ecosystem on Windows, Linux, or macOS in one command. Manifest, compiler, shell hook, and 16 short-name 187SKILLS — wired to your environment.",
 };
 
 const nav = [
@@ -18,8 +18,8 @@ const nav = [
 
 const features = [
   {
-    title: "One manifest, every model",
-    body: "The 27-prompt Master Prompt Manifest stays in sync across Claude, Grok, Kimi, ChatGPT, Ollama, and Hermes adapters.",
+    title: "16 short-name skills, one menu",
+    body: "Run 187repo full to surface every skill from 187free and 187research to 187publish and 187version — or call each by name.",
   },
   {
     title: "Hardware-aware routing",
@@ -95,9 +95,54 @@ const docs = [
             active prompt when you change directories.
           </li>
           <li>
-            <strong>PATH entry</strong> — makes the compiler available from any terminal.
+            <strong>187repo short-name menu</strong> — orchestrates the 16-skill 187SKILLS suite
+            from one command.
+          </li>
+          <li>
+            <strong>PATH entry</strong> — makes the compiler and short-name tools available from any
+            terminal.
           </li>
         </ul>
+      </>
+    ),
+  },
+  {
+    id: "suite",
+    title: "Short-name suite",
+    content: (
+      <>
+        <p className="mb-4">
+          After install, <code className="rounded bg-white/5 px-1.5 py-0.5">187repo</code> is the
+          entry point for the full 187SKILLS suite. Run{" "}
+          <code className="rounded bg-white/5 px-1.5 py-0.5">187repo.sh full</code> or{" "}
+          <code className="rounded bg-white/5 px-1.5 py-0.5">.\187repo.ps1 full</code> to print
+          every skill back-to-back.
+        </p>
+        <div className="grid gap-2 text-sm text-[#d6deeb]/70 sm:grid-cols-2">
+          {[
+            ["repo", "orchestration + manifest"],
+            ["craft", "design + frontend"],
+            ["vibe", "delight + community"],
+            ["launch", "go-to-market"],
+            ["free", "no-cost stack"],
+            ["research", "source-backed research"],
+            ["seo", "ethical search"],
+            ["revenue", "ethical monetization"],
+            ["docs", "living documentation"],
+            ["write", "drafting assistant"],
+            ["learn", "curriculum"],
+            ["test", "QA + eval gates"],
+            ["access", "accessibility"],
+            ["include", "inclusive language"],
+            ["version", "tagging + metadata"],
+            ["publish", "release sync"],
+          ].map(([cmd, desc]) => (
+            <div key={cmd} className="flex items-center gap-2">
+              <code className="rounded bg-white/5 px-1.5 py-0.5 text-[#39FF14]">{cmd}</code>
+              <span>— {desc}</span>
+            </div>
+          ))}
+        </div>
       </>
     ),
   },
@@ -174,9 +219,9 @@ export default function InstallPage() {
               <span className="text-[#39FF14]">one command.</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-[#d6deeb]/70">
-              A cross-platform installer for Windows and Linux that wires the manifest, compiler,
-              and shell hook into your environment — so the right persona is always one directory
-              away.
+              A cross-platform installer for Windows, Linux, and macOS that wires the manifest,
+              compiler, shell hook, and 16 short-name 187SKILLS into your environment — so the
+              right persona is always one directory away.
             </p>
 
             <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
@@ -257,7 +302,7 @@ export default function InstallPage() {
               {
                 n: "03",
                 title: "Work in context",
-                body: "Drop a note in /MachineLearning, /Design, or /Security and the right specialist persona loads automatically.",
+                body: "Call skills by short name — craft, research, seo, revenue, learn, test, access, version, publish — or let the cd hook load the right persona from your folder.",
               },
             ].map((step, i) => (
               <Reveal key={step.title} delay={i * 100}>

@@ -1,10 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Reveal } from "@/components/Reveal";
+import { skillShowcases } from "@/lib/skill-showcase-data";
 
 const REPO = "https://github.com/lumenhelixsolutions/187WEB";
 
-const suites = [
+const baseSuites = [
   {
     id: "repo",
     name: "187REPO",
@@ -55,8 +56,19 @@ const suites = [
   },
 ];
 
+const newSuites = skillShowcases.map((s) => ({
+  id: s.id,
+  name: s.name,
+  tagline: s.tagline,
+  color: s.color,
+  href: `/187${s.id}`,
+  items: s.useCases.slice(0, 4),
+}));
+
+const suites = [...baseSuites, ...newSuites];
+
 const nav = [
-  { href: "#suites", label: "Suites" },
+  { href: "#suites", label: "Skills" },
   { href: "/187repo", label: "Commands" },
   { href: "/install", label: "Install" },
   { href: "/templates", label: "Templates" },
@@ -153,8 +165,9 @@ export function Showcase() {
               One slash for every layer of the <span className="text-[#39FF14]">187 suite.</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-white/60">
-              187REPO orchestrates, 187CRAFT designs, 187VIBE delights, and 187LAUNCH ships. A
-              short-name command surface for the mature 187web ecosystem.
+              187REPO orchestrates, 187CRAFT designs, 187VIBE delights, 187LAUNCH ships, and 12 more
+              short-name skills handle free stacks, research, SEO, revenue, docs, learning, testing,
+              access, versioning, and publishing.
             </p>
             <div className="mt-10 flex flex-wrap justify-center gap-3">
               <Link
@@ -176,7 +189,7 @@ export function Showcase() {
             <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-[#0A0C14]">
               <Image
                 src="/images/187suite-hero.jpg"
-                alt="187SUITE — the four layers: 187REPO, 187CRAFT, 187VIBE, and 187LAUNCH"
+                alt="187SUITE — the 187SKILLS command surface: 16 short-name skills from 187REPO to 187PUBLISH"
                 className="w-full"
                 width={1024}
                 height={595}
@@ -192,20 +205,21 @@ export function Showcase() {
           <Reveal className="mx-auto mb-14 max-w-2xl text-center">
             <p className="inline-flex items-center justify-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-[#39FF14]">
               <span className="h-px w-6 bg-[#39FF14]" aria-hidden="true" />
-              The 187SUITE
+              The 187SKILLS suite
             </p>
             <h2 className="mt-4 text-[clamp(1.9rem,1.2rem+2.6vw,3.25rem)] font-bold leading-[1.05] tracking-tight text-white">
-              Four layers. One strike.
+              16 short-name skills. One strike.
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-white/55">
               Each short-name skill delegates back to the mature 187web skills, so you get speed
-              without sacrificing depth.
+              without sacrificing depth. Click any skill below to see its triggers, outputs, and
+              templates.
             </p>
           </Reveal>
 
-          <div className="grid gap-6 sm:grid-cols-2">
-            {suites.map((suite, i) => (
-              <Reveal key={suite.id} delay={i * 80}>
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {suites.map((suite, i) => {
+              const card = (
                 <div
                   className="h-full rounded-2xl border border-white/10 bg-[#0A0C14] p-6 transition hover:-translate-y-1 sm:p-8"
                   style={{
@@ -230,8 +244,20 @@ export function Showcase() {
                     ))}
                   </ul>
                 </div>
-              </Reveal>
-            ))}
+              );
+
+              return (
+                <Reveal key={suite.id} delay={i * 80}>
+                  {"href" in suite && typeof suite.href === "string" ? (
+                    <Link href={suite.href} className="block">
+                      {card}
+                    </Link>
+                  ) : (
+                    card
+                  )}
+                </Reveal>
+              );
+            })}
           </div>
         </div>
       </section>

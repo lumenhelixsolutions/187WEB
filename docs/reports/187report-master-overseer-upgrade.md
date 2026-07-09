@@ -85,6 +85,34 @@ The runbook recommends executing in three controlled batches.
 - Phase 7: Add validation scripts and CI gates.
 - Phase 8: Run the permanent release pipeline (VERSION → DOCS → WRITE → ACCESS+ → INCLUDE → SEO → PUBLISH) and sync all surfaces.
 
+## Progress log
+
+### Batch A — Foundation ✅ COMPLETE
+
+- Created `docs/SKILL-CONTRACT.md` v2.0.0 with required frontmatter and 16 contract sections.
+- Added 12 canonical skills under `.claude/skills/`:
+  - `187free`, `187research`, `187seo`, `187revenue`
+  - `187docs`, `187write`, `187learn`, `187test`
+  - `187access-plus`, `187include`, `187version`, `187publish`
+
+### Batch B — Router, CLI, and Showcase ✅ COMPLETE
+
+- **Phase 3:** Updated `187web-ecosystem`, `187web-manifest`, `187repo`, `187vibe`, `187launch`; refreshed `README.md`, `AGENTS.md`, and created `docs/ROUTING.md`.
+- **Phase 4:** Expanded short-name CLI routes in `scripts/187repo.sh` and `scripts/187repo.ps1` for the full 187SKILLS suite; updated `install.sh`, `install.ps1`, `docs/INSTALL.md`, and `app/install/page.tsx`.
+- **Phase 5:** Created 10 skill showcase pages:
+  `/187free`, `/187research`, `/187seo`, `/187revenue`, `/187docs`, `/187learn`, `/187test`, `/187access`, `/187version`, `/187publish`.
+  Updated `app/page.tsx`, `app/187repo/page.tsx`, `app/187ai-eye/page.tsx`, and `lib/content.ts`.
+
+### Verification ✅
+
+- `npm run lint` — no warnings or errors.
+- `npm run typecheck` — passes.
+- `npm run build` — passes.
+
+## Current first-class skill count
+
+16 first-class short-name skills + 2 suite-wide subskills (`187WRITE`, `187INCLUDE`).
+
 ## Recommended next action
 
-Approve **Batch A** to establish the skill contract and create the 12 canonical skill definitions.
+Execute **Batch C** — fix the adapter generator root, regenerate all model adapters, add validation/CI gates, and run the permanent release pipeline (VERSION → DOCS → WRITE → ACCESS+ → INCLUDE → SEO → PUBLISH).

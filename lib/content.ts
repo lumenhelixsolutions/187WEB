@@ -150,7 +150,7 @@ export const siteConfig = {
   name: "187WEBdesign",
   tagline: "Make killer websites.",
   description:
-    "A full-stack Next.js starter that ships the 187WEBdesign skill and proves it — an opinionated playbook for websites that win awards and convert.",
+    "A full-stack Next.js starter that ships the 187WEBdesign skill and the 187SKILLS suite — an opinionated playbook for websites that win awards, convert, and stay maintainable.",
   repo: "https://github.com/lumenhelixsolutions/187WEB",
   url: "https://github.com/lumenhelixsolutions/187WEB",
 };
