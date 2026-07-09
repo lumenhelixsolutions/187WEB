@@ -22,22 +22,22 @@ Claude Code / Grok skills live under `.claude/skills/` and `.grok/skills/` respe
 |---|---|---|
 | 187webdesign (core) | `.claude/skills/187webdesign/SKILL.md` | Building/redesigning/art-directing any marketing site or landing page |
 | 187web-ecosystem v2 | `.claude/skills/187web-ecosystem/SKILL.md` | Routing the full 187SKILLS suite or the Charlotte / Killer Web skill array |
-| **187repo** | `.claude/skills/187repo/SKILL.md` | Short-name orchestration, repo generation, GitHub deploy, installer |
-| **187craft** | `.claude/skills/187craft/SKILL.md` | Short-name design + frontend execution |
-| **187vibe** | `.claude/skills/187vibe/SKILL.md` | Short-name delight, community, and execution layers |
-| **187launch** | `.claude/skills/187launch/SKILL.md` | Go-to-market intelligence and early-user acquisition |
-| **187free** | `.claude/skills/187free/SKILL.md` | No-cost / open-source / local-first stack scouting |
-| **187research** | `.claude/skills/187research/SKILL.md` | Source-backed research, reproducible labs, evidence discipline |
-| **187seo** | `.claude/skills/187seo/SKILL.md` | Ethical SEO, AEO, GEO, structured data, search analytics |
-| **187revenue** | `.claude/skills/187revenue/SKILL.md` | Ethical pricing, payments, affiliate, coupons, dropshipping |
-| **187docs** | `.claude/skills/187docs/SKILL.md` | Documentation architecture, READMEs, SOPs, API docs |
-| **187write** | `.claude/skills/187write/SKILL.md` | Suite-wide writing, copy, plain-language polish |
-| **187learn** | `.claude/skills/187learn/SKILL.md` | Courses, study plans, lessons, workshops |
-| **187test** | `.claude/skills/187test/SKILL.md` | Quizzes, tests, polls, surveys, rubrics |
-| **187access-plus** | `.claude/skills/187access-plus/SKILL.md` | Disability accessibility, neurodivergence, WCAG+, inclusion review |
-| **187include** | `.claude/skills/187include/SKILL.md` | Inclusive language, pronouns, identity-field design, community safety |
-| **187version** | `.claude/skills/187version/SKILL.md` | Versioning, changelogs, releases, migration notes, adapter sync |
-| **187publish** | `.claude/skills/187publish/SKILL.md` | Final release synchronization of docs, demos, showcases, public surfaces |
+| **187REPO** | `.claude/skills/187repo/SKILL.md` | Short-name orchestration, repo generation, GitHub deploy, installer |
+| **187CRAFT** | `.claude/skills/187craft/SKILL.md` | Short-name design + frontend execution |
+| **187VIBE** | `.claude/skills/187vibe/SKILL.md` | Short-name delight, community, and execution layers |
+| **187LAUNCH** | `.claude/skills/187launch/SKILL.md` | Go-to-market intelligence and early-user acquisition |
+| **187FREE** | `.claude/skills/187free/SKILL.md` | No-cost / open-source / local-first stack scouting |
+| **187RESEARCH** | `.claude/skills/187research/SKILL.md` | Source-backed research, reproducible labs, evidence discipline |
+| **187SEO** | `.claude/skills/187seo/SKILL.md` | Ethical SEO, AEO, GEO, structured data, search analytics |
+| **187REVENUE** | `.claude/skills/187revenue/SKILL.md` | Ethical pricing, payments, affiliate, coupons, dropshipping |
+| **187DOCS** | `.claude/skills/187docs/SKILL.md` | Documentation architecture, READMEs, SOPs, API docs |
+| **187WRITE** | `.claude/skills/187write/SKILL.md` | Suite-wide writing, copy, plain-language polish |
+| **187LEARN** | `.claude/skills/187learn/SKILL.md` | Courses, study plans, lessons, workshops |
+| **187TEST** | `.claude/skills/187test/SKILL.md` | Quizzes, tests, polls, surveys, rubrics |
+| **187ACCESS+** | `.claude/skills/187access-plus/SKILL.md` | Disability accessibility, neurodivergence, WCAG+, inclusion review |
+| **187INCLUDE** | `.claude/skills/187include/SKILL.md` | Inclusive language, pronouns, identity-field design, community safety |
+| **187VERSION** | `.claude/skills/187version/SKILL.md` | Versioning, changelogs, releases, migration notes, adapter sync |
+| **187PUBLISH** | `.claude/skills/187publish/SKILL.md` | Final release synchronization of docs, demos, showcases, public surfaces |
 | widow-weaver | `.claude/skills/widow-weaver/SKILL.md` | Text/document processing: extraction, translation, tone polish, task extraction, code explanation, logic solving, refactoring |
 | neuro-toxin | `.claude/skills/neuro-toxin/SKILL.md` | Tuning LLM inference parameters from Obsidian YAML frontmatter |
 | swarm-mind | `.claude/skills/swarm-mind/SKILL.md` | Activating a niche engineering persona based on Obsidian folder |

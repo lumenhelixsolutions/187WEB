@@ -118,6 +118,8 @@ Load the short-name skill when the user says "187", "187repo", "187craft",
 | `187version` | Versioning + releases | `/187version` | SemVer, changelogs, migration notes |
 | `187publish` | Final sync gate | `/187publish` | Docs/showcase/adapter release sync |
 
+**Canonical uppercase roster:** 187REPO 187CRAFT 187VIBE 187LAUNCH 187FREE 187RESEARCH 187SEO 187REVENUE 187DOCS 187WRITE 187LEARN 187TEST 187ACCESS+ 187INCLUDE 187VERSION 187PUBLISH.
+
 ### Ownership changes
 
 - `187vibe` no longer owns research as a primary category — use `187research`.

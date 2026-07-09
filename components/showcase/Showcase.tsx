@@ -169,6 +169,11 @@ export function Showcase() {
               short-name skills handle free stacks, research, SEO, revenue, docs, learning, testing,
               access, versioning, and publishing.
             </p>
+            <p className="mx-auto mt-4 max-w-3xl text-sm leading-relaxed text-white/40">
+              187REPO · 187CRAFT · 187VIBE · 187LAUNCH · 187FREE · 187RESEARCH · 187SEO · 187REVENUE
+              · 187DOCS · 187WRITE · 187LEARN · 187TEST · 187ACCESS+ · 187INCLUDE · 187VERSION ·
+              187PUBLISH
+            </p>
             <div className="mt-10 flex flex-wrap justify-center gap-3">
               <Link
                 href="/187repo"

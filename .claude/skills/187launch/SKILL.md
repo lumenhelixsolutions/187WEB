@@ -17,12 +17,61 @@ requires:
 
 # 187LAUNCH — Go-to-Market Intelligence
 
-**Suite:** Short-name go-to-market layer. This skill is new (not a rename of an
-existing skill) and adds launch strategy to the 187web ecosystem.
+## Identity
 
-Use `187launch` when the user asks about "launch", "Product Hunt", "go to
-market", "early users", "validation", "cold outreach", "content marketing",
-"ads", or "CRO".
+187LAUNCH is the short-name go-to-market layer for the 187web ecosystem. It is
+new (not a rename of an existing skill) and adds launch strategy, early-user
+acquisition, and distribution playbooks to the suite.
+
+## Manual triggers
+
+- `/187launch`
+- `187LAUNCH`
+- `launch plan`
+- `go to market`
+- `Product Hunt`
+- `early users`
+- `validation`
+- `cold outreach`
+- `content marketing`
+- `ads`
+- `CRO`
+
+## Automatic triggers
+
+Use 187LAUNCH when the task implies: launch, go-to-market, Product Hunt, early
+users, validation, cold outreach, content marketing, ads, CRO, pricing, launch
+checklist, or timeline.
+
+## When to use
+
+- Planning a product launch or re-launch.
+- Finding early users or beta testers.
+- Building a go-to-market strategy.
+- Creating launch content, outreach, or ads.
+- Designing pricing or conversion optimization.
+
+## When not to use
+
+- For SEO / AEO / GEO work — route to `187seo`.
+- For pricing architecture, payments, affiliate, or revenue systems — route to
+  `187revenue`.
+- For documentation and launch copy — route to `187docs` + `187write`.
+- For research-backed claims — route to `187research`.
+
+## Input contract
+
+User provides: product description, target audience, current stage, known
+constraints, launch goals, and any platforms already under consideration.
+
+## Output contract
+
+1. **Mode** — which 187LAUNCH mode is active.
+2. **Launch strategy** — platforms, sequencing, and messaging.
+3. **Asset plan** — copy, creative, landing pages, outreach templates.
+4. **Timeline** — milestones and owners.
+5. **Risk / compliance notes** — claims, disclosures, accessibility, inclusion.
+6. **Next actions** — concrete tasks and handoffs.
 
 ## Routing rules
 
@@ -31,6 +80,61 @@ market", "early users", "validation", "cold outreach", "content marketing",
 - Route pricing architecture, payments, affiliate, and revenue systems to `187revenue`.
 - Route documentation and launch copy to `187docs` + `187write`.
 - Every public launch page must pass `187access-plus` and `187include` review.
+
+## Safety / ethics guardrails
+
+- No fake reviews, fake scarcity, or counterfeit goods.
+- No undisclosed affiliate links or hidden referral arrangements.
+- No misleading shipping times or hidden recurring billing.
+- No health, disability, financial, or legal claims without evidence and human review.
+- Do not guarantee rankings, virality, or revenue outcomes.
+
+## Integration points
+
+- **Claude Code:** load `.claude/skills/187launch/SKILL.md` directly.
+- **Obsidian/Claudian:** outputs saved as linked notes using
+  `templates/launch-checklist.md`, `templates/icp-builder.md`,
+  `templates/cold-email-templates.md`, and `templates/launch-timeline.md`.
+- **CLI:** invoked via `187repo.sh launch`.
+- **Adapters:** mirrored by `python scripts/generate-model-adapters.py`.
+
+## Templates
+
+| Template | When to use |
+|---|---|
+| [`templates/launch-checklist.md`](templates/launch-checklist.md) | Launch day checklist. |
+| [`templates/icp-builder.md`](templates/icp-builder.md) | Ideal customer profile worksheet. |
+| [`templates/cold-email-templates.md`](templates/cold-email-templates.md) | Outreach sequence templates. |
+| [`templates/launch-timeline.md`](templates/launch-timeline.md) | 4–6 week launch timeline. |
+
+## Dashboards / UI representation
+
+- Showcase route: `/187launch` (future).
+- Obsidian dashboard: `_system/187LAUNCH Dashboard.md` (future).
+
+## CLI exposure
+
+`187repo.sh launch`
+
+## Docs route
+
+`docs/187LAUNCH.md`
+
+## Adapter regeneration
+
+```bash
+python scripts/generate-model-adapters.py
+```
+
+## Acceptance tests
+
+1. Prompt: "Plan a Product Hunt launch for a devtool." → Expected: 187LAUNCH
+   returns platform strategy, timeline, asset list, and handoffs to `187seo` /
+   `187revenue` where relevant.
+2. Prompt: "Write a cold outreach sequence." → Expected: 187LAUNCH uses
+   `templates/cold-email-templates.md` and flags disclosure/compliance needs.
+3. Prompt: "Set pricing for a consent-first coaching app." → Expected: 187LAUNCH
+   routes pricing architecture to `187revenue` and keeps messaging/launch timing.
 
 ## Core capabilities
 
@@ -71,13 +175,6 @@ market", "early users", "validation", "cold outreach", "content marketing",
 | `/187launch validate` | Idea validation |
 | `/187launch checklist` | Launch day checklist |
 | `/187launch timeline` | 4–6 week timeline |
-
-## Templates
-
-- [`templates/launch-checklist.md`](templates/launch-checklist.md)
-- [`templates/icp-builder.md`](templates/icp-builder.md)
-- [`templates/cold-email-templates.md`](templates/cold-email-templates.md)
-- [`templates/launch-timeline.md`](templates/launch-timeline.md)
 
 ## Tone
 

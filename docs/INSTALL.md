@@ -43,24 +43,26 @@ After install, the following short-name entry points are on your PATH. Run `187r
 
 | Command | Skill | Purpose |
 |---|---|---|
-| `187repo.sh` / `187repo.ps1` | `187repo` | Orchestration, manifest compiler, GitHub deploy |
-| `187craft` | `187craft` | Design + frontend (loads `187webdesign` / 187webdev suite) |
-| `187vibe` | `187vibe` | Delight + community + research |
-| `187launch` | `187launch` | Go-to-market intelligence |
-| `free` | `187free` | No-cost stack and free-tier optimization |
-| `research` | `187research` | Source-backed research and evidence synthesis |
-| `seo` | `187seo` | Ethical, sustainable search optimization |
-| `revenue` | `187revenue` | Ethical revenue and monetization planning |
-| `docs` | `187docs` | Living documentation architecture |
-| `write` | `187write` | Drafting assistant (`187docs` subskill) |
-| `learn` | `187learn` | Curriculum and knowledge capture |
-| `test` | `187test` | Assessment, QA, and eval gates |
-| `access` | `187access-plus` | Accessibility and inclusive design |
-| `include` | `187include` | Identity-safe, inclusive language |
-| `version` | `187version` | Versioning, tagging, and release metadata |
-| `publish` | `187publish` | Release sync and distribution |
-| `187power.sh` / `187power.ps1` | `187repo` | Create repo, push scaffold, enable Pages |
-| `187init.sh` / `187init.ps1` | `187repo` | Generate a local archetype scaffold |
+| `187repo.sh` / `187repo.ps1` | **187REPO** | Orchestration, manifest compiler, GitHub deploy |
+| `187craft` | **187CRAFT** | Design + frontend (loads `187webdesign` / 187webdev suite) |
+| `187vibe` | **187VIBE** | Delight + community + research |
+| `187launch` | **187LAUNCH** | Go-to-market intelligence |
+| `free` | **187FREE** | No-cost stack and free-tier optimization |
+| `research` | **187RESEARCH** | Source-backed research and evidence synthesis |
+| `seo` | **187SEO** | Ethical, sustainable search optimization |
+| `revenue` | **187REVENUE** | Ethical revenue and monetization planning |
+| `docs` | **187DOCS** | Living documentation architecture |
+| `write` | **187WRITE** | Drafting assistant (`187DOCS` subskill) |
+| `learn` | **187LEARN** | Curriculum and knowledge capture |
+| `test` | **187TEST** | Assessment, QA, and eval gates |
+| `access` | **187ACCESS+** | Accessibility and inclusive design |
+| `include` | **187INCLUDE** | Identity-safe, inclusive language |
+| `version` | **187VERSION** | Versioning, tagging, and release metadata |
+| `publish` | **187PUBLISH** | Release sync and distribution |
+| `187power.sh` / `187power.ps1` | **187REPO** | Create repo, push scaffold, enable Pages |
+| `187init.sh` / `187init.ps1` | **187REPO** | Generate a local archetype scaffold |
+
+The full public suite is: **187REPO 187CRAFT 187VIBE 187LAUNCH 187FREE 187RESEARCH 187SEO 187REVENUE 187DOCS 187WRITE 187LEARN 187TEST 187ACCESS+ 187INCLUDE 187VERSION 187PUBLISH**.
 
 ## What gets installed
 

@@ -35,3 +35,18 @@ jobs:
         run: npm run build
         env:
           NEXT_TELEMETRY_DISABLED: "1"
+
+      - name: Validate skills
+        run: npm run skills:validate
+
+      - name: Check adapter drift
+        run: npm run adapters:drift
+
+      - name: Check docs drift
+        run: npm run docs:drift
+
+      - name: Check showcase sync
+        run: npm run showcase:sync
+
+      - name: Validate release surfaces
+        run: npm run release:validate

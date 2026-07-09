@@ -1,6 +1,6 @@
 {
   "name": "187webdesign",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": false,
   "license": "MIT",
   "description": "A heavily-documented full-stack Next.js starter that ships the 187WEBdesign skill and demonstrates it with a live, award-caliber showcase site.",
@@ -20,7 +20,13 @@
     "db:migrate": "prisma migrate dev",
     "db:studio": "prisma studio",
     "db:seed": "tsx prisma/seed.ts",
-    "manifest:index": "python scripts/generate-manifest-index.py"
+    "manifest:index": "python scripts/generate-manifest-index.py",
+    "skills:validate": "python scripts/validate-skills.py",
+    "release:validate": "node scripts/validate-suite-release.mjs",
+    "docs:drift": "node scripts/check-docs-drift.mjs",
+    "adapters:generate": "python scripts/generate-model-adapters.py",
+    "adapters:drift": "node scripts/check-adapter-drift.mjs",
+    "showcase:sync": "node scripts/check-showcase-sync.mjs"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"

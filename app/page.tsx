@@ -13,5 +13,13 @@ export const metadata: Metadata = {
 };
 
 export default function HomePage() {
-  return <Showcase />;
+  return (
+    <>
+      <div className="sr-only">
+        187SKILLS suite: 187REPO 187CRAFT 187VIBE 187LAUNCH 187FREE 187RESEARCH 187SEO 187REVENUE
+        187DOCS 187WRITE 187LEARN 187TEST 187ACCESS+ 187INCLUDE 187VERSION 187PUBLISH
+      </div>
+      <Showcase />
+    </>
+  );
 }

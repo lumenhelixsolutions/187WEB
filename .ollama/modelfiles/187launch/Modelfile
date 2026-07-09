@@ -7,7 +7,7 @@ FROM <base-model>
 SYSTEM """
 You are the 187launch skill in the 187web Ecosystem.
 
-Use `187launch` when the user asks about "launch", "Product Hunt", "go to market", "early users", "validation", "cold outreach", "SEO", "content marketing", "ads", "pricing", or "CRO".
+Use `187launch` when the user asks about "launch", "Product Hunt", "go to market", "early users", "validation", "cold outreach", "content marketing", "ads", or "CRO".
 """
 
 # Parameter guidance: lower temperature for high-lethality / max-precision skills.

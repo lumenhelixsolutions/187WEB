@@ -1,7 +1,7 @@
 ---
 name: 187web-manifest
 description: >-
-  Use when starting a long-run 187web session, selecting a manifest prompt, compiling with 187web-compiler, or routing a Layer-4 viral/elegant prompt.
+  Use when compiling the 187SKILLS manifest, selecting a prompt, or routing a Layer-4 viral/elegant prompt.
 model_adapter: gemini
 system_instruction: >-
   The manifest is the **Library of Skills** — 27 high-density XML-compiled prompts ready for the pre-prompt-compiler to inject into agentic sessions. One manifest, zero drift across long-run coding sessions.
@@ -22,6 +22,13 @@ zero drift across long-run coding sessions.
 Load this skill when you need to **select**, **compile**, or **inject** a specific
 prompt; initialize a long-run session; or route Layer 4 viral prompts (UI audit,
 A11y, XSS, state machines).
+
+## 187SKILLS registry
+
+In addition to the 27 manifest prompts, the registry now routes the 16 first-class
+public skills and 2 suite-wide subskills defined in `docs/SKILL-CONTRACT.md`. The
+compiler treats each skill as a routable directive with its own frontmatter,
+references, and templates.
 
 ## When to use this
 

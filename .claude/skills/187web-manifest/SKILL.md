@@ -35,6 +35,8 @@ public skills and 2 suite-wide subskills defined in `docs/SKILL-CONTRACT.md`. Th
 compiler treats each skill as a routable directive with its own frontmatter,
 references, and templates.
 
+**Canonical skill roster:** 187REPO 187CRAFT 187VIBE 187LAUNCH 187FREE 187RESEARCH 187SEO 187REVENUE 187DOCS 187WRITE 187LEARN 187TEST 187ACCESS+ 187INCLUDE 187VERSION 187PUBLISH.
+
 ## When to use this
 
 - Starting a long-run session — run compiler, read `PLAN.md`, inject compiled JSON.

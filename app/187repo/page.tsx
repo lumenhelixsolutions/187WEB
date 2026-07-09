@@ -334,6 +334,14 @@ export default function RepoCommandPage() {
               </Reveal>
             ))}
           </div>
+
+          <Reveal className="mx-auto mt-10 max-w-3xl text-center">
+            <p className="text-sm text-white/40">
+              187REPO · 187CRAFT · 187VIBE · 187LAUNCH · 187FREE · 187RESEARCH · 187SEO · 187REVENUE
+              · 187DOCS · 187WRITE · 187LEARN · 187TEST · 187ACCESS+ · 187INCLUDE · 187VERSION ·
+              187PUBLISH
+            </p>
+          </Reveal>
         </div>
       </section>
 

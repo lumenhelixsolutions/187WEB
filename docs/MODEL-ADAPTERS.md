@@ -20,6 +20,11 @@ ChatGPT, Ollama, and Hermes-based local agents.
 .herme/agents/<name>/SKILL.md           # Hermes usage reference
 ```
 
+## Covered skills
+
+Adapters are generated for the full public 187SKILLS suite:
+**187REPO 187CRAFT 187VIBE 187LAUNCH 187FREE 187RESEARCH 187SEO 187REVENUE 187DOCS 187WRITE 187LEARN 187TEST 187ACCESS+ 187INCLUDE 187VERSION 187PUBLISH**.
+
 ## Adapter conventions
 
 | Model | Format | How the skill is loaded |

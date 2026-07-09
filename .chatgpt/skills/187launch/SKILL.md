@@ -13,8 +13,16 @@ model_adapter: chatgpt
 existing skill) and adds launch strategy to the 187web ecosystem.
 
 Use `187launch` when the user asks about "launch", "Product Hunt", "go to
-market", "early users", "validation", "cold outreach", "SEO", "content
-marketing", "ads", "pricing", or "CRO".
+market", "early users", "validation", "cold outreach", "content marketing",
+"ads", or "CRO".
+
+## Routing rules
+
+- Use `187launch` for go-to-market strategy, launch platforms, outreach, and validation.
+- Route SEO / AEO / GEO work to `187seo`.
+- Route pricing architecture, payments, affiliate, and revenue systems to `187revenue`.
+- Route documentation and launch copy to `187docs` + `187write`.
+- Every public launch page must pass `187access-plus` and `187include` review.
 
 ## Core capabilities
 
@@ -27,14 +35,13 @@ marketing", "ads", "pricing", or "CRO".
 4. **Cold outreach** — ICP builder, email/DM templates, follow-ups. See
    [`references/cold-outreach.md`](references/cold-outreach.md) and
    [`templates/icp-builder.md`](templates/icp-builder.md).
-5. **SEO & AI search** — traditional SEO, AEO, GEO, LLM SEO. See
-   [`references/seo-aeo-geo.md`](references/seo-aeo-geo.md).
-6. **Content marketing** — planning framework and distribution. See
+5. **Launch content** — planning framework and distribution. See
    [`references/content-marketing.md`](references/content-marketing.md).
-7. **Ads & influencers** — paid strategy and affiliate programs. See
+6. **Ads & influencers** — paid strategy. See
    [`references/ads-influencers.md`](references/ads-influencers.md).
-8. **Pricing & CRO** — models, A/B tests, landing optimization. See
+7. **Landing optimization / CRO** — models, A/B tests, landing optimization. See
    [`references/pricing-cro.md`](references/pricing-cro.md).
+8. **SEO / revenue handoffs** — `187launch` coordinates with `187seo` and `187revenue`; it does not own those domains.
 9. **Validation & research** — idea validation framework. See
    [`references/validation-research.md`](references/validation-research.md).
 
