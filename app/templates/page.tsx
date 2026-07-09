@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { TemplateBar } from "@/components/templates/TemplateBar";
 import { templates } from "@/lib/templates";
 
@@ -13,7 +14,7 @@ export default function TemplateGallery() {
     <div className="showcase min-h-screen">
       <TemplateBar name="Template gallery" tone="dark" backHref="/" backLabel="Showcase" />
 
-      <main className="mx-auto max-w-6xl px-6 py-16 sm:py-20">
+      <div className="mx-auto max-w-6xl px-6 py-16 sm:py-20">
         <span className="mb-4 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.22em] text-[#7C3AED]">
           <span className="h-px w-6 bg-[#7C3AED]" /> {templates.length} industries · {templates.length} design languages
         </span>
@@ -28,7 +29,7 @@ export default function TemplateGallery() {
 
         <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {templates.map((t) => (
-            <a
+            <Link
               key={t.slug}
               href={`/templates/${t.slug}`}
               className="group flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] transition-all duration-200 hover:-translate-y-1 hover:border-white/20 hover:bg-white/[0.05]"
@@ -56,10 +57,10 @@ export default function TemplateGallery() {
                   View template →
                 </span>
               </div>
-            </a>
+            </Link>
           ))}
         </div>
-      </main>
+      </div>
     </div>
   );
 }

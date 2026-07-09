@@ -72,6 +72,21 @@ findable.
 | **silk-sandbox** | Execution engine | MicroVM isolation, syscall monitoring, I/O multiplexing | [`.claude/skills/silk-sandbox/SKILL.md`](../silk-sandbox/SKILL.md) |
 | **187web-manifest** | Master Prompt Manifest | 27 XML prompt skills, compiler, long-run session routing | [`.claude/skills/187web-manifest/SKILL.md`](../187web-manifest/SKILL.md) |
 
+## Short-name aliases
+
+For faster discovery, the ecosystem also exposes four short-name entry skills
+that delegate back to the mature skills above:
+
+| Short name | Maps to | Use when |
+|---|---|---|
+| [`187repo`](../187repo/SKILL.md) | `187web-ecosystem` + `187web-manifest` | Repo generation, deploy, installer, orchestration |
+| [`187craft`](../187craft/SKILL.md) | `187webdesign` + 187webdev-* suite | Design, UX, frontend, QA |
+| [`187vibe`](../187vibe/SKILL.md) | `agent-charlotte`, `widow-weaver`, `neuro-toxin`, `swarm-mind`, `silk-sandbox` | Delight, research, tuning, execution |
+| [`187launch`](../187launch/SKILL.md) | `187launch` *(new)* | Go-to-market, Product Hunt, early users |
+
+Load the short-name skill when the user says "187", "187repo", "187craft",
+"187vibe", "187launch", or any related launch/deploy/design keyword.
+
 ## Invocation / workflow guidance
 
 The skills compose like a kill chain. Default order:

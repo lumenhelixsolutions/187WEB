@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { TemplateBar } from "@/components/templates/TemplateBar";
 import { CountUp } from "@/components/showcase/primitives";
 
@@ -24,7 +25,7 @@ export default function NonprofitTemplate() {
           We fund and train local growers to restore degraded land — measurable canopy, real
           livelihoods, no greenwashing.
         </p>
-        <a className="mt-7 inline-block rounded-full bg-[#34D399] px-7 py-3 text-sm font-bold text-[#0E2A1E]">Donate</a>
+        <a href="#donate" className="mt-7 inline-block rounded-full bg-[#34D399] px-7 py-3 text-sm font-bold text-[#0E2A1E]">Donate</a>
       </header>
 
       <section className="mx-auto max-w-4xl px-6 py-10">
@@ -35,10 +36,10 @@ export default function NonprofitTemplate() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-4xl px-6 py-6">
+      <section id="donate" className="mx-auto max-w-4xl px-6 py-6 scroll-mt-16">
         <div className="grid gap-3 sm:grid-cols-3">
           {["$25 · a grove", "$60 · a grower kit", "$150 · a nursery"].map((tier, i) => (
-            <button key={tier} className={`rounded-2xl px-5 py-4 text-sm font-semibold ${i === 1 ? "bg-[#34D399] text-[#0E2A1E]" : "ring-1 ring-[#F3EFE0]/20"}`}>
+            <button key={tier} type="button" aria-pressed={i === 1} className={`rounded-2xl px-5 py-4 text-sm font-semibold ${i === 1 ? "bg-[#34D399] text-[#0E2A1E]" : "ring-1 ring-[#F3EFE0]/20"}`}>
               {tier}
             </button>
           ))}
@@ -59,7 +60,7 @@ export default function NonprofitTemplate() {
       </section>
 
       <footer className="border-t border-[#F3EFE0]/10 px-6 py-8 text-center text-sm text-[#F3EFE0]/45">
-        Rootwork — a 187webDESIGN template. <a href="/templates" className="underline">All templates</a>
+        Rootwork — a 187webDESIGN template. <Link href="/templates" className="underline">All templates</Link>
       </footer>
     </div>
   );

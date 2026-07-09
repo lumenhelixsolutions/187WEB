@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { TemplateBar } from "@/components/templates/TemplateBar";
 
 export const metadata: Metadata = { title: "Frequency — Events template" };
@@ -38,7 +39,7 @@ export default function EventsTemplate() {
               </div>
             ))}
           </div>
-          <a className="mt-7 inline-block rounded-full bg-gradient-to-r from-[#FF4D8D] to-[#22D3EE] px-7 py-3 text-sm font-bold text-[#0A0613]">Get tickets</a>
+          <button type="button" className="mt-7 inline-block rounded-full bg-gradient-to-r from-[#FF4D8D] to-[#22D3EE] px-7 py-3 text-sm font-bold text-[#0A0613]">Get tickets</button>
         </div>
       </header>
 
@@ -67,7 +68,7 @@ export default function EventsTemplate() {
       </section>
 
       <footer className="border-t border-white/10 px-6 py-8 text-center text-sm text-white/40">
-        Frequency — a 187webDESIGN template. <a href="/templates" className="underline">All templates</a>
+        Frequency — a 187webDESIGN template. <Link href="/templates" className="underline">All templates</Link>
       </footer>
     </div>
   );

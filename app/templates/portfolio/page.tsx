@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { TemplateBar } from "@/components/templates/TemplateBar";
 
 export const metadata: Metadata = { title: "Maya Chen — Portfolio template" };
@@ -45,12 +46,12 @@ export default function PortfolioTemplate() {
         <div className="rounded-2xl border border-[#11131A]/10 bg-white p-8 sm:p-10">
           <h2 className="text-xl font-semibold tracking-tight">Let us work together</h2>
           <p className="mt-2 max-w-md text-[#11131A]/60">Open to product and design-systems roles, and a couple of freelance engagements per quarter.</p>
-          <a className="mt-5 inline-block rounded-full bg-[#11131A] px-6 py-3 text-sm font-semibold text-white">hello@mayachen.design</a>
+          <a href="mailto:hello@mayachen.design" className="mt-5 inline-block rounded-full bg-[#11131A] px-6 py-3 text-sm font-semibold text-white">hello@mayachen.design</a>
         </div>
       </section>
 
       <footer className="border-t border-[#11131A]/10 px-6 py-8 text-center text-sm text-[#11131A]/50">
-        Maya Chen — a 187webDESIGN template. <a href="/templates" className="underline">All templates</a>
+        Maya Chen — a 187webDESIGN template. <Link href="/templates" className="underline">All templates</Link>
       </footer>
     </div>
   );

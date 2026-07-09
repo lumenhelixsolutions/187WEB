@@ -17,12 +17,12 @@ export default function RouteError({
   }, [error]);
 
   return (
-    <main className="grid min-h-[70vh] place-items-center px-6">
+    <div className="grid min-h-[70vh] place-items-center px-6">
       <ErrorState
         title="This page hit a snag"
         message="An unexpected error occurred while rendering. Your navigation still works — try again or head back home."
         onRetry={reset}
       />
-    </main>
+    </div>
   );
 }

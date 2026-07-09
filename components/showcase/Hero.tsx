@@ -1,10 +1,8 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { prefersReducedMotion, watchReducedMotion } from "@/lib/motion";
 import { MagneticButton } from "./primitives";
-
-const reduced = () =>
-  typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 type P = { x: number; y: number; vx: number; vy: number };
 
@@ -87,6 +85,7 @@ export function Hero() {
 
     let raf = 0;
     let active = false;
+    let visible = false;
     const draw = () => {
       ctx.clearRect(0, 0, w, h);
       for (const p of pts) {
@@ -108,7 +107,7 @@ export function Hero() {
       if (active) raf = requestAnimationFrame(draw);
     };
     const start = () => {
-      if (active || reduced()) return;
+      if (active || prefersReducedMotion()) return;
       active = true;
       raf = requestAnimationFrame(draw);
     };
@@ -120,12 +119,15 @@ export function Hero() {
     // CODE-REVIEW.md: pause the loop when the hero is offscreen so it never
     // burns the main thread / raises INP on long scrolls.
     let io: IntersectionObserver | null = null;
-    if (reduced()) {
+    if (prefersReducedMotion()) {
       links();
     } else if (typeof IntersectionObserver !== "undefined") {
       io = new IntersectionObserver(
         (entries) => {
-          for (const e of entries) (e.isIntersecting ? start : stop)();
+          for (const e of entries) {
+            visible = e.isIntersecting;
+            (visible ? start : stop)();
+          }
         },
         { threshold: 0 },
       );
@@ -133,8 +135,20 @@ export function Hero() {
     } else {
       start();
     }
+    // Mid-session reduced-motion toggle: freeze on a static frame, or resume
+    // if the hero is still in view.
+    const unwatch = watchReducedMotion((reducedNow) => {
+      if (reducedNow) {
+        stop();
+        ctx.clearRect(0, 0, w, h);
+        links();
+      } else if (visible) {
+        start();
+      }
+    });
     return () => {
       stop();
+      unwatch();
       io?.disconnect();
       ro.disconnect();
       window.removeEventListener("pointermove", onMove);

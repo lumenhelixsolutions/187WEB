@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { TemplateBar } from "@/components/templates/TemplateBar";
 
 export const metadata: Metadata = { title: "Marketplace — E-commerce template" };
@@ -28,7 +29,7 @@ export default function CommerceTemplate() {
               Built for the long way round.
             </h1>
             <p className="mt-4 max-w-sm text-white/70">Durable goods for everyday expeditions. Made to be repaired, not replaced.</p>
-            <a className="mt-6 inline-block rounded-full bg-[#F59E0B] px-6 py-3 text-sm font-semibold text-[#111]">Shop the collection</a>
+            <a href="#products" className="mt-6 inline-block rounded-full bg-[#F59E0B] px-6 py-3 text-sm font-semibold text-[#111]">Shop the collection</a>
           </div>
           <div className="aspect-[4/3] rounded-2xl bg-gradient-to-br from-[#F59E0B] to-[#fb923c]" />
         </div>
@@ -37,14 +38,14 @@ export default function CommerceTemplate() {
       <div className="mx-auto max-w-6xl px-6">
         <div className="flex flex-wrap gap-2">
           {["All", "New", "Apparel", "Accessories", "Sale"].map((c, i) => (
-            <button key={c} className={`rounded-full px-4 py-1.5 text-sm font-medium ${i === 0 ? "bg-[#111] text-white" : "bg-black/5 text-[#111] hover:bg-black/10"}`}>
+            <button key={c} type="button" aria-pressed={i === 0} className={`rounded-full px-4 py-1.5 text-sm font-medium ${i === 0 ? "bg-[#111] text-white" : "bg-black/5 text-[#111] hover:bg-black/10"}`}>
               {c}
             </button>
           ))}
         </div>
       </div>
 
-      <section className="mx-auto max-w-6xl px-6 py-8">
+      <section id="products" className="mx-auto max-w-6xl px-6 py-8 scroll-mt-16">
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {products.map((p) => (
             <div key={p.name} className="group overflow-hidden rounded-2xl border border-black/5 bg-white">
@@ -56,7 +57,7 @@ export default function CommerceTemplate() {
                   <h3 className="font-semibold">{p.name}</h3>
                   <p className="text-sm text-black/50">{p.price}</p>
                 </div>
-                <button className="rounded-full bg-[#111] px-4 py-2 text-xs font-semibold text-white transition-transform group-hover:-translate-y-0.5">
+                <button type="button" aria-label={`Add ${p.name} to cart`} className="rounded-full bg-[#111] px-4 py-2 text-xs font-semibold text-white transition-transform group-hover:-translate-y-0.5">
                   Add to cart
                 </button>
               </div>
@@ -66,7 +67,7 @@ export default function CommerceTemplate() {
       </section>
 
       <footer className="border-t border-black/10 px-6 py-8 text-center text-sm text-black/50">
-        Marketplace — a 187webDESIGN template. <a href="/templates" className="underline">All templates</a>
+        Marketplace — a 187webDESIGN template. <Link href="/templates" className="underline">All templates</Link>
       </footer>
     </div>
   );

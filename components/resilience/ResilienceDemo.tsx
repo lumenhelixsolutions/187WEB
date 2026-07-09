@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { SkeletonCard } from "./Skeleton";
 import { EmptyState } from "./EmptyState";
 import { ErrorState } from "./ErrorState";
@@ -16,25 +16,31 @@ function Card({ title, children }: { title: string; children: React.ReactNode })
   );
 }
 
+/* Hoisted so React keeps a stable component identity across renders — defining
+ * it inside ResilienceDemo would remount it on every state change. */
+function Bomb({ boom }: { boom: boolean }) {
+  if (boom) throw new Error("Demo render error");
+  return (
+    <p className="rounded-xl border border-white/10 bg-white/[0.03] p-4 text-sm text-white/70">
+      ✅ Island rendered fine. Trigger an error to watch the boundary catch it — the rest of the
+      page keeps working.
+    </p>
+  );
+}
+
 export function ResilienceDemo() {
   const [loading, setLoading] = useState(false);
   const [boom, setBoom] = useState(false);
   const [attempt, setAttempt] = useState(0);
+  const loadTimer = useRef<number | undefined>(undefined);
+
+  useEffect(() => () => window.clearTimeout(loadTimer.current), []);
 
   const simulate = () => {
     setLoading(true);
-    window.setTimeout(() => setLoading(false), 1300);
+    window.clearTimeout(loadTimer.current);
+    loadTimer.current = window.setTimeout(() => setLoading(false), 1300);
   };
-
-  function Bomb() {
-    if (boom) throw new Error("Demo render error");
-    return (
-      <p className="rounded-xl border border-white/10 bg-white/[0.03] p-4 text-sm text-white/70">
-        ✅ Island rendered fine. Trigger an error to watch the boundary catch it — the rest of the
-        page keeps working.
-      </p>
-    );
-  }
 
   return (
     <div className="grid gap-4 md:grid-cols-2">
@@ -72,7 +78,7 @@ export function ResilienceDemo() {
             />
           }
         >
-          <Bomb />
+          <Bomb boom={boom} />
         </ErrorBoundary>
         {!boom ? (
           <button
@@ -105,7 +111,7 @@ export function ResilienceDemo() {
           title="No results yet"
           message="Nothing matched that filter. Try a broader search or reset."
           action={
-            <button className="rounded-full bg-white px-5 py-2 text-sm font-semibold text-[#060713]">
+            <button type="button" className="rounded-full bg-white px-5 py-2 text-sm font-semibold text-[#060713]">
               Reset filters
             </button>
           }

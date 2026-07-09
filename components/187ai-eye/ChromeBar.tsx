@@ -14,7 +14,9 @@ export function ChromeBar({ connected, relayUrl }: ChromeBarProps) {
       <span className="ml-2 font-mono text-[11px] uppercase tracking-[0.2em] text-[#4a4a4a]">
         187aiEYE · Local Brain Command
       </span>
-      <span className="ml-auto flex items-center gap-2 font-mono text-xs">
+      {/* role="status": announce connect/disconnect to screen readers, not
+          just via the dot color. */}
+      <span role="status" aria-live="polite" className="ml-auto flex items-center gap-2 font-mono text-xs">
         <span
           className={`inline-block h-2 w-2 rounded-full ${connected ? "bg-[#39ff14] shadow-[0_0_8px_#39ff14]" : "bg-[#ff0000]"}`}
           aria-hidden

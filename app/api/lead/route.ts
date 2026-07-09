@@ -56,14 +56,3 @@ export async function POST(req: Request) {
   }
 }
 
-/** GET /api/lead — count, for the social-proof counter. Null when no DB. */
-export async function GET() {
-  const prisma = getPrisma();
-  if (!prisma) return NextResponse.json({ count: null });
-  try {
-    const count = await prisma.lead.count();
-    return NextResponse.json({ count });
-  } catch {
-    return NextResponse.json({ count: null });
-  }
-}

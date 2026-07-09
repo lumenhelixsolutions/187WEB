@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { EcosystemFooter, EcosystemHeader } from "@/components/ecosystem/Chrome";
 import { InstallCommand } from "@/components/install/InstallCommand";
 import { Reveal } from "@/components/Reveal";
 
@@ -142,116 +142,10 @@ const envVars = [
   { name: "E187WEB_RELAY_URL", values: "URL", desc: "Telemetry relay endpoint (default: http://localhost:18780)." },
 ];
 
-function Header() {
-  return (
-    <header className="sticky top-0 z-50 border-b border-white/10 bg-[#05060A]/80 backdrop-blur">
-      <div className="container-x">
-        <div className="flex h-16 items-center justify-between gap-4">
-          <Link href="/" aria-label="187web home" className="text-lg font-bold tracking-tight text-white">
-            187web
-          </Link>
-
-          <nav aria-label="Installer" className="hidden items-center gap-8 md:flex">
-            {nav.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                className="text-sm font-medium text-[#d6deeb]/70 transition-colors hover:text-white"
-              >
-                {item.label}
-              </a>
-            ))}
-          </nav>
-
-          <div className="hidden items-center gap-3 md:flex">
-            <a
-              href="https://github.com/lumenhelixsolutions/187webDESIGN"
-              target="_blank"
-              rel="noreferrer noopener"
-              className="text-sm font-medium text-[#d6deeb]/70 transition-colors hover:text-white"
-            >
-              GitHub
-            </a>
-            <a
-              href="#install"
-              className="inline-flex h-11 items-center justify-center rounded bg-[#39FF14] px-5 text-sm font-semibold text-[#05060A] transition hover:brightness-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#39FF14]/50"
-            >
-              Install
-            </a>
-          </div>
-
-          <details className="group relative md:hidden">
-            <summary
-              className="flex h-11 w-11 cursor-pointer list-none items-center justify-center rounded text-white [&::-webkit-details-marker]:hidden"
-              aria-label="Toggle menu"
-            >
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" />
-              </svg>
-            </summary>
-            <div className="absolute right-0 top-full mt-2 w-56 rounded-md border border-white/10 bg-[#0A0C14] p-2 shadow-xl">
-              {nav.map((item) => (
-                <a
-                  key={item.href}
-                  href={item.href}
-                  className="flex min-h-11 items-center rounded px-3 text-sm font-medium text-[#d6deeb] hover:bg-white/5"
-                >
-                  {item.label}
-                </a>
-              ))}
-              <a
-                href="https://github.com/lumenhelixsolutions/187webDESIGN"
-                target="_blank"
-                rel="noreferrer noopener"
-                className="flex min-h-11 items-center rounded px-3 text-sm font-medium text-[#d6deeb] hover:bg-white/5"
-              >
-                GitHub
-              </a>
-              <a
-                href="#install"
-                className="mt-1 flex min-h-11 items-center justify-center rounded bg-[#39FF14] px-3 text-sm font-semibold text-[#05060A]"
-              >
-                Install
-              </a>
-            </div>
-          </details>
-        </div>
-      </div>
-    </header>
-  );
-}
-
-function Footer() {
-  return (
-    <footer className="border-t border-white/10 bg-[#0A0C14]">
-      <div className="container-x py-12">
-        <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
-          <p className="text-sm text-[#d6deeb]/50">
-            © {new Date().getFullYear()} Lumen Helix Solutions · MIT License
-          </p>
-          <div className="flex items-center gap-6">
-            <a
-              href="https://github.com/lumenhelixsolutions/187webDESIGN"
-              target="_blank"
-              rel="noreferrer noopener"
-              className="text-sm text-[#d6deeb]/50 transition hover:text-white"
-            >
-              GitHub
-            </a>
-            <Link href="/" className="text-sm text-[#d6deeb]/50 transition hover:text-white">
-              187web home
-            </Link>
-          </div>
-        </div>
-      </div>
-    </footer>
-  );
-}
-
 export default function InstallPage() {
   return (
     <div className="min-h-screen bg-[#05060A] font-sans text-[#d6deeb]">
-      <Header />
+      <EcosystemHeader navLabel="Installer" nav={nav} cta={{ href: "#install", label: "Install" }} />
 
       <section
         id="install"
@@ -465,7 +359,7 @@ export default function InstallPage() {
         </div>
       </section>
 
-      <Footer />
+      <EcosystemFooter secondary={{ href: "/", label: "187web home" }} />
     </div>
   );
 }

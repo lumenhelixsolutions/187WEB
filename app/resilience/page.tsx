@@ -28,7 +28,7 @@ export default function ResiliencePage() {
       <OfflineBanner />
       <TemplateBar name="Resilience — the unhappy path" tone="dark" backHref="/" backLabel="Showcase" />
 
-      <main className="mx-auto max-w-6xl px-6 py-16 sm:py-20">
+      <div className="mx-auto max-w-6xl px-6 py-16 sm:py-20">
         <span className="mb-4 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.22em] text-[#22D3EE]">
           <span className="h-px w-6 bg-[#22D3EE]" /> Robustness, prebuilt
         </span>
@@ -81,7 +81,7 @@ export default function ResiliencePage() {
             RESILIENCE.md
           </a>
         </p>
-      </main>
+      </div>
     </div>
   );
 }

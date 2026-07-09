@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { TemplateBar } from "@/components/templates/TemplateBar";
 
 export const metadata: Metadata = { title: "Lattice Lab — Scientific template" };
@@ -40,9 +41,9 @@ export default function ScientificTemplate() {
         </section>
 
         <figure className="mt-10">
-          <div className="flex h-56 items-end gap-2 rounded-lg border border-[#0B1F3A]/15 bg-white p-5">
+          <div aria-hidden className="flex h-56 items-end gap-2 rounded-lg border border-[#0B1F3A]/15 bg-white p-5">
             {figure.map((v, i) => (
-              <div key={i} className="flex-1 rounded-t bg-[#1E6F9F]" style={{ height: `${v}%` }} />
+              <div key={`bar-${i}-${v}`} className="flex-1 rounded-t bg-[#1E6F9F]" style={{ height: `${v}%` }} />
             ))}
           </div>
           <figcaption className="mt-3 font-mono text-xs text-[#0B1F3A]/60">
@@ -71,7 +72,7 @@ export default function ScientificTemplate() {
       </article>
 
       <footer className="border-t border-[#0B1F3A]/15 px-6 py-8 text-center font-mono text-xs text-[#0B1F3A]/50">
-        Lattice Lab — a 187webDESIGN template. <a href="/templates" className="underline">All templates</a>
+        Lattice Lab — a 187webDESIGN template. <Link href="/templates" className="underline">All templates</Link>
       </footer>
     </div>
   );

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { TemplateBar } from "@/components/templates/TemplateBar";
 import { Marquee } from "@/components/showcase/primitives";
 
@@ -28,7 +29,7 @@ export default function AgencyTemplate() {
               An independent design studio for companies that refuse to blend in. Strategy, identity,
               and websites with teeth.
             </p>
-            <a className="rounded-none bg-[#C6FF00] px-7 py-4 text-sm font-bold uppercase tracking-wide text-[#0A0A0A]">
+            <a href="mailto:hello@studio187.co" className="rounded-none bg-[#C6FF00] px-7 py-4 text-sm font-bold uppercase tracking-wide text-[#0A0A0A]">
               Start a project
             </a>
           </div>
@@ -62,7 +63,7 @@ export default function AgencyTemplate() {
       </section>
 
       <footer className="border-t border-white/15 px-6 py-8 text-center text-sm text-white/40">
-        STUDIO/187 — a 187webDESIGN template. <a href="/templates" className="underline">All templates</a>
+        STUDIO/187 — a 187webDESIGN template. <Link href="/templates" className="underline">All templates</Link>
       </footer>
     </div>
   );

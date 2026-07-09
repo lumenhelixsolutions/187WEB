@@ -55,12 +55,15 @@ export function EyeShell({ manifestIndex, initialRelay }: EyeShellProps) {
 
   useEffect(() => {
     let cancelled = false;
+    // Once a live SSE message lands, the /last snapshot is stale — never let
+    // a slow fetch response overwrite fresher stream state.
+    let gotLive = false;
     const ac = new AbortController();
 
     fetch(`${relayBase}/last`, { signal: ac.signal })
       .then((r) => r.json())
       .then((d) => {
-        if (!cancelled && d?.ecosystem) applyCompile(d);
+        if (!cancelled && !gotLive && d?.ecosystem) applyCompile(d);
       })
       .catch(() => {});
 
@@ -76,6 +79,7 @@ export function EyeShell({ manifestIndex, initialRelay }: EyeShellProps) {
     es.onmessage = (e) => {
       if (cancelled) return;
       try {
+        gotLive = true;
         applyCompile(JSON.parse(e.data));
       } catch {
         /* ignore */
@@ -108,6 +112,23 @@ export function EyeShell({ manifestIndex, initialRelay }: EyeShellProps) {
           Obsidian Local Brain · multi-agent orchestration · hyper-skilled sub-agents
         </p>
       </header>
+
+      {/* Worst-state-first (RESILIENCE.md): a visitor with no local relay gets
+          an explanation and a next step, not a dead dashboard. */}
+      {!connected && !compile && (
+        <div className="mx-auto max-w-6xl px-4 pb-4 sm:px-6">
+          <div className="rounded-lg border border-[#4a4a4a] bg-[#1a1a1a] p-6 text-center">
+            <p className="font-mono text-sm text-white">No relay detected</p>
+            <p className="mx-auto mt-2 max-w-md font-mono text-xs leading-relaxed text-[#8a8a8a]">
+              This dashboard mirrors a local orchestrator. Run{" "}
+              <code className="rounded bg-[#2a2a2a] px-1.5 py-0.5 text-[#39ff14]">187power</code> on
+              your machine and it connects to{" "}
+              <code className="rounded bg-[#2a2a2a] px-1.5 py-0.5 text-[#39ff14]">{relayBase}</code>{" "}
+              automatically. The panels below show the idle layout until then.
+            </p>
+          </div>
+        </div>
+      )}
 
       <div className="mx-auto grid max-w-6xl gap-4 px-4 pb-12 sm:px-6 lg:grid-cols-2">
         <BrainPane compile={compile} />

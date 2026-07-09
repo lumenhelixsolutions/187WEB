@@ -4,6 +4,10 @@
  * Showcase primitives — the interactive building blocks of the immersive demo.
  * Every effect is dependency-free (canvas, IntersectionObserver, pointer events,
  * Web Animations) and yields to `prefers-reduced-motion`. Kept small and typed.
+ *
+ * Animation idiom (CODE-REVIEW.md): continuous animation writes to the DOM via
+ * refs (style/textContent) — never setState per frame — and every rAF loop
+ * stops when it has nothing to animate or is offscreen.
  */
 
 import {
@@ -14,26 +18,29 @@ import {
   type PointerEvent as RPointerEvent,
   type ReactNode,
 } from "react";
-
-const reduced = () =>
-  typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-const noHover = () =>
-  typeof window !== "undefined" && window.matchMedia("(hover: none)").matches;
+import { noHover, prefersReducedMotion, watchReducedMotion } from "@/lib/motion";
 
 /* ----------------------------------------------------------- scroll bar --- */
 export function ScrollProgress() {
   const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
-    const onScroll = () => {
+    let raf = 0;
+    const update = () => {
+      raf = 0;
       const el = document.documentElement;
       const max = el.scrollHeight - el.clientHeight;
       const p = max > 0 ? el.scrollTop / max : 0;
       if (ref.current) ref.current.style.transform = `scaleX(${p})`;
     };
-    onScroll();
+    // Coalesce bursts of scroll/resize events into one style write per frame.
+    const onScroll = () => {
+      if (!raf) raf = requestAnimationFrame(update);
+    };
+    update();
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onScroll);
     return () => {
+      cancelAnimationFrame(raf);
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
     };
@@ -51,27 +58,36 @@ export function ScrollProgress() {
 export function CursorGlow() {
   const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
-    if (reduced() || noHover()) return;
+    if (prefersReducedMotion() || noHover()) return;
     const el = ref.current;
     if (!el) return;
     let raf = 0;
+    let running = false;
     let tx = innerWidth / 2;
     let ty = innerHeight / 2;
     let cx = tx;
     let cy = ty;
-    const move = (e: PointerEvent) => {
-      tx = e.clientX;
-      ty = e.clientY;
-      el.style.opacity = "1";
-    };
     const loop = () => {
       cx += (tx - cx) * 0.12;
       cy += (ty - cy) * 0.12;
       el.style.transform = `translate(${cx - 180}px, ${cy - 180}px)`;
+      // Settled — stop burning frames until the pointer moves again.
+      if (Math.abs(tx - cx) < 0.5 && Math.abs(ty - cy) < 0.5) {
+        running = false;
+        return;
+      }
       raf = requestAnimationFrame(loop);
     };
-    window.addEventListener("pointermove", move);
-    raf = requestAnimationFrame(loop);
+    const move = (e: PointerEvent) => {
+      tx = e.clientX;
+      ty = e.clientY;
+      el.style.opacity = "1";
+      if (!running) {
+        running = true;
+        raf = requestAnimationFrame(loop);
+      }
+    };
+    window.addEventListener("pointermove", move, { passive: true });
     return () => {
       cancelAnimationFrame(raf);
       window.removeEventListener("pointermove", move);
@@ -99,7 +115,6 @@ export function Marquee({
   speed?: number;
   className?: string;
 }) {
-  const row = [...items, ...items];
   return (
     <div className={`sc-mask-x overflow-hidden ${className}`}>
       <div
@@ -109,12 +124,17 @@ export function Marquee({
           animationDirection: reverse ? "reverse" : "normal",
         }}
       >
-        {row.map((t, i) => (
-          <span key={i} className="flex items-center gap-10 text-sm font-medium tracking-tight">
-            <span className="sc-vweight text-white/55">{t}</span>
-            <span aria-hidden className="text-[#7C3AED]">
-              ✦
-            </span>
+        {/* Second copy exists only to make the loop seamless — hide it from AT. */}
+        {[false, true].map((dup) => (
+          <span key={dup ? "dup" : "row"} aria-hidden={dup || undefined} className="flex items-center gap-10">
+            {items.map((t) => (
+              <span key={t} className="flex items-center gap-10 text-sm font-medium tracking-tight">
+                <span className="sc-vweight text-white/55">{t}</span>
+                <span aria-hidden className="text-[#7C3AED]">
+                  ✦
+                </span>
+              </span>
+            ))}
           </span>
         ))}
       </div>
@@ -127,12 +147,13 @@ const GLYPHS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ#%&*<>/\\{}[]0123456789";
 
 export function ScrambleText({ text, className = "" }: { text: string; className?: string }) {
   const ref = useRef<HTMLSpanElement>(null);
-  const [out, setOut] = useState(text);
+  const innerRef = useRef<HTMLSpanElement>(null);
   useEffect(() => {
     const el = ref.current;
-    if (!el) return;
-    if (reduced() || typeof IntersectionObserver === "undefined") {
-      setOut(text);
+    const inner = innerRef.current;
+    if (!el || !inner) return;
+    if (prefersReducedMotion() || typeof IntersectionObserver === "undefined") {
+      inner.textContent = text;
       return;
     }
     let raf = 0;
@@ -141,14 +162,12 @@ export function ScrambleText({ text, className = "" }: { text: string; className
     const run = () => {
       tick += 1;
       if (tick % 2 === 0) revealed += 1;
-      setOut(
-        text
-          .split("")
-          .map((c, i) => (c === " " ? " " : i < revealed ? c : GLYPHS[(Math.random() * GLYPHS.length) | 0]))
-          .join(""),
-      );
+      inner.textContent = text
+        .split("")
+        .map((c, i) => (c === " " ? " " : i < revealed ? c : GLYPHS[(Math.random() * GLYPHS.length) | 0]))
+        .join("");
       if (revealed <= text.length) raf = requestAnimationFrame(run);
-      else setOut(text);
+      else inner.textContent = text;
     };
     const obs = new IntersectionObserver(
       (entries) => {
@@ -169,7 +188,9 @@ export function ScrambleText({ text, className = "" }: { text: string; className
   }, [text]);
   return (
     <span ref={ref} className={className} aria-label={text}>
-      <span aria-hidden>{out}</span>
+      <span ref={innerRef} aria-hidden>
+        {text}
+      </span>
     </span>
   );
 }
@@ -189,17 +210,28 @@ export function MagneticButton({
   const ref = useRef<HTMLAnchorElement>(null);
   useEffect(() => {
     const el = ref.current;
-    if (!el || reduced() || noHover()) return;
+    if (!el || prefersReducedMotion() || noHover()) return;
+    // Cache the resting rect on enter — reading layout on every pointermove
+    // interleaves reads with the transform writes below.
+    let rect: DOMRect | null = null;
+    const enter = () => {
+      rect = el.getBoundingClientRect();
+    };
     const move = (e: PointerEvent) => {
-      const r = el.getBoundingClientRect();
-      el.style.transform = `translate(${(e.clientX - (r.left + r.width / 2)) * 0.25}px, ${
-        (e.clientY - (r.top + r.height / 2)) * 0.4
+      if (!rect) rect = el.getBoundingClientRect();
+      el.style.transform = `translate(${(e.clientX - (rect.left + rect.width / 2)) * 0.25}px, ${
+        (e.clientY - (rect.top + rect.height / 2)) * 0.4
       }px)`;
     };
-    const leave = () => (el.style.transform = "");
+    const leave = () => {
+      el.style.transform = "";
+      rect = null;
+    };
+    el.addEventListener("pointerenter", enter);
     el.addEventListener("pointermove", move);
     el.addEventListener("pointerleave", leave);
     return () => {
+      el.removeEventListener("pointerenter", enter);
       el.removeEventListener("pointermove", move);
       el.removeEventListener("pointerleave", leave);
     };
@@ -208,10 +240,13 @@ export function MagneticButton({
     variant === "solid"
       ? "bg-gradient-to-r from-[#2440E6] to-[#7C3AED] text-white shadow-[0_12px_44px_-12px_rgba(124,58,237,0.9)] hover:shadow-[0_18px_56px_-12px_rgba(124,58,237,1)]"
       : "text-white/90 ring-1 ring-white/20 hover:bg-white/5";
+  const external = /^https?:\/\//.test(href);
   return (
     <a
       ref={ref}
       href={href}
+      target={external ? "_blank" : undefined}
+      rel={external ? "noreferrer noopener" : undefined}
       className={`inline-flex items-center gap-2 rounded-full px-7 py-3.5 text-sm font-semibold transition-[transform,box-shadow] duration-200 ease-out will-change-transform ${styles} ${className}`}
     >
       {children}
@@ -224,7 +259,7 @@ export function RippleButton({ children, className = "" }: { children: ReactNode
   const ref = useRef<HTMLButtonElement>(null);
   const onClick = (e: RMouseEvent<HTMLButtonElement>) => {
     const el = ref.current;
-    if (!el || reduced()) return;
+    if (!el || prefersReducedMotion()) return;
     const r = el.getBoundingClientRect();
     const size = Math.max(r.width, r.height);
     const span = document.createElement("span");
@@ -244,6 +279,7 @@ export function RippleButton({ children, className = "" }: { children: ReactNode
   return (
     <button
       ref={ref}
+      type="button"
       onClick={onClick}
       className={`relative overflow-hidden rounded-full ${className}`}
     >
@@ -280,17 +316,26 @@ export function TiltCard({ children, className = "" }: { children: ReactNode; cl
   const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const el = ref.current;
-    if (!el || reduced() || noHover()) return;
+    if (!el || prefersReducedMotion() || noHover()) return;
+    let rect: DOMRect | null = null;
+    const enter = () => {
+      rect = el.getBoundingClientRect();
+    };
     const move = (e: PointerEvent) => {
-      const r = el.getBoundingClientRect();
-      const px = (e.clientX - r.left) / r.width - 0.5;
-      const py = (e.clientY - r.top) / r.height - 0.5;
+      if (!rect) rect = el.getBoundingClientRect();
+      const px = (e.clientX - rect.left) / rect.width - 0.5;
+      const py = (e.clientY - rect.top) / rect.height - 0.5;
       el.style.transform = `rotateY(${px * 11}deg) rotateX(${-py * 11}deg)`;
     };
-    const leave = () => (el.style.transform = "");
+    const leave = () => {
+      el.style.transform = "";
+      rect = null;
+    };
+    el.addEventListener("pointerenter", enter);
     el.addEventListener("pointermove", move);
     el.addEventListener("pointerleave", leave);
     return () => {
+      el.removeEventListener("pointerenter", enter);
       el.removeEventListener("pointermove", move);
       el.removeEventListener("pointerleave", leave);
     };
@@ -345,12 +390,14 @@ export function CountUp({
   className?: string;
 }) {
   const ref = useRef<HTMLSpanElement>(null);
-  const [val, setVal] = useState(0);
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    if (reduced() || typeof IntersectionObserver === "undefined") {
-      setVal(to);
+    const setText = (n: number) => {
+      el.textContent = `${n}${suffix}`;
+    };
+    if (prefersReducedMotion() || typeof IntersectionObserver === "undefined") {
+      setText(to);
       return;
     }
     let raf = 0;
@@ -358,7 +405,7 @@ export function CountUp({
     const step = (t: number) => {
       if (!start) start = t;
       const p = Math.min((t - start) / duration, 1);
-      setVal(Math.round((1 - Math.pow(1 - p, 3)) * to));
+      setText(Math.round((1 - Math.pow(1 - p, 3)) * to));
       if (p < 1) raf = requestAnimationFrame(step);
     };
     const obs = new IntersectionObserver(
@@ -377,11 +424,10 @@ export function CountUp({
       cancelAnimationFrame(raf);
       obs.disconnect();
     };
-  }, [to, duration]);
+  }, [to, suffix, duration]);
   return (
     <span ref={ref} className={className}>
-      {val}
-      {suffix}
+      0{suffix}
     </span>
   );
 }
@@ -411,6 +457,7 @@ export function OrbitCanvas({ className = "" }: { className?: string }) {
     let raf = 0;
     let t = 0;
     let active = false;
+    let visible = false;
     const draw = () => {
       ctx.clearRect(0, 0, w, h);
       const cx = w / 2;
@@ -437,7 +484,7 @@ export function OrbitCanvas({ className = "" }: { className?: string }) {
       if (active) raf = requestAnimationFrame(draw);
     };
     const start = () => {
-      if (active || reduced()) return;
+      if (active || prefersReducedMotion()) return;
       active = true;
       raf = requestAnimationFrame(draw);
     };
@@ -447,19 +494,33 @@ export function OrbitCanvas({ className = "" }: { className?: string }) {
     };
     // CODE-REVIEW.md: only animate while visible.
     let io: IntersectionObserver | null = null;
-    if (reduced() || typeof IntersectionObserver === "undefined") {
+    if (prefersReducedMotion() || typeof IntersectionObserver === "undefined") {
       draw();
     } else {
       io = new IntersectionObserver(
         (entries) => {
-          for (const e of entries) (e.isIntersecting ? start : stop)();
+          for (const e of entries) {
+            visible = e.isIntersecting;
+            (visible ? start : stop)();
+          }
         },
         { threshold: 0 },
       );
       io.observe(cv);
     }
+    // React to a mid-session reduced-motion toggle: freeze on one frame, or
+    // resume if the canvas is still in view.
+    const unwatch = watchReducedMotion((reducedNow) => {
+      if (reducedNow) {
+        stop();
+        draw();
+      } else if (visible) {
+        start();
+      }
+    });
     return () => {
       stop();
+      unwatch();
       io?.disconnect();
       ro.disconnect();
     };

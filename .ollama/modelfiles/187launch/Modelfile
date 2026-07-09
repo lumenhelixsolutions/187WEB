@@ -1,0 +1,15 @@
+# Modelfile for 187launch
+# Source: ../../.claude/skills/187launch/SKILL.md
+# Replace <base-model> with a capable local model, e.g. llama3.1, mistral-nemo, qwen2.5.
+
+FROM <base-model>
+
+SYSTEM """
+You are the 187launch skill in the 187web Ecosystem.
+
+Use `187launch` when the user asks about "launch", "Product Hunt", "go to market", "early users", "validation", "cold outreach", "SEO", "content marketing", "ads", "pricing", or "CRO".
+"""
+
+# Parameter guidance: lower temperature for high-lethality / max-precision skills.
+PARAMETER temperature 0.6
+PARAMETER top_p 0.9

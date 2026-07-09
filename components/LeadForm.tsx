@@ -2,13 +2,16 @@
 
 import { useId, useState, type FormEvent } from "react";
 import { Button } from "@/components/Button";
+import { leadSchema } from "@/lib/validation";
 
 type Status = "idle" | "submitting" | "success" | "error";
 
 /**
  * Low-friction capture (skill #11): one field, one action, honest states.
  * Talks to POST /api/lead, which persists when a DB is configured and
- * acknowledges in "preview mode" otherwise. The status line is an aria-live
+ * acknowledges in "preview mode" otherwise. Validation runs client-side with
+ * the same Zod schema the API uses, so both deploy modes (server and static
+ * export) reject bad input identically. The status line is an aria-live
  * region so screen readers hear the result.
  */
 export function LeadForm() {
@@ -23,6 +26,15 @@ export function LeadForm() {
 
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+
+    // Same schema as the API — instant feedback, and the static-export branch
+    // below can't wave through an invalid submission.
+    const parsed = leadSchema.safeParse({ email, source: "showcase" });
+    if (!parsed.success) {
+      setStatus("error");
+      setMessage(parsed.error.issues[0]?.message ?? "Enter a valid email address.");
+      return;
+    }
 
     // The static GitHub Pages export has no /api route — acknowledge client-side
     // instead of firing a fetch that would 404 on a static host.
@@ -39,7 +51,7 @@ export function LeadForm() {
       const res = await fetch("/api/lead", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, source: "showcase" }),
+        body: JSON.stringify(parsed.data),
       });
       const data: { ok?: boolean; message?: string; error?: string } = await res.json();
       if (res.ok && data.ok) {
@@ -71,8 +83,15 @@ export function LeadForm() {
           autoComplete="email"
           placeholder="you@studio.com"
           value={email}
-          onChange={(event) => setEmail(event.target.value)}
-          disabled={busy || done}
+          onChange={(event) => {
+            setEmail(event.target.value);
+            // Typing again after a result re-arms the form — no dead end.
+            if (status === "success" || status === "error") {
+              setStatus("idle");
+              setMessage("");
+            }
+          }}
+          disabled={busy}
           aria-describedby={statusId}
           aria-invalid={status === "error"}
           className="h-14 flex-1 rounded-sm border border-line bg-surface px-4 text-ink shadow-sm outline-none transition placeholder:text-muted/70 focus-visible:border-accent focus-visible:shadow-focus disabled:opacity-60"

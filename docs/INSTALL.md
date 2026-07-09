@@ -37,12 +37,28 @@ Then enable the `cd` hook:
 .\install-compiler-hook.ps1
 ```
 
+## Short-name suite
+
+After install, the following short-name entry points are on your PATH:
+
+| Command | Skill | Purpose |
+|---|---|---|
+| `187repo.sh` / `187repo.ps1` | `187repo` | Orchestration, manifest compiler, GitHub deploy |
+| `187craft` | `187craft` | Design + frontend (loads `187webdesign` / 187webdev suite) |
+| `187vibe` | `187vibe` | Delight + community + research |
+| `187launch` | `187launch` | Go-to-market intelligence |
+| `187power.sh` / `187power.ps1` | `187repo` | Create repo, push scaffold, enable Pages |
+| `187init.sh` / `187init.ps1` | `187repo` | Generate a local archetype scaffold |
+
 ## What gets installed
 
 - `~/.187web/prompts/MANIFEST.xml` — the 27-prompt master manifest.
 - `~/.187web/bin/187web-compiler.sh` / `.ps1` — the hardware-aware compiler.
 - `~/.187web/bin/install-compiler-hook.sh` / `.ps1` — the optional shell hook installer.
-- A PATH entry so `187web-compiler.sh` / `187web-compiler.ps1` are available everywhere.
+- `~/.187web/bin/187repo.sh` / `.ps1` — short-name orchestration menu.
+- `~/.187web/bin/187power.sh` / `.ps1` — GitHub surgical-strike deploy script.
+- `~/.187web/bin/187init.sh` / `.ps1` — local scaffold generator.
+- A PATH entry so all of the above are available everywhere.
 
 ## Environment variables
 

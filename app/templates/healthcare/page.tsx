@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { TemplateBar } from "@/components/templates/TemplateBar";
 
 export const metadata: Metadata = { title: "Wellspring — Healthcare template" };
@@ -26,15 +27,15 @@ export default function HealthcareTemplate() {
             doctors who remember your name.
           </p>
           <div className="mt-7 flex flex-wrap gap-3">
-            <a className="rounded-full bg-[#0E7C7B] px-6 py-3 text-sm font-semibold text-white">Book appointment</a>
-            <a className="rounded-full px-6 py-3 text-sm font-semibold text-[#0E7C7B] ring-1 ring-[#0E7C7B]/30">Call (555) 010-2020</a>
+            <a href="#appointment" className="rounded-full bg-[#0E7C7B] px-6 py-3 text-sm font-semibold text-white">Book appointment</a>
+            <a href="tel:+15550102020" className="rounded-full px-6 py-3 text-sm font-semibold text-[#0E7C7B] ring-1 ring-[#0E7C7B]/30">Call (555) 010-2020</a>
           </div>
           <div className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm text-[#0B3B3A]/60">
             <span>★ 4.9 · 2,400 reviews</span><span>Board-certified</span><span>Most insurance accepted</span>
           </div>
         </div>
 
-        <form className="rounded-3xl border border-[#0E7C7B]/15 bg-white p-6 shadow-sm sm:p-8" aria-label="Request an appointment">
+        <form id="appointment" className="scroll-mt-16 rounded-3xl border border-[#0E7C7B]/15 bg-white p-6 shadow-sm sm:p-8" aria-label="Request an appointment">
           <h2 className="text-lg font-semibold">Request an appointment</h2>
           <div className="mt-4 grid gap-3">
             <label className="text-sm font-medium">Full name
@@ -66,7 +67,7 @@ export default function HealthcareTemplate() {
       </section>
 
       <footer className="border-t border-[#0E7C7B]/15 px-6 py-8 text-center text-sm text-[#0B3B3A]/50">
-        Wellspring — a 187webDESIGN template. <a href="/templates" className="underline">All templates</a>
+        Wellspring — a 187webDESIGN template. <Link href="/templates" className="underline">All templates</Link>
       </footer>
     </div>
   );

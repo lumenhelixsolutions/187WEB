@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { TemplateBar } from "@/components/templates/TemplateBar";
 
 export const metadata: Metadata = { title: "Forge API — Developer tool template" };
@@ -62,7 +63,7 @@ export default function DevToolTemplate() {
       </section>
 
       <footer className="border-t border-white/10 px-6 py-8 text-center font-sans text-sm text-white/40">
-        Forge API — a 187webDESIGN template. <a href="/templates" className="underline">All templates</a>
+        Forge API — a 187webDESIGN template. <Link href="/templates" className="underline">All templates</Link>
       </footer>
     </div>
   );

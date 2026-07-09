@@ -39,9 +39,11 @@ const FOLDER_ROUTES: Record<
 
 export function matchFolderRoute(cwd: string | undefined) {
   if (!cwd) return null;
-  const norm = cwd.replace(/\\/g, "/");
+  // Match whole path segments — a substring test would route "/Designer" or
+  // "/RAGtime" to the wrong persona.
+  const segments = new Set(cwd.replace(/\\/g, "/").split("/"));
   for (const [path, route] of Object.entries(FOLDER_ROUTES)) {
-    if (norm.includes(path)) return route;
+    if (segments.has(path.slice(1))) return route;
   }
   return null;
 }

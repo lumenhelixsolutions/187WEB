@@ -22,6 +22,10 @@ Claude Code / Grok skills live under `.claude/skills/` and `.grok/skills/` respe
 |---|---|---|
 | 187webdesign (core) | `.claude/skills/187webdesign/SKILL.md` | Building/redesigning/art-directing any marketing site or landing page |
 | 187web-ecosystem v2 | `.claude/skills/187web-ecosystem/SKILL.md` | You need the full Charlotte / Killer Web skill array |
+| **187repo** | `.claude/skills/187repo/SKILL.md` | Short-name orchestration, repo generation, GitHub deploy, installer |
+| **187craft** | `.claude/skills/187craft/SKILL.md` | Short-name design + frontend execution |
+| **187vibe** | `.claude/skills/187vibe/SKILL.md` | Short-name delight, community, research, and execution layers |
+| **187launch** | `.claude/skills/187launch/SKILL.md` | Go-to-market intelligence and early-user acquisition *(new)* |
 | widow-weaver | `.claude/skills/widow-weaver/SKILL.md` | Text/document processing: extraction, translation, tone polish, task extraction, code explanation, logic solving, refactoring |
 | neuro-toxin | `.claude/skills/neuro-toxin/SKILL.md` | Tuning LLM inference parameters from Obsidian YAML frontmatter |
 | swarm-mind | `.claude/skills/swarm-mind/SKILL.md` | Activating a niche engineering persona based on Obsidian folder |
@@ -91,6 +95,8 @@ npm run db:seed
 ## Current state
 
 - `/` serves the dark Killer Web showcase.
+- `/install` is the cross-platform CLI installer page + documentation.
+- `/187repo` is the slash-command reference for the 187REPO / 187CRAFT / 187VIBE / 187LAUNCH suite.
 - `/187ai-eye` serves **187aiEYE** — standalone Local Brain command UI (multi-agent rail + module toggles).
 - `/templates` lists 14 industry templates.
 - `/resilience` demos unhappy-path states.

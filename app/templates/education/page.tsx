@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { TemplateBar } from "@/components/templates/TemplateBar";
 
 export const metadata: Metadata = { title: "Curio — Education template" };
@@ -29,12 +30,12 @@ export default function EducationTemplate() {
           A project-based program with live critique, real briefs, and a portfolio you can ship.
         </p>
         <div className="mt-7 flex flex-wrap justify-center gap-3">
-          <a className="rounded-full bg-[#4F46E5] px-6 py-3 text-sm font-semibold text-white">Enroll now</a>
-          <a className="rounded-full px-6 py-3 text-sm font-semibold ring-1 ring-[#1c1b29]/15">Download syllabus</a>
+          <button type="button" className="rounded-full bg-[#4F46E5] px-6 py-3 text-sm font-semibold text-white">Enroll now</button>
+          <button type="button" className="rounded-full px-6 py-3 text-sm font-semibold ring-1 ring-[#1c1b29]/15">Download syllabus</button>
         </div>
       </header>
 
-      <section className="mx-auto max-w-3xl px-6 py-10">
+      <section id="curriculum" className="mx-auto max-w-3xl px-6 py-10 scroll-mt-16">
         <h2 className="mb-5 text-sm font-bold uppercase tracking-widest text-[#4F46E5]">Curriculum</h2>
         <div className="space-y-3">
           {modules.map((m) => (
@@ -61,7 +62,7 @@ export default function EducationTemplate() {
       </section>
 
       <footer className="border-t border-[#1c1b29]/10 px-6 py-8 text-center text-sm text-[#1c1b29]/50">
-        Curio — a 187webDESIGN template. <a href="/templates" className="underline">All templates</a>
+        Curio — a 187webDESIGN template. <Link href="/templates" className="underline">All templates</Link>
       </footer>
     </div>
   );

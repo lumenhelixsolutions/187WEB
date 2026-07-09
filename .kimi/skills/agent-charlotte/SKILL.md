@@ -123,6 +123,15 @@ Research target: a competitor's public documentation and changelog.
 
 ---
 
+## Observability extension (optional)
+
+When the 187web observability module is enabled with `charlotte_crawl: true`, emit
+RETRIEVER spans and crawl audit metadata (URLs fetched, depth, entities woven).
+See [`187web-ecosystem` references/OBSERVABILITY-4.7.md](../187web-ecosystem/references/OBSERVABILITY-4.7.md).
+The **187aiEYE** UI shows a crawl-status chip when this extension is active.
+
+---
+
 ## Safety / ethics
 
 Charlotte is lethal precision, not a vandal. Obey these rules on every crawl:

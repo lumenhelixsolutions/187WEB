@@ -8,8 +8,11 @@ type NeuroSlidersProps = {
 const lethalityMap: Record<string, number> = { max: 95, medium: 55, low: 25 };
 
 export function NeuroSliders({ toxicity, lethality }: NeuroSlidersProps) {
-  const tox = parseFloat(String(toxicity ?? 0));
-  const toxPct = Math.min((tox / 1.5) * 100, 100);
+  // Relay payloads are untrusted — a non-numeric toxicity would otherwise
+  // yield width:"NaN%" and a silently empty bar.
+  const parsed = parseFloat(String(toxicity ?? 0));
+  const tox = Number.isFinite(parsed) ? parsed : 0;
+  const toxPct = Math.min(Math.max((tox / 1.5) * 100, 0), 100);
   const leth = lethality ?? "medium";
   const lethPct = lethalityMap[leth] ?? 50;
   const lethAlert = leth === "max";

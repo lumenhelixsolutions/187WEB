@@ -24,6 +24,11 @@ Write-Host "> Installing compiler and hook scripts..." -ForegroundColor DarkGray
 Copy-Item (Join-Path $RepoDir ".claude\skills\187web-manifest\scripts\187web-compiler.ps1") $BinDir -Force
 Copy-Item (Join-Path $RepoDir ".claude\skills\187web-manifest\scripts\install-compiler-hook.ps1") $BinDir -Force
 
+Write-Host "> Installing 187repo short-name scripts..." -ForegroundColor DarkGray
+Copy-Item (Join-Path $RepoDir "scripts\187repo.ps1") $BinDir -Force
+Copy-Item (Join-Path $RepoDir "scripts\187power.ps1") $BinDir -Force
+Copy-Item (Join-Path $RepoDir "scripts\187init.ps1") $BinDir -Force
+
 $userPath = [Environment]::GetEnvironmentVariable("Path", "User")
 $pathParts = $userPath -split ";" | ForEach-Object { $_.TrimEnd("\\") }
 if ($pathParts -notcontains $BinDir.TrimEnd("\\")) {
@@ -38,6 +43,8 @@ Write-Host ""
 Write-Host "OK 187web installed to $BinDir" -ForegroundColor Green
 Write-Host ""
 Write-Host "Next steps:"
-Write-Host "  1. Install the cd hook:  .\install-compiler-hook.ps1"
-Write-Host "  2. Run the compiler:     .\187web-compiler.ps1 -List"
+Write-Host "  1. Install the cd hook:    .\install-compiler-hook.ps1"
+Write-Host "  2. Run the compiler:       .\187web-compiler.ps1 -List"
+Write-Host "  3. Try short-name tools:   .\187repo.ps1 help"
+Write-Host "  4. Deploy a repo:          .\187power.ps1 my-app --web"
 Write-Host ""

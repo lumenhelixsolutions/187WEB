@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { TemplateBar } from "@/components/templates/TemplateBar";
 
 export const metadata: Metadata = { title: "The Dispatch — Editorial template" };
@@ -59,7 +60,7 @@ export default function EditorialTemplate() {
       </section>
 
       <footer className="border-t-2 border-[#11131A] px-6 py-8 text-center font-mono text-xs text-[#11131A]/55">
-        The Dispatch — a 187webDESIGN template. <a href="/templates" className="underline">All templates</a>
+        The Dispatch — a 187webDESIGN template. <Link href="/templates" className="underline">All templates</Link>
       </footer>
     </div>
   );

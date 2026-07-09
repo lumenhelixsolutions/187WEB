@@ -24,6 +24,12 @@ cp "$REPO_DIR/.claude/skills/187web-manifest/scripts/187web-compiler.sh" "$BIN_D
 cp "$REPO_DIR/.claude/skills/187web-manifest/scripts/install-compiler-hook.sh" "$BIN_DIR/"
 chmod +x "$BIN_DIR/187web-compiler.sh" "$BIN_DIR/install-compiler-hook.sh"
 
+echo "→ Installing 187repo short-name scripts..."
+cp "$REPO_DIR/scripts/187repo.sh" "$BIN_DIR/"
+cp "$REPO_DIR/scripts/187power.sh" "$BIN_DIR/"
+cp "$REPO_DIR/scripts/187init.sh" "$BIN_DIR/"
+chmod +x "$BIN_DIR/187repo.sh" "$BIN_DIR/187power.sh" "$BIN_DIR/187init.sh"
+
 detect_rc() {
   if [[ -n "${ZSH_VERSION:-}" ]] || [[ "${SHELL:-}" == *zsh* ]]; then
     echo "${HOME}/.zshrc"
@@ -52,7 +58,9 @@ echo ""
 echo "✓ 187web installed to $BIN_DIR"
 echo ""
 echo "Next steps:"
-echo "  1. Reload your shell:  source $RC"
-echo "  2. Install the cd hook:  install-compiler-hook.sh"
-echo "  3. Run the compiler:     187web-compiler.sh --list"
+echo "  1. Reload your shell:      source $RC"
+echo "  2. Install the cd hook:    install-compiler-hook.sh"
+echo "  3. Run the compiler:       187web-compiler.sh --list"
+echo "  4. Try short-name tools:   187repo.sh help"
+echo "  5. Deploy a repo:          187power.sh my-app --web"
 echo ""

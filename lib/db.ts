@@ -25,18 +25,3 @@ export function getPrisma(): PrismaClient | null {
 
 /** Whether a database is configured. Used to show honest UI/preview states. */
 export const isDatabaseConfigured = (): boolean => Boolean(process.env.DATABASE_URL);
-
-/**
- * Lead count for the social-proof counter. Never throws: returns `null` when
- * there's no database (or a query fails) so server components can render
- * statically without a DB at build time.
- */
-export async function safeLeadCount(): Promise<number | null> {
-  const prisma = getPrisma();
-  if (!prisma) return null;
-  try {
-    return await prisma.lead.count();
-  } catch {
-    return null;
-  }
-}

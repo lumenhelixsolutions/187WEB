@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { TemplateBar } from "@/components/templates/TemplateBar";
 
 export const metadata: Metadata = { title: "Nimbus — SaaS template" };
@@ -37,8 +38,8 @@ export default function SaasTemplate() {
             migration.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
-            <a className="rounded-full bg-gradient-to-r from-[#2440E6] to-[#7C3AED] px-6 py-3 text-sm font-semibold">Start free</a>
-            <a className="rounded-full px-6 py-3 text-sm font-semibold ring-1 ring-white/20">Book a demo</a>
+            <a href="#pricing" className="rounded-full bg-gradient-to-r from-[#2440E6] to-[#7C3AED] px-6 py-3 text-sm font-semibold">Start free</a>
+            <button type="button" className="rounded-full px-6 py-3 text-sm font-semibold ring-1 ring-white/20">Book a demo</button>
           </div>
           <div className="mt-12 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 opacity-50">
             {["Acme", "Globex", "Umbra", "Initech", "Hooli"].map((l) => (
@@ -60,7 +61,7 @@ export default function SaasTemplate() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-6 pb-24">
+      <section id="pricing" className="mx-auto max-w-6xl px-6 pb-24 scroll-mt-16">
         <h2 className="mb-10 text-center text-3xl font-bold tracking-tight">Simple, scaling pricing</h2>
         <div className="grid gap-5 lg:grid-cols-3">
           {tiers.map((t) => (
@@ -77,14 +78,14 @@ export default function SaasTemplate() {
                   <li key={f} className="flex gap-2"><span className="text-[#22D3EE]">✓</span>{f}</li>
                 ))}
               </ul>
-              <a className={`mt-6 block rounded-full py-3 text-center text-sm font-semibold ${t.hot ? "bg-white text-[#080a16]" : "ring-1 ring-white/20"}`}>{t.cta}</a>
+              <button type="button" className={`mt-6 block w-full rounded-full py-3 text-center text-sm font-semibold ${t.hot ? "bg-white text-[#080a16]" : "ring-1 ring-white/20"}`}>{t.cta}</button>
             </div>
           ))}
         </div>
       </section>
 
       <footer className="border-t border-white/10 px-6 py-8 text-center text-sm text-white/40">
-        Nimbus — a 187webDESIGN template. <a href="/templates" className="underline">All templates</a>
+        Nimbus — a 187webDESIGN template. <Link href="/templates" className="underline">All templates</Link>
       </footer>
     </div>
   );

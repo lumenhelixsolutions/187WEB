@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { TemplateBar } from "@/components/templates/TemplateBar";
 import { CountUp } from "@/components/showcase/primitives";
 
@@ -27,8 +28,8 @@ export default function FintechTemplate() {
             A high-yield account with zero fees, instant transfers, and security that never sleeps.
           </p>
           <div className="mt-7 flex flex-wrap gap-3">
-            <a className="rounded-full bg-[#3DDC97] px-6 py-3 text-sm font-semibold text-[#071A2B]">Open an account</a>
-            <a className="rounded-full px-6 py-3 text-sm font-semibold ring-1 ring-white/20">See rates</a>
+            <button type="button" className="rounded-full bg-[#3DDC97] px-6 py-3 text-sm font-semibold text-[#071A2B]">Open an account</button>
+            <a href="#rates" className="rounded-full px-6 py-3 text-sm font-semibold ring-1 ring-white/20">See rates</a>
           </div>
           <div className="mt-10 grid max-w-md grid-cols-3 gap-6">
             <div><div className="text-3xl font-bold text-[#3DDC97]"><CountUp to={430} />k</div><p className="text-xs text-white/45">customers</p></div>
@@ -54,7 +55,7 @@ export default function FintechTemplate() {
         </div>
       </header>
 
-      <section className="mx-auto max-w-6xl px-6 py-12">
+      <section id="rates" className="mx-auto max-w-6xl px-6 py-12 scroll-mt-16">
         <div className="overflow-hidden rounded-2xl border border-white/10">
           <table className="w-full text-left text-sm">
             <thead className="bg-white/[0.04] text-white/50"><tr><th className="px-5 py-3">Product</th><th className="px-5 py-3">Rate</th><th className="px-5 py-3">Terms</th></tr></thead>
@@ -70,12 +71,12 @@ export default function FintechTemplate() {
           </table>
         </div>
         <div className="mt-8 flex flex-wrap gap-x-8 gap-y-3 text-sm text-white/50">
-          <span>🔒 256-bit encryption</span><span>🛡️ Biometric login</span><span>📵 No selling your data</span><span>⏱️ 24/7 fraud monitoring</span>
+          <span><span aria-hidden>🔒</span> 256-bit encryption</span><span><span aria-hidden>🛡️</span> Biometric login</span><span><span aria-hidden>📵</span> No selling your data</span><span><span aria-hidden>⏱️</span> 24/7 fraud monitoring</span>
         </div>
       </section>
 
       <footer className="border-t border-white/10 px-6 py-8 text-center text-sm text-white/40">
-        Vault — a 187webDESIGN template. <a href="/templates" className="underline">All templates</a>
+        Vault — a 187webDESIGN template. <Link href="/templates" className="underline">All templates</Link>
       </footer>
     </div>
   );

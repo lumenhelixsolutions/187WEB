@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { TemplateBar } from "@/components/templates/TemplateBar";
 
 export const metadata: Metadata = { title: "Ember & Oak — Restaurant template" };
@@ -31,7 +32,7 @@ export default function RestaurantTemplate() {
         <p className="mx-auto mt-5 max-w-md text-[#F3EAD8]/70">
           A hearth-driven kitchen in the old quarter. Live fire, local growers, an unhurried table.
         </p>
-        <a className="mt-7 inline-block border border-[#C8A24B] px-7 py-3 text-sm font-medium uppercase tracking-widest text-[#C8A24B] transition-colors hover:bg-[#C8A24B] hover:text-[#1A1410]">
+        <a href="mailto:book@emberoak.co" className="mt-7 inline-block border border-[#C8A24B] px-7 py-3 text-sm font-medium uppercase tracking-widest text-[#C8A24B] transition-colors hover:bg-[#C8A24B] hover:text-[#1A1410]">
           Reserve a table
         </a>
       </header>
@@ -71,7 +72,7 @@ export default function RestaurantTemplate() {
       </section>
 
       <footer className="border-t border-[#C8A24B]/20 px-6 py-8 text-center font-mono text-xs text-[#F3EAD8]/40">
-        Ember &amp; Oak — a 187webDESIGN template. <a href="/templates" className="underline">All templates</a>
+        Ember &amp; Oak — a 187webDESIGN template. <Link href="/templates" className="underline">All templates</Link>
       </footer>
     </div>
   );
