@@ -1,8 +1,18 @@
 ---
 name: 187vibe
-description: Use when adding delight, micro-interactions, onboarding, community, or
-  retention to a 187web project.
-origin: portfolio
+description: Use when adding delight, micro-interactions, onboarding, community, or retention to a 187web project.
+suite: 187SKILLS
+skill_version: 2.0.0
+contract_version: 2.0.0
+last_updated: 2026-07-09
+last_verified: 2026-07-09
+status: active
+replaces: none
+deprecated: false
+compatible_with:
+  - 187webdesign >=0.1.0
+requires:
+  - docs/SKILL-CONTRACT.md
 ---
 
 # 187VIBE — Short-Name Delight + Community
@@ -19,12 +29,18 @@ Use `187vibe` when the user asks for "delight", "whimsy", "community",
 
 ## Composition
 
-1. **Research / context:** `agent-charlotte` crawls and weaves findings into the
-   vault.
-2. **Tone / text:** `widow-weaver` sharpens copy and extracts intent.
-3. **Persona depth:** `swarm-mind` brings in the right specialist.
-4. **Inference tuning:** `neuro-toxin` dials precision vs creativity.
-5. **Safe execution:** `silk-sandbox` runs generated code.
+1. **Context / tone:** `widow-weaver` sharpens copy and extracts intent.
+2. **Persona depth:** `swarm-mind` brings in the right specialist.
+3. **Inference tuning:** `neuro-toxin` dials precision vs creativity.
+4. **Safe execution:** `silk-sandbox` runs generated code.
+5. **Research-grade work:** route to `187research`, not `187vibe`.
+
+## Routing rules
+
+- Use `187vibe` for delight, onboarding, retention, and community.
+- Route research questions to `187research`.
+- Route launch strategy to `187launch`.
+- Route SEO questions to `187seo`.
 
 ## Slash commands
 

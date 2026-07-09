@@ -21,14 +21,23 @@ Claude Code / Grok skills live under `.claude/skills/` and `.grok/skills/` respe
 | Skill | Path | Load when |
 |---|---|---|
 | 187webdesign (core) | `.claude/skills/187webdesign/SKILL.md` | Building/redesigning/art-directing any marketing site or landing page |
-| 187web-ecosystem v2 | `.claude/skills/187web-ecosystem/SKILL.md` | You need the full Charlotte / Killer Web skill array |
+| 187web-ecosystem v2 | `.claude/skills/187web-ecosystem/SKILL.md` | Routing the full 187SKILLS suite or the Charlotte / Killer Web skill array |
 | **187repo** | `.claude/skills/187repo/SKILL.md` | Short-name orchestration, repo generation, GitHub deploy, installer |
 | **187craft** | `.claude/skills/187craft/SKILL.md` | Short-name design + frontend execution |
-| **187vibe** | `.claude/skills/187vibe/SKILL.md` | Short-name delight, community, research, and execution layers |
+| **187vibe** | `.claude/skills/187vibe/SKILL.md` | Short-name delight, community, and execution layers |
 | **187launch** | `.claude/skills/187launch/SKILL.md` | Go-to-market intelligence and early-user acquisition |
-| **187include** | `.claude/skills/187include/SKILL.md` | Inclusive language, pronouns, identity-field design, and community safety review |
-| **187version** | `.claude/skills/187version/SKILL.md` | Versioning, changelogs, releases, migration notes, and adapter sync |
-| **187publish** | `.claude/skills/187publish/SKILL.md` | Final release synchronization of docs, demos, showcases, and public surfaces |
+| **187free** | `.claude/skills/187free/SKILL.md` | No-cost / open-source / local-first stack scouting |
+| **187research** | `.claude/skills/187research/SKILL.md` | Source-backed research, reproducible labs, evidence discipline |
+| **187seo** | `.claude/skills/187seo/SKILL.md` | Ethical SEO, AEO, GEO, structured data, search analytics |
+| **187revenue** | `.claude/skills/187revenue/SKILL.md` | Ethical pricing, payments, affiliate, coupons, dropshipping |
+| **187docs** | `.claude/skills/187docs/SKILL.md` | Documentation architecture, READMEs, SOPs, API docs |
+| **187write** | `.claude/skills/187write/SKILL.md` | Suite-wide writing, copy, plain-language polish |
+| **187learn** | `.claude/skills/187learn/SKILL.md` | Courses, study plans, lessons, workshops |
+| **187test** | `.claude/skills/187test/SKILL.md` | Quizzes, tests, polls, surveys, rubrics |
+| **187access-plus** | `.claude/skills/187access-plus/SKILL.md` | Disability accessibility, neurodivergence, WCAG+, inclusion review |
+| **187include** | `.claude/skills/187include/SKILL.md` | Inclusive language, pronouns, identity-field design, community safety |
+| **187version** | `.claude/skills/187version/SKILL.md` | Versioning, changelogs, releases, migration notes, adapter sync |
+| **187publish** | `.claude/skills/187publish/SKILL.md` | Final release synchronization of docs, demos, showcases, public surfaces |
 | widow-weaver | `.claude/skills/widow-weaver/SKILL.md` | Text/document processing: extraction, translation, tone polish, task extraction, code explanation, logic solving, refactoring |
 | neuro-toxin | `.claude/skills/neuro-toxin/SKILL.md` | Tuning LLM inference parameters from Obsidian YAML frontmatter |
 | swarm-mind | `.claude/skills/swarm-mind/SKILL.md` | Activating a niche engineering persona based on Obsidian folder |
@@ -99,8 +108,9 @@ npm run db:seed
 
 - `/` serves the dark Killer Web showcase.
 - `/install` is the cross-platform CLI installer page + documentation.
-- `/187repo` is the slash-command reference for the 187REPO / 187CRAFT / 187VIBE / 187LAUNCH suite.
+- `/187repo` is the slash-command reference for the 187SKILLS suite.
 - `/187ai-eye` serves **187aiEYE** — standalone Local Brain command UI (multi-agent rail + module toggles).
+- `/187free`, `/187research`, `/187seo`, `/187revenue`, `/187docs`, `/187learn`, `/187test`, `/187access`, `/187version`, `/187publish` are skill showcase pages.
 - `/templates` lists 14 industry templates.
 - `/resilience` demos unhappy-path states.
 - `/api/lead` persists leads when a database is available.

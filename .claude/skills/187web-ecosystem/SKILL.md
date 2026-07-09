@@ -1,8 +1,18 @@
 ---
 name: 187web-ecosystem
-description: 'Use when you need the full Charlotte integration stack: prompt engineering,
-  inference tuning, specialist personas, autonomous web research, and isolated execution.'
-origin: portfolio
+description: 'Use when routing across the full 187SKILLS suite or the Charlotte integration stack.'
+suite: 187SKILLS
+skill_version: 2.0.0
+contract_version: 2.0.0
+last_updated: 2026-07-09
+last_verified: 2026-07-09
+status: active
+replaces: none
+deprecated: false
+compatible_with:
+  - 187webdesign >=0.1.0
+requires:
+  - docs/SKILL-CONTRACT.md
 ---
 # 187web Ecosystem v2 — Charlotte Integration
 
@@ -86,6 +96,33 @@ that delegate back to the mature skills above:
 
 Load the short-name skill when the user says "187", "187repo", "187craft",
 "187vibe", "187launch", or any related launch/deploy/design keyword.
+
+## 187SKILLS public suite map
+
+| Skill | Role | Public surface | Load when |
+|---|---|---|---|
+| `187repo` | Orchestration, deploy, installer | `/187repo` | Repo generation, GitHub deploy, suite routing |
+| `187craft` | Design + frontend | `/187craft` | UI/UX, components, design system |
+| `187vibe` | Delight + community | `/187vibe` | Onboarding, retention, micro-interactions |
+| `187launch` | Go-to-market | `/187launch` | Launch strategy, early users, outreach |
+| `187free` | No-cost solution engine | `/187free` | Free-tier/open-source/local-first stacks |
+| `187research` | Source-backed research | `/187research` | Scholarly/biomedical/math/code research |
+| `187seo` | Ethical SEO | `/187seo` | Search visibility, structured data, audits |
+| `187revenue` | Ethical revenue systems | `/187revenue` | Pricing, payments, affiliate, dropshipping |
+| `187docs` | Documentation system | `/187docs` | READMEs, SOPs, API docs |
+| `187write` | Suite-wide writing | — | Content, copy, plain-language polish |
+| `187learn` | Courses + learning | `/187learn` | Study plans, lessons, workshops |
+| `187test` | Quizzes + surveys | `/187test` | Knowledge checks, rubrics, feedback |
+| `187access-plus` | Accessibility + inclusion | `/187access` | WCAG+, cognitive, neurodivergent access |
+| `187include` | Identity-safe language | — | Pronouns, gender-inclusive forms, anti-bias |
+| `187version` | Versioning + releases | `/187version` | SemVer, changelogs, migration notes |
+| `187publish` | Final sync gate | `/187publish` | Docs/showcase/adapter release sync |
+
+### Ownership changes
+
+- `187vibe` no longer owns research as a primary category — use `187research`.
+- `187launch` no longer owns SEO or revenue — use `187seo` and `187revenue`.
+- `187publish` owns every release synchronization surface.
 
 ## Invocation / workflow guidance
 

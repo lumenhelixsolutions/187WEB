@@ -28,58 +28,22 @@
 
 </div>
 
-> **"187" is the attitude:** every element earns its place or it gets cut. **187SUITE** is the short-name command surface for the mature 187web ecosystem — four layers that turn a raw idea into a shipped, polished product.
+> **"187" is the attitude:** every element earns its place or it gets cut. **187SUITE** is the short-name command surface for the 187SKILLS operating system — a multi-agent suite that turns a raw idea into a shipped, polished, accessible, and discoverable product.
 
 <br>
 
-## ◆ The four layers
+## ◆ The 187SKILLS suite
 
-<table width="100%">
-<tr>
-<td width="50%" valign="top">
-
-### 187REPO — Orchestrate
-
-- Systematized codebase structure
-- Git-flow workflow
-- Component versioning
-- Repository archetypes: `--cli`, `--agent`, `--kv`, `--edge`, `--ui`, `--full`, `--web`
-
-</td>
-<td width="50%" valign="top">
-
-### 187CRAFT — Design
-
-- Atomic design system
-- Pixel-perfect components
-- Scalable grid modules
-- Accessibility-first, token-driven UI
-
-</td>
-</tr>
-<tr>
-<td width="50%" valign="top">
-
-### 187VIBE — Delight
-
-- UX flow mapping v2.0
-- Interaction state library
-- User behavior data
-- Micro-interactions that serve, never decorate
-
-</td>
-<td width="50%" valign="top">
-
-### 187LAUNCH — Ship
-
-- CI/CD build pipelines
-- Multi-environment deployment engines
-- Instant rollbacks
-- Go-to-market intelligence and launch playbooks
-
-</td>
-</tr>
-</table>
+| Skill | Role | Skill | Role |
+|---|---|---|---|
+| **187REPO** | Orchestrate repos, deploys, installers | **187FREE** | Find no-cost/open-source/local-first stacks |
+| **187CRAFT** | Design pixel-perfect, accessible UI | **187RESEARCH** | Build source-backed, reproducible labs |
+| **187VIBE** | Delight, onboard, retain, community | **187SEO** | Ethical search visibility + structured data |
+| **187LAUNCH** | Go-to-market, early users, outreach | **187REVENUE** | Ethical pricing, payments, affiliate, commerce |
+| **187DOCS** | Documentation, SOPs, README systems | **187LEARN** | Courses, study plans, workshops |
+| **187WRITE** | Suite-wide writing + plain language | **187TEST** | Quizzes, surveys, rubrics, feedback |
+| **187ACCESS+** | Accessibility + inclusion review | **187INCLUDE** | Identity-safe language + forms |
+| **187VERSION** | Versioning, changelogs, releases | **187PUBLISH** | Final docs/showcase/adapter sync |
 
 <br>
 
@@ -103,8 +67,18 @@ After install, the short-name entry points are on your PATH:
 | ------------------------------ | ----------- | ---------------------------------------------------------- |
 | `187repo.sh` / `187repo.ps1`   | `187repo`   | Orchestration, manifest compiler, GitHub deploy            |
 | `187craft`                     | `187craft`  | Design + frontend (loads `187webdesign` / 187webdev suite) |
-| `187vibe`                      | `187vibe`   | Delight + community + research                             |
+| `187vibe`                      | `187vibe`   | Delight + community                                        |
 | `187launch`                    | `187launch` | Go-to-market intelligence                                  |
+| `187free`                      | `187free`   | No-cost / open-source stack scouting                       |
+| `187research`                  | `187research` | Source-backed research labs                                |
+| `187seo`                       | `187seo`    | Ethical SEO + structured data                              |
+| `187revenue`                   | `187revenue` | Pricing, payments, affiliate, commerce                     |
+| `187docs`                      | `187docs`   | Documentation system                                       |
+| `187learn`                     | `187learn`  | Courses + learning paths                                   |
+| `187test`                      | `187test`   | Quizzes + surveys                                          |
+| `187access`                    | `187access-plus` | Accessibility + inclusion review                      |
+| `187version`                   | `187version` | Versioning + changelogs                                    |
+| `187publish`                   | `187publish` | Release sync gate                                          |
 | `187power.sh` / `187power.ps1` | `187repo`   | Create repo, push scaffold, enable Pages                   |
 | `187init.sh` / `187init.ps1`   | `187repo`   | Generate a local archetype scaffold                        |
 
@@ -169,12 +143,22 @@ npm run db:seed             # (optional) a few sample leads
 
 ```text
 187WEB/
-├─ .claude/skills/              # portable skills (187webdesign, 187repo, 187craft, 187vibe, 187launch)
+├─ .claude/skills/              # portable skills (187SKILLS suite + 187webdev portfolio + manifest prompts)
 ├─ app/                         # Next.js App Router
 │  ├─ page.tsx                  # 187SUITE showcase
 │  ├─ 187repo/page.tsx          # slash-command reference
 │  ├─ install/page.tsx          # cross-platform installer page
 │  ├─ 187ai-eye/page.tsx        # Local Brain command UI
+│  ├─ 187free/page.tsx          # no-cost stack showcase
+│  ├─ 187research/page.tsx      # research lab showcase
+│  ├─ 187seo/page.tsx           # SEO showcase
+│  ├─ 187revenue/page.tsx       # revenue systems showcase
+│  ├─ 187docs/page.tsx          # documentation showcase
+│  ├─ 187learn/page.tsx         # learning showcase
+│  ├─ 187test/page.tsx          # testing showcase
+│  ├─ 187access/page.tsx        # accessibility showcase
+│  ├─ 187version/page.tsx       # versioning showcase
+│  ├─ 187publish/page.tsx       # publish gate showcase
 │  ├─ templates/                # 14 industry templates
 │  └─ api/                      # lead + health route handlers
 ├─ components/                  # design-system primitives + sections
