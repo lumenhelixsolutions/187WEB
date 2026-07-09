@@ -43,6 +43,8 @@ User provides: the research question, domain, known sources, and sensitivity con
 
 ## Output contract
 
+Use [`references/database-router.md`](references/database-router.md) for source selection, [`references/evidence-ladder.md`](references/evidence-ladder.md) for claim classification, and [`references/reproducibility-standard.md`](references/reproducibility-standard.md) for reproducibility checks.
+
 1. **Research Need**
 2. **Domain Classification**
 3. **Best Source Routes**
@@ -64,24 +66,27 @@ User provides: the research question, domain, known sources, and sensitivity con
 ## Safety / ethics guardrails
 
 - For medical/clinical/health content, provide evidence summaries only and require human/professional review.
+- Cross-check claim classification against [`references/evidence-ladder.md`](references/evidence-ladder.md) and reproducibility against [`references/reproducibility-standard.md`](references/reproducibility-standard.md).
 - Keep API keys out of notes.
 - Prefer official APIs; do not scrape when an API exists.
 - Cite source route, query, date accessed, and returned identifiers.
 
 ## Integration points
 
-- **Obsidian/Claudian:** outputs use `templates/research-question.md`, `literature-review.md`, `computational-lab.md`, `dataset-card.md`, `claim-audit.md`.
+- **Obsidian/Claudian:** outputs use `templates/research-question.md`, `templates/literature-review.md`, `templates/computational-lab.md`, `templates/dataset-card.md`, `templates/claim-audit.md`.
 - **Claude Code:** load `.claude/skills/187research/SKILL.md`.
 - **CLI:** future `187repo.sh research` / `187research.sh`.
 - **Adapters:** mirrored by `python scripts/generate-model-adapters.py`.
 
 ## Templates
 
-- [`templates/research-question.md`](templates/research-question.md)
-- [`templates/literature-review.md`](templates/literature-review.md)
-- [`templates/computational-lab.md`](templates/computational-lab.md)
-- [`templates/dataset-card.md`](templates/dataset-card.md)
-- [`templates/claim-audit.md`](templates/claim-audit.md)
+| Template | When to use |
+|---|---|
+| [`templates/research-question.md`](templates/research-question.md) | Scoping a new research question and source route. |
+| [`templates/literature-review.md`](templates/literature-review.md) | Synthesizing multiple sources into a review. |
+| [`templates/computational-lab.md`](templates/computational-lab.md) | Building a reproducible lab notebook or experiment. |
+| [`templates/dataset-card.md`](templates/dataset-card.md) | Documenting a dataset with FAIR metadata. |
+| [`templates/claim-audit.md`](templates/claim-audit.md) | Auditing claims against the evidence ladder. |
 
 ## Dashboards / UI representation
 

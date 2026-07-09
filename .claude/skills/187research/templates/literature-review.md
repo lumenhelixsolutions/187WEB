@@ -37,7 +37,7 @@ Databases/APIs queried:
 
 | Source | Type | Year | Key finding | Evidence rung | Source route | Date accessed |
 |--------|------|------|-------------|---------------|--------------|---------------|
-| {{source}} | {{journal/preprint/repo}} | {{YYYY}} | {{finding}} | {{1–5}} | {{URL/ID}} | {{YYYY-MM-DD}} |
+| {{source}} | {{journal/preprint/repo}} | {{YYYY}} | {{finding}} | {{0–5}} | {{URL/ID}} | {{YYYY-MM-DD}} |
 | {{source}} | | | | | | |
 
 ## Themes
@@ -58,7 +58,7 @@ Databases/APIs queried:
 
 | Claim | Evidence rung | Supporting sources | Caveats |
 |-------|---------------|--------------------|---------|
-| {{claim}} | {{1–5}} | {{sources}} | {{caveats}} |
+| {{claim}} | {{0–5}} | {{sources}} | {{caveats}} |
 
 ## Citation / source lineage plan
 

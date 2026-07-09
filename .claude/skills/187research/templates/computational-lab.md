@@ -74,7 +74,7 @@ reproducible: [unknown | yes | partial | no]
 
 | Claim | Evidence rung | Supporting source | Caveats |
 |-------|---------------|-------------------|---------|
-| {{claim}} | {{1–5}} | {{source}} | {{caveats}} |
+| {{claim}} | {{0–5}} | {{source}} | {{caveats}} |
 
 ## Next actions
 

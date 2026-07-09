@@ -58,7 +58,7 @@ Route every research question through the most authoritative, queryable source a
 | **DLMF** | Special functions, asymptotics, formulas | Function name, equation | NIST Digital Library of Mathematical Functions. |
 | **arXiv math** | Preprints across math subfields | Category, keyword, author | Use arXiv API. |
 | **MathOverflow / StackExchange** | Discussion, references, heuristics | Tag, keyword | Not primary sources; use for pointers. |
-| ** zbMATH Open** | Mathematical reviews, classifications | MSC, author, title | Open reviews and abstracts. |
+| **zbMATH Open** | Mathematical reviews, classifications | MSC, author, title | Open reviews and abstracts. |
 
 ### When to prefer one over another
 
