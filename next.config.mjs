@@ -5,7 +5,7 @@
 // the Pages workflow (NEXT_PUBLIC_STATIC_EXPORT=true) and left off everywhere
 // else, so local dev and the full-stack Docker/Vercel build are unaffected.
 const isStaticExport = process.env.NEXT_PUBLIC_STATIC_EXPORT === "true";
-const basePath = "/187webDESIGN";
+const basePath = "/187WEB";
 
 const nextConfig = {
   reactStrictMode: true,

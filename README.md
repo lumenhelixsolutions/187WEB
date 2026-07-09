@@ -6,12 +6,12 @@
 
 <h1>187SUITE</h1>
 <p><strong>KILLER WEB DESIGN SOLUTIONS</strong></p>
-<p>Powered by <a href="https://github.com/lumenhelixsolutions/187webDESIGN">187webDESIGN</a> // <a href="https://lumenhelixsolutions.github.io">lumenhelixsolutions</a></p>
+<p>Powered by <a href="https://github.com/lumenhelixsolutions/187WEB">187WEB</a> // <a href="https://lumenhelixsolutions.github.io">lumenhelixsolutions</a></p>
 
 <br>
 
 <p>
-  <a href="https://lumenhelixsolutions.github.io/187webDESIGN/"><img src="https://img.shields.io/badge/▶_View_Live_Demo-39FF14?style=for-the-badge&labelColor=11131A" alt="View Live Demo" /></a>
+  <a href="https://lumenhelixsolutions.github.io/187WEB/"><img src="https://img.shields.io/badge/▶_View_Live_Demo-39FF14?style=for-the-badge&labelColor=11131A" alt="View Live Demo" /></a>
   &nbsp;
   <a href="#-quick-start"><img src="https://img.shields.io/badge/⚡_Quick_Start-11131A?style=for-the-badge&color=39FF14" alt="Quick Start" /></a>
   &nbsp;
@@ -19,9 +19,9 @@
 </p>
 
 <p>
-  <a href="LICENSE"><img src="https://img.shields.io/github/license/lumenhelixsolutions/187webDESIGN?style=flat-square&labelColor=11131A&color=39FF14&label=License" alt="License" /></a>
-  <a href="https://github.com/lumenhelixsolutions/187webDESIGN/actions/workflows/ci.yml"><img src="https://img.shields.io/github/actions/workflow/status/lumenhelixsolutions/187webDESIGN/ci.yml?branch=main&style=flat-square&labelColor=11131A&color=39FF14&logo=githubactions&logoColor=white&label=CI" alt="CI" /></a>
-  <a href="https://github.com/lumenhelixsolutions/187webDESIGN/actions/workflows/pages.yml"><img src="https://img.shields.io/github/actions/workflow/status/lumenhelixsolutions/187webDESIGN/pages.yml?branch=main&style=flat-square&labelColor=11131A&color=39FF14&logo=githubpages&logoColor=white&label=Pages" alt="Pages" /></a>
+  <a href="LICENSE"><img src="https://img.shields.io/github/license/lumenhelixsolutions/187WEB?style=flat-square&labelColor=11131A&color=39FF14&label=License" alt="License" /></a>
+  <a href="https://github.com/lumenhelixsolutions/187WEB/actions/workflows/ci.yml"><img src="https://img.shields.io/github/actions/workflow/status/lumenhelixsolutions/187WEB/ci.yml?branch=main&style=flat-square&labelColor=11131A&color=39FF14&logo=githubactions&logoColor=white&label=CI" alt="CI" /></a>
+  <a href="https://github.com/lumenhelixsolutions/187WEB/actions/workflows/pages.yml"><img src="https://img.shields.io/github/actions/workflow/status/lumenhelixsolutions/187WEB/pages.yml?branch=main&style=flat-square&labelColor=11131A&color=39FF14&logo=githubpages&logoColor=white&label=Pages" alt="Pages" /></a>
 </p>
 
 <br>
@@ -91,7 +91,7 @@ This repository is **two things in one**:
 2. **A live demo that proves it** — a real Next.js + Prisma app whose marketing pages are built to pass the same 50-point pre-ship checklist: fast, accessible, responsive, and conversion-minded.
 
 The live showcase is deployed from this repo via GitHub Pages:  
-**[lumenhelixsolutions.github.io/187webDESIGN](https://lumenhelixsolutions.github.io/187webDESIGN/)**
+**[lumenhelixsolutions.github.io/187WEB](https://lumenhelixsolutions.github.io/187WEB/)**
 
 <br>
 
@@ -148,8 +148,8 @@ CONTENT      ████████                           10%   copy that 
 **Prerequisites:** Node.js ≥ 18.18, npm. (Docker optional, only for the local database.)
 
 ```bash
-git clone https://github.com/lumenhelixsolutions/187webDESIGN.git
-cd 187webDESIGN
+git clone https://github.com/lumenhelixsolutions/187WEB.git
+cd 187WEB
 npm install
 npm run dev          # → http://localhost:3000
 ```
@@ -168,7 +168,7 @@ npm run db:seed             # (optional) a few sample leads
 ## ◆ Project structure
 
 ```text
-187webDESIGN/
+187WEB/
 ├─ .claude/skills/              # portable skills (187webdesign, 187repo, 187craft, 187vibe, 187launch)
 ├─ app/                         # Next.js App Router
 │  ├─ page.tsx                  # 187SUITE showcase

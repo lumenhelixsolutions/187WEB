@@ -286,7 +286,7 @@ export default function RepoCommandPage() {
                 Go to installer
               </Link>
               <a
-                href="https://github.com/lumenhelixsolutions/187webDESIGN"
+                href="https://github.com/lumenhelixsolutions/187WEB"
                 target="_blank"
                 rel="noreferrer noopener"
                 className="inline-flex h-14 items-center justify-center rounded border border-white/10 bg-white/5 px-8 text-base font-semibold text-white transition hover:bg-white/10"

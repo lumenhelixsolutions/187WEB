@@ -11,7 +11,7 @@ The fastest way to wire the 187web ecosystem into your environment.
 ### Linux / macOS / Git Bash
 
 ```bash
-git clone https://github.com/lumenhelixsolutions/187webDESIGN.git
+git clone https://github.com/lumenhelixsolutions/187WEB.git
 cd 187webDESIGN
 ./install.sh
 ```
@@ -26,7 +26,7 @@ install-compiler-hook.sh
 ### Windows
 
 ```powershell
-git clone https://github.com/lumenhelixsolutions/187webDESIGN.git
+git clone https://github.com/lumenhelixsolutions/187WEB.git
 cd 187webDESIGN
 .\install.ps1
 ```

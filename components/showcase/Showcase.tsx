@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Reveal } from "@/components/Reveal";
 
-const REPO = "https://github.com/lumenhelixsolutions/187webDESIGN";
+const REPO = "https://github.com/lumenhelixsolutions/187WEB";
 
 const suites = [
   {

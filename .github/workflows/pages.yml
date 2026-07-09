@@ -6,7 +6,7 @@ name: Deploy showcase to GitHub Pages
 
 on:
   push:
-    branches: [main]
+    branches: [master]
   workflow_dispatch:
 
 # Allow this workflow to publish to Pages.
@@ -25,7 +25,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       NEXT_PUBLIC_STATIC_EXPORT: "true"
-      NEXT_PUBLIC_SITE_URL: "https://lumenhelixsolutions.github.io/187webDESIGN"
+      NEXT_PUBLIC_SITE_URL: "https://lumenhelixsolutions.github.io/187WEB"
     steps:
       - uses: actions/checkout@v4
 
