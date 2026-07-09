@@ -30,7 +30,10 @@ Rate each dimension from 1 (poor) to 5 (excellent). Add evidence.
 | **Limits** | | Clear published limits and how quickly they bind |
 | **Telemetry** | | What is collected, whether it can be disabled |
 | **Upgrade path** | | Paid plan details, migration friction, lock-in |
-| **Best-for** | | Specific use cases where this tool shines |
+
+## Best-for mapping
+
+Free-text: specific use cases where this tool shines compared to backups.
 
 ## Summary
 

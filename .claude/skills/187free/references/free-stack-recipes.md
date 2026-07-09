@@ -10,9 +10,9 @@ Pre-vetted recipes for common no-cost builds. Each recipe lists the tool, why it
 |-------|------|-------------|
 | Hosting | GitHub Pages / Cloudflare Pages | Unlimited static bandwidth, custom domain support, HTTPS out of the box. |
 | Framework | Astro or plain HTML | Zero client JS by default; fast and accessible. |
-| Analytics | Plausible Cloud (free trial) or Cloudflare Web Analytics | Privacy-first, no cookie banner; Cloudflare is free. |
+| Analytics | Cloudflare Web Analytics (free) or self-hosted Plausible | Privacy-first, no cookie banner; both are genuinely free. |
 | Contact form | Formspree Free / Getform | 50 submissions/month, no backend needed. |
-| Domain | Freenom alternative (js.org, get.dev student) or existing subdomain | $0 if a free subdomain is acceptable. |
+| Domain | js.org, GitHub Pages subdomain, or an existing custom domain | $0 if a free subdomain is acceptable. |
 
 **Gotchas:**
 - GitHub Pages is public repos only on the free plan.

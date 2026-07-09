@@ -41,6 +41,8 @@ User provides: the need, constraints (budget, privacy, scale), and any known too
 
 ## Output contract
 
+Use [`references/free-stack-recipes.md`](references/free-stack-recipes.md) as a starting point when a common recipe matches the need.
+
 1. **Need** — restated problem.
 2. **Best Free Pick** — single best option with justification.
 3. **Two Backup Options** — viable alternatives.
@@ -60,6 +62,7 @@ User provides: the need, constraints (budget, privacy, scale), and any known too
 ## Safety / ethics guardrails
 
 - Prefer local-first or private-by-default tools for sensitive data.
+- Cross-check every source against [`references/free-source-policy.md`](references/free-source-policy.md) and [`references/gotcha-ledger.md`](references/gotcha-ledger.md).
 - Avoid hidden telemetry.
 - Require explicit consent before sharing, tracking, or caregiver access.
 - Do not recommend a tool only because it is free; recommend the one most likely to actually work.
