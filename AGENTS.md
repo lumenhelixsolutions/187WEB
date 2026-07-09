@@ -25,7 +25,10 @@ Claude Code / Grok skills live under `.claude/skills/` and `.grok/skills/` respe
 | **187repo** | `.claude/skills/187repo/SKILL.md` | Short-name orchestration, repo generation, GitHub deploy, installer |
 | **187craft** | `.claude/skills/187craft/SKILL.md` | Short-name design + frontend execution |
 | **187vibe** | `.claude/skills/187vibe/SKILL.md` | Short-name delight, community, research, and execution layers |
-| **187launch** | `.claude/skills/187launch/SKILL.md` | Go-to-market intelligence and early-user acquisition *(new)* |
+| **187launch** | `.claude/skills/187launch/SKILL.md` | Go-to-market intelligence and early-user acquisition |
+| **187include** | `.claude/skills/187include/SKILL.md` | Inclusive language, pronouns, identity-field design, and community safety review |
+| **187version** | `.claude/skills/187version/SKILL.md` | Versioning, changelogs, releases, migration notes, and adapter sync |
+| **187publish** | `.claude/skills/187publish/SKILL.md` | Final release synchronization of docs, demos, showcases, and public surfaces |
 | widow-weaver | `.claude/skills/widow-weaver/SKILL.md` | Text/document processing: extraction, translation, tone polish, task extraction, code explanation, logic solving, refactoring |
 | neuro-toxin | `.claude/skills/neuro-toxin/SKILL.md` | Tuning LLM inference parameters from Obsidian YAML frontmatter |
 | swarm-mind | `.claude/skills/swarm-mind/SKILL.md` | Activating a niche engineering persona based on Obsidian folder |
