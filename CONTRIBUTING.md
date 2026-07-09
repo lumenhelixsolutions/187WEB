@@ -2,16 +2,16 @@
 
 <br>
 
-<img src="public/images/187suite-hero.jpg" alt="187SUITE" width="72%" />
+<img src="public/images/187suite-hero.jpg" alt="187WEB — A killer AI-powered web suite" width="72%" />
 
-<h1>Contributing to 187SUITE</h1>
+<h1>Contributing to 187WEB</h1>
 <p><strong>Every element earns its place or it gets cut.</strong></p>
 
 <br>
 
 </div>
 
-Thanks for helping make killer websites. This project is small on purpose — keep changes focused, well-crafted, and aligned with the four layers of the suite: **187REPO**, **187CRAFT**, **187VIBE**, and **187LAUNCH**.
+Thanks for helping make killer websites. This project is small on purpose — keep changes focused, well-crafted, and aligned with the 187WEB suite: **187COMMAND**, **187REPORT**, **187SCAN**, **187KIT**, **187STANDARD**, **187FLOW**, **187REPO**, **187CRAFT**, **187VIBE**, **187LAUNCH**, and the rest of the 187SKILLS roster.
 
 <br>
 
@@ -77,6 +77,6 @@ Open a GitHub issue with steps to reproduce, expected vs actual, and environment
 
 <div align="center">
 
-<strong>187SUITE</strong> — <a href="LICENSE">MIT</a> © 2026 Lumen Helix Solutions
+<strong>187WEB</strong> — <a href="LICENSE">MIT</a> © 2026 Lumen Helix Solutions
 
 </div>

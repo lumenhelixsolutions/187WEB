@@ -1,0 +1,22 @@
+{
+  "brand": "187WEB",
+  "primary_tagline": "A killer AI-powered web suite: spin sharper sites, ship smarter systems.",
+  "secondary_descriptor": "An AI-powered suite of web tools to die for.",
+  "seo_description": "187WEB is a killer AI-powered web suite for building sharper sites and shipping smarter systems with AI-assisted skills for repos, design, docs, launch, research, SEO, revenue, testing, accessibility, versioning, and publishing.",
+  "usage_rules": [
+    "Use 187WEB as the canonical brand everywhere.",
+    "Do not use 187SUITE as the main product name.",
+    "Use suite only as a descriptor, not the product identity.",
+    "Use 187WEB in all caps with no space.",
+    "Marketing copy may use killer, sharper, spin, ship, suite, and tools to die for.",
+    "Operational skill prompts should remain clean: standalone-first, routed workflow, assist, handoff, scope, report, publish, sync."
+  ],
+  "cta_labels": [
+    "Explore 187WEB",
+    "View Skills",
+    "Open Docs",
+    "Install CLI",
+    "Launch Demo"
+  ],
+  "rule": "Use 187WEB as the canonical brand. Use suite only as a descriptor."
+}

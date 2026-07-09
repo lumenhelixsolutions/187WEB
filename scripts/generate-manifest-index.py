@@ -39,7 +39,7 @@ def main() -> None:
             )
     OUT.parent.mkdir(parents=True, exist_ok=True)
     payload = {
-        "ecosystem": "187web",
+        "ecosystem": "187WEB",
         "product": "187aiEYE",
         "manifest_version": root.attrib.get("version", "2.0"),
         "prompt_count": len(prompts),

@@ -1,6 +1,6 @@
 ---
 name: 187launch
-description: Use when planning a product launch, finding early users, or executing go-to-market strategy for a 187web project.
+description: Use when planning a product launch, finding early users, or executing go-to-market strategy for a 187WEB project.
 suite: 187SKILLS
 skill_version: 2.0.0
 contract_version: 2.0.0
@@ -19,7 +19,7 @@ requires:
 
 ## Identity
 
-187LAUNCH is the short-name go-to-market layer for the 187web ecosystem. It is
+187LAUNCH is the short-name go-to-market layer for the 187WEB ecosystem. It is
 new (not a rename of an existing skill) and adds launch strategy, early-user
 acquisition, and distribution playbooks to the suite.
 

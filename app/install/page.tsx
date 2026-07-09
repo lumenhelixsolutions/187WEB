@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { EcosystemFooter, EcosystemHeader } from "@/components/ecosystem/Chrome";
 import { InstallCommand } from "@/components/install/InstallCommand";
 import { Reveal } from "@/components/Reveal";
 
 export const metadata: Metadata = {
-  title: "Install 187web — cross-platform CLI installer",
+  title: "Install 187WEB — cross-platform CLI installer",
   description:
-    "Install the 187web ecosystem on Windows, Linux, or macOS in one command. Manifest, compiler, shell hook, and 16 short-name 187SKILLS — wired to your environment.",
+    "Install the 187WEB ecosystem on Windows, Linux, or macOS in one command. Manifest, compiler, shell hook, and 22 short-name 187SKILLS — wired to your environment.",
 };
 
 const nav = [
@@ -14,12 +15,18 @@ const nav = [
   { href: "#how-it-works", label: "How it works" },
   { href: "#docs", label: "Docs" },
   { href: "#env", label: "Environment" },
+  { href: "/187", label: "/187" },
+  { href: "/187repo", label: "Commands" },
 ];
 
 const features = [
   {
-    title: "16 short-name skills, one menu",
-    body: "Run 187repo full to surface every skill from 187free and 187research to 187publish and 187version — or call each by name.",
+    title: "22 short-name skills, one menu",
+    body: "Run 187repo full to surface every skill from 187command and 187kit to 187publish and 187version — or call each by short alias.",
+  },
+  {
+    title: "Command grammar",
+    body: "187 <alias> [target] [mode] [depth]. Default is solo + brief; use assist, flow, or release only when coordination helps.",
   },
   {
     title: "Hardware-aware routing",
@@ -30,12 +37,60 @@ const features = [
     body: "Native PowerShell and bash installers. No WSL required on Windows; Git Bash is supported for the POSIX path.",
   },
   {
+    title: "Standalone-first",
+    body: "A named skill or alias runs solo by default. Charlotte modules coordinate only when routing, shared context, handoff, or release sync helps.",
+  },
+  {
     title: "Safe and reversible",
     body: "Installers only touch ~/.187web and your shell profile. Uninstall scripts remove hooks and PATH entries cleanly.",
   },
 ];
 
 const docs = [
+  {
+    id: "grammar",
+    title: "Command grammar",
+    content: (
+      <>
+        <p className="mb-4">
+          After install, the 187WEB command grammar is:
+        </p>
+        <pre className="overflow-x-auto rounded-lg bg-[#0A0C14] p-4 font-mono text-sm text-[#d6deeb]">
+          <code>187 &lt;alias&gt; [target] [mode] [depth]</code>
+        </pre>
+        <ul className="mt-4 list-disc space-y-2 pl-5 marker:text-[#39FF14]">
+          <li><strong>Modes:</strong> solo (default), assist, flow, release</li>
+          <li><strong>Depths:</strong> brief (default), report, deep</li>
+          <li>Default behavior: <strong>solo + brief</strong></li>
+        </ul>
+      </>
+    ),
+  },
+  {
+    id: "modules",
+    title: "Charlotte modules",
+    content: (
+      <>
+        <p className="mb-4">
+          Five coordination modules live beside the core suite. They only coordinate when it helps:
+        </p>
+        <div className="grid gap-2 text-sm text-[#d6deeb]/70 sm:grid-cols-2">
+          {[
+            ["THREAD", "prompt shaping, rewrite, refactor"],
+            ["TUNE", "model behavior, output profile"],
+            ["CORD", "coordinated role dispatch"],
+            ["CHAR", "shared scout for context"],
+            ["LAB", "isolated execution/test workspace"],
+          ].map(([name, desc]) => (
+            <div key={name} className="flex items-center gap-2">
+              <code className="rounded bg-white/5 px-1.5 py-0.5 text-[#39FF14]">{name}</code>
+              <span>— {desc}</span>
+            </div>
+          ))}
+        </div>
+      </>
+    ),
+  },
   {
     id: "windows",
     title: "Install on Windows",
@@ -95,7 +150,7 @@ const docs = [
             active prompt when you change directories.
           </li>
           <li>
-            <strong>187repo short-name menu</strong> — orchestrates the 16-skill 187SKILLS suite
+            <strong>187repo short-name menu</strong> — orchestrates the 22-skill 187SKILLS suite
             from one command.
           </li>
           <li>
@@ -112,7 +167,7 @@ const docs = [
     content: (
       <>
         <p className="mb-4">
-          After install, <code className="rounded bg-white/5 px-1.5 py-0.5">187repo</code> is the
+          After install, <code className="rounded bg-white/5 px-1.5 py-0.5">187repo</code> is one
           entry point for the full 187SKILLS suite. Run{" "}
           <code className="rounded bg-white/5 px-1.5 py-0.5">187repo.sh full</code> or{" "}
           <code className="rounded bg-white/5 px-1.5 py-0.5">.\187repo.ps1 full</code> to print
@@ -120,22 +175,28 @@ const docs = [
         </p>
         <div className="grid gap-2 text-sm text-[#d6deeb]/70 sm:grid-cols-2">
           {[
-            ["repo", "orchestration + manifest"],
-            ["craft", "design + frontend"],
-            ["vibe", "delight + community"],
-            ["launch", "go-to-market"],
-            ["free", "no-cost stack"],
-            ["research", "source-backed research"],
-            ["seo", "ethical search"],
-            ["revenue", "ethical monetization"],
-            ["docs", "living documentation"],
-            ["write", "drafting assistant"],
-            ["learn", "curriculum"],
-            ["test", "QA + eval gates"],
-            ["access", "accessibility"],
-            ["include", "inclusive language"],
-            ["version", "tagging + metadata"],
-            ["publish", "release sync"],
+            ["187 / cmd", "direct intent"],
+            ["rpt / rep", "explain + status"],
+            ["scan / aud", "inspect + audit"],
+            ["kit / tpl / demo", "templates + scaffolds"],
+            ["std / qual", "standards + quality gates"],
+            ["flow / go", "plan + sequence"],
+            ["repo / rp", "orchestration + manifest"],
+            ["craft / ui", "design + frontend"],
+            ["vibe / vx", "delight + community"],
+            ["ship / launch", "go-to-market"],
+            ["free / fr", "no-cost stack"],
+            ["res / src", "source-backed research"],
+            ["seo / search", "ethical search"],
+            ["rev / money", "ethical monetization"],
+            ["docs / doc", "living documentation"],
+            ["write / wrt", "drafting assistant"],
+            ["learn / edu", "curriculum"],
+            ["test / quiz", "QA + eval gates"],
+            ["ax / a11y", "accessibility"],
+            ["inc / incl", "inclusive language"],
+            ["ver / v", "tagging + metadata"],
+            ["pub / sync", "release sync"],
           ].map(([cmd, desc]) => (
             <div key={cmd} className="flex items-center gap-2">
               <code className="rounded bg-white/5 px-1.5 py-0.5 text-[#39FF14]">{cmd}</code>
@@ -212,15 +273,15 @@ export default function InstallPage() {
           <div className="mx-auto max-w-4xl text-center">
             <p className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-[#39FF14]">
               <span className="h-px w-6 bg-[#39FF14]" />
-              187web CLI installer
+              187WEB CLI installer
             </p>
             <h1 className="mt-6 text-[clamp(2.5rem,1.5rem+5vw,5rem)] font-bold leading-[0.98] tracking-tight text-white">
-              Install the 187web ecosystem in{" "}
+              Install the 187WEB ecosystem in{" "}
               <span className="text-[#39FF14]">one command.</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-[#d6deeb]/70">
               A cross-platform installer for Windows, Linux, and macOS that wires the manifest,
-              compiler, shell hook, and 16 short-name 187SKILLS into your environment — so the
+              compiler, shell hook, and 22 short-name 187SKILLS into your environment — so the
               right persona is always one directory away.
             </p>
 
@@ -255,7 +316,7 @@ export default function InstallPage() {
           <Reveal className="mx-auto mb-14 max-w-prose text-center">
             <p className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-[#39FF14]">
               <span className="h-px w-6 bg-[#39FF14]" />
-              Why 187web
+              Why 187WEB
             </p>
             <h2 className="mt-4 text-headline font-semibold tracking-tight text-white">
               Built for long-run agentic sessions
@@ -386,25 +447,31 @@ export default function InstallPage() {
         <div className="container-x">
           <Reveal className="mx-auto max-w-3xl rounded-2xl border border-[#39FF14]/20 bg-[#39FF14]/5 p-8 text-center sm:p-12">
             <h2 className="text-headline font-semibold tracking-tight text-white">
-              Ready to wire your vault?
+              Ready to wire up 187WEB?
             </h2>
             <p className="mx-auto mt-4 max-w-lg text-[#d6deeb]/70">
-              Install the CLI, open your Obsidian vault, and let the right specialist meet you in
-              the right folder.
+              Install the CLI, get the manifest and short-name scripts on PATH, and deploy your
+              first archetype in one command.
             </p>
-            <div className="mt-8 flex justify-center">
+            <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <a
                 href="#install"
                 className="inline-flex h-14 items-center justify-center rounded bg-[#39FF14] px-8 text-base font-semibold text-[#05060A] transition hover:brightness-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#39FF14]/50"
               >
-                Get 187web
+                Get 187WEB
               </a>
+              <Link
+                href="/187"
+                className="inline-flex h-14 items-center justify-center rounded border border-white/10 bg-white/5 px-8 text-base font-semibold text-white transition hover:bg-white/10"
+              >
+                Explore /187
+              </Link>
             </div>
           </Reveal>
         </div>
       </section>
 
-      <EcosystemFooter secondary={{ href: "/", label: "187web home" }} />
+      <EcosystemFooter secondary={{ href: "/", label: "187WEB home" }} />
     </div>
   );
 }

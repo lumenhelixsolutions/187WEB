@@ -37,9 +37,8 @@ export function Hero() {
             className="rise mt-6 max-w-2xl text-lg leading-relaxed text-muted sm:text-xl"
             style={{ animationDelay: "0.35s" }}
           >
-            A full-stack starter that ships the 187WEBdesign skill — the rubric, the craft, the
-            pre-ship audit — and proves it. Everything you&rsquo;re looking at was built to its own
-            rules.
+            A killer AI-powered web suite: spin sharper sites, ship smarter systems. Everything
+            you&rsquo;re looking at was built to the 187WEB standard.
           </p>
           <div
             className="rise mt-10 flex flex-col gap-4 sm:flex-row"

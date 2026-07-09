@@ -1,8 +1,20 @@
-# 187web Long-Run Session Plan
+# 187WEB Long-Run Session Plan
 
 **Active phase:** Phase II — Agentic Sovereignty
-**Last updated:** 2026-07-06
+**Last updated:** 2026-07-09
 **Roadmap:** `.claude/skills/187web-manifest/references/PHASE-ROADMAP.md`
+
+## Brand lock
+
+```text
+187WEB
+A killer AI-powered web suite: spin sharper sites, ship smarter systems.
+```
+
+- Use **187WEB** as the canonical brand everywhere public.
+- Use `187webdesign` only for repo/package identifiers.
+- Do not use 187SUITE as the main product name.
+- Public surfaces must stay synced per `docs/SHOWCASE-SYNC.md`.
 
 ## Phase I — The Nervous System ✅ COMPLETE
 

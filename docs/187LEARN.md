@@ -5,7 +5,7 @@
 
 ## Identity
 
-187LEARN designs courses, study plans, curricula, lessons, workshops, microlearning, project-based learning, instructor guides, student guides, and accessible learning experiences for 187web projects. It translates knowledge into sequenced, measurable, learner-centered artifacts that can feed docs, SEO, revenue, and testing workflows.
+187LEARN designs courses, study plans, curricula, lessons, workshops, microlearning, project-based learning, instructor guides, student guides, and accessible learning experiences for 187WEB projects. It translates knowledge into sequenced, measurable, learner-centered artifacts that can feed docs, SEO, revenue, and testing workflows.
 
 ## Triggers
 

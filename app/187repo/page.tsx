@@ -7,14 +7,15 @@ import { Reveal } from "@/components/Reveal";
 import { skillShowcases } from "@/lib/skill-showcase-data";
 
 export const metadata: Metadata = {
-  title: "187REPO — slash-command reference for the 187SKILLS suite",
+  title: "187REPO — slash-command reference for 187WEB",
   description:
-    "Complete /command reference for the 187SKILLS suite: 187REPO, 187CRAFT, 187VIBE, 187LAUNCH, and 12 more short-name skills for free stacks, research, SEO, revenue, docs, learning, testing, access, versioning, and publishing.",
+    "Complete /command reference for the 187WEB 187SKILLS suite: 187COMMAND, 187REPORT, 187SCAN, 187KIT, 187STANDARD, 187FLOW, 187REPO, 187CRAFT, 187VIBE, 187LAUNCH, and 12 more short-name skills.",
 };
 
 const nav = [
   { href: "#commands", label: "Commands" },
   { href: "#archetypes", label: "Archetypes" },
+  { href: "/187", label: "/187" },
   { href: "#install", label: "Install" },
 ];
 
@@ -130,12 +131,13 @@ export default function RepoCommandPage() {
               187REPO command center
             </p>
             <h1 className="mt-6 text-[clamp(2.5rem,1.5rem+5vw,5rem)] font-bold leading-[0.98] tracking-tight text-white">
-              One slash for every layer of the <span className="text-[#39FF14]">187SKILLS suite.</span>
+              One slash for every layer of <span className="text-[#39FF14]">187WEB.</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-white/60">
-              187REPO orchestrates, 187CRAFT designs, 187VIBE delights, and 187LAUNCH ships — joined
-              by 12 more short-name skills for research, SEO, revenue, docs, learning, testing,
-              access, versioning, and publishing.
+              187COMMAND hears it, 187REPORT explains it, 187SCAN inspects it, 187FLOW plans it, and
+              187REPO orchestrates — joined by 187CRAFT, 187VIBE, 187LAUNCH, and 12 more short-name
+              skills for research, SEO, revenue, docs, learning, testing, access, versioning, and
+              publishing.
             </p>
             <div className="mt-10 flex flex-wrap justify-center gap-3">
               <a
@@ -144,6 +146,12 @@ export default function RepoCommandPage() {
               >
                 Browse commands
               </a>
+              <Link
+                href="/187"
+                className="inline-flex h-12 items-center justify-center rounded border border-white/10 bg-white/5 px-6 text-sm font-semibold text-white transition hover:bg-white/10"
+              >
+                Open /187
+              </Link>
               <Link
                 href="/install"
                 className="inline-flex h-12 items-center justify-center rounded border border-white/10 bg-white/5 px-6 text-sm font-semibold text-white transition hover:bg-white/10"
@@ -157,12 +165,44 @@ export default function RepoCommandPage() {
             <div className="overflow-hidden rounded-2xl border border-white/10 bg-[#0A0C14]">
               <Image
                 src="/images/187suite-hero.jpg"
-                alt="187SUITE — the four layers: 187REPO, 187CRAFT, 187VIBE, and 187LAUNCH"
+                alt="187WEB — the 187SKILLS suite: 22 short-name skills from 187COMMAND to 187PUBLISH"
                 className="w-full"
                 width={1024}
                 height={595}
                 priority
               />
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      <section id="grammar" className="relative border-y border-white/10 bg-[#0A0C14] px-6 py-20 sm:py-28">
+        <div className="container-x">
+          <Reveal className="mx-auto max-w-3xl rounded-2xl border border-[#39FF14]/20 bg-[#39FF14]/5 p-8 text-center sm:p-12">
+            <p className="inline-flex items-center justify-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-[#39FF14]">
+              <span className="h-px w-6 bg-[#39FF14]" aria-hidden="true" />
+              Command grammar
+            </p>
+            <h2 className="mt-4 text-[clamp(1.5rem,1rem+2vw,2.25rem)] font-semibold tracking-tight text-white">
+              187 &lt;alias&gt; [target] [mode] [depth]
+            </h2>
+            <p className="mx-auto mt-4 max-w-lg text-white/70">
+              One short command routes intent to the right skill. Default is <strong>solo + brief</strong>.
+              Use <strong>assist</strong>, <strong>flow</strong>, or <strong>release</strong> when coordination helps.
+            </p>
+            <div className="mt-8 grid gap-3 text-sm text-white/60 sm:grid-cols-3">
+              <div className="rounded-lg border border-white/10 bg-[#05060A] p-4">
+                <code className="text-[#39FF14]">187 craft hero report</code>
+                <p className="mt-2 text-white/50">assist depth</p>
+              </div>
+              <div className="rounded-lg border border-white/10 bg-[#05060A] p-4">
+                <code className="text-[#39FF14]">187 seo audit brief</code>
+                <p className="mt-2 text-white/50">solo default</p>
+              </div>
+              <div className="rounded-lg border border-white/10 bg-[#05060A] p-4">
+                <code className="text-[#39FF14]">187 publish release deep</code>
+                <p className="mt-2 text-white/50">release depth</p>
+              </div>
             </div>
           </Reveal>
         </div>
@@ -176,7 +216,7 @@ export default function RepoCommandPage() {
               Slash-command reference
             </p>
             <h2 className="mt-4 text-[clamp(1.9rem,1.2rem+2.6vw,3.25rem)] font-bold leading-[1.05] tracking-tight text-white">
-              Every /command in the 187 suite
+              Every /command in 187WEB
             </h2>
           </Reveal>
 
@@ -274,7 +314,7 @@ export default function RepoCommandPage() {
         <div className="container-x">
           <Reveal className="mx-auto max-w-3xl rounded-2xl border border-[#39FF14]/20 bg-[#39FF14]/5 p-8 text-center sm:p-12">
             <h2 className="text-[clamp(1.5rem,1rem+2vw,2.25rem)] font-semibold tracking-tight text-white">
-              Install the 187web CLI
+              Install the 187WEB CLI
             </h2>
             <p className="mx-auto mt-4 max-w-lg text-white/70">
               Get the manifest, compiler, shell hook, and the new short-name scripts on PATH in one
@@ -337,15 +377,18 @@ export default function RepoCommandPage() {
 
           <Reveal className="mx-auto mt-10 max-w-3xl text-center">
             <p className="text-sm text-white/40">
-              187REPO · 187CRAFT · 187VIBE · 187LAUNCH · 187FREE · 187RESEARCH · 187SEO · 187REVENUE
-              · 187DOCS · 187WRITE · 187LEARN · 187TEST · 187ACCESS+ · 187INCLUDE · 187VERSION ·
-              187PUBLISH
+              187COMMAND · 187REPORT · 187SCAN · 187KIT · 187STANDARD · 187FLOW · 187REPO · 187CRAFT
+              · 187VIBE · 187LAUNCH · 187FREE · 187RESEARCH · 187SEO · 187REVENUE · 187DOCS ·
+              187WRITE · 187LEARN · 187TEST · 187ACCESS+ · 187INCLUDE · 187VERSION · 187PUBLISH
+            </p>
+            <p className="mt-4 text-xs text-white/30">
+              Modules: THREAD · TUNE · CORD · CHAR · LAB
             </p>
           </Reveal>
         </div>
       </section>
 
-      <EcosystemFooter secondary={{ href: "/install", label: "Install 187web" }} />
+      <EcosystemFooter secondary={{ href: "/install", label: "Install 187WEB" }} />
     </div>
   );
 }

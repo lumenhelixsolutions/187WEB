@@ -100,7 +100,7 @@ export const skillShowcases: SkillShowcaseData[] = [
     tagline: "Policy-aware search optimization",
     color: "#a855f7",
     description:
-      "Makes 187web public work discoverable through traditional SEO, answer-engine optimization (AEO), generative-engine optimization (GEO), structured data, technical audits, content strategy, and search analytics.",
+      "Makes 187WEB public work discoverable through traditional SEO, answer-engine optimization (AEO), generative-engine optimization (GEO), structured data, technical audits, content strategy, and search analytics.",
     triggers: ["/187seo", "187SEO", "seo audit", "technical seo", "content brief", "schema plan", "search console"],
     useCases: [
       "Technical SEO audits and page audits",
@@ -326,7 +326,7 @@ export const skillShowcases: SkillShowcaseData[] = [
     tagline: "Version & release control engine",
     color: "#64748b",
     description:
-      "Controls change across the 187web suite: version bumps, changelogs, migration notes, compatibility matrices, deprecations, and adapter sync.",
+      "Controls change across the 187WEB suite: version bumps, changelogs, migration notes, compatibility matrices, deprecations, and adapter sync.",
     triggers: ["/187version", "187VERSION", "version bump", "semver", "changelog", "release notes", "migration guide", "deprecation"],
     useCases: [
       "SemVer decisions for suite upgrades",

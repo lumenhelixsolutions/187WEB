@@ -1,6 +1,6 @@
 ---
 name: 187craft
-description: Use when designing, building, or auditing UI/UX for a 187web project.
+description: Use when designing, building, or auditing UI/UX for a 187WEB project.
 suite: 187SKILLS
 skill_version: 2.0.0
 contract_version: 2.0.0
@@ -19,7 +19,7 @@ requires:
 
 ## Identity
 
-187CRAFT is the short-name entry point for the mature 187web design layer.
+187CRAFT is the short-name entry point for the mature 187WEB design layer.
 It delegates to [`187webdesign`](../187webdesign/SKILL.md),
 [`187webdev-design-system`](../187webdev-design-system/SKILL.md),
 [`187webdev-qa`](../187webdev-qa/SKILL.md), and

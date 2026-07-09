@@ -1,9 +1,29 @@
 # Changelog
 
-All notable changes to the 187web / 187SKILLS project are documented in this file.
+All notable changes to the 187WEB / 187SKILLS project are documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [0.2.1] - 2026-07-09
+
+### Added
+
+- **187WEB brand lock** — canonical brand `187WEB`, primary tagline, and usage rules live in `config/187-brand.json`.
+- **Short-name alias config** — `config/187-aliases.json` resolves every alias for `187 <alias> [target] [mode] [depth]`.
+- **Command grammar** — `187 <alias> [target] [mode] [depth]` with modes `solo/assist/flow/release` and depths `brief/report/deep`.
+- **Charlotte modules** — `THREAD`, `TUNE`, `CORD`, `CHAR`, `LAB` replace the old aggressive module language; legacy aliases preserved.
+- **New docs** — `docs/187SKILLS.md`, `docs/187-NAMES.md`, `docs/187-MODULES.md`, `docs/187-KERNEL.md`, `docs/187-CHAR.md`, `docs/SHOWCASE-SYNC.md`.
+- **New routes** — `/187`, `/187kit`, `/187demo` public showcase pages.
+
+### Changed
+
+- `README.md`, `AGENTS.md`, `PLAN.md`, `docs/INSTALL.md`, `docs/ROUTING.md`, `docs/MODEL-ADAPTERS.md`,
+  `app/page.tsx`, `components/showcase/Showcase.tsx`, `app/install/page.tsx`, `app/187repo/page.tsx`,
+  and `app/187ai-eye/page.tsx` now present the full 187WEB suite story.
+- Install path corrected from `cd 187webDESIGN` to `cd 187WEB`.
+- Canonical `.claude/skills` updated to use 187WEB brand and THREAD/TUNE/CORD/CHAR/LAB modules;
+  model adapters regenerated.
 
 ## [0.2.0] - 2026-07-06
 

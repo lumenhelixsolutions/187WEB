@@ -5,7 +5,7 @@
 
 ## Identity
 
-187REVENUE designs, audits, and implements revenue systems for 187web projects. It covers pricing models, payment integrations, subscriptions, affiliates, coupons and deals, dropshipping, marketplaces, sponsorships, open-source funding, client packages, licensing, ad policy review, revenue dashboards, refund/chargeback risk, and tax/legal review gates.
+187REVENUE designs, audits, and implements revenue systems for 187WEB projects. It covers pricing models, payment integrations, subscriptions, affiliates, coupons and deals, dropshipping, marketplaces, sponsorships, open-source funding, client packages, licensing, ad policy review, revenue dashboards, refund/chargeback risk, and tax/legal review gates.
 
 ## Triggers
 

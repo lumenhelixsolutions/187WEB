@@ -1,6 +1,6 @@
 ---
 name: 187vibe
-description: Use when adding delight, micro-interactions, onboarding, community, or retention to a 187web project.
+description: Use when adding delight, micro-interactions, onboarding, community, or retention to a 187WEB project.
 suite: 187SKILLS
 skill_version: 2.0.0
 contract_version: 2.0.0
@@ -20,12 +20,12 @@ requires:
 ## Identity
 
 187VIBE is the short-name entry point for the Charlotte personality layer.
-It delegates to [`agent-charlotte`](../agent-charlotte/SKILL.md),
-[`widow-weaver`](../widow-weaver/SKILL.md),
-[`neuro-toxin`](../neuro-toxin/SKILL.md),
-[`swarm-mind`](../swarm-mind/SKILL.md), and
-[`silk-sandbox`](../silk-sandbox/SKILL.md). It adds delight, onboarding,
-retention, community, and safe execution to 187web projects.
+It delegates to **CHAR** ([`agent-charlotte`](../agent-charlotte/SKILL.md)),
+**THREAD** ([`widow-weaver`](../widow-weaver/SKILL.md)),
+**TUNE** ([`neuro-toxin`](../neuro-toxin/SKILL.md)),
+**CORD** ([`swarm-mind`](../swarm-mind/SKILL.md)), and
+**LAB** ([`silk-sandbox`](../silk-sandbox/SKILL.md)). It adds delight, onboarding,
+retention, community, and safe execution to 187WEB projects.
 
 ## Manual triggers
 
@@ -130,14 +130,14 @@ python scripts/generate-model-adapters.py
    returns a step-by-step onboarding plan and routes consent-sensitive steps to
    `187access-plus` / `187include`.
 3. Prompt: "Tune creativity vs precision for this copy task." → Expected:
-   187VIBE uses `neuro-toxin` framing to recommend temperature/top-p settings.
+   187VIBE uses TUNE framing to recommend temperature/top-p settings.
 
 ## Composition
 
-1. **Context / tone:** `widow-weaver` sharpens copy and extracts intent.
-2. **Persona depth:** `swarm-mind` brings in the right specialist.
-3. **Inference tuning:** `neuro-toxin` dials precision vs creativity.
-4. **Safe execution:** `silk-sandbox` runs generated code.
+1. **Context / tone:** THREAD sharpens copy and extracts intent.
+2. **Persona depth:** CORD brings in the right specialist.
+3. **Inference tuning:** TUNE dials precision vs creativity.
+4. **Safe execution:** LAB runs generated code.
 5. **Research-grade work:** route to `187research`, not `187vibe`.
 
 ## Slash commands

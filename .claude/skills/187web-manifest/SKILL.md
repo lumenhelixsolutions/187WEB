@@ -14,7 +14,7 @@ compatible_with:
 requires:
   - docs/SKILL-CONTRACT.md
 ---
-# 187web-manifest — Master Prompt Manifest
+# 187WEB Manifest — Master Prompt Manifest
 
 **Suite:** Charlotte v2 stack. Parent:
 [`187web-ecosystem`](../187web-ecosystem/SKILL.md) · Compiler:
@@ -108,7 +108,7 @@ node .\scripts\telemetry-relay.mjs
 
 ```json
 {
-  "ecosystem": "187web",
+  "ecosystem": "187WEB",
   "power_mode": "high",
   "prompt_id": "ui-aesthetic-auditor",
   "skill": "187webdesign",

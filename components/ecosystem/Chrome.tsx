@@ -58,13 +58,13 @@ export function EcosystemHeader({
         <div className="flex h-16 items-center justify-between gap-4">
           <Link
             href="/"
-            aria-label="187SUITE home"
+            aria-label="187WEB home"
             className="flex items-center gap-2 text-lg font-bold tracking-tight text-white"
           >
             <span className="grid h-7 w-7 place-items-center rounded-md bg-[#39FF14] text-xs text-[#05060A]">
               187
             </span>
-            <span className="hidden sm:inline">SUITE</span>
+            <span className="hidden sm:inline">WEB</span>
           </Link>
 
           <nav aria-label={navLabel} className="hidden items-center gap-8 md:flex">

@@ -3,7 +3,7 @@ import { ImageResponse } from "next/og";
 export const runtime = "nodejs";
 // Pre-render at build time so the card works under `output: export` (GitHub Pages).
 export const dynamic = "force-static";
-export const alt = "187WEBdesign — Make killer websites.";
+export const alt = "187WEB — A killer AI-powered web suite: spin sharper sites, ship smarter systems.";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -32,7 +32,7 @@ export default function OpengraphImage() {
               border: "5px solid #2440E6",
             }}
           />
-          <span style={{ fontSize: 30, letterSpacing: -0.5 }}>187WEBdesign</span>
+          <span style={{ fontSize: 30, letterSpacing: -0.5 }}>187WEB</span>
         </div>
 
         <div style={{ display: "flex", flexDirection: "column" }}>
@@ -40,18 +40,17 @@ export default function OpengraphImage() {
             style={{
               display: "flex",
               flexWrap: "wrap",
-              fontSize: 104,
+              fontSize: 80,
               fontWeight: 700,
-              letterSpacing: -4,
+              letterSpacing: -3,
               lineHeight: 1.05,
             }}
           >
-            <span style={{ color: "#11131A" }}>Make&nbsp;</span>
-            <span style={{ color: "#2440E6" }}>killer&nbsp;</span>
-            <span style={{ color: "#11131A" }}>websites.</span>
+            <span style={{ color: "#11131A" }}>A killer AI-powered&nbsp;</span>
+            <span style={{ color: "#2440E6" }}>web suite.</span>
           </div>
           <div style={{ display: "flex", marginTop: 28, fontSize: 32, color: "#5B6170" }}>
-            A full-stack starter that ships the design skill — and proves it.
+            Spin sharper sites, ship smarter systems.
           </div>
         </div>
       </div>

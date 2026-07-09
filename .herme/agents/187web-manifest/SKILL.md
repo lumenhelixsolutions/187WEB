@@ -7,7 +7,7 @@ model_adapter: hermes
 
 > **Hermes adapter:** Use `system.md` as the system message for Hermes-based local LLMs (Ollama, lm-studio, etc.). Source: [`../../.claude/skills/187web-manifest/SKILL.md`](../../.claude/skills/187web-manifest/SKILL.md).
 
-# 187web-manifest — Master Prompt Manifest
+# 187WEB Manifest — Master Prompt Manifest
 
 **Suite:** Charlotte v2 stack. Parent:
 [`187web-ecosystem`](../187web-ecosystem/SKILL.md) · Compiler:
@@ -27,6 +27,8 @@ In addition to the 27 manifest prompts, the registry now routes the 16 first-cla
 public skills and 2 suite-wide subskills defined in `docs/SKILL-CONTRACT.md`. The
 compiler treats each skill as a routable directive with its own frontmatter,
 references, and templates.
+
+**Canonical skill roster:** 187REPO 187CRAFT 187VIBE 187LAUNCH 187FREE 187RESEARCH 187SEO 187REVENUE 187DOCS 187WRITE 187LEARN 187TEST 187ACCESS+ 187INCLUDE 187VERSION 187PUBLISH.
 
 ## When to use this
 
@@ -99,7 +101,7 @@ node .\scripts\telemetry-relay.mjs
 
 ```json
 {
-  "ecosystem": "187web",
+  "ecosystem": "187WEB",
   "power_mode": "high",
   "prompt_id": "ui-aesthetic-auditor",
   "skill": "187webdesign",

@@ -5,7 +5,7 @@
 
 ## Identity
 
-187ACCESS+ audits and improves disability accessibility, neurodivergent access, sensory access, assistive-technology support, cognitive accessibility, WCAG+, and inclusive access systems for 187web projects. It is the canonical home for the `187WCAG+` audit profile and the `187CARE` consent-first support alias.
+187ACCESS+ audits and improves disability accessibility, neurodivergent access, sensory access, assistive-technology support, cognitive accessibility, WCAG+, and inclusive access systems for 187WEB projects. It is the canonical home for the `187WCAG+` audit profile and the `187CARE` consent-first support alias.
 
 ## Triggers
 

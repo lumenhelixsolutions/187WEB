@@ -5,7 +5,7 @@
 
 ## Identity
 
-187VERSION controls change across the 187web suite. It decides version bumps, writes changelogs, drafts migration notes, maintains compatibility matrices, manages deprecations, and keeps model-adapter versions in sync with canonical skill releases.
+187VERSION controls change across the 187WEB suite. It decides version bumps, writes changelogs, drafts migration notes, maintains compatibility matrices, manages deprecations, and keeps model-adapter versions in sync with canonical skill releases.
 
 ## Triggers
 
