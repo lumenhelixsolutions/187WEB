@@ -6,6 +6,9 @@ import { BaseBackend } from "./base";
 type StoredPoint = {
   id: string;
   knotHash: string;
+  source?: string;
+  title?: string;
+  content?: string;
   tags?: string[];
   meta?: Record<string, unknown>;
   createdAt: string;
@@ -107,6 +110,9 @@ export class KnotPointBackend extends BaseBackend {
     const stored: StoredPoint = {
       id: record.id,
       knotHash: record.knotHash,
+      source: record.source,
+      title: record.title,
+      content: record.content,
       tags: record.tags,
       meta: record.meta,
       createdAt: record.createdAt,
@@ -130,8 +136,13 @@ export class KnotPointBackend extends BaseBackend {
     for (const p of this.data.values()) {
       const r = this.toRecord(p);
       if (filter.kind && r.kind !== filter.kind) continue;
-      if (filter.search && !r.id.includes(filter.search) && !r.knotHash?.includes(filter.search))
-        continue;
+      if (filter.source && r.source !== filter.source) continue;
+      if (filter.search) {
+        const haystacks = [r.id, r.knotHash, r.source, r.title].filter(
+          (v): v is string => typeof v === "string",
+        );
+        if (!haystacks.some((v) => v.includes(filter.search as string))) continue;
+      }
       if (filter.tags && filter.tags.length) {
         const recordTags = new Set(r.tags ?? []);
         if (!filter.tags.every((tag) => recordTags.has(tag))) continue;
@@ -180,6 +191,9 @@ export class KnotPointBackend extends BaseBackend {
     return {
       id: p.id,
       kind: "knot-point",
+      source: p.source,
+      title: p.title,
+      content: p.content,
       knotHash: p.knotHash,
       tags: p.tags,
       meta: p.meta,

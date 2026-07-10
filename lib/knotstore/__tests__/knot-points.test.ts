@@ -15,13 +15,23 @@ function linksPath(p: string): string {
 function makeRecord(
   id: string,
   knotHash: string,
-  options?: { tags?: string[]; createdAt?: string; updatedAt?: string },
+  options?: {
+    tags?: string[];
+    createdAt?: string;
+    updatedAt?: string;
+    source?: string;
+    title?: string;
+    content?: string;
+  },
 ) {
   const now = new Date().toISOString();
   return {
     id,
     kind: "knot-point" as const,
     knotHash,
+    source: options?.source,
+    title: options?.title,
+    content: options?.content,
     tags: options?.tags,
     createdAt: options?.createdAt ?? now,
     updatedAt: options?.updatedAt ?? now,
@@ -124,6 +134,21 @@ describe("KnotPointBackend", () => {
 
     const byHash = backend.query({ search: "hash-banana" });
     expect(byHash.map((r) => r.id)).toContain("banana-record");
+  });
+
+  it("queries records by source", () => {
+    backend.put(makeRecord("from-blog", "hash-blog", { source: "blog" }));
+    backend.put(makeRecord("from-docs", "hash-docs", { source: "docs" }));
+
+    expect(backend.query({ source: "blog" }).map((r) => r.id)).toEqual(["from-blog"]);
+  });
+
+  it("queries records with search matching title", () => {
+    backend.put(makeRecord("alpha", "hash-alpha", { title: "Alpha Centauri Guide" }));
+    backend.put(makeRecord("beta", "hash-beta", { title: "Beta Testing Notes" }));
+
+    const results = backend.query({ search: "Centauri" });
+    expect(results.map((r) => r.id)).toEqual(["alpha"]);
   });
 
   it("persists records and links across close -> new instance -> open", () => {
