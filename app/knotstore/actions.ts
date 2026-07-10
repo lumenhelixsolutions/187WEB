@@ -6,9 +6,9 @@ import { KNOTRecord } from "@/lib/knotstore/types";
 
 export async function seedKnotstore() {
   const store = KNOTstore({ backend: "hybrid", path: previewPath });
-  store.open();
 
   try {
+    store.open();
     const now = new Date().toISOString();
 
     const crawl: KNOTRecord = {
