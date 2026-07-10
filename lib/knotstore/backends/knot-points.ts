@@ -1,6 +1,7 @@
 import { readFileSync, writeFileSync, existsSync, appendFileSync } from "node:fs";
 import { KNOTLink, KNOTQuery, KNOTRecord, KNOTStats } from "../types";
 import { KNOTstoreError } from "../errors";
+import { BaseBackend } from "./base";
 
 type StoredPoint = {
   id: string;
@@ -10,50 +11,98 @@ type StoredPoint = {
   updatedAt: string;
 };
 
-export class KnotPointBackend {
+export class KnotPointBackend extends BaseBackend {
   private data = new Map<string, StoredPoint>();
   private links: KNOTLink[] = [];
+  private isOpen = false;
+  private linksPath: string;
 
-  constructor(private path: string) {}
+  constructor(private path: string) {
+    super();
+    this.linksPath = path.replace(/\.jsonl$/, ".links.jsonl");
+    if (this.linksPath === path) {
+      this.linksPath = `${path}.links.jsonl`;
+    }
+  }
 
   open(): void {
     this.data.clear();
     this.links = [];
-    if (!existsSync(this.path)) return;
-    const text = readFileSync(this.path, "utf8");
-    for (const line of text.split("\n")) {
-      if (!line.trim()) continue;
-      try {
-        const obj = JSON.parse(line) as StoredPoint;
-        this.data.set(obj.id, obj);
-      } catch {
-        // skip corrupt lines
+    this.isOpen = true;
+
+    if (existsSync(this.path)) {
+      const text = readFileSync(this.path, "utf8");
+      for (const line of text.split("\n")) {
+        if (!line.trim()) continue;
+        try {
+          const obj = JSON.parse(line) as unknown;
+          if (
+            obj &&
+            typeof obj === "object" &&
+            "id" in obj &&
+            typeof obj.id === "string" &&
+            "knotHash" in obj &&
+            typeof obj.knotHash === "string" &&
+            "createdAt" in obj &&
+            typeof obj.createdAt === "string" &&
+            "updatedAt" in obj &&
+            typeof obj.updatedAt === "string"
+          ) {
+            this.data.set(obj.id, obj as StoredPoint);
+          }
+        } catch {
+          // skip corrupt lines
+        }
+      }
+    }
+
+    if (existsSync(this.linksPath)) {
+      const text = readFileSync(this.linksPath, "utf8");
+      for (const line of text.split("\n")) {
+        if (!line.trim()) continue;
+        try {
+          const obj = JSON.parse(line) as KNOTLink;
+          this.links.push(obj);
+        } catch {
+          // skip corrupt lines
+        }
       }
     }
   }
 
   close(): void {
+    if (!this.isOpen) return;
     this.flush();
     this.data.clear();
     this.links = [];
+    this.isOpen = false;
   }
 
   private flush(): void {
-    const lines: string[] = [];
+    const recordLines: string[] = [];
     for (const point of this.data.values()) {
-      lines.push(JSON.stringify(point));
+      recordLines.push(JSON.stringify(point));
     }
-    writeFileSync(this.path, lines.join("\n") + (lines.length ? "\n" : ""));
+    writeFileSync(this.path, recordLines.join("\n") + (recordLines.length ? "\n" : ""));
+
+    const linkLines: string[] = [];
+    for (const link of this.links) {
+      linkLines.push(JSON.stringify(link));
+    }
+    writeFileSync(this.linksPath, linkLines.join("\n") + (linkLines.length ? "\n" : ""));
   }
 
   private ensureOpen(): void {
-    if (this.data === null) throw new KNOTstoreError("ECLOSED", "KNOT point backend is not open");
+    if (!this.isOpen) {
+      throw new KNOTstoreError("ECLOSED", "KNOT point backend is not open");
+    }
   }
 
   put(record: KNOTRecord): string {
     this.ensureOpen();
-    if (!record.knotHash)
+    if (!record.knotHash) {
       throw new KNOTstoreError("EINVALID", "knot-point records require knotHash");
+    }
     const stored: StoredPoint = {
       id: record.id,
       knotHash: record.knotHash,
@@ -89,12 +138,14 @@ export class KnotPointBackend {
 
   link(sourceId: string, targetId: string, meta?: { rel?: string }): void {
     this.ensureOpen();
-    this.links.push({
+    const link: KNOTLink = {
       sourceId,
       targetId,
       rel: meta?.rel,
       createdAt: new Date().toISOString(),
-    });
+    };
+    this.links.push(link);
+    appendFileSync(this.linksPath, JSON.stringify(link) + "\n");
   }
 
   getLinks(id: string): { outgoing: KNOTLink[]; incoming: KNOTLink[] } {
