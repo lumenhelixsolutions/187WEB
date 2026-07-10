@@ -1,11 +1,14 @@
 import Database from "better-sqlite3";
 import { KNOTLink, KNOTQuery, KNOTRecord, KNOTStats } from "../types";
 import { KNOTstoreError } from "../errors";
+import { BaseBackend } from "./base";
 
-export class SqliteBackend {
+export class SqliteBackend extends BaseBackend {
   private db: Database.Database | null = null;
 
-  constructor(private path: string) {}
+  constructor(private path: string) {
+    super();
+  }
 
   open(): void {
     this.db = new Database(this.path);
@@ -118,7 +121,7 @@ export class SqliteBackend {
     db.prepare(
       `INSERT INTO links (sourceId, targetId, rel, createdAt)
        VALUES (?, ?, ?, ?)
-       ON CONFLICT(sourceId, targetId) DO UPDATE SET rel=excluded.rel`
+       ON CONFLICT(sourceId, targetId) DO UPDATE SET rel=excluded.rel`,
     ).run(sourceId, targetId, meta?.rel ?? null, new Date().toISOString());
   }
 
@@ -135,11 +138,26 @@ export class SqliteBackend {
   stats(): KNOTStats {
     const db = this.ensureOpen();
     const totalRecords = (db.prepare("SELECT COUNT(*) AS c FROM records").get() as { c: number }).c;
-    const entitiesWoven = (db.prepare("SELECT COUNT(*) AS c FROM records WHERE kind = 'entity'").get() as { c: number }).c;
-    const stubPages = (db.prepare("SELECT COUNT(*) AS c FROM records WHERE kind = 'stub'").get() as { c: number }).c;
+    const entitiesWoven = (
+      db.prepare("SELECT COUNT(*) AS c FROM records WHERE kind = 'entity'").get() as { c: number }
+    ).c;
+    const stubPages = (
+      db.prepare("SELECT COUNT(*) AS c FROM records WHERE kind = 'stub'").get() as { c: number }
+    ).c;
     const links = (db.prepare("SELECT COUNT(*) AS c FROM links").get() as { c: number }).c;
-    const knotPoints = (db.prepare("SELECT COUNT(*) AS c FROM records WHERE knotHash IS NOT NULL").get() as { c: number }).c;
-    const crawlDepth = (db.prepare("SELECT MAX(CAST(json_extract(meta, '$.depth') AS INTEGER)) AS d FROM records WHERE meta IS NOT NULL").get() as { d: number | null }).d ?? 0;
+    const knotPoints = (
+      db.prepare("SELECT COUNT(*) AS c FROM records WHERE knotHash IS NOT NULL").get() as {
+        c: number;
+      }
+    ).c;
+    const crawlDepth =
+      (
+        db
+          .prepare(
+            "SELECT MAX(CAST(json_extract(meta, '$.depth') AS INTEGER)) AS d FROM records WHERE meta IS NOT NULL",
+          )
+          .get() as { d: number | null }
+      ).d ?? 0;
 
     return {
       totalRecords,

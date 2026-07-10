@@ -4,13 +4,15 @@ import { KNOTRecord } from "../types";
 import { existsSync, unlinkSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
+import { randomUUID } from "node:crypto";
 
-const dbPath = join(tmpdir(), `knotstore-sqlite-test-${Date.now()}.db`);
+let dbPath: string;
 
 describe("SqliteBackend", () => {
   let backend: SqliteBackend;
 
   beforeEach(() => {
+    dbPath = join(tmpdir(), `knotstore-sqlite-test-${randomUUID()}.db`);
     backend = new SqliteBackend(dbPath);
     backend.open();
   });
