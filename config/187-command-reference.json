@@ -1,5 +1,6 @@
 {
   "brand": "187WEB",
+  "tagline": "A killer AI-powered web suite: spin sharper sites, ship smarter systems.",
   "grammar": "/187 <alias|command> [target] [mode] [depth]",
   "cli_grammar": "187 <alias|command> [target] [mode] [depth]",
   "modes": [
@@ -13,511 +14,422 @@
     "report",
     "deep"
   ],
-  "statuses": [
-    "core",
-    "module",
-    "selector",
-    "research",
-    "optional-pack",
-    "planned",
-    "legacy"
-  ],
   "commands": [
     {
-      "category": "front-door",
+      "category": "Front Door",
       "cmd": "/187",
       "alias": "187",
-      "id": "187command",
+      "id": "187COMMAND",
       "status": "core",
       "purpose": "Open the universal 187WEB command surface."
     },
     {
-      "category": "front-door",
-      "cmd": "/187 help",
-      "alias": "help",
-      "id": "187command",
-      "status": "core",
-      "purpose": "Show help and command examples."
-    },
-    {
-      "category": "front-door",
+      "category": "Front Door",
       "cmd": "/187 menu",
       "alias": "menu",
-      "id": "187menu",
+      "id": "187MENU",
       "status": "selector",
-      "purpose": "Open the interactive tool breakdown."
+      "purpose": "Interactive tool breakdown."
     },
     {
-      "category": "front-door",
+      "category": "Front Door",
       "cmd": "/187 sel",
       "alias": "sel",
-      "id": "187select",
+      "id": "187SELECT",
       "status": "selector",
-      "purpose": "Select skills, agents, abilities, or packs."
+      "purpose": "Select skills, agents, abilities, profiles, or packs."
     },
     {
-      "category": "front-door",
+      "category": "Front Door",
       "cmd": "/187 ac",
       "alias": "ac",
-      "id": "187auto",
+      "id": "187AUTO",
       "status": "selector",
       "purpose": "Autocomplete and command suggestions."
     },
     {
-      "category": "front-door",
-      "cmd": "/187 complete --line \"...\"",
-      "alias": "complete",
-      "id": "187auto",
-      "status": "selector",
-      "purpose": "Return registry-driven completion candidates."
-    },
-    {
-      "category": "front-door",
+      "category": "Front Door",
       "cmd": "/187 pre",
       "alias": "pre",
-      "id": "187preflight",
+      "id": "187PREFLIGHT",
       "status": "selector",
       "purpose": "Run install/onboarding preflight."
     },
     {
-      "category": "front-door",
+      "category": "Front Door",
       "cmd": "/187 cap",
       "alias": "cap",
-      "id": "187cap",
+      "id": "187CAP",
       "status": "selector",
-      "purpose": "Detect local capabilities and missing runtimes."
+      "purpose": "Detect local capability and runtime status."
     },
     {
-      "category": "front-door",
+      "category": "Front Door",
       "cmd": "/187 pack <name>",
       "alias": "pack",
-      "id": "187pack",
+      "id": "187PACK",
       "status": "selector",
       "purpose": "Explain or install a curated pack."
     },
     {
-      "category": "front-door",
+      "category": "Front Door",
       "cmd": "/187 install <alias|pack>",
       "alias": "install",
-      "id": "187pack",
+      "id": "187PACK",
       "status": "selector",
-      "purpose": "Install one skill, agent, ability, or pack after an install plan."
+      "purpose": "Install one skill, agent, ability, module, profile, pack, or full suite after a plan."
     },
     {
-      "category": "front-door",
-      "cmd": "/187 explain <alias>",
-      "alias": "explain",
-      "id": "187report",
-      "status": "core",
-      "purpose": "Explain a skill, alias, or pack."
-    },
-    {
-      "category": "front-door",
+      "category": "Front Door",
       "cmd": "/187 doctor",
       "alias": "doctor",
-      "id": "187cap",
+      "id": "187CAP",
       "status": "selector",
-      "purpose": "Check repo, CLI, docs, adapters, and capability health."
+      "purpose": "Check repo, docs, adapters, build, and capability health."
     },
     {
-      "category": "control-plane",
+      "category": "Control Plane",
       "cmd": "/187 cmd",
       "alias": "cmd",
-      "id": "187command",
+      "id": "187COMMAND",
       "status": "core",
       "purpose": "Route ambiguous or universal requests."
     },
     {
-      "category": "control-plane",
+      "category": "Control Plane",
       "cmd": "/187 rpt",
       "alias": "rpt",
-      "id": "187report",
+      "id": "187REPORT",
       "status": "core",
-      "purpose": "Create a compact report or approval artifact."
+      "purpose": "Create a compact report, audit, or approval artifact."
     },
     {
-      "category": "control-plane",
+      "category": "Control Plane",
       "cmd": "/187 scan",
       "alias": "scan",
-      "id": "187scan",
+      "id": "187SCAN",
       "status": "core",
-      "purpose": "Inspect a repo, page, app, docs set, or external surface."
+      "purpose": "Inspect repo, site, docs, app, or external surface."
     },
     {
-      "category": "control-plane",
+      "category": "Control Plane",
       "cmd": "/187 kit",
       "alias": "kit",
-      "id": "187kit",
+      "id": "187KIT",
       "status": "core",
-      "purpose": "Use templates, prefab demos, patterns, and module kits."
+      "purpose": "Use templates, prefab demos, and reusable kits."
     },
     {
-      "category": "control-plane",
+      "category": "Control Plane",
       "cmd": "/187 std",
       "alias": "std",
-      "id": "187standard",
+      "id": "187STANDARD",
       "status": "core",
       "purpose": "Score against 187WEB quality standards."
     },
     {
-      "category": "control-plane",
+      "category": "Control Plane",
       "cmd": "/187 flow",
       "alias": "flow",
-      "id": "187flow",
+      "id": "187FLOW",
       "status": "core",
       "purpose": "Turn a goal into a scoped workflow."
     },
     {
-      "category": "control-plane",
+      "category": "Control Plane",
       "cmd": "/187 kern",
       "alias": "kern",
-      "id": "187kernel",
+      "id": "187KERNEL",
       "status": "core",
       "purpose": "Show the shared lifecycle contract."
     },
     {
-      "category": "core-suite",
+      "category": "Core Suite",
       "cmd": "/187 repo",
       "alias": "repo",
-      "id": "187repo",
+      "id": "187REPO",
       "status": "core",
-      "purpose": "Repo generation, installers, deployment, orchestration."
+      "purpose": "Repo structure, orchestration, installers, deployment, GitHub Pages."
     },
     {
-      "category": "core-suite",
+      "category": "Core Suite",
       "cmd": "/187 craft",
       "alias": "craft",
-      "id": "187craft",
+      "id": "187CRAFT",
       "status": "core",
       "purpose": "Design, UX, frontend, components, polish."
     },
     {
-      "category": "core-suite",
+      "category": "Core Suite",
       "cmd": "/187 vibe",
       "alias": "vibe",
-      "id": "187vibe",
+      "id": "187VIBE",
       "status": "core",
-      "purpose": "Onboarding, retention, delight, community UX."
+      "purpose": "Onboarding, delight, retention, community UX."
     },
     {
-      "category": "core-suite",
+      "category": "Core Suite",
       "cmd": "/187 ship",
       "alias": "ship",
-      "id": "187launch",
+      "id": "187LAUNCH",
       "status": "core",
       "purpose": "Launch strategy, campaign planning, outreach."
     },
     {
-      "category": "core-suite",
+      "category": "Core Suite",
       "cmd": "/187 free",
       "alias": "free",
-      "id": "187free",
+      "id": "187FREE",
       "status": "core",
       "purpose": "Free-tier and open-source solution planning."
     },
     {
-      "category": "core-suite",
+      "category": "Core Suite",
       "cmd": "/187 res",
       "alias": "res",
-      "id": "187research",
+      "id": "187RESEARCH",
       "status": "core",
       "purpose": "Research, source maps, evidence collection."
     },
     {
-      "category": "core-suite",
+      "category": "Core Suite",
       "cmd": "/187 seo",
       "alias": "seo",
-      "id": "187seo",
+      "id": "187SEO",
       "status": "core",
       "purpose": "Search visibility, metadata, content readiness."
     },
     {
-      "category": "core-suite",
+      "category": "Core Suite",
       "cmd": "/187 rev",
       "alias": "rev",
-      "id": "187revenue",
+      "id": "187REVENUE",
       "status": "core",
-      "purpose": "Pricing, revenue ops, affiliate/coupon/commerce workflows."
+      "purpose": "Pricing, revenue ops, offers, commerce workflows."
     },
     {
-      "category": "core-suite",
+      "category": "Core Suite",
       "cmd": "/187 docs",
       "alias": "docs",
-      "id": "187docs",
+      "id": "187DOCS",
       "status": "core",
       "purpose": "README, SOP, API docs, implementation docs."
     },
     {
-      "category": "core-suite",
+      "category": "Core Suite",
       "cmd": "/187 write",
       "alias": "write",
-      "id": "187write",
+      "id": "187WRITE",
       "status": "core",
       "purpose": "Copywriting, editing, plain language, content structure."
     },
     {
-      "category": "core-suite",
+      "category": "Core Suite",
       "cmd": "/187 learn",
       "alias": "learn",
-      "id": "187learn",
+      "id": "187LEARN",
       "status": "core",
       "purpose": "Courses, lessons, study paths, education flows."
     },
     {
-      "category": "core-suite",
+      "category": "Core Suite",
       "cmd": "/187 test",
       "alias": "test",
-      "id": "187test",
+      "id": "187TEST",
       "status": "core",
-      "purpose": "Tests, quizzes, surveys, rubrics, checks."
+      "purpose": "Tests, quizzes, rubrics, QA checks."
     },
     {
-      "category": "core-suite",
+      "category": "Core Suite",
       "cmd": "/187 ax",
       "alias": "ax",
-      "id": "187access-plus",
+      "id": "187ACCESS+",
       "status": "core",
       "purpose": "Accessibility, disability access, inclusive UX."
     },
     {
-      "category": "core-suite",
+      "category": "Core Suite",
       "cmd": "/187 inc",
       "alias": "inc",
-      "id": "187include",
+      "id": "187INCLUDE",
       "status": "core",
-      "purpose": "Inclusive language, identity-safe copy, pronoun-aware UX."
+      "purpose": "Inclusive language, identity-safe copy, representation checks."
     },
     {
-      "category": "core-suite",
+      "category": "Core Suite",
       "cmd": "/187 ver",
       "alias": "ver",
-      "id": "187version",
+      "id": "187VERSION",
       "status": "core",
       "purpose": "SemVer, changelog, release notes, migration notes."
     },
     {
-      "category": "core-suite",
+      "category": "Core Suite",
       "cmd": "/187 pub",
       "alias": "pub",
-      "id": "187publish",
+      "id": "187PUBLISH",
       "status": "core",
-      "purpose": "Sync docs, demo, README, adapters, public launch surface."
+      "purpose": "Sync README, docs, demo, adapters, public launch surface."
     },
     {
-      "category": "modules",
+      "category": "Modules",
       "cmd": "/187 th",
       "alias": "th",
-      "id": "thread",
+      "id": "THREAD",
       "status": "module",
-      "purpose": "Intent extraction, prompt shaping, rewrite/refactor."
+      "purpose": "Prompt shaping, intent extraction, rewrite/refactor."
     },
     {
-      "category": "modules",
+      "category": "Modules",
       "cmd": "/187 tu",
       "alias": "tu",
-      "id": "tune",
+      "id": "TUNE",
       "status": "module",
-      "purpose": "Output profile, model behavior, inference tuning."
+      "purpose": "Output profile and model behavior tuning."
     },
     {
-      "category": "modules",
+      "category": "Modules",
       "cmd": "/187 co",
       "alias": "co",
-      "id": "cord",
+      "id": "CORD",
       "status": "module",
-      "purpose": "Role dispatch, expert/subagent routing."
+      "purpose": "Expert role dispatch and specialist routing."
     },
     {
-      "category": "modules",
+      "category": "Modules",
       "cmd": "/187 ch",
       "alias": "ch",
-      "id": "char",
+      "id": "CHAR",
       "status": "module",
-      "purpose": "Charlotte scout with compact Q&A before context/source scouting."
+      "purpose": "Charlotte assisted research with compact Q&A stop."
     },
     {
-      "category": "modules",
+      "category": "Modules",
       "cmd": "/187 lb",
       "alias": "lb",
-      "id": "lab",
+      "id": "LAB",
       "status": "module",
-      "purpose": "Local action box for tests, commands, isolated runs."
+      "purpose": "Local action box for commands, tests, and isolated runs."
     },
     {
-      "category": "research-lab",
+      "category": "Research Lab",
       "cmd": "/187 sci",
       "alias": "sci",
-      "id": "187sci",
+      "id": "187SCI",
       "status": "research",
       "purpose": "Scientific claim discipline and release gates."
     },
     {
-      "category": "research-lab",
+      "category": "Research Lab",
       "cmd": "/187 labs",
       "alias": "labs",
-      "id": "187labs",
+      "id": "187LABS",
       "status": "research",
       "purpose": "Experiment protocols, lab templates, run logs."
     },
     {
-      "category": "research-lab",
+      "category": "Research Lab",
       "cmd": "/187 data",
       "alias": "data",
-      "id": "187data",
+      "id": "187DATA",
       "status": "research",
-      "purpose": "Dataset cards, schemas, public DB workflows."
+      "purpose": "Dataset cards, schemas, provenance, public DB workflows."
     },
     {
-      "category": "research-lab",
+      "category": "Research Lab",
       "cmd": "/187 api",
       "alias": "api",
-      "id": "187api",
+      "id": "187API",
       "status": "research",
-      "purpose": "OpenAPI, public API routes, endpoint contracts."
+      "purpose": "OpenAPI, public endpoints, examples, health/version routes."
     },
     {
-      "category": "research-lab",
+      "category": "Research Lab",
       "cmd": "/187 bench",
       "alias": "bench",
-      "id": "187bench",
+      "id": "187BENCH",
       "status": "research",
       "purpose": "Benchmarks, evals, reproducibility tests."
     },
     {
-      "category": "research-lab",
+      "category": "Research Lab",
       "cmd": "/187 nb",
       "alias": "nb",
-      "id": "187nb",
+      "id": "187NB",
       "status": "research",
       "purpose": "Notebook protocol and release checks."
     },
     {
-      "category": "research-lab",
+      "category": "Research Lab",
       "cmd": "/187 colab",
       "alias": "colab",
-      "id": "187colab",
+      "id": "187COLAB",
       "status": "research",
       "purpose": "Google Colab execution profiles and notebook templates."
     },
     {
-      "category": "research-lab",
+      "category": "Research Lab",
       "cmd": "/187 gap",
       "alias": "gap",
-      "id": "187gap",
+      "id": "187GAP",
       "status": "research",
       "purpose": "GAP computational algebra workflows."
     },
     {
-      "category": "research-lab",
+      "category": "Research Lab",
       "cmd": "/187 meta",
       "alias": "meta",
-      "id": "187meta",
+      "id": "187META",
       "status": "research",
-      "purpose": "Metadata, citation, software/dataset identity."
+      "purpose": "Metadata, citation, identifiers, CodeMeta/DataCite spine."
     },
     {
-      "category": "research-lab",
+      "category": "Research Lab",
       "cmd": "/187 prov",
       "alias": "prov",
-      "id": "187prov",
+      "id": "187PROV",
       "status": "research",
       "purpose": "Provenance, run lineage, source-to-result trace."
     },
     {
-      "category": "research-lab",
+      "category": "Research Lab",
       "cmd": "/187 crate",
       "alias": "crate",
-      "id": "187crate",
+      "id": "187CRATE",
       "status": "research",
       "purpose": "RO-Crate and Research Release Packet packaging."
     },
     {
-      "category": "research-lab",
+      "category": "Research Lab",
       "cmd": "/187 rrp",
       "alias": "rrp",
-      "id": "research-release-packet",
+      "id": "RRP",
       "status": "research",
       "purpose": "Create a Research Release Packet."
     },
     {
-      "category": "local-brain",
+      "category": "Local Brain",
       "cmd": "/187 vault",
       "alias": "vault",
-      "id": "187vault",
+      "id": "187VAULT",
       "status": "optional-pack",
-      "purpose": "Open Local Brain Kit commands."
+      "purpose": "Open the Local Brain / Obsidian + Claudian kit."
     },
     {
-      "category": "local-brain",
+      "category": "Local Brain",
       "cmd": "/187 vault init",
       "alias": "vault init",
-      "id": "187vault",
+      "id": "187VAULT",
       "status": "optional-pack",
-      "purpose": "Create a starter Obsidian vault."
+      "purpose": "Create starter Obsidian vault structure."
     },
     {
-      "category": "local-brain",
+      "category": "Local Brain",
       "cmd": "/187 vault sync",
       "alias": "vault sync",
-      "id": "187vault",
+      "id": "187VAULT",
       "status": "optional-pack",
       "purpose": "Sync templates, reports, docs, and bridge files."
-    },
-    {
-      "category": "local-brain",
-      "cmd": "/187 vault templates",
-      "alias": "vault templates",
-      "id": "187vault",
-      "status": "optional-pack",
-      "purpose": "List/copy Obsidian templates."
-    },
-    {
-      "category": "local-brain",
-      "cmd": "/187 vault report",
-      "alias": "vault report",
-      "id": "187vault",
-      "status": "optional-pack",
-      "purpose": "Create a vault health/context report."
-    },
-    {
-      "category": "legacy",
-      "cmd": "/187 widow-weaver",
-      "alias": "widow-weaver",
-      "id": "thread",
-      "status": "legacy",
-      "purpose": "Legacy route to THREAD."
-    },
-    {
-      "category": "legacy",
-      "cmd": "/187 neuro-toxin",
-      "alias": "neuro-toxin",
-      "id": "tune",
-      "status": "legacy",
-      "purpose": "Legacy route to TUNE."
-    },
-    {
-      "category": "legacy",
-      "cmd": "/187 swarm-mind",
-      "alias": "swarm-mind",
-      "id": "cord",
-      "status": "legacy",
-      "purpose": "Legacy route to CORD."
-    },
-    {
-      "category": "legacy",
-      "cmd": "/187 agent-charlotte",
-      "alias": "agent-charlotte",
-      "id": "char",
-      "status": "legacy",
-      "purpose": "Legacy route to CHAR."
-    },
-    {
-      "category": "legacy",
-      "cmd": "/187 silk-sandbox",
-      "alias": "silk-sandbox",
-      "id": "lab",
-      "status": "legacy",
-      "purpose": "Legacy route to LAB."
     }
   ]
 }

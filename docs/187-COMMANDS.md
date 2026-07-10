@@ -1,141 +1,100 @@
 # 187WEB Slash Command Reference
 
-**187WEB** — *A killer AI-powered web suite: spin sharper sites, ship smarter systems.*
-
-This is the canonical reference for every slash command in the 187WEB surface.
-
-## Command grammar
+Canonical grammar:
 
 ```text
 /187 <alias|command> [target] [mode] [depth]
 ```
 
-- **`<alias|command>`** — required short name that resolves to a skill, selector, module, or pack.
-- **`[target]`** — optional page, file, URL, question, or component to operate on.
-- **`[mode]`** — optional coordination style: `solo`, `assist`, `flow`, `release`.
-- **`[depth]`** — optional output detail: `brief`, `report`, `deep`.
-
-The same grammar works in the CLI without the leading slash. See [docs/187-COMMAND-GRAMMAR.md](187-COMMAND-GRAMMAR.md) for full grammar rules and [docs/187-AUTOCOMPLETE.md](187-AUTOCOMPLETE.md) for completion behavior.
-
-## Commands by category
-
-### front-door
-
-| Command | Alias | Status | Purpose |
-|---|---|---|---|
-| `/187` | `187` | core | Open the universal 187WEB command surface. |
-| `/187 help` | `help` | core | Show help and command examples. |
-| `/187 menu` | `menu` | selector | Open the interactive tool breakdown. |
-| `/187 sel` | `sel` | selector | Select skills, agents, abilities, or packs. |
-| `/187 ac` | `ac` | selector | Autocomplete and command suggestions. |
-| `/187 complete --line "..."` | `complete` | selector | Return registry-driven completion candidates. |
-| `/187 pre` | `pre` | selector | Run install/onboarding preflight. |
-| `/187 cap` | `cap` | selector | Detect local capabilities and missing runtimes. |
-| `/187 pack <name>` | `pack` | selector | Explain or install a curated pack. |
-| `/187 install <alias\|pack>` | `install` | selector | Install one skill, agent, ability, or pack after an install plan. |
-| `/187 explain <alias>` | `explain` | core | Explain a skill, alias, or pack. |
-| `/187 doctor` | `doctor` | selector | Check repo, CLI, docs, adapters, and capability health. |
-
-### control-plane
-
-| Command | Alias | Status | Purpose |
-|---|---|---|---|
-| `/187 cmd` | `cmd` | core | Route ambiguous or universal requests. |
-| `/187 rpt` | `rpt` | core | Create a compact report or approval artifact. |
-| `/187 scan` | `scan` | core | Inspect a repo, page, app, docs set, or external surface. |
-| `/187 kit` | `kit` | core | Use templates, prefab demos, patterns, and module kits. |
-| `/187 std` | `std` | core | Score against 187WEB quality standards. |
-| `/187 flow` | `flow` | core | Turn a goal into a scoped workflow. |
-| `/187 kern` | `kern` | core | Show the shared lifecycle contract. |
-
-### core-suite
-
-| Command | Alias | Status | Purpose |
-|---|---|---|---|
-| `/187 repo` | `repo` | core | Repo generation, installers, deployment, orchestration. |
-| `/187 craft` | `craft` | core | Design, UX, frontend, components, polish. |
-| `/187 vibe` | `vibe` | core | Onboarding, retention, delight, community UX. |
-| `/187 ship` | `ship` | core | Launch strategy, campaign planning, outreach. |
-| `/187 free` | `free` | core | Free-tier and open-source solution planning. |
-| `/187 res` | `res` | core | Research, source maps, evidence collection. |
-| `/187 seo` | `seo` | core | Search visibility, metadata, content readiness. |
-| `/187 rev` | `rev` | core | Pricing, revenue ops, affiliate/coupon/commerce workflows. |
-| `/187 docs` | `docs` | core | README, SOP, API docs, implementation docs. |
-| `/187 write` | `write` | core | Copywriting, editing, plain language, content structure. |
-| `/187 learn` | `learn` | core | Courses, lessons, study paths, education flows. |
-| `/187 test` | `test` | core | Tests, quizzes, surveys, rubrics, checks. |
-| `/187 ax` | `ax` | core | Accessibility, disability access, inclusive UX. |
-| `/187 inc` | `inc` | core | Inclusive language, identity-safe copy, pronoun-aware UX. |
-| `/187 ver` | `ver` | core | SemVer, changelog, release notes, migration notes. |
-| `/187 pub` | `pub` | core | Sync docs, demo, README, adapters, public launch surface. |
-
-### modules
-
-| Command | Alias | Status | Purpose |
-|---|---|---|---|
-| `/187 th` | `th` | module | Intent extraction, prompt shaping, rewrite/refactor. |
-| `/187 tu` | `tu` | module | Output profile, model behavior, inference tuning. |
-| `/187 co` | `co` | module | Role dispatch, expert/subagent routing. |
-| `/187 ch` | `ch` | module | Charlotte scout with compact Q&A before context/source scouting. |
-| `/187 lb` | `lb` | module | Local action box for tests, commands, isolated runs. |
-
-### research-lab
-
-Stack overview, claim taxonomy, and Research Release Packet layout: [`187-RESEARCH-LAB.md`](./187-RESEARCH-LAB.md)
-
-| Command | Alias | Status | Purpose |
-|---|---|---|---|
-| `/187 sci` | `sci` | research | Scientific claim discipline and release gates. |
-| `/187 labs` | `labs` | research | Experiment protocols, lab templates, run logs. |
-| `/187 data` | `data` | research | Dataset cards, schemas, public DB workflows. |
-| `/187 api` | `api` | research | OpenAPI, public API routes, endpoint contracts. |
-| `/187 bench` | `bench` | research | Benchmarks, evals, reproducibility tests. |
-| `/187 nb` | `nb` | research | Notebook protocol and release checks. |
-| `/187 colab` | `colab` | research | Google Colab execution profiles and notebook templates. |
-| `/187 gap` | `gap` | research | GAP computational algebra workflows. |
-| `/187 meta` | `meta` | research | Metadata, citation, software/dataset identity. |
-| `/187 prov` | `prov` | research | Provenance, run lineage, source-to-result trace. |
-| `/187 crate` | `crate` | research | RO-Crate and Research Release Packet packaging. |
-| `/187 rrp` | `rrp` | research | Create a Research Release Packet. |
-
-### local-brain
-
-| Command | Alias | Status | Purpose |
-|---|---|---|---|
-| `/187 vault` | `vault` | optional-pack | Open Local Brain Kit commands. |
-| `/187 vault init` | `vault init` | optional-pack | Create a starter Obsidian vault. |
-| `/187 vault sync` | `vault sync` | optional-pack | Sync templates, reports, docs, and bridge files. |
-| `/187 vault templates` | `vault templates` | optional-pack | List/copy Obsidian templates. |
-| `/187 vault report` | `vault report` | optional-pack | Create a vault health/context report. |
-
-### legacy
-
-| Command | Alias | Status | Purpose |
-|---|---|---|---|
-| `/187 widow-weaver` | `widow-weaver` | legacy | Legacy route to THREAD. |
-| `/187 neuro-toxin` | `neuro-toxin` | legacy | Legacy route to TUNE. |
-| `/187 swarm-mind` | `swarm-mind` | legacy | Legacy route to CORD. |
-| `/187 agent-charlotte` | `agent-charlotte` | legacy | Legacy route to CHAR. |
-| `/187 silk-sandbox` | `silk-sandbox` | legacy | Legacy route to LAB. |
-
-## Examples
+CLI equivalent:
 
 ```text
-/187 rpt this
-/187 seo landing
-/187 ch competitors
-/187 sci claim table
-/187 crate release packet
-/187 install research-lab
-/187 craft hero assist report
-/187 seo audit brief
-/187 publish release deep
+187 <alias|command> [target] [mode] [depth]
 ```
 
-## See also
+Default behavior:
 
-- [187WEB Command Grammar](187-COMMAND-GRAMMAR.md)
-- [187WEB Autocomplete](187-AUTOCOMPLETE.md)
-- [187WEB Short-Name Reference](187-NAMES.md)
-- [187WEB Modules](187-MODULES.md)
-- [187SKILLS — Operating Layer](187SKILLS.md)
+```text
+named alias -> solo + brief
+ambiguous /187 -> menu or compact report
+```
+
+Modes:
+
+```text
+solo
+assist
+flow
+release
+```
+
+Depth:
+
+```text
+brief
+report
+deep
+```
+
+## Full reference
+
+| Command | Alias | ID | Status | Purpose |
+|---|---:|---|---|---|
+| `/187` | `187` | `187COMMAND` | core | Open the universal 187WEB command surface. |
+| `/187 menu` | `menu` | `187MENU` | selector | Interactive tool breakdown. |
+| `/187 sel` | `sel` | `187SELECT` | selector | Select skills, agents, abilities, profiles, or packs. |
+| `/187 ac` | `ac` | `187AUTO` | selector | Autocomplete and command suggestions. |
+| `/187 pre` | `pre` | `187PREFLIGHT` | selector | Run install/onboarding preflight. |
+| `/187 cap` | `cap` | `187CAP` | selector | Detect local capability and runtime status. |
+| `/187 pack <name>` | `pack` | `187PACK` | selector | Explain or install a curated pack. |
+| `/187 install <alias|pack>` | `install` | `187PACK` | selector | Install one skill, agent, ability, module, profile, pack, or full suite after a plan. |
+| `/187 doctor` | `doctor` | `187CAP` | selector | Check repo, docs, adapters, build, and capability health. |
+| `/187 cmd` | `cmd` | `187COMMAND` | core | Route ambiguous or universal requests. |
+| `/187 rpt` | `rpt` | `187REPORT` | core | Create a compact report, audit, or approval artifact. |
+| `/187 scan` | `scan` | `187SCAN` | core | Inspect repo, site, docs, app, or external surface. |
+| `/187 kit` | `kit` | `187KIT` | core | Use templates, prefab demos, and reusable kits. |
+| `/187 std` | `std` | `187STANDARD` | core | Score against 187WEB quality standards. |
+| `/187 flow` | `flow` | `187FLOW` | core | Turn a goal into a scoped workflow. |
+| `/187 kern` | `kern` | `187KERNEL` | core | Show the shared lifecycle contract. |
+| `/187 repo` | `repo` | `187REPO` | core | Repo structure, orchestration, installers, deployment, GitHub Pages. |
+| `/187 craft` | `craft` | `187CRAFT` | core | Design, UX, frontend, components, polish. |
+| `/187 vibe` | `vibe` | `187VIBE` | core | Onboarding, delight, retention, community UX. |
+| `/187 ship` | `ship` | `187LAUNCH` | core | Launch strategy, campaign planning, outreach. |
+| `/187 free` | `free` | `187FREE` | core | Free-tier and open-source solution planning. |
+| `/187 res` | `res` | `187RESEARCH` | core | Research, source maps, evidence collection. |
+| `/187 seo` | `seo` | `187SEO` | core | Search visibility, metadata, content readiness. |
+| `/187 rev` | `rev` | `187REVENUE` | core | Pricing, revenue ops, offers, commerce workflows. |
+| `/187 docs` | `docs` | `187DOCS` | core | README, SOP, API docs, implementation docs. |
+| `/187 write` | `write` | `187WRITE` | core | Copywriting, editing, plain language, content structure. |
+| `/187 learn` | `learn` | `187LEARN` | core | Courses, lessons, study paths, education flows. |
+| `/187 test` | `test` | `187TEST` | core | Tests, quizzes, rubrics, QA checks. |
+| `/187 ax` | `ax` | `187ACCESS+` | core | Accessibility, disability access, inclusive UX. |
+| `/187 inc` | `inc` | `187INCLUDE` | core | Inclusive language, identity-safe copy, representation checks. |
+| `/187 ver` | `ver` | `187VERSION` | core | SemVer, changelog, release notes, migration notes. |
+| `/187 pub` | `pub` | `187PUBLISH` | core | Sync README, docs, demo, adapters, public launch surface. |
+| `/187 th` | `th` | `THREAD` | module | Prompt shaping, intent extraction, rewrite/refactor. |
+| `/187 tu` | `tu` | `TUNE` | module | Output profile and model behavior tuning. |
+| `/187 co` | `co` | `CORD` | module | Expert role dispatch and specialist routing. |
+| `/187 ch` | `ch` | `CHAR` | module | Charlotte assisted research with compact Q&A stop. |
+| `/187 lb` | `lb` | `LAB` | module | Local action box for commands, tests, and isolated runs. |
+| `/187 sci` | `sci` | `187SCI` | research | Scientific claim discipline and release gates. |
+| `/187 labs` | `labs` | `187LABS` | research | Experiment protocols, lab templates, run logs. |
+| `/187 data` | `data` | `187DATA` | research | Dataset cards, schemas, provenance, public DB workflows. |
+| `/187 api` | `api` | `187API` | research | OpenAPI, public endpoints, examples, health/version routes. |
+| `/187 bench` | `bench` | `187BENCH` | research | Benchmarks, evals, reproducibility tests. |
+| `/187 nb` | `nb` | `187NB` | research | Notebook protocol and release checks. |
+| `/187 colab` | `colab` | `187COLAB` | research | Google Colab execution profiles and notebook templates. |
+| `/187 gap` | `gap` | `187GAP` | research | GAP computational algebra workflows. |
+| `/187 meta` | `meta` | `187META` | research | Metadata, citation, identifiers, CodeMeta/DataCite spine. |
+| `/187 prov` | `prov` | `187PROV` | research | Provenance, run lineage, source-to-result trace. |
+| `/187 crate` | `crate` | `187CRATE` | research | RO-Crate and Research Release Packet packaging. |
+| `/187 rrp` | `rrp` | `RRP` | research | Create a Research Release Packet. |
+| `/187 vault` | `vault` | `187VAULT` | optional-pack | Open the Local Brain / Obsidian + Claudian kit. |
+| `/187 vault init` | `vault init` | `187VAULT` | optional-pack | Create starter Obsidian vault structure. |
+| `/187 vault sync` | `vault sync` | `187VAULT` | optional-pack | Sync templates, reports, docs, and bridge files. |
+
+## Install rule
+
+Preflight/onboarding supports individual install of any 187 skill, agent, module, agentic ability, research/tool profile, curated pack, or the full suite.
+
+Do not treat `improves_with` as `requires`.
