@@ -37,10 +37,10 @@ export class HybridBackend extends BaseBackend {
   get(id: string): KNOTRecord | null {
     const sql = this.sqlite.get(id);
     const pt = this.points.get(id);
-    if (!sql && !pt) return null;
-    if (!sql) return pt!;
-    if (!pt) return sql;
-    return { ...sql, knotHash: pt.knotHash };
+    if (sql && pt) return { ...sql, knotHash: pt.knotHash };
+    if (sql) return sql;
+    if (pt) return pt;
+    return null;
   }
 
   query(filter: KNOTQuery): KNOTRecord[] {
