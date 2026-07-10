@@ -12,14 +12,19 @@ function linksPath(p: string): string {
   return p.replace(/\.jsonl$/, ".links.jsonl");
 }
 
-function makeRecord(id: string, knotHash: string) {
+function makeRecord(
+  id: string,
+  knotHash: string,
+  options?: { tags?: string[]; createdAt?: string; updatedAt?: string },
+) {
   const now = new Date().toISOString();
   return {
     id,
     kind: "knot-point" as const,
     knotHash,
-    createdAt: now,
-    updatedAt: now,
+    tags: options?.tags,
+    createdAt: options?.createdAt ?? now,
+    updatedAt: options?.updatedAt ?? now,
   };
 }
 
@@ -154,5 +159,60 @@ describe("KnotPointBackend", () => {
     } catch (err) {
       expect((err as KNOTstoreError).code).toBe("ECLOSED");
     }
+  });
+
+  it("queries by a single tag", () => {
+    backend.put(makeRecord("tagged", "hash-tagged", { tags: ["alpha", "beta"] }));
+    backend.put(makeRecord("untagged", "hash-untagged"));
+
+    expect(backend.query({ tags: ["alpha"] }).map((r) => r.id)).toEqual(["tagged"]);
+  });
+
+  it("queries by multiple tags with AND semantics", () => {
+    backend.put(makeRecord("both", "hash-both", { tags: ["alpha", "beta"] }));
+    backend.put(makeRecord("one", "hash-one", { tags: ["alpha"] }));
+
+    expect(backend.query({ tags: ["alpha", "beta"] }).map((r) => r.id)).toEqual(["both"]);
+  });
+
+  it("queries by from date", () => {
+    const t1 = "2026-01-01T00:00:00.000Z";
+    const t2 = "2026-06-01T00:00:00.000Z";
+    const t3 = "2026-12-01T00:00:00.000Z";
+    backend.put(makeRecord("old", "hash-old", { createdAt: t1, updatedAt: t1 }));
+    backend.put(makeRecord("mid", "hash-mid", { createdAt: t2, updatedAt: t2 }));
+    backend.put(makeRecord("new", "hash-new", { createdAt: t3, updatedAt: t3 }));
+
+    expect(
+      backend
+        .query({ from: t2 })
+        .map((r) => r.id)
+        .sort(),
+    ).toEqual(["mid", "new"]);
+  });
+
+  it("queries by to date", () => {
+    const t1 = "2026-01-01T00:00:00.000Z";
+    const t2 = "2026-06-01T00:00:00.000Z";
+    const t3 = "2026-12-01T00:00:00.000Z";
+    backend.put(makeRecord("old", "hash-old", { createdAt: t1, updatedAt: t1 }));
+    backend.put(makeRecord("mid", "hash-mid", { createdAt: t2, updatedAt: t2 }));
+    backend.put(makeRecord("new", "hash-new", { createdAt: t3, updatedAt: t3 }));
+
+    expect(
+      backend
+        .query({ to: t2 })
+        .map((r) => r.id)
+        .sort(),
+    ).toEqual(["mid", "old"]);
+  });
+
+  it("queries by kind and tags together", () => {
+    backend.put(makeRecord("match", "hash-match", { tags: ["alpha"] }));
+    backend.put(makeRecord("wrong-tag", "hash-wrong-tag", { tags: ["beta"] }));
+
+    expect(backend.query({ kind: "knot-point", tags: ["alpha"] }).map((r) => r.id)).toEqual([
+      "match",
+    ]);
   });
 });

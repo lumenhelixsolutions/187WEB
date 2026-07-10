@@ -6,6 +6,7 @@ import { BaseBackend } from "./base";
 type StoredPoint = {
   id: string;
   knotHash: string;
+  tags?: string[];
   meta?: Record<string, unknown>;
   createdAt: string;
   updatedAt: string;
@@ -106,6 +107,7 @@ export class KnotPointBackend extends BaseBackend {
     const stored: StoredPoint = {
       id: record.id,
       knotHash: record.knotHash,
+      tags: record.tags,
       meta: record.meta,
       createdAt: record.createdAt,
       updatedAt: record.updatedAt,
@@ -130,6 +132,12 @@ export class KnotPointBackend extends BaseBackend {
       if (filter.kind && r.kind !== filter.kind) continue;
       if (filter.search && !r.id.includes(filter.search) && !r.knotHash?.includes(filter.search))
         continue;
+      if (filter.tags && filter.tags.length) {
+        const recordTags = new Set(r.tags ?? []);
+        if (!filter.tags.every((tag) => recordTags.has(tag))) continue;
+      }
+      if (filter.from && r.createdAt < filter.from) continue;
+      if (filter.to && r.createdAt > filter.to) continue;
       out.push(r);
       if (filter.limit && out.length >= filter.limit) break;
     }
@@ -173,6 +181,7 @@ export class KnotPointBackend extends BaseBackend {
       id: p.id,
       kind: "knot-point",
       knotHash: p.knotHash,
+      tags: p.tags,
       meta: p.meta,
       createdAt: p.createdAt,
       updatedAt: p.updatedAt,

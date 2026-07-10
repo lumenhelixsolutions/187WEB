@@ -103,6 +103,20 @@ export class SqliteBackend extends BaseBackend {
       const like = `%${filter.search}%`;
       params.push(like, like);
     }
+    if (filter.tags && filter.tags.length) {
+      for (const tag of filter.tags) {
+        conditions.push("EXISTS (SELECT 1 FROM json_each(records.tags) WHERE value = ?)");
+        params.push(tag);
+      }
+    }
+    if (filter.from) {
+      conditions.push("createdAt >= ?");
+      params.push(filter.from);
+    }
+    if (filter.to) {
+      conditions.push("createdAt <= ?");
+      params.push(filter.to);
+    }
 
     let sql = "SELECT * FROM records";
     if (conditions.length) sql += " WHERE " + conditions.join(" AND ");

@@ -40,6 +40,8 @@ export const KNOTQuerySchema = z.object({
   source: z.string().optional(),
   tags: z.array(z.string()).optional(),
   search: z.string().optional(),
+  from: z.string().datetime().optional(),
+  to: z.string().datetime().optional(),
   limit: z.number().int().min(1).optional(),
 });
 export type KNOTQuery = z.infer<typeof KNOTQuerySchema>;
