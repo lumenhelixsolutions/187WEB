@@ -20,15 +20,28 @@
 
 <p>
   <a href="LICENSE"><img src="https://img.shields.io/github/license/lumenhelixsolutions/187WEB?style=flat-square&labelColor=11131A&color=39FF14&label=License" alt="License" /></a>
-  <a href="https://github.com/lumenhelixsolutions/187WEB/actions/workflows/ci.yml"><img src="https://img.shields.io/github/actions/workflow/status/lumenhelixsolutions/187WEB/ci.yml?branch=main&style=flat-square&labelColor=11131A&color=39FF14&logo=githubactions&logoColor=white&label=CI" alt="CI" /></a>
-  <a href="https://github.com/lumenhelixsolutions/187WEB/actions/workflows/pages.yml"><img src="https://img.shields.io/github/actions/workflow/status/lumenhelixsolutions/187WEB/pages.yml?branch=main&style=flat-square&labelColor=11131A&color=39FF14&logo=githubpages&logoColor=white&label=Pages" alt="Pages" /></a>
+  <a href="https://github.com/lumenhelixsolutions/187WEB/actions/workflows/ci.yml"><img src="https://img.shields.io/github/actions/workflow/status/lumenhelixsolutions/187WEB/ci.yml?branch=main&style=flat-square&labelColor=11131A&color=39FF14&label=CI" alt="CI status" /></a>
+  <a href="https://github.com/lumenhelixsolutions/187WEB/actions/workflows/pages.yml"><img src="https://img.shields.io/github/actions/workflow/status/lumenhelixsolutions/187WEB/pages.yml?branch=main&style=flat-square&labelColor=11131A&color=FF2D2D&label=Pages" alt="Pages status" /></a>
 </p>
 
 <br>
 
 </div>
 
-> **"187" is the attitude:** every element earns its place or it gets cut. **187SUITE** is the short-name command surface for the mature 187web ecosystem — four layers that turn a raw idea into a shipped, polished product.
+> **"187" is the attitude:** every element earns its place or it gets cut. **187SUITE** is the short-name command surface for the mature 187web ecosystem — four layers that turn a raw idea into a launch-ready web presence.
+
+<br>
+
+## ◆ Licensing
+
+This repository is available under the terms in [LICENSE](./LICENSE).
+
+- You may use, remix, adapt, build on, and improve the work.
+- You may **not** use it commercially without prior written permission from **Lumen Helix Solutions**.
+- **Knotstore intellectual property is excluded** from the license grant and remains the sole property of **Lumen Helix Solutions**.
+
+For a plain-English explanation, see [LICENSE-INFO.md](./LICENSE-INFO.md).
+For commercial licensing or permission requests, contact **Lumen Helix Solutions**.
 
 <br>
 
@@ -87,7 +100,7 @@
 
 This repository is **two things in one**:
 
-1. **A reusable skill library** — [`.claude/skills/187webdesign/`](./.claude/skills/187webdesign/SKILL.md) is a portable, award-caliber web-design playbook for Claude Code, plus the new short-name orchestration skills (`187repo`, `187craft`, `187vibe`, `187launch`).
+1. **A reusable skill library** — [`.claude/skills/187webdesign/`](./.claude/skills/187webdesign/SKILL.md) is a portable, award-caliber web-design playbook for Claude Code, plus the new short-name suite entry points (`187craft`, `187repo`, `187vibe`, `187launch`).
 2. **A live demo that proves it** — a real Next.js + Prisma app whose marketing pages are built to pass the same 50-point pre-ship checklist: fast, accessible, responsive, and conversion-minded.
 
 The live showcase is deployed from this repo via GitHub Pages:  
@@ -218,7 +231,7 @@ npm run db:seed             # (optional) a few sample leads
 
 ## ◆ Deployment
 
-- **GitHub Pages (the live demo).** Pushes to `main` build a fully static export and publish it via [`.github/workflows/pages.yml`](./.github/workflows/pages.yml). One-time setup: **Settings → Pages → Source: GitHub Actions**.
+- **GitHub Pages (the live demo).** Pushes to `main` build a fully static export and publish it via [`.github/workflows/pages.yml`](./.github/workflows/pages.yml). One-time setup: **Settings → Pages → Source = GitHub Actions**.
 - **Vercel.** Import the repo, set `DATABASE_URL` (+ `NEXT_PUBLIC_SITE_URL`), deploy. Run `prisma migrate deploy` against your database.
 - **Docker.** `docker build -t 187webdesign . && docker run -p 3000:3000 -e DATABASE_URL=… 187webdesign`.
 
@@ -234,12 +247,12 @@ Full guide: [`docs/DEPLOYMENT.md`](./docs/DEPLOYMENT.md).
 
 ## ◆ Contributing
 
-PRs welcome. The one house rule: **run the [pre-ship checklist](./.claude/skills/187webdesign/references/CHECKLIST.md) before you call a UI change done.** See [CONTRIBUTING.md](./CONTRIBUTING.md).
+PRs welcome. The one house rule: **run the [pre-ship checklist](./.claude/skills/187webdesign/references/CHECKLIST.md) before you call a UI change done.** See [CONTRIBUTING.md](./CONTRIBUTING.md) for setup, local quality gates, and code-style conventions.
 
 <br>
 
 <div align="center">
 
-<strong>187SUITE</strong> — <a href="LICENSE">MIT</a> © 2026 Lumen Helix Solutions
+<strong>187SUITE</strong> — <a href="LICENSE">CC BY-NC 4.0 + reserved Knotstore IP</a> © 2026 Lumen Helix Solutions
 
 </div>
