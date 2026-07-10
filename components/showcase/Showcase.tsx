@@ -1,47 +1,48 @@
 import Link from "next/link";
 import { Reveal } from "@/components/Reveal";
 import { CommandPalette } from "@/components/187/CommandPalette";
+import { AbilityTabs } from "./AbilityTabs";
+import { ScenarioDemo } from "./ScenarioDemo";
+import { CommandTeaser } from "./CommandTeaser";
+import { MiniAbilityCard } from "./AbilityCard";
+import { COMMANDS, type CommandEntry } from "@/components/187/command-data";
 
 const REPO = "https://github.com/lumenhelixsolutions/187WEB";
 
-const coreSkills = [
-  ["187COMMAND", "cmd", "Universal command router"], ["187REPORT", "rpt", "Reports, audits, approvals"],
-  ["187SCAN", "scan", "Repo, site, and doc inspection"], ["187KIT", "kit", "Templates and prefab demos"],
-  ["187STANDARD", "std", "Quality standards and gates"], ["187FLOW", "flow", "Scoped workflows"],
-  ["187REPO", "repo", "Repo structure and deployment"], ["187CRAFT", "craft", "Design, UX, frontend"],
-  ["187VIBE", "vibe", "Onboarding and delight"], ["187LAUNCH", "ship", "Launch and growth"],
-  ["187FREE", "free", "Free-tier architecture"], ["187RESEARCH", "res", "Source maps and evidence"],
-  ["187SEO", "seo", "Search visibility"], ["187REVENUE", "rev", "Offers and monetization"],
-  ["187DOCS", "docs", "README, docs, SOPs"], ["187WRITE", "write", "Copy and content"],
-  ["187LEARN", "learn", "Courses and lessons"], ["187TEST", "test", "QA, tests, rubrics"],
-  ["187ACCESS+", "ax", "Accessibility"], ["187INCLUDE", "inc", "Inclusive UX"],
-  ["187VERSION", "ver", "Changelog and SemVer"], ["187PUBLISH", "pub", "Docs/demo sync"],
-];
+function uniqueByStatus(status: CommandEntry["status"]) {
+  const seen = new Set<string>();
+  return COMMANDS.filter((c) => {
+    if (c.status !== status) return false;
+    const key = c.id.toLowerCase();
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
+}
 
-const modules = [
-  ["THREAD", "th", "Prompt shaping and intent extraction"],
-  ["TUNE", "tu", "Output profile and model behavior"],
-  ["CORD", "co", "Expert role dispatch"],
-  ["CHAR", "ch", "Charlotte assisted research"],
-  ["LAB", "lb", "Local action box"],
-];
+const modules = uniqueByStatus("module").map((c, i) => ({
+  id: c.id.toLowerCase(),
+  name: c.id,
+  alias: c.alias,
+  purpose: c.purpose,
+  color: ["#f43f5e", "#8b5cf6", "#06b6d4", "#f59e0b", "#10b981"][i % 5],
+}));
 
-const research = [
-  ["187SCI", "sci", "Claim discipline and non-claims"], ["187LABS", "labs", "Experiment protocols"],
-  ["187DATA", "data", "Dataset/public DB workflows"], ["187API", "api", "OpenAPI contracts"],
-  ["187BENCH", "bench", "Benchmarks and reproducibility"], ["187NB", "nb", "Notebook protocol"],
-  ["187COLAB", "colab", "Google Colab profile"], ["187GAP", "gap", "GAP computational algebra"],
-  ["187META", "meta", "Metadata and citation"], ["187PROV", "prov", "Provenance lineage"],
-  ["187CRATE", "crate", "RO-Crate and release packets"], ["RRP", "rrp", "Research Release Packet"],
-];
+const research = uniqueByStatus("research").map((c, i) => ({
+  id: c.id.toLowerCase(),
+  name: c.id,
+  alias: c.alias,
+  purpose: c.purpose,
+  color: ["#3b82f6", "#a855f7", "#0ea5e9", "#14b8a6", "#eab308", "#f97316", "#ec4899", "#84cc16", "#6366f1", "#64748b", "#d946ef", "#22c55e"][i % 12],
+}));
 
 const packs = [
-  ["core-lite", "cmd · rpt · scan · flow · docs · ver · pub"],
-  ["web-build", "repo · craft · kit · lab · docs · test · ax"],
-  ["research-lab", "res · sci · labs · data · api · bench · meta · prov · crate"],
-  ["colab-lab", "nb · colab · labs · data · bench"],
-  ["gap-math", "gap · sci · bench · meta · prov · crate"],
-  ["local-brain", "vault · docs · rpt · res · ch · co"],
+  { name: "core-lite", contents: "cmd · rpt · scan · flow · docs · ver · pub", for: "Lightweight control plane for any project" },
+  { name: "web-build", contents: "repo · craft · kit · lab · docs · test · ax", for: "Landing pages, sites, and component work" },
+  { name: "research-lab", contents: "res · sci · labs · data · api · bench · meta · prov · crate", for: "Reproducible computational research" },
+  { name: "colab-lab", contents: "nb · colab · labs · data · bench", for: "Notebook-first experiments and Colab" },
+  { name: "gap-math", contents: "gap · sci · bench · meta · prov · crate", for: "GAP algebra and proof workflows" },
+  { name: "local-brain", contents: "vault · docs · rpt · res · ch · co", for: "Obsidian + Claudian local knowledge base" },
 ];
 
 function Header() {
@@ -53,8 +54,9 @@ function Header() {
           <span className="hidden sm:inline">187WEB</span>
         </a>
         <div className="hidden items-center gap-7 text-sm text-white/60 md:flex">
-          <a href="#skills" className="transition hover:text-white">Skills</a>
-          <a href="#research" className="transition hover:text-white">Research Lab</a>
+          <a href="#abilities" className="transition hover:text-white">Abilities</a>
+          <a href="#scenarios" className="transition hover:text-white">Scenarios</a>
+          <a href="#commands" className="transition hover:text-white">Commands</a>
           <Link href="/187" className="transition hover:text-white">/187</Link>
           <Link href="/install" className="transition hover:text-white">Install</Link>
         </div>
@@ -64,19 +66,12 @@ function Header() {
   );
 }
 
-function Grid({ items }: { items: string[][] }) {
+function OutcomePill({ children }: { children: React.ReactNode }) {
   return (
-    <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-      {items.map(([name, alias, purpose]) => (
-        <div key={`${name}-${alias}`} className="rounded-2xl border border-white/10 bg-[#0A0C14] p-5">
-          <div className="flex items-center justify-between gap-3">
-            <h3 className="font-bold text-white">{name}</h3>
-            <code className="rounded bg-[#39FF14]/10 px-2 py-1 text-xs text-[#39FF14]">/187 {alias}</code>
-          </div>
-          <p className="mt-3 text-sm leading-6 text-white/60">{purpose}</p>
-        </div>
-      ))}
-    </div>
+    <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-sm text-white/70">
+      <span className="h-1.5 w-1.5 rounded-full bg-[#39FF14]" />
+      {children}
+    </span>
   );
 }
 
@@ -91,11 +86,19 @@ export function Showcase() {
           <div className="mx-auto max-w-5xl text-center">
             <p className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-[#39FF14]"><span className="h-px w-6 bg-[#39FF14]" aria-hidden="true" />187WEB</p>
             <h1 className="mt-6 text-[clamp(2.75rem,1.4rem+6vw,6rem)] font-bold leading-[0.92] tracking-tight text-white">
-              A killer AI-powered web suite: <span className="text-[#39FF14]">spin sharper sites, ship smarter systems.</span>
+              Type one command. <span className="text-[#39FF14]">Ship the whole surface.</span>
             </h1>
             <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-white/65">
-              Build faster with short commands, standalone AI skills, routed workflows, prefab demos, documentation sync, launch support, research tools, revenue systems, accessibility review, public DB/API workflows, and a live showcase that explains the whole machine.
+              187WEB is a command-driven web suite that turns intent into design, code, docs, research labs, launch plans, and publish gates — each skill usable alone or chained through the 187 command surface.
             </p>
+
+            <div className="mt-8 flex flex-wrap justify-center gap-3">
+              <OutcomePill>Launch a landing page this afternoon</OutcomePill>
+              <OutcomePill>Find a free stack for any MVP</OutcomePill>
+              <OutcomePill>Ship a reproducible research lab</OutcomePill>
+              <OutcomePill>Audit before you publish</OutcomePill>
+            </div>
+
             <div className="mt-10 flex flex-wrap justify-center gap-3">
               <Link href="/187" className="inline-flex h-12 items-center justify-center rounded bg-[#39FF14] px-6 text-sm font-semibold text-[#05060A] transition hover:brightness-110">Explore /187 Commands</Link>
               <Link href="/install" className="inline-flex h-12 items-center justify-center rounded border border-white/10 bg-white/5 px-6 text-sm font-semibold text-white transition hover:bg-white/10">Install / Select Skills</Link>
@@ -106,35 +109,66 @@ export function Showcase() {
         </div>
       </section>
 
-      <section id="skills" className="relative px-6 py-20 sm:py-28">
+      <section id="abilities" className="relative px-6 py-20 sm:py-28">
         <div className="container-x">
           <Reveal className="mx-auto mb-12 max-w-3xl text-center">
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#39FF14]">187SKILLS map</p>
-            <h2 className="mt-4 text-[clamp(2rem,1.2rem+3vw,3.5rem)] font-bold tracking-tight text-white">Standalone-first skills. Routed only when useful.</h2>
-            <p className="mt-4 text-white/60">Each skill can work alone. The ecosystem coordinates through assist, flow, or release mode when a task benefits from shared context, handoff, or public-surface sync.</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#39FF14]">187 Abilities</p>
+            <h2 className="mt-4 text-[clamp(2rem,1.2rem+3vw,3.5rem)] font-bold tracking-tight text-white">What 187WEB actually does</h2>
+            <p className="mt-4 text-white/60">Every card is a skill you can invoke, inspect, and compose. Click through to see triggers, outputs, routing, and templates.</p>
           </Reveal>
-          <Grid items={coreSkills} />
+          <AbilityTabs />
         </div>
       </section>
 
-      <section className="relative border-y border-white/10 bg-[#0A0C14] px-6 py-20 sm:py-28">
+      <section id="scenarios" className="relative border-y border-white/10 bg-[#0A0C14] px-6 py-20 sm:py-28">
+        <div className="container-x">
+          <Reveal className="mx-auto mb-12 max-w-3xl text-center">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#39FF14]">Scenario demos</p>
+            <h2 className="mt-4 text-[clamp(2rem,1.2rem+3vw,3.5rem)] font-bold tracking-tight text-white">Real chains, real artifacts</h2>
+            <p className="mt-4 text-white/60">Four end-to-end examples showing how 187 skills chain into outcomes.</p>
+          </Reveal>
+          <ScenarioDemo />
+        </div>
+      </section>
+
+      <section className="relative px-6 py-20 sm:py-28">
         <div className="container-x">
           <Reveal className="mx-auto mb-12 max-w-3xl text-center">
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#39FF14]">Charlotte module array</p>
-            <h2 className="mt-4 text-[clamp(2rem,1.2rem+3vw,3.5rem)] font-bold tracking-tight text-white">THREAD / TUNE / CORD / CHAR / LAB.</h2>
+            <h2 className="mt-4 text-[clamp(2rem,1.2rem+3vw,3.5rem)] font-bold tracking-tight text-white">THREAD · TUNE · CORD · CHAR · LAB</h2>
+            <p className="mt-4 text-white/60">Cross-cutting modules that sharpen prompts, tune output profiles, dispatch experts, run local actions, and assist research.</p>
           </Reveal>
-          <Grid items={modules} />
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {modules.map((m, i) => (
+              <MiniAbilityCard key={m.id} id={m.id} name={m.name} alias={m.alias} purpose={m.purpose} color={m.color} delay={i * 60} />
+            ))}
+          </div>
         </div>
       </section>
 
-      <section id="research" className="relative px-6 py-20 sm:py-28">
+      <section id="research" className="relative border-y border-white/10 bg-[#0A0C14] px-6 py-20 sm:py-28">
         <div className="container-x">
           <Reveal className="mx-auto mb-12 max-w-3xl text-center">
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#39FF14]">Research Lab Stack</p>
-            <h2 className="mt-4 text-[clamp(2rem,1.2rem+3vw,3.5rem)] font-bold tracking-tight text-white">Scientific standards, public data APIs, notebooks, GAP, Colab, and release packets.</h2>
-            <p className="mt-4 text-white/60">187WEB turns research work into claim tables, source maps, experiment protocols, dataset cards, OpenAPI contracts, benchmarks, metadata, provenance, and Research Release Packets.</p>
+            <h2 className="mt-4 text-[clamp(2rem,1.2rem+3vw,3.5rem)] font-bold tracking-tight text-white">Scientific standards, public data, notebooks, and release packets</h2>
+            <p className="mt-4 text-white/60">From claim discipline to RO-Crate packaging, the research stack turns findings into reproducible, citable artifacts.</p>
           </Reveal>
-          <Grid items={research} />
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {research.map((r, i) => (
+              <MiniAbilityCard key={r.id} id={r.id} name={r.name} alias={r.alias} purpose={r.purpose} color={r.color} delay={i * 60} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="commands" className="relative px-6 py-20 sm:py-28">
+        <div className="container-x">
+          <Reveal className="mx-auto mb-12 max-w-3xl text-center">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#39FF14]">Command surface</p>
+            <h2 className="mt-4 text-[clamp(2rem,1.2rem+3vw,3.5rem)] font-bold tracking-tight text-white">Browse by category, click a skill page</h2>
+            <p className="mt-4 text-white/60">Commands that have dedicated skill pages link through to full trigger, output, and template documentation.</p>
+          </Reveal>
+          <CommandTeaser />
         </div>
       </section>
 
@@ -142,15 +176,21 @@ export function Showcase() {
         <div className="container-x">
           <Reveal className="mx-auto mb-12 max-w-3xl text-center">
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#39FF14]">Preflight / install / onboarding</p>
-            <h2 className="mt-4 text-[clamp(2rem,1.2rem+3vw,3.5rem)] font-bold tracking-tight text-white">Install one thing, a curated pack, or the full suite.</h2>
+            <h2 className="mt-4 text-[clamp(2rem,1.2rem+3vw,3.5rem)] font-bold tracking-tight text-white">Install one thing, a curated pack, or the full suite</h2>
             <p className="mt-4 text-white/60">The selector separates requirements from optional improvements and detects what the current agentic runtime can support.</p>
           </Reveal>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {packs.map(([name, contents]) => (
-              <div key={name} className="rounded-2xl border border-white/10 bg-[#05060A] p-5">
-                <h3 className="font-bold text-white">{name}</h3>
-                <p className="mt-3 font-mono text-sm leading-6 text-[#39FF14]/80">{contents}</p>
-              </div>
+            {packs.map((pack, i) => (
+              <Reveal key={pack.name} delay={i * 60}>
+                <Link href="/install" className="group block h-full rounded-2xl border border-white/10 bg-[#05060A] p-5 transition hover:-translate-y-1 hover:border-[#39FF14]/30">
+                  <div className="flex items-center justify-between gap-3">
+                    <h3 className="font-bold text-white">{pack.name}</h3>
+                    <span className="text-xs font-semibold text-[#39FF14]">pack</span>
+                  </div>
+                  <p className="mt-2 text-sm text-white/60">{pack.for}</p>
+                  <p className="mt-3 font-mono text-sm leading-6 text-[#39FF14]/80">{pack.contents}</p>
+                </Link>
+              </Reveal>
             ))}
           </div>
         </div>

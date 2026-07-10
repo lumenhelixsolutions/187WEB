@@ -2,37 +2,28 @@
 
 <br>
 
-<img src="public/images/187suite-hero.jpg" alt="187WEB — A killer AI-powered web suite" width="92%" />
+<img src="public/images/187suite-hero.jpg" alt="187WEB — command-driven web suite" width="92%" />
 
 <h1>187WEB</h1>
-<p><strong>A killer AI-powered web suite: spin sharper sites, ship smarter systems.</strong></p>
-<p>An AI-powered suite of web tools to die for.</p>
-<p><a href="https://lumenhelixsolutions.github.io/187WEB/">Live Demo</a> · <a href="./docs/187-COMMANDS.md">/187 Commands</a> · <a href="./docs/INSTALL.md">Install</a></p>
+<p><strong>Type one command. Ship the whole surface.</strong></p>
+<p>A command-driven web suite for building public pages, launching with standards, and shipping research-grade artifacts.</p>
+<p><a href="https://lumenhelixsolutions.github.io/187WEB/">Live Demo</a> · <a href="https://lumenhelixsolutions.github.io/187WEB/187">/187 Reference</a> · <a href="./docs/INSTALL.md">Install</a> · <a href="./docs/187-COMMANDS.md">Command Docs</a></p>
 
 </div>
 
-## ◆ Licensing
+## What 187WEB does
 
-This repository is available under the terms in [LICENSE](./LICENSE).
+187WEB is a standalone-first AI webcraft ecosystem. It gives agentic systems a short command surface for turning intent into finished work.
 
-- You may use, remix, adapt, build on, and improve the work for noncommercial purposes.
-- You may **not** use it commercially without prior written permission from **Lumen Helix Solutions**.
-- **Knotstore intellectual property is excluded** from the license grant and remains the sole property of **Lumen Helix Solutions**.
+In 10 seconds, a visitor can name three things it does:
 
-For a plain-English explanation, see [LICENSE-INFO.md](./LICENSE-INFO.md).
-For commercial licensing or permission requests, contact **Lumen Helix Solutions**.
-
-## What 187WEB is
-
-187WEB is a standalone-first AI webcraft ecosystem. It gives agentic systems a short command surface for building, documenting, testing, researching, launching, publishing, and maintaining web projects.
-
-The public site is not just a landing page. It is the live showcase for the full 187WEB ecosystem: skills, command routing, selector/onboarding, module array, research lab stack, public data/API workflows, slash command reference, and installation profiles.
+1. **Build public web surfaces** — landing pages, design systems, component kits, docs, and copy, driven by `/187 craft`, `/187 kit`, `/187 docs`, `/187 write`, `/187 repo`.
+2. **Launch with standards wired in** — SEO/access/inclusion audits, revenue architecture, go-to-market plans, and a publish gate via `/187 seo`, `/187 access-plus`, `/187 include`, `/187 revenue`, `/187 launch`, `/187 publish`.
+3. **Ship research-grade labs** — reproducible experiments, dataset cards, public API contracts, provenance, benchmarks, and Research Release Packets via `/187 research`, `/187 labs`, `/187 data`, `/187 crate`.
 
 Live demo: **https://lumenhelixsolutions.github.io/187WEB/**
 
-## Slash command reference
-
-Canonical grammar:
+## Slash command grammar
 
 ```text
 /187 <alias|command> [target] [mode] [depth]
@@ -44,92 +35,43 @@ CLI equivalent:
 187 <alias|command> [target] [mode] [depth]
 ```
 
-Examples:
+Example chains:
 
 ```text
-/187 rpt this
-/187 seo landing
-/187 ch competitors
-/187 sci claim table
+/187 craft design landing-page
+/187 seo audit brief
+/187 launch plan ph
+/187 publish gate
+
+/187 research climate-models deep
+/187 labs protocol
 /187 crate release packet
-/187 install research-lab
+
+/187 free mvp hosting
+/187 repo init --web
+/187 kit apply landing
 ```
 
-Full reference: [`docs/187-COMMANDS.md`](./docs/187-COMMANDS.md)
+Full reference: [`docs/187-COMMANDS.md`](./docs/187-COMMANDS.md) or open [`/187`](https://lumenhelixsolutions.github.io/187WEB/187) on the live site.
 
-## Ecosystem map
+## Ability map
 
-187WEB includes the selector/front door, control plane, core suite, Charlotte module array, Research Lab Stack, Local Brain optional pack, KNOTstore agentic memory preview, and a comprehensive `/187` command registry.
+Skills are grouped by the job they do:
 
-### Front door and selector
+| Group | Skills |
+|---|---|
+| **Build** | `187CRAFT` · `187REPO` · `187KIT` · `187DOCS` · `187WRITE` · `187ACCESS+` · `187INCLUDE` |
+| **Research** | `187RESEARCH` · `187FREE` · `187SEO` · `187TEST` |
+| **Launch** | `187LAUNCH` · `187REVENUE` · `187VIBE` · `187LEARN` |
+| **Operate** | `187COMMAND` · `187REPORT` · `187SCAN` · `187STANDARD` · `187FLOW` · `187VERSION` · `187PUBLISH` |
+| **Modules** | `THREAD` · `TUNE` · `CORD` · `CHAR` · `LAB` |
+| **Research Lab** | `187SCI` · `187LABS` · `187DATA` · `187API` · `187BENCH` · `187NB` · `187COLAB` · `187GAP` · `187META` · `187PROV` · `187CRATE` · `RRP` |
 
-| Command | ID | Purpose |
-|---|---|---|
-| `/187` | `187COMMAND` | Universal command surface |
-| `/187 menu` | `187MENU` | Interactive tool breakdown |
-| `/187 sel` | `187SELECT` | Skill, agent, ability, and pack selection |
-| `/187 ac` | `187AUTO` | Autocomplete |
-| `/187 pre` | `187PREFLIGHT` | Install/onboarding preflight |
-| `/187 cap` | `187CAP` | Capability detection |
-| `/187 pack` | `187PACK` | Bundle/profile installer |
-| `/187 install` | `187PACK` | Install one thing or the full suite |
-| `/187 doctor` | `187CAP` | Health check |
+Each skill page on the live site lists triggers, use cases, outputs, routing, templates, and related skills.
 
-### Core suite
+## Install / onboarding
 
-| Alias | Skill | Purpose |
-|---|---|---|
-| `repo` | `187REPO` | Repo structure, installers, deployment |
-| `craft` | `187CRAFT` | Design, UX, frontend |
-| `vibe` | `187VIBE` | Onboarding, delight, community UX |
-| `ship` | `187LAUNCH` | Launch strategy |
-| `free` | `187FREE` | Free-tier architecture |
-| `res` | `187RESEARCH` | Source maps and evidence |
-| `seo` | `187SEO` | Search visibility |
-| `rev` | `187REVENUE` | Offers and monetization |
-| `docs` | `187DOCS` | README, docs, SOPs |
-| `write` | `187WRITE` | Copy and content |
-| `learn` | `187LEARN` | Lessons and education |
-| `test` | `187TEST` | QA and rubrics |
-| `ax` | `187ACCESS+` | Accessibility |
-| `inc` | `187INCLUDE` | Inclusive UX |
-| `ver` | `187VERSION` | Changelog and releases |
-| `pub` | `187PUBLISH` | Docs/demo/public sync |
-
-### THREAD / TUNE / CORD / CHAR / LAB
-
-| Alias | Module | Purpose |
-|---|---|---|
-| `th` | `THREAD` | Prompt shaping and intent extraction |
-| `tu` | `TUNE` | Output and model behavior profile |
-| `co` | `CORD` | Expert role dispatch |
-| `ch` | `CHAR` | Charlotte assisted research |
-| `lb` | `LAB` | Local action box |
-
-### Research Lab Stack
-
-| Alias | Skill/Profile | Purpose |
-|---|---|---|
-| `sci` | `187SCI` | Scientific claim discipline |
-| `labs` | `187LABS` | Protocols and experiments |
-| `data` | `187DATA` | Dataset/public DB workflows |
-| `api` | `187API` | OpenAPI and public API contracts |
-| `bench` | `187BENCH` | Benchmarks and reproducibility |
-| `nb` | `187NB` | Notebook protocol |
-| `colab` | `187COLAB` | Google Colab execution profile |
-| `gap` | `187GAP` | GAP computational algebra profile |
-| `meta` | `187META` | Metadata and citation |
-| `prov` | `187PROV` | Provenance and run lineage |
-| `crate` | `187CRATE` | RO-Crate and release packets |
-| `rrp` | `RRP` | Research Release Packet |
-
-### KNOTstore
-
-`lib/knotstore/` is the pluggable agentic memory layer for the 187WEB ecosystem. It supports SQLite, KNOT-point, and hybrid backends, and ships with a Vault-style preview at `/knotstore`.
-
-## Install/onboarding model
-
-187WEB does not require installing the entire ecosystem. Preflight/onboarding supports one skill, one agent, one module, one ability, one research/tool profile, one pack, or the full suite.
+187WEB does not require installing the entire ecosystem. Preflight supports one skill, one agent, one module, one ability, one research profile, one pack, or the full suite.
 
 ```bash
 187 pre
@@ -140,6 +82,8 @@ Full reference: [`docs/187-COMMANDS.md`](./docs/187-COMMANDS.md)
 187 doctor
 ```
 
+See [`docs/INSTALL.md`](./docs/INSTALL.md) for the full install guide.
+
 ## Quick start
 
 ```bash
@@ -149,36 +93,49 @@ npm install
 npm run dev
 ```
 
+Then open http://localhost:3000 and try `/187` in the command palette.
+
 ## Project structure
 
 ```text
 187WEB/
 ├─ app/                         # Next.js App Router
 │  ├─ page.tsx                  # 187WEB public showcase
-│  ├─ 187/page.tsx              # complete /187 command reference
-│  ├─ 187repo/page.tsx          # legacy redirect to /187
+│  ├─ 187/page.tsx              # /187 command + ability explorer
 │  ├─ install/page.tsx          # preflight/install/onboarding surface
+│  ├─ 187<ID>/page.tsx          # individual skill showcase pages
 │  └─ knotstore/page.tsx        # Vault-style KNOTstore preview
 ├─ components/187/              # command palette and reference components
-├─ components/showcase/         # launch-page showcase
-├─ lib/knotstore/               # pluggable agentic data layer
-├─ config/                      # command registry and aliases
+├─ components/showcase/         # ability cards, tabs, scenario demos
+├─ lib/
+│  ├─ skill-showcase-data.ts    # canonical skill data
+│  └─ knotstore/                # pluggable agentic data layer
 ├─ docs/                        # command, skills, install, research, standards
 └─ .github/workflows/           # CI and GitHub Pages
 ```
 
-## Deployment
-
-After applying this upgrade:
+## Verification
 
 ```bash
 npm run lint
 npm run typecheck
+npm test
 npm run build
-git add .
-git commit -m "Upgrade 187WEB showcase and command reference"
-git push origin main
 ```
+
+## KNOTstore
+
+`lib/knotstore/` is the pluggable agentic memory layer for the 187WEB ecosystem. It supports SQLite, KNOT-point, and hybrid backends, and ships with a Vault-style preview at `/knotstore`.
+
+## ◆ Licensing
+
+This repository is available under the terms in [LICENSE](./LICENSE).
+
+- You may use, remix, adapt, build on, and improve the work for noncommercial purposes.
+- You may **not** use it commercially without prior written permission from **Lumen Helix Solutions**.
+- **Knotstore intellectual property is excluded** from the license grant and remains the sole property of **Lumen Helix Solutions**.
+
+For a plain-English explanation, see [LICENSE-INFO.md](./LICENSE-INFO.md). For commercial licensing or permission requests, contact **Lumen Helix Solutions**.
 
 <div align="center">
 

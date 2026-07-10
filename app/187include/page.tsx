@@ -3,16 +3,16 @@ import { notFound } from "next/navigation";
 import { SkillShowcase } from "@/components/showcase/SkillShowcase";
 import { skillShowcaseIndex } from "@/lib/skill-showcase-data";
 
-const skill = skillShowcaseIndex.get("kit");
+const skill = skillShowcaseIndex.get("include");
 
 export const metadata: Metadata = {
-  title: `${skill?.name ?? "187KIT"} — Templates + starter kits`,
+  title: `${skill?.name ?? "187INCLUDE"} — Inclusion + identity safety`,
   description:
     skill?.description ??
-    "The equipping layer of 187WEB: design-system tokens, industry templates, archetype scaffolds, checklists, and install scripts.",
+    "Suite-wide inclusion engine for LGBTQ+ inclusion, identity-safe language, pronoun-safe systems, anti-bias review, and community safety.",
 };
 
-export default function KitSkillPage() {
+export default function IncludeSkillPage() {
   if (!skill) notFound();
   return <SkillShowcase skill={skill} />;
 }

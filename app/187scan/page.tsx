@@ -3,16 +3,16 @@ import { notFound } from "next/navigation";
 import { SkillShowcase } from "@/components/showcase/SkillShowcase";
 import { skillShowcaseIndex } from "@/lib/skill-showcase-data";
 
-const skill = skillShowcaseIndex.get("kit");
+const skill = skillShowcaseIndex.get("scan");
 
 export const metadata: Metadata = {
-  title: `${skill?.name ?? "187KIT"} — Templates + starter kits`,
+  title: `${skill?.name ?? "187SCAN"} — Health + security scanner`,
   description:
     skill?.description ??
-    "The equipping layer of 187WEB: design-system tokens, industry templates, archetype scaffolds, checklists, and install scripts.",
+    "Inspect repositories, sites, docs, apps, and external surfaces for health, SEO, security, accessibility, and compliance.",
 };
 
-export default function KitSkillPage() {
+export default function ScanSkillPage() {
   if (!skill) notFound();
   return <SkillShowcase skill={skill} />;
 }

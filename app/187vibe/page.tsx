@@ -3,16 +3,16 @@ import { notFound } from "next/navigation";
 import { SkillShowcase } from "@/components/showcase/SkillShowcase";
 import { skillShowcaseIndex } from "@/lib/skill-showcase-data";
 
-const skill = skillShowcaseIndex.get("kit");
+const skill = skillShowcaseIndex.get("vibe");
 
 export const metadata: Metadata = {
-  title: `${skill?.name ?? "187KIT"} — Templates + starter kits`,
+  title: `${skill?.name ?? "187VIBE"} — Delight + community`,
   description:
     skill?.description ??
-    "The equipping layer of 187WEB: design-system tokens, industry templates, archetype scaffolds, checklists, and install scripts.",
+    "Short-name entry point for delight, onboarding, retention, community UX, micro-interactions, copy sharpening, and safe execution.",
 };
 
-export default function KitSkillPage() {
+export default function VibeSkillPage() {
   if (!skill) notFound();
   return <SkillShowcase skill={skill} />;
 }

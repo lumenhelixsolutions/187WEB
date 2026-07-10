@@ -21,17 +21,21 @@ for (const skill of FIRST_CLASS_SKILLS.filter((s) => s.route)) {
   }
 }
 
-// Home page and command reference should mention all first-class skills and subskills.
-const home = readFileSync(join(root, "app/page.tsx"), "utf8");
-const commands = readFileSync(join(root, "app/187repo/page.tsx"), "utf8");
+// Home page (including its showcase component) and /187 command reference should
+// mention all first-class skills and subskills.
+const homeSources = [
+  readFileSync(join(root, "app/page.tsx"), "utf8"),
+  readFileSync(join(root, "components/showcase/Showcase.tsx"), "utf8"),
+];
+const commands = readFileSync(join(root, "app/187/page.tsx"), "utf8");
 
 for (const skill of [...FIRST_CLASS_SKILLS, ...SUBSKILLS]) {
-  if (!home.includes(skill.name)) {
-    console.error(`❌ ${skill.name} not mentioned in app/page.tsx`);
+  if (!homeSources.some((source) => source.includes(skill.name))) {
+    console.error(`❌ ${skill.name} not mentioned in app/page.tsx or components/showcase/Showcase.tsx`);
     errors++;
   }
   if (!commands.includes(skill.name)) {
-    console.error(`❌ ${skill.name} not mentioned in app/187repo/page.tsx`);
+    console.error(`❌ ${skill.name} not mentioned in app/187/page.tsx`);
     errors++;
   }
 }

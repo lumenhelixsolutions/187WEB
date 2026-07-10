@@ -1,50 +1,68 @@
 # 187WEB Abilities Index
 
-**187WEB** — *A killer AI-powered web suite: spin sharper sites, ship smarter systems.*
+**187WEB** — *Type one command. Ship the whole surface.*
 
-This index maps high-level abilities to the slash commands, app routes, and documentation that implement them.
+This index maps high-level abilities to the slash commands, app routes, and documentation that implement them. The live site now surfaces every core skill as an ability card with triggers, outputs, routing, and templates.
 
-## Abilities
+## The three things 187WEB does
 
-| Ability | Commands | App route | Docs |
-|---|---|---|---|
-| **Slash command surface** | `/187 <alias\|command> [target] [mode] [depth]` | `/187` | [187-COMMANDS.md](187-COMMANDS.md), [187-COMMAND-GRAMMAR.md](187-COMMAND-GRAMMAR.md) |
-| **Skill showcases** | `/187 craft`, `/187 seo`, `/187 repo`, `/187 learn`, `/187 test`, etc. | `/187demo`, `/187ai-eye` | [187SKILLS.md](187SKILLS.md) |
-| **Templates and kits** | `/187 kit`, `/187 pack <name>` | `/templates`, `/187kit` | [187-MODULES.md](187-MODULES.md), [187-INSTALL-PROFILES.md](187-INSTALL-PROFILES.md) |
-| **Resilience states** | `loading.tsx`, `error.tsx`, `not-found.tsx` | `/resilience` | [ROUTING.md](ROUTING.md) |
-| **Install flow** | `/187 install`, `/187 pre`, `/187 pack`, `/187 cap` | `/install` | [INSTALL.md](INSTALL.md), [187-INSTALL-PROFILES.md](187-INSTALL-PROFILES.md) |
-| **Research lab tools** | `/187 sci`, `/187 labs`, `/187 data`, `/187 bench`, `/187 rrp` | `/187research` | [187RESEARCH.md](187RESEARCH.md) |
+1. **Build public web surfaces** — landing pages, design systems, component kits, docs, and copy.
+2. **Launch with standards wired in** — SEO/access/inclusion audits, revenue architecture, go-to-market plans, and a publish gate.
+3. **Ship research-grade labs** — reproducible experiments, dataset cards, public API contracts, provenance, benchmarks, and Research Release Packets.
 
-## Slash commands
+## Ability map
 
-The universal command surface covers every skill, selector, module, and pack. Start at `/187` or see the full reference in [docs/187-COMMANDS.md](187-COMMANDS.md).
+| Group | Skills |
+|---|---|
+| **Build** | `craft` · `repo` · `kit` · `docs` · `write` · `access` · `include` |
+| **Research** | `research` · `free` · `seo` · `test` |
+| **Launch** | `launch` · `revenue` · `vibe` · `learn` |
+| **Operate** | `command` · `report` · `scan` · `standard` · `flow` · `version` · `publish` |
+| **Modules** | `THREAD` · `TUNE` · `CORD` · `CHAR` · `LAB` |
+| **Research Lab** | `sci` · `labs` · `data` · `api` · `bench` · `nb` · `colab` · `gap` · `meta` · `prov` · `crate` · `rrp` |
 
-## Skill showcases
+## Slash command surface
 
-Each core skill has a dedicated route or shared demo surface:
+Canonical grammar:
+
+```text
+/187 <alias|command> [target] [mode] [depth]
+```
+
+Start at `/187` or see [187-COMMANDS.md](187-COMMANDS.md) for the full reference.
+
+## Core skill showcase pages
+
+Each core skill has a dedicated route and skill page:
 
 | Skill | Route | Docs |
 |---|---|---|
+| 187COMMAND | `/187command` | [187-COMMANDS.md](187-COMMANDS.md), [187-COMMAND-GRAMMAR.md](187-COMMAND-GRAMMAR.md) |
+| 187REPORT | `/187report` | [187SKILLS.md](187SKILLS.md) |
+| 187SCAN | `/187scan` | [187SKILLS.md](187SKILLS.md) |
+| 187KIT | `/187kit` | [187-MODULES.md](187-MODULES.md), [187-INSTALL-PROFILES.md](187-INSTALL-PROFILES.md) |
+| 187STANDARD | `/187standard` | [187SKILLS.md](187SKILLS.md) |
+| 187FLOW | `/187flow` | [187SKILLS.md](187SKILLS.md) |
 | 187REPO | `/187repo` | [187SKILLS.md](187SKILLS.md), repo runbooks |
-| 187CRAFT | `/187demo` | [187SKILLS.md](187SKILLS.md) |
-| 187VIBE | `/187demo` | [187SKILLS.md](187SKILLS.md) |
-| 187LAUNCH | `/187publish` | [187PUBLISH.md](187PUBLISH.md) |
+| 187CRAFT | `/187craft` | [187SKILLS.md](187SKILLS.md) |
+| 187VIBE | `/187vibe` | [187SKILLS.md](187SKILLS.md) |
+| 187LAUNCH | `/187launch` | [187PUBLISH.md](187PUBLISH.md) |
 | 187FREE | `/187free` | [187FREE.md](187FREE.md) |
 | 187RESEARCH | `/187research` | [187RESEARCH.md](187RESEARCH.md) |
 | 187SEO | `/187seo` | [187SEO.md](187SEO.md) |
 | 187REVENUE | `/187revenue` | [187REVENUE.md](187REVENUE.md) |
 | 187DOCS | `/187docs` | [187DOCS.md](187DOCS.md) |
-| 187WRITE | `/187docs` | [187WRITE.md](187WRITE.md) |
+| 187WRITE | `/187write` | [187WRITE.md](187WRITE.md) |
 | 187LEARN | `/187learn` | [187LEARN.md](187LEARN.md) |
 | 187TEST | `/187test` | [187TEST.md](187TEST.md) |
 | 187ACCESS+ | `/187access` | [187ACCESS.md](187ACCESS.md) |
-| 187INCLUDE | `/187access` | [187INCLUDE.md](187INCLUDE.md) |
+| 187INCLUDE | `/187include` | [187INCLUDE.md](187INCLUDE.md) |
 | 187VERSION | `/187version` | [187VERSION.md](187VERSION.md) |
 | 187PUBLISH | `/187publish` | [187PUBLISH.md](187PUBLISH.md) |
 
-## Templates
+## Templates and kits
 
-The template system is surfaced through `/187 kit` and the `/templates` route. Kits include prefab demos, design tokens, module scaffolds, and pre-ship checklists. See [docs/187-MODULES.md](187-MODULES.md) for module kits and [docs/187-INSTALL-PROFILES.md](187-INSTALL-PROFILES.md) for pack-level template bundles.
+The template system is surfaced through `/187 kit` and the `/templates` route. Kits include prefab demos, design tokens, module scaffolds, and pre-ship checklists. See [187-MODULES.md](187-MODULES.md) for module kits and [187-INSTALL-PROFILES.md](187-INSTALL-PROFILES.md) for pack-level template bundles.
 
 ## Resilience states
 
@@ -52,11 +70,30 @@ The `/resilience` route demonstrates loading, empty, error, and offline states. 
 
 ## Install flow
 
-The install flow begins at `/install` and is driven by `/187 pre`, `/187 cap`, `/187 pack`, and `/187 install`. See [docs/INSTALL.md](INSTALL.md) for the full installation guide and [docs/187-INSTALL-PROFILES.md](187-INSTALL-PROFILES.md) for available profiles.
+The install flow begins at `/install` and is driven by `/187 pre`, `/187 cap`, `/187 pack`, and `/187 install`. See [INSTALL.md](INSTALL.md) for the full installation guide and [187-INSTALL-PROFILES.md](187-INSTALL-PROFILES.md) for available profiles.
 
 ## Research lab tools
 
 The research-lab ability provides scientific claim discipline, dataset cards, benchmarks, notebook protocols, provenance, and research release packaging. It is surfaced at `/187research` and through commands such as `/187 sci`, `/187 labs`, `/187 data`, `/187 bench`, and `/187 rrp`.
+
+## Scenario chains
+
+Example command chains that ship real artifacts:
+
+```text
+/187 craft design landing-page
+/187 seo audit brief
+/187 launch plan ph
+/187 publish gate
+
+/187 research climate-models deep
+/187 labs protocol
+/187 crate release packet
+
+/187 free mvp hosting
+/187 repo init --web
+/187 kit apply landing
+```
 
 ## See also
 

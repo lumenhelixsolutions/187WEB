@@ -18,7 +18,7 @@ const surfaces = [
   { file: "docs/MODEL-ADAPTERS.md", label: "MODEL-ADAPTERS" },
   { file: "docs/ROUTING.md", label: "ROUTING" },
   { file: "app/page.tsx", label: "home page" },
-  { file: "app/187repo/page.tsx", label: "187repo page" },
+  { file: "app/187/page.tsx", label: "187 command reference" },
   { file: ".claude/skills/187web-ecosystem/SKILL.md", label: "ecosystem skill" },
   { file: ".claude/skills/187web-manifest/SKILL.md", label: "manifest skill" },
 ];

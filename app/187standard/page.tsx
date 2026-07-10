@@ -3,16 +3,16 @@ import { notFound } from "next/navigation";
 import { SkillShowcase } from "@/components/showcase/SkillShowcase";
 import { skillShowcaseIndex } from "@/lib/skill-showcase-data";
 
-const skill = skillShowcaseIndex.get("kit");
+const skill = skillShowcaseIndex.get("standard");
 
 export const metadata: Metadata = {
-  title: `${skill?.name ?? "187KIT"} — Templates + starter kits`,
+  title: `${skill?.name ?? "187STANDARD"} — Quality standards engine`,
   description:
     skill?.description ??
-    "The equipping layer of 187WEB: design-system tokens, industry templates, archetype scaffolds, checklists, and install scripts.",
+    "Score work against 187WEB quality standards, conventions, governance rules, SOPs, and checklists before handoff or release.",
 };
 
-export default function KitSkillPage() {
+export default function StandardSkillPage() {
   if (!skill) notFound();
   return <SkillShowcase skill={skill} />;
 }
