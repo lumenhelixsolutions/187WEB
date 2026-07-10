@@ -53,28 +53,28 @@ const baseSuites = [
     name: "187REPO",
     tagline: "Orchestrate · scaffold · deploy",
     color: "#14b8a6",
-    items: ["Systematized codebase structure", "Git-flow workflow", "Component versioning", "7 archetype scaffolds"],
+    items: ["7 archetype scaffolds", "Repo generation and installers", "Manifest compiler routing", "Deployment conventions"],
   },
   {
     id: "craft",
     name: "187CRAFT",
     tagline: "Design · UX · frontend",
     color: "#0ea5e9",
-    items: ["Atomic design system", "Pixel-perfect components", "Scalable grid modules", "Accessibility-first tokens"],
+    items: ["Award-rubric design direction", "Design tokens and system", "Pre-ship QA checklist", "Frontend code review"],
   },
   {
     id: "vibe",
     name: "187VIBE",
     tagline: "Delight · community · execution",
     color: "#eab308",
-    items: ["UX flow mapping v2.0", "Interaction state library", "User behavior data", "Micro-interactions"],
+    items: ["Onboarding and first-run delight", "Community and retention UX", "Charlotte module routing", "Safe sandboxed execution"],
   },
   {
     id: "launch",
     name: "187LAUNCH",
     tagline: "Ship · launch · grow",
     color: "#FF2D2D",
-    items: ["CI/CD build pipelines", "Multi-environment deploy", "Instant rollbacks", "Go-to-market intelligence"],
+    items: ["Launch platform playbooks", "Early-user acquisition", "Pricing and CRO strategy", "Validation research"],
   },
 ];
 
@@ -204,7 +204,7 @@ export function Showcase() {
               documentation sync, launch support, research tools, revenue systems, accessibility review,
               and a public showcase that explains the whole machine.
             </p>
-            <p className="mx-auto mt-4 max-w-3xl text-sm leading-relaxed text-white/40">
+            <p className="mx-auto mt-4 max-w-3xl text-sm leading-relaxed text-white/55">
               187COMMAND · 187REPORT · 187SCAN · 187KIT · 187STANDARD · 187FLOW · 187REPO · 187CRAFT ·
               187VIBE · 187LAUNCH · 187FREE · 187RESEARCH · 187SEO · 187REVENUE · 187DOCS · 187WRITE ·
               187LEARN · 187TEST · 187ACCESS+ · 187INCLUDE · 187VERSION · 187PUBLISH
@@ -235,7 +235,7 @@ export function Showcase() {
             <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-[#0A0C14]">
               <Image
                 src="/images/187suite-hero.jpg"
-                alt="187WEB — the 187SKILLS command surface: 22 short-name skills from 187COMMAND to 187PUBLISH"
+                alt="187WEB mascot — a chrome black-widow spider marked with the red 187 hourglass, crouched over a green wireframe globe against a dark web of code"
                 className="w-full"
                 width={1024}
                 height={595}
@@ -373,7 +373,7 @@ export function Showcase() {
           </div>
 
           <Reveal className="mx-auto mt-12 max-w-3xl text-center">
-            <p className="text-sm text-white/40">
+            <p className="text-sm text-white/55">
               Legacy aliases: widow-weaver → thread · neuro-toxin → tune · swarm-mind → cord ·
               agent-charlotte → char · silk-sandbox → lab
             </p>
@@ -396,25 +396,38 @@ export function Showcase() {
           <div className="mx-auto grid max-w-4xl gap-4 sm:grid-cols-2">
             {[
               { href: "/187docs", label: "187DOCS showcase", desc: "Documentation architecture engine" },
-              { href: "/docs/187SKILLS.md", label: "187SKILLS.md", desc: "Operating layer overview" },
-              { href: "/docs/187-NAMES.md", label: "187-NAMES.md", desc: "Short-name alias reference" },
-              { href: "/docs/187-MODULES.md", label: "187-MODULES.md", desc: "THREAD / TUNE / CORD / CHAR / LAB" },
-              { href: "/docs/187-KERNEL.md", label: "187-KERNEL.md", desc: "Behavior cycle and autonomy levels" },
-              { href: "/docs/SHOWCASE-SYNC.md", label: "SHOWCASE-SYNC.md", desc: "Public surface sync runbook" },
-            ].map((d) => (
-              <Reveal key={d.href}>
-                <Link
-                  href={d.href}
-                  className="flex h-full items-center justify-between rounded-xl border border-white/10 bg-[#0A0C14] p-6 transition hover:bg-white/5"
-                >
+              { href: `${REPO}/blob/main/docs/187SKILLS.md`, label: "187SKILLS.md", desc: "Operating layer overview" },
+              { href: `${REPO}/blob/main/docs/187-NAMES.md`, label: "187-NAMES.md", desc: "Short-name alias reference" },
+              { href: `${REPO}/blob/main/docs/187-MODULES.md`, label: "187-MODULES.md", desc: "THREAD / TUNE / CORD / CHAR / LAB" },
+              { href: `${REPO}/blob/main/docs/187-KERNEL.md`, label: "187-KERNEL.md", desc: "Behavior cycle and autonomy levels" },
+              { href: `${REPO}/blob/main/docs/SHOWCASE-SYNC.md`, label: "SHOWCASE-SYNC.md", desc: "Public surface sync runbook" },
+            ].map((d) => {
+              const external = d.href.startsWith("http");
+              const cardClass =
+                "flex h-full items-center justify-between rounded-xl border border-white/10 bg-[#0A0C14] p-6 transition hover:bg-white/5";
+              const body = (
+                <>
                   <div>
                     <h3 className="font-semibold text-white">{d.label}</h3>
                     <p className="mt-1 text-sm text-white/50">{d.desc}</p>
                   </div>
                   <span className="text-[#39FF14]">→</span>
-                </Link>
-              </Reveal>
-            ))}
+                </>
+              );
+              return (
+                <Reveal key={d.href}>
+                  {external ? (
+                    <a href={d.href} target="_blank" rel="noreferrer noopener" className={cardClass}>
+                      {body}
+                    </a>
+                  ) : (
+                    <Link href={d.href} className={cardClass}>
+                      {body}
+                    </Link>
+                  )}
+                </Reveal>
+              );
+            })}
           </div>
         </div>
       </section>

@@ -86,3 +86,9 @@ _None._
 
 - **Phase II step 4 complete:** KNOTstore scaffold with SQLite, KNOT point, and hybrid backends, plus `/knotstore` preview page.
 - **Next:** Phase II step 5 — Safety Sentinel pre-flight middleware.
+
+### 2026-07-09 (audit pass)
+
+- **Direct-upgrade patch audited:** patch predates this branch; salvaged `docs/187-RESEARCH-LAB.md`, discarded stale page/component replacements.
+- **Showcase accuracy fix:** replaced hero-graphic filler copy on the 187REPO / 187CRAFT / 187VIBE / 187LAUNCH cards with real skill capabilities; corrected hero alt text; showcase doc links now point at GitHub (previously 404 on Pages).
+- **Repaired truncated files:** restored `PLAN.md`, `README.md`, `AGENTS.md` from HEAD.
