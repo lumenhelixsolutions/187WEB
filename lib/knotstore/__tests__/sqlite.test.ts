@@ -155,4 +155,64 @@ describe("SqliteBackend", () => {
     });
     expect(backend.query({ kind: "entity", tags: ["alpha"] }).map((r) => r.id)).toEqual(["match"]);
   });
+
+  it("queries by source", () => {
+    const now = new Date().toISOString();
+    backend.put({
+      id: "from-blog",
+      kind: "entity",
+      source: "https://example.com/blog",
+      createdAt: now,
+      updatedAt: now,
+    });
+    backend.put({
+      id: "from-docs",
+      kind: "entity",
+      source: "https://example.com/docs",
+      createdAt: now,
+      updatedAt: now,
+    });
+    backend.put({
+      id: "no-source",
+      kind: "entity",
+      createdAt: now,
+      updatedAt: now,
+    });
+    expect(
+      backend
+        .query({ source: "https://example.com/blog" })
+        .map((r) => r.id)
+        .sort(),
+    ).toEqual(["from-blog"]);
+  });
+
+  it("queries by search matching title or content", () => {
+    const now = new Date().toISOString();
+    backend.put({
+      id: "title-match",
+      kind: "entity",
+      title: "Helix pattern overview",
+      createdAt: now,
+      updatedAt: now,
+    });
+    backend.put({
+      id: "content-match",
+      kind: "entity",
+      content: "The helix structure is self-referential.",
+      createdAt: now,
+      updatedAt: now,
+    });
+    backend.put({
+      id: "no-match",
+      kind: "entity",
+      title: "Unrelated",
+      content: "Nothing here.",
+      createdAt: now,
+      updatedAt: now,
+    });
+    const results = backend.query({ search: "helix" }).map((r) => r.id);
+    expect(results).toContain("title-match");
+    expect(results).toContain("content-match");
+    expect(results).not.toContain("no-match");
+  });
 });
