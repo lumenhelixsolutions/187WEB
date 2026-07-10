@@ -81,6 +81,8 @@ The same grammar works in the CLI without the leading slash. See [docs/187-COMMA
 
 ### research-lab
 
+Stack overview, claim taxonomy, and Research Release Packet layout: [`187-RESEARCH-LAB.md`](./187-RESEARCH-LAB.md)
+
 | Command | Alias | Status | Purpose |
 |---|---|---|---|
 | `/187 sci` | `sci` | research | Scientific claim discipline and release gates. |
