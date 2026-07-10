@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { KNOTRecordSchema, KNOTLinkSchema, KNOTStatsSchema } from "../types";
+import { KNOTRecordSchema } from "../types";
 
 describe("KNOTRecordSchema", () => {
   it("accepts a minimal record", () => {
