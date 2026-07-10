@@ -1,6 +1,6 @@
-# Install 187web
+# Install 187WEB
 
-The fastest way to wire the 187web ecosystem into your environment.
+The fastest way to wire the 187WEB ecosystem into your environment.
 
 - **Marketing page:** `/install`
 - **Bash installer:** `install.sh`
@@ -12,7 +12,7 @@ The fastest way to wire the 187web ecosystem into your environment.
 
 ```bash
 git clone https://github.com/lumenhelixsolutions/187WEB.git
-cd 187webDESIGN
+cd 187WEB
 ./install.sh
 ```
 
@@ -27,7 +27,7 @@ install-compiler-hook.sh
 
 ```powershell
 git clone https://github.com/lumenhelixsolutions/187WEB.git
-cd 187webDESIGN
+cd 187WEB
 .\install.ps1
 ```
 
@@ -37,25 +37,108 @@ Then enable the `cd` hook:
 .\install-compiler-hook.ps1
 ```
 
+## Command grammar
+
+After install, the 187WEB command grammar is:
+
+```text
+187 <alias> [target] [mode] [depth]
+```
+
+- **Workflow modes:** `solo` (default), `assist`, `flow`, `release`
+- **Output depths:** `brief` (default), `report`, `deep`
+
+Examples:
+
+```text
+187 craft landing-page assist report
+187 seo audit brief
+187 publish release deep
+```
+
+A named skill or alias runs **solo + brief** by default. Use `assist` only when one helper is useful, `flow` for broader multi-surface work, and `release` for version/docs/publish synchronization.
+
+## Local repo CLI
+
+From the repository root you can also use the standalone `187` CLI without installing to `~/.187web`:
+
+```bash
+./scripts/187.sh help
+./scripts/187.sh seo landing brief
+node scripts/187-complete.mjs --line "/187 se" --cursor 7 --json
+```
+
+On Windows:
+
+```powershell
+.\scripts\187.ps1 help
+.\scripts\187.ps1 seo landing brief
+node scripts\187-complete.mjs --line "/187 se" --cursor 7 --json
+```
+
+Shell completions live in `scripts/completions/` for bash, zsh, fish, and PowerShell.
+
 ## Short-name suite
 
-After install, the following short-name entry points are on your PATH:
+After install, the following short-name entry points are on your PATH. Run `187repo.sh full` (or `.\187repo.ps1 full`) to print every skill back-to-back.
 
-| Command | Skill | Purpose |
+| Alias | Resolves to | Purpose |
 |---|---|---|
-| `187repo.sh` / `187repo.ps1` | `187repo` | Orchestration, manifest compiler, GitHub deploy |
-| `187craft` | `187craft` | Design + frontend (loads `187webdesign` / 187webdev suite) |
-| `187vibe` | `187vibe` | Delight + community + research |
-| `187launch` | `187launch` | Go-to-market intelligence |
-| `187power.sh` / `187power.ps1` | `187repo` | Create repo, push scaffold, enable Pages |
-| `187init.sh` / `187init.ps1` | `187repo` | Generate a local archetype scaffold |
+| `187` / `cmd` | **187COMMAND** | Direct intent to action |
+| `rpt` / `rep` | **187REPORT** | Explain, summarize, status |
+| `scan` / `aud` | **187SCAN** | Inspect, audit, detect |
+| `kit` / `tpl` / `demo` | **187KIT** | Equip templates and scaffolds |
+| `std` / `qual` | **187STANDARD** | Judge against standards |
+| `flow` / `go` | **187FLOW** | Plan, route, sequence |
+| `repo` / `rp` | **187REPO** | Orchestration, manifest compiler, GitHub deploy |
+| `craft` / `ui` | **187CRAFT** | Design + frontend |
+| `vibe` / `vx` | **187VIBE** | Delight + community |
+| `ship` / `launch` | **187LAUNCH** | Go-to-market intelligence |
+| `free` / `fr` | **187FREE** | No-cost stack and free-tier optimization |
+| `res` / `src` | **187RESEARCH** | Source-backed research and evidence synthesis |
+| `seo` / `search` | **187SEO** | Ethical, sustainable search optimization |
+| `rev` / `money` | **187REVENUE** | Ethical revenue and monetization planning |
+| `docs` / `doc` | **187DOCS** | Living documentation architecture |
+| `write` / `wrt` | **187WRITE** | Drafting assistant |
+| `learn` / `edu` | **187LEARN** | Curriculum and knowledge capture |
+| `test` / `quiz` | **187TEST** | Assessment, QA, and eval gates |
+| `ax` / `a11y` | **187ACCESS+** | Accessibility and inclusive design |
+| `inc` / `incl` | **187INCLUDE** | Identity-safe, inclusive language |
+| `ver` / `v` | **187VERSION** | Versioning, tagging, and release metadata |
+| `pub` / `sync` | **187PUBLISH** | Release sync and distribution |
+
+See `docs/187-NAMES.md` and `config/187-aliases.json` for the complete alias map.
+
+## Charlotte modules
+
+Five coordination modules live beside the core suite:
+
+```text
+THREAD  = prompt shaping, intent extraction, rewrite, refactor
+TUNE    = model behavior, output profile, inference settings
+CORD    = coordinated role dispatch, expert persona routing
+CHAR    = Charlotte shared scout, web/source/context helper
+LAB     = local action box, isolated execution/test workspace
+```
+
+Module aliases:
+
+| Alias | Resolves to | Legacy alias |
+|---|---|---|
+| `thread` / `th` | **THREAD** | `widow-weaver` |
+| `tune` / `tu` | **TUNE** | `neuro-toxin` |
+| `cord` / `co` | **CORD** | `swarm-mind` |
+| `char` / `ch` | **CHAR** | `agent-charlotte` |
+| `lab` / `lb` | **LAB** | `silk-sandbox` |
+
+See `docs/187-MODULES.md`.
 
 ## What gets installed
 
 - `~/.187web/prompts/MANIFEST.xml` — the 27-prompt master manifest.
 - `~/.187web/bin/187web-compiler.sh` / `.ps1` — the hardware-aware compiler.
 - `~/.187web/bin/install-compiler-hook.sh` / `.ps1` — the optional shell hook installer.
-- `~/.187web/bin/187repo.sh` / `.ps1` — short-name orchestration menu.
+- `~/.187web/bin/187repo.sh` / `.ps1` — short-name orchestration menu for the full 187SKILLS suite.
 - `~/.187web/bin/187power.sh` / `.ps1` — GitHub surgical-strike deploy script.
 - `~/.187web/bin/187init.sh` / `.ps1` — local scaffold generator.
 - A PATH entry so all of the above are available everywhere.

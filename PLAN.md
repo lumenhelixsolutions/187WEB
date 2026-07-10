@@ -1,8 +1,20 @@
-# 187web Long-Run Session Plan
+# 187WEB Long-Run Session Plan
 
 **Active phase:** Phase II — Agentic Sovereignty
-**Last updated:** 2026-07-06
+**Last updated:** 2026-07-09
 **Roadmap:** `.claude/skills/187web-manifest/references/PHASE-ROADMAP.md`
+
+## Brand lock
+
+```text
+187WEB
+A killer AI-powered web suite: spin sharper sites, ship smarter systems.
+```
+
+- Use **187WEB** as the canonical brand everywhere public.
+- Use `187webdesign` only for repo/package identifiers.
+- Do not use 187SUITE as the main product name.
+- Public surfaces must stay synced per `docs/SHOWCASE-SYNC.md`.
 
 ## Phase I — The Nervous System ✅ COMPLETE
 
@@ -18,8 +30,8 @@
 
 | Step | Status | Template pole | Deliverable |
 |------|--------|---------------|-------------|
-| 4 | next | **Vault** (fintech) | KNOTstore DB — `lib/knotstore/` |
-| 5 | pending | **Vault** (fintech) | Silk-Sandbox pre-flight middleware |
+| 4 | done | **Vault** (fintech) | KNOTstore DB — `lib/knotstore/` |
+| 5 | next | **Vault** (fintech) | Silk-Sandbox pre-flight middleware |
 | 6 | pending | **Vault** (fintech) | Web-Relay authenticated browser tokens |
 
 ## Phase III — Killer UI
@@ -69,3 +81,14 @@ _None._
 
 - Manifest skill shipped: `187web-manifest` with compiler + XML registry.
 - Compiler verified: `power_mode=high`, 27 prompt IDs indexed.
+
+### 2026-07-09
+
+- **Phase II step 4 complete:** KNOTstore scaffold with SQLite, KNOT point, and hybrid backends, plus `/knotstore` preview page.
+- **Next:** Phase II step 5 — Safety Sentinel pre-flight middleware.
+
+### 2026-07-09 (audit pass)
+
+- **Direct-upgrade patch audited:** patch predates this branch; salvaged `docs/187-RESEARCH-LAB.md`, discarded stale page/component replacements.
+- **Showcase accuracy fix:** replaced hero-graphic filler copy on the 187REPO / 187CRAFT / 187VIBE / 187LAUNCH cards with real skill capabilities; corrected hero alt text; showcase doc links now point at GitHub (previously 404 on Pages).
+- **Repaired truncated files:** restored `PLAN.md`, `README.md`, `AGENTS.md` from HEAD.

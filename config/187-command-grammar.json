@@ -1,0 +1,49 @@
+{
+  "slash_grammar": "/187 <alias|command> [target] [mode] [depth]",
+  "cli_grammar": "187 <alias|command> [target] [mode] [depth]",
+  "modes": [
+    {
+      "name": "solo",
+      "description": "One skill handles the whole request. Default behavior.",
+      "default": true
+    },
+    {
+      "name": "assist",
+      "description": "Primary skill owns the work; may ask another skill for a second opinion."
+    },
+    {
+      "name": "flow",
+      "description": "Skills chain in a predefined order; each step hands off cleanly to the next."
+    },
+    {
+      "name": "release",
+      "description": "Full publish gate: 187PUBLISH coordinates 187VERSION, 187DOCS, 187SEO, 187ACCESS+, and 187INCLUDE."
+    }
+  ],
+  "depths": [
+    {
+      "name": "brief",
+      "description": "Quick answer, decision, or pointer. Default depth.",
+      "default": true
+    },
+    {
+      "name": "report",
+      "description": "Structured findings with context, recommendations, and next actions."
+    },
+    {
+      "name": "deep",
+      "description": "Full exploration with alternatives, evidence, and implementation detail."
+    }
+  ],
+  "examples": [
+    "/187 rpt this",
+    "/187 seo landing",
+    "/187 ch competitors",
+    "/187 sci claim table",
+    "/187 crate release packet",
+    "/187 install research-lab",
+    "187 craft hero assist report",
+    "187 seo audit brief",
+    "187 publish release deep"
+  ]
+}

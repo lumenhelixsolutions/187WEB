@@ -16,7 +16,7 @@ import sys
 from pathlib import Path
 from yaml import safe_load
 
-ROOT = Path("D:/projects/187webdesign")
+ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / ".claude/skills"
 OUT_ROOTS = {
     "gemini": ROOT / ".gemini/skills",
