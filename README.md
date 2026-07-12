@@ -1,47 +1,38 @@
 # 187WEB
 
 <p align="center">
-  <a href="https://lumenhelix.com">
-    <img src="docs/assets/lumenhelix-logo.svg" alt="LumenHelix Solutions" width="180">
-  </a>
+  <img src="docs/assets/logo.svg" alt="187WEB logo" width="160">
 </p>
 
-<h3 align="center">Command-driven AI web suite — build, launch, and ship research-grade web surfaces.</h3>
+<h3 align="center">Craft. Launch. Ship.</h3>
+
+<p align="center">A command-driven AI web suite that turns intent into research-grade pages, design systems, and docs.</p>
 
 <p align="center">
-  <a href="https://lumenhelixsolutions.github.io/187WEB/">
-    <img src="https://img.shields.io/badge/Launch_Page-187WEB-00D4FF?style=flat-square&logo=githubpages&logoColor=white" alt="Launch Page">
-  </a>
-  <a href="https://lumenhelix.com">
-    <img src="https://img.shields.io/badge/Built_by-LumenHelix-7C3AED?style=flat-square" alt="Built by LumenHelix">
-  </a>
-  <img src="https://img.shields.io/badge/license-Custom Noncommercial-8A95A8?style=flat-square" alt="License">
+  <a href="https://lumenhelixsolutions.github.io/187WEB/">Launch Page</a>
+  <span> · </span>
+  <a href="https://github.com/lumenhelixsolutions/187WEB">GitHub</a>
+  <span> · </span>
+  <a href="https://lumenhelix.com">LumenHelix</a>
 </p>
 
 ---
 
-**187WEB** is part of the [LumenHelix Solutions](https://lumenhelix.com) portfolio — applied symbolic dynamics & reversible computation for deterministic, traceable AI systems.
+187WEB is a Next.js, React, TypeScript, and Tailwind CSS ecosystem that exposes a short slash-command grammar — /187 craft, /187 seo, /187 launch, /187 research, and more — turning intent into finished public pages, component kits, docs, and research artifacts with built-in standards gates.
 
-187WEB is the LumenHelix command-driven AI webcraft ecosystem. Built on Next.js, React, TypeScript, Tailwind CSS, Prisma, and better-sqlite3, it exposes a short slash-command grammar — /187 craft, /187 seo, /187 launch, /187 research, and more — that turns intent into finished public pages, design systems, docs, and research artifacts.
-
-## Why this exists
+## Why 187WEB
 
 - **Ship faster.** One command generates a landing page, component kit, doc set, or research artifact instead of wiring boilerplate.
-- **Launch with standards.** SEO, accessibility, inclusion, revenue architecture, and publish gates are built into the workflow, not afterthoughts.
-- **Own your stack.** Local-first, deterministic, and open-core — run offline, audit every change, and deploy anywhere that serves static or Node sites.
+- **Launch with standards.** SEO, accessibility, inclusion, revenue architecture, and publish gates are built into the workflow.
+- **Own your stack.** Local-first, deterministic, and open-core — run offline, audit every change, and deploy anywhere.
 
 ## Quick start
-
-Install and run 187WEB in under two minutes.
 
 ### macOS / Linux
 
 ```bash
-# Clone
 git clone https://github.com/lumenhelixsolutions/187WEB.git
 cd 187WEB
-
-# Install & run
 npm install
 npm run db:push
 npm run db:seed
@@ -51,11 +42,8 @@ npm run dev
 ### Windows (PowerShell)
 
 ```powershell
-# Clone
 git clone https://github.com/lumenhelixsolutions/187WEB.git
 Set-Location 187WEB
-
-# Install & run
 npm install
 npm run db:push
 npm run db:seed
@@ -73,12 +61,7 @@ npm run db:seed
 npm run dev
 ```
 
-> **Device note:** 187WEB is tested on Windows 11, macOS Sonoma, Ubuntu 22.04/24.04, and modern mobile browsers.
-
-## Full documentation
-
-Visit the launch page for architecture, API reference, and deployment guides:  
-**https://lumenhelixsolutions.github.io/187WEB/**
+> Tested on Windows 11, macOS Sonoma, Ubuntu 22.04/24.04, and modern mobile browsers.
 
 ## Features
 
@@ -89,16 +72,16 @@ Visit the launch page for architecture, API reference, and deployment guides:
 | Research-grade labs | Ship reproducible experiments, dataset cards, API contracts, benchmarks, and Research Release Packets via /187 research, /187 labs, /187 data, and /187 crate. |
 | KNOTstore memory layer | Pluggable agentic memory with SQLite, KNOT-point, and hybrid backends, plus a Vault-style preview at /knotstore. |
 
-## Architecture at a glance
+## Architecture
 
 ```
 187WEB/
-├── app/              Next.js App Router (pages, /187 explorer, install, knotstore)
-├── components/187/   command palette and reference components
+├── app/                  Next.js App Router (pages, /187 explorer, install, knotstore)
+├── components/187/       command palette and reference components
 ├── components/showcase/  ability cards, tabs, scenario demos
-├── lib/              skill data, knotstore agentic memory layer
-├── docs/             command, skills, install, research, standards
-└── prisma/           SQLite schema, seed, and migrations
+├── lib/                  skill data, knotstore agentic memory layer
+├── docs/                 command, skills, install, research, standards
+└── prisma/               SQLite schema, seed, and migrations
 ```
 
 ## Development
@@ -116,14 +99,6 @@ npm run dev
 - [ ] Add one-command static export and GitHub Pages publish gate
 - [ ] Integrate Obsidian vault sync for KNOTstore agent memory
 
-## Support & consulting
-
-Need deterministic AI systems with full traceability? LumenHelix builds reversible computation kernels, governance layers, and end-to-end AI integrations.
-
-- **Website:** https://lumenhelix.com
-- **Services:** AI diagnostics, B.Y.O. support packages, governance audits
-- **Research:** TEN² kernel, R.U.B.I.C. boundary discipline, C.O.R.E. constraint lens
-
 ## License
 
 Released under a custom noncommercial license with reserved Knotstore IP. See LICENSE for full terms.
@@ -131,5 +106,5 @@ Released under a custom noncommercial license with reserved Knotstore IP. See LI
 ---
 
 <p align="center">
-  <sub>Engineered by <a href="https://lumenhelix.com">LumenHelix Solutions</a> — Applied Symbolic Dynamics & Reversible Computation.</sub>
+  <sub>187WEB is a <a href="https://lumenhelix.com">LumenHelix</a> project — Applied Symbolic Dynamics & Reversible Computation.</sub>
 </p>
