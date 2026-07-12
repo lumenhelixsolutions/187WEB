@@ -19,10 +19,10 @@ requires:
 
 ## Identity
 
-187VIBE is the short-name entry point for the Charlotte personality layer.
-It delegates to **CHAR** ([`agent-charlotte`](../agent-charlotte/SKILL.md)),
+187VIBE is the short-name entry point for the NATASHA personality / delight layer.
+It delegates to **SCOUT** ([`natasha-scout`](../natasha-scout/SKILL.md)),
 **THREAD** ([`widow-weaver`](../widow-weaver/SKILL.md)),
-**TUNE** ([`neuro-toxin`](../neuro-toxin/SKILL.md)),
+**TENSION** ([`neuro-tension`](../neuro-tension/SKILL.md)),
 **CORD** ([`swarm-mind`](../swarm-mind/SKILL.md)), and
 **LAB** ([`silk-sandbox`](../silk-sandbox/SKILL.md)). It adds delight, onboarding,
 retention, community, and safe execution to 187WEB projects.
@@ -90,7 +90,7 @@ constraints (brand voice, performance budget, accessibility).
 
 ## Integration points
 
-- **Claude Code:** load the underlying Charlotte skills directly for deep work.
+- **Claude Code:** load the underlying NATASHA module skills directly for deep work.
 - **Obsidian/Claudian:** outputs saved as linked notes using
   `templates/delight-plan.md` and `templates/onboarding-flow.md`.
 - **CLI:** invoked via `187repo.sh vibe`.
@@ -130,13 +130,13 @@ python scripts/generate-model-adapters.py
    returns a step-by-step onboarding plan and routes consent-sensitive steps to
    `187access-plus` / `187include`.
 3. Prompt: "Tune creativity vs precision for this copy task." → Expected:
-   187VIBE uses TUNE framing to recommend temperature/top-p settings.
+   187VIBE uses TENSION framing to recommend temperature/top-p settings.
 
 ## Composition
 
 1. **Context / tone:** THREAD sharpens copy and extracts intent.
 2. **Persona depth:** CORD brings in the right specialist.
-3. **Inference tuning:** TUNE dials precision vs creativity.
+3. **Inference tuning:** TENSION dials precision vs creativity.
 4. **Safe execution:** LAB runs generated code.
 5. **Research-grade work:** route to `187research`, not `187vibe`.
 

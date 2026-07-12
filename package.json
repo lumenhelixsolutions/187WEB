@@ -29,7 +29,8 @@
     "showcase:sync": "node scripts/check-showcase-sync.mjs",
     "test": "vitest run",
     "test:watch": "vitest",
-    "test:ui": "vitest --ui"
+    "test:ui": "vitest --ui",
+    "reserved-names:check": "node scripts/check-reserved-names.mjs"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"

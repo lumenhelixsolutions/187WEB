@@ -11,7 +11,7 @@
 | Phase | Status | Notes |
 |-------|--------|-------|
 | 0 Recon / DAG | **done** | Branch from `13395e3` (≠ handoff `84917d0`) |
-| 1 Identity foundation | next | Ecosystem rewrite, CHARLOTTE→NATASHA migration, reserved-names |
+| 1 Identity foundation | **done** | Ecosystem v3, stubs, reserved-names, foundation tests green |
 | 2–7 | pending | See master sprint |
 
 ---

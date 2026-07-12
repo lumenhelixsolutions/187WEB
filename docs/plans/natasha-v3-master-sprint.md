@@ -59,7 +59,7 @@ Phase 0 Recon ──► Phase 1 Identity
 | Phase | Milestone | Status | Gate |
 |-------|-----------|--------|------|
 | 0 | Baseline audit + ADRs + this plan | **done** | Artifacts committed |
-| 1 | NATASHA identity, migration, stubs, reserved-names | pending | skills:validate, reserved-names:check, test |
+| 1 | NATASHA identity, migration, stubs, reserved-names | **done** | skills:validate, reserved-names:check, vitest natasha |
 | 2 | Cognitive core skills | pending | skills:validate, test, typecheck |
 | 3 | CORD/SCOUT/LAB + tools/natasha | pending | test, lint, typecheck |
 | 4 | 187QUANTUM | pending | pytest quantum, skills:validate, test |
