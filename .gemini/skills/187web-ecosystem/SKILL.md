@@ -3,11 +3,9 @@ name: 187web-ecosystem
 description: >-
   Use when routing across the full 187SKILLS suite or the NATASHA multi-agent integration stack (THREAD, COMPRESS, TENSION, SPARK, CORD, SCOUT, LAB, FUSE).
 model_adapter: gemini
-system_instruction: >-
-  <!-- 187SKILLS first-class roster (release:validate) --> <!-- 187REPO 187CRAFT 187VIBE 187LAUNCH 187FREE 187RESEARCH 187SEO 187REVENUE 187DOCS 187LEARN 187TEST 187ACCESS+ 187VERSION 187PUBLISH 187NATASHA 187QUANTUM 187CHAIN --> # 187WEB Ecosystem v3.0 — NATASHA Integration
 ---
 
-> **Gemini adapter:** Load as a system instruction. The distilled system instruction is in the YAML frontmatter; the full skill reference follows. Source: [`../../.claude/skills/187web-ecosystem/SKILL.md`](../../.claude/skills/187web-ecosystem/SKILL.md).
+> **Gemini adapter: load as a system instruction.** Canonical source: [`../../.claude/skills/187web-ecosystem/SKILL.md`](../../.claude/skills/187web-ecosystem/SKILL.md).
 
 <!-- 187SKILLS first-class roster (release:validate) -->
 <!-- 187REPO 187CRAFT 187VIBE 187LAUNCH 187FREE 187RESEARCH 187SEO 187REVENUE 187DOCS 187LEARN 187TEST 187ACCESS+ 187VERSION 187PUBLISH 187NATASHA 187QUANTUM 187CHAIN -->
@@ -73,6 +71,17 @@ Wired into an **Obsidian Local Brain** (Claudian). Skills read active pane / fro
 | **FUSE** | Evidence-weighted synthesis | Contract under CORD | — |
 | **187web-manifest** | Prompt compiler / long-run routing | [`187web-manifest`](../187web-manifest/SKILL.md) | — |
 
+### NATASHA workflow support skills
+
+| Skill | Role | Trigger |
+|---|---|---|
+| [`agentic-sprint-handoff`](../agentic-sprint-handoff/SKILL.md) | Compile approved architecture into phased, milestoned, executor-ready multi-agent handoffs | `/187 handoff`, `agentic sprint`, target-agent handoff |
+
+HANDOFF is invoked after CORD establishes roles and ownership, and before
+work is delegated to an external coding agent or extended SCOUT/LAB
+execution. It preserves the eight-module NATASHA core; it is a workflow
+support skill, not a new brand or visual layer.
+
 ### Domain skills (Phase 4–5 land full trees; index reserved)
 
 | Skill | Role |
@@ -121,6 +130,7 @@ Deprecated: `char`, `ch`, `agent-charlotte` → route to **SCOUT** with deprecat
 3. **TENSION** — inference profile  
 4. **SPARK** — only if design options unresolved  
 5. **CORD** — specialist subagents + ownership  
+5.5. **HANDOFF** — compile phased/milestoned executor artifact when delegating  
 6. **SCOUT** — authorized research  
 7. **LAB** — isolated execute / verify  
 8. **FUSE** — evidence-weighted synthesis  
@@ -137,6 +147,8 @@ Not every step is required. THREAD + LAB covers many refactors.
 - Prefer module skill when user names THREAD/TENSION/SCOUT/etc.  
 - Prefer this index when multi-module or “NATASHA” / “full stack”.  
 - Deprecated skills must not be recommended as primary for new work.
+
+- Route phased, milestoned, target-agent execution briefs to `agentic-sprint-handoff`.  
 
 ## Safety / ethics guardrails
 

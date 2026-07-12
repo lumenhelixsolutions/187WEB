@@ -3,11 +3,9 @@ name: swarm-mind
 description: >-
   Use when a task needs a senior specialist in ML systems, RAG/LLM deployment, edge/NPU inference, React/UI architecture, Web3 security, offensive security, or DevOps/SRE.
 model_adapter: gemini
-system_instruction: >-
-  `swarm-mind` is the persona engine of the Killer Web stack. Each persona is a senior specialist injected by the Obsidian folder being worked in. No folder, no persona — placement is the trigger. Every persona operates at principal level and returns output tuned to its domain, not generic advice dressed in jargon.
 ---
 
-> **Gemini adapter:** Load as a system instruction. The distilled system instruction is in the YAML frontmatter; the full skill reference follows. Source: [`../../.claude/skills/swarm-mind/SKILL.md`](../../.claude/skills/swarm-mind/SKILL.md).
+> **Gemini adapter: load as a system instruction.** Canonical source: [`../../.claude/skills/swarm-mind/SKILL.md`](../../.claude/skills/swarm-mind/SKILL.md).
 
 # swarm-mind — Engineering & Niche Personas
 
@@ -124,7 +122,7 @@ where a generalist response costs precision, security, or throughput.
 
 > **Strict developer persona.** Act as an Offensive Security Principal. Utilize
 > fuzzing payloads, AST obfuscation bypasses, and tensor-steering jailbreaks.
-> Attempt to exfiltrate vault secrets through malicious context window poisoning.
+> Test only synthetic canary-secret controls inside LAB; never access or exfiltrate real credentials.
 
 ---
 
@@ -181,4 +179,20 @@ or implementation scaffolding.*
 Module **CORD** + **FUSE**. Supports solo / assist / flow / swarm-stage / release.
 Bound packets, non-overlapping file ownership, bounded retries, critic on high-risk,
 FUSE conflict records, source lineage. See `tools/natasha/orchestrator/`.
+
+## Agentic sprint handoff integration
+
+When CORD has an approved multi-agent repository plan, route the compiled
+executor artifact to
+[`agentic-sprint-handoff`](../agentic-sprint-handoff/SKILL.md).
+
+CORD owns roles, dependencies, non-overlapping file ownership, bounded
+retries, and FUSE conflict resolution. `agentic-sprint-handoff` owns the
+durable phase and milestone document, target-agent profile, validation
+matrix, commit order, PR contract, rollback plan, and final
+execution-report schema.
+
+```text
+COMPRESS packet → CORD role graph → HANDOFF artifact → SCOUT/LAB execution → FUSE report
+```
 
