@@ -1,144 +1,135 @@
-<div align="center">
+# 187WEB
 
-<br>
+<p align="center">
+  <a href="https://lumenhelix.com">
+    <img src="docs/assets/lumenhelix-logo.svg" alt="LumenHelix Solutions" width="180">
+  </a>
+</p>
 
-<img src="public/images/187suite-hero.jpg" alt="187WEB — command-driven web suite" width="92%" />
+<h3 align="center">Command-driven AI web suite — build, launch, and ship research-grade web surfaces.</h3>
 
-<h1>187WEB</h1>
-<p><strong>Type one command. Ship the whole surface.</strong></p>
-<p>A command-driven web suite for building public pages, launching with standards, and shipping research-grade artifacts.</p>
-<p><a href="https://lumenhelixsolutions.github.io/187WEB/">Live Demo</a> · <a href="https://lumenhelixsolutions.github.io/187WEB/187">/187 Reference</a> · <a href="./docs/INSTALL.md">Install</a> · <a href="./docs/187-COMMANDS.md">Command Docs</a></p>
+<p align="center">
+  <a href="https://lumenhelixsolutions.github.io/187WEB/">
+    <img src="https://img.shields.io/badge/Launch_Page-187WEB-00D4FF?style=flat-square&logo=githubpages&logoColor=white" alt="Launch Page">
+  </a>
+  <a href="https://lumenhelix.com">
+    <img src="https://img.shields.io/badge/Built_by-LumenHelix-7C3AED?style=flat-square" alt="Built by LumenHelix">
+  </a>
+  <img src="https://img.shields.io/badge/license-Custom Noncommercial-8A95A8?style=flat-square" alt="License">
+</p>
 
-</div>
+---
 
-## What 187WEB does
+**187WEB** is part of the [LumenHelix Solutions](https://lumenhelix.com) portfolio — applied symbolic dynamics & reversible computation for deterministic, traceable AI systems.
 
-187WEB is a standalone-first AI webcraft ecosystem. It gives agentic systems a short command surface for turning intent into finished work.
+187WEB is the LumenHelix command-driven AI webcraft ecosystem. Built on Next.js, React, TypeScript, Tailwind CSS, Prisma, and better-sqlite3, it exposes a short slash-command grammar — /187 craft, /187 seo, /187 launch, /187 research, and more — that turns intent into finished public pages, design systems, docs, and research artifacts.
 
-In 10 seconds, a visitor can name three things it does:
+## Why this exists
 
-1. **Build public web surfaces** — landing pages, design systems, component kits, docs, and copy, driven by `/187 craft`, `/187 kit`, `/187 docs`, `/187 write`, `/187 repo`.
-2. **Launch with standards wired in** — SEO/access/inclusion audits, revenue architecture, go-to-market plans, and a publish gate via `/187 seo`, `/187 access-plus`, `/187 include`, `/187 revenue`, `/187 launch`, `/187 publish`.
-3. **Ship research-grade labs** — reproducible experiments, dataset cards, public API contracts, provenance, benchmarks, and Research Release Packets via `/187 research`, `/187 labs`, `/187 data`, `/187 crate`.
-
-Live demo: **https://lumenhelixsolutions.github.io/187WEB/**
-
-## Slash command grammar
-
-```text
-/187 <alias|command> [target] [mode] [depth]
-```
-
-CLI equivalent:
-
-```text
-187 <alias|command> [target] [mode] [depth]
-```
-
-Example chains:
-
-```text
-/187 craft design landing-page
-/187 seo audit brief
-/187 launch plan ph
-/187 publish gate
-
-/187 research climate-models deep
-/187 labs protocol
-/187 crate release packet
-
-/187 free mvp hosting
-/187 repo init --web
-/187 kit apply landing
-```
-
-Full reference: [`docs/187-COMMANDS.md`](./docs/187-COMMANDS.md) or open [`/187`](https://lumenhelixsolutions.github.io/187WEB/187) on the live site.
-
-## Ability map
-
-Skills are grouped by the job they do:
-
-| Group | Skills |
-|---|---|
-| **Build** | `187CRAFT` · `187REPO` · `187KIT` · `187DOCS` · `187WRITE` · `187ACCESS+` · `187INCLUDE` |
-| **Research** | `187RESEARCH` · `187FREE` · `187SEO` · `187TEST` |
-| **Launch** | `187LAUNCH` · `187REVENUE` · `187VIBE` · `187LEARN` |
-| **Operate** | `187COMMAND` · `187REPORT` · `187SCAN` · `187STANDARD` · `187FLOW` · `187VERSION` · `187PUBLISH` |
-| **Modules** | `THREAD` · `TUNE` · `CORD` · `CHAR` · `LAB` |
-| **Research Lab** | `187SCI` · `187LABS` · `187DATA` · `187API` · `187BENCH` · `187NB` · `187COLAB` · `187GAP` · `187META` · `187PROV` · `187CRATE` · `RRP` |
-
-Each skill page on the live site lists triggers, use cases, outputs, routing, templates, and related skills.
-
-## Install / onboarding
-
-187WEB does not require installing the entire ecosystem. Preflight supports one skill, one agent, one module, one ability, one research profile, one pack, or the full suite.
-
-```bash
-187 pre
-187 cap
-187 menu
-187 install seo
-187 install research-lab
-187 doctor
-```
-
-See [`docs/INSTALL.md`](./docs/INSTALL.md) for the full install guide.
+- **Ship faster.** One command generates a landing page, component kit, doc set, or research artifact instead of wiring boilerplate.
+- **Launch with standards.** SEO, accessibility, inclusion, revenue architecture, and publish gates are built into the workflow, not afterthoughts.
+- **Own your stack.** Local-first, deterministic, and open-core — run offline, audit every change, and deploy anywhere that serves static or Node sites.
 
 ## Quick start
+
+Install and run 187WEB in under two minutes.
+
+### macOS / Linux
+
+```bash
+# Clone
+git clone https://github.com/lumenhelixsolutions/187WEB.git
+cd 187WEB
+
+# Install & run
+npm install
+npm run db:push
+npm run db:seed
+npm run dev
+```
+
+### Windows (PowerShell)
+
+```powershell
+# Clone
+git clone https://github.com/lumenhelixsolutions/187WEB.git
+Set-Location 187WEB
+
+# Install & run
+npm install
+npm run db:push
+npm run db:seed
+npm run dev
+```
+
+### Windows (Git Bash / WSL)
 
 ```bash
 git clone https://github.com/lumenhelixsolutions/187WEB.git
 cd 187WEB
 npm install
+npm run db:push
+npm run db:seed
 npm run dev
 ```
 
-Then open http://localhost:3000 and try `/187` in the command palette.
+> **Device note:** 187WEB is tested on Windows 11, macOS Sonoma, Ubuntu 22.04/24.04, and modern mobile browsers.
 
-## Project structure
+## Full documentation
 
-```text
+Visit the launch page for architecture, API reference, and deployment guides:  
+**https://lumenhelixsolutions.github.io/187WEB/**
+
+## Features
+
+| Feature | What it gives you |
+|---------|-------------------|
+| Command palette web builder | Use /187 craft, /187 kit, /187 docs, and /187 write to generate pages, design systems, docs, and copy. |
+| Standards-first launch gate | Run /187 seo, /187 access-plus, /187 include, /187 revenue, /187 launch, and /187 publish before going live. |
+| Research-grade labs | Ship reproducible experiments, dataset cards, API contracts, benchmarks, and Research Release Packets via /187 research, /187 labs, /187 data, and /187 crate. |
+| KNOTstore memory layer | Pluggable agentic memory with SQLite, KNOT-point, and hybrid backends, plus a Vault-style preview at /knotstore. |
+
+## Architecture at a glance
+
+```
 187WEB/
-├─ app/                         # Next.js App Router
-│  ├─ page.tsx                  # 187WEB public showcase
-│  ├─ 187/page.tsx              # /187 command + ability explorer
-│  ├─ install/page.tsx          # preflight/install/onboarding surface
-│  ├─ 187<ID>/page.tsx          # individual skill showcase pages
-│  └─ knotstore/page.tsx        # Vault-style KNOTstore preview
-├─ components/187/              # command palette and reference components
-├─ components/showcase/         # ability cards, tabs, scenario demos
-├─ lib/
-│  ├─ skill-showcase-data.ts    # canonical skill data
-│  └─ knotstore/                # pluggable agentic data layer
-├─ docs/                        # command, skills, install, research, standards
-└─ .github/workflows/           # CI and GitHub Pages
+├── app/              Next.js App Router (pages, /187 explorer, install, knotstore)
+├── components/187/   command palette and reference components
+├── components/showcase/  ability cards, tabs, scenario demos
+├── lib/              skill data, knotstore agentic memory layer
+├── docs/             command, skills, install, research, standards
+└── prisma/           SQLite schema, seed, and migrations
 ```
 
-## Verification
+## Development
 
 ```bash
-npm run lint
-npm run typecheck
-npm test
-npm run build
+npm install
+npm run db:push
+npm run db:seed
+npm run dev
 ```
 
-## KNOTstore
+## Roadmap
 
-`lib/knotstore/` is the pluggable agentic memory layer for the 187WEB ecosystem. It supports SQLite, KNOT-point, and hybrid backends, and ships with a Vault-style preview at `/knotstore`.
+- [ ] Expand /187 skill packs for e-commerce and research lab templates
+- [ ] Add one-command static export and GitHub Pages publish gate
+- [ ] Integrate Obsidian vault sync for KNOTstore agent memory
 
-## ◆ Licensing
+## Support & consulting
 
-This repository is available under the terms in [LICENSE](./LICENSE).
+Need deterministic AI systems with full traceability? LumenHelix builds reversible computation kernels, governance layers, and end-to-end AI integrations.
 
-- You may use, remix, adapt, build on, and improve the work for noncommercial purposes.
-- You may **not** use it commercially without prior written permission from **Lumen Helix Solutions**.
-- **Knotstore intellectual property is excluded** from the license grant and remains the sole property of **Lumen Helix Solutions**.
+- **Website:** https://lumenhelix.com
+- **Services:** AI diagnostics, B.Y.O. support packages, governance audits
+- **Research:** TEN² kernel, R.U.B.I.C. boundary discipline, C.O.R.E. constraint lens
 
-For a plain-English explanation, see [LICENSE-INFO.md](./LICENSE-INFO.md). For commercial licensing or permission requests, contact **Lumen Helix Solutions**.
+## License
 
-<div align="center">
+Released under a custom noncommercial license with reserved Knotstore IP. See LICENSE for full terms.
 
-<strong>187WEB</strong> — <a href="LICENSE">Custom Noncommercial License with Reserved Knotstore IP</a> © 2026 Lumen Helix Solutions
+---
 
-</div>
+<p align="center">
+  <sub>Engineered by <a href="https://lumenhelix.com">LumenHelix Solutions</a> — Applied Symbolic Dynamics & Reversible Computation.</sub>
+</p>
