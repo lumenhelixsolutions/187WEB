@@ -91,3 +91,26 @@ After installing, run the doctor to verify health:
 - [187WEB CLI Selector](187-CLI-SELECTOR.md)
 - [187WEB Slash Command Reference](187-COMMANDS.md)
 - [187SKILLS — Operating Layer](187SKILLS.md)
+
+
+### natasha
+
+Full NATASHA core + domain skills:
+
+- THREAD, COMPRESS, TENSION, SPARK, CORD, SCOUT, LAB
+- 187QUANTUM, 187CHAIN
+- Local Brain templates
+
+```text
+/187 install natasha
+```
+
+### qchain-lab
+
+Narrow quantum + Web3 lab pack:
+
+- 187QUANTUM, 187CHAIN, LAB profiles `lab:quantum` / `lab:evm`
+
+```text
+/187 install qchain-lab
+```

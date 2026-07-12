@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "natasha_packet",
+  "type": "object",
+  "required": [
+    "packet_version",
+    "mission"
+  ],
+  "properties": {
+    "packet_version": {
+      "type": "string"
+    },
+    "mission": {
+      "type": "string"
+    },
+    "deliverable": {
+      "type": "string"
+    },
+    "constraints": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "explicit_exclusions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "token_budget": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "provenance": {
+      "type": "object"
+    }
+  }
+}

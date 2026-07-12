@@ -4,7 +4,7 @@ description: >-
   Use when generating a new repository, deploying to GitHub, creating an installer site, or routing the 187SKILLS suite.
 model_adapter: gemini
 system_instruction: >-
-  187REPO is the short-name entry point for the mature 187WEB ecosystem. It delegates to [`187web-ecosystem`](../187web-ecosystem/SKILL.md) (Charlotte v2 orchestration) and [`187web-manifest`](../187web-manifest/SKILL.md) (manifest compiler + 27 prompts). Think of it as the fast alias: it loads the existing skills and adds repo-generation, deployment, and installer conventions.
+  187REPO is the short-name entry point for the mature 187WEB ecosystem. It delegates to [`187web-ecosystem`](../187web-ecosystem/SKILL.md) (NATASHA v3 orchestration) and [`187web-manifest`](../187web-manifest/SKILL.md) (manifest compiler + 27 prompts). Think of it as the fast alias: it loads the existing skills and adds repo-generation, deployment, and installer conventions.
 ---
 
 > **Gemini adapter:** Load as a system instruction. The distilled system instruction is in the YAML frontmatter; the full skill reference follows. Source: [`../../.claude/skills/187repo/SKILL.md`](../../.claude/skills/187repo/SKILL.md).
@@ -14,7 +14,7 @@ system_instruction: >-
 ## Identity
 
 187REPO is the short-name entry point for the mature 187WEB ecosystem.
-It delegates to [`187web-ecosystem`](../187web-ecosystem/SKILL.md) (Charlotte v2
+It delegates to [`187web-ecosystem`](../187web-ecosystem/SKILL.md) (NATASHA v3
 orchestration) and [`187web-manifest`](../187web-manifest/SKILL.md) (manifest
 compiler + 27 prompts). Think of it as the fast alias: it loads the existing
 skills and adds repo-generation, deployment, and installer conventions.
@@ -71,7 +71,7 @@ User provides: the desired archetype or action, repository name, target platform
 |---|---|---|
 | `187repo` | `187web-ecosystem` + `187web-manifest` | Orchestration, compiler, deployment |
 | `187craft` | `187webdesign` + 187webdev-* suite | Design, UX, frontend, QA |
-| `187vibe` | CHAR, THREAD, TUNE, CORD, LAB | Delight, community, tuning, execution |
+| `187vibe` | SCOUT, THREAD, TENSION, CORD, LAB | Delight, community, tuning, execution |
 | `187launch` | `187launch` | Go-to-market intelligence |
 | `187free` | `187free` | No-cost / open-source / local-first stacks |
 | `187research` | `187research` | Source-backed research and reproducible labs |

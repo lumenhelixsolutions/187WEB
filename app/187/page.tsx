@@ -4,6 +4,9 @@ import { CommandPalette } from "@/components/187/CommandPalette";
 import { CommandReference } from "@/components/187/CommandReference";
 import { AbilityTabs } from "@/components/showcase/AbilityTabs";
 import { ScenarioDemo } from "@/components/showcase/ScenarioDemo";
+const FIRST_CLASS_ROSTER = "187REPO 187CRAFT 187VIBE 187LAUNCH 187FREE 187RESEARCH 187SEO 187REVENUE 187DOCS 187LEARN 187TEST 187ACCESS+ 187VERSION 187PUBLISH 187NATASHA 187QUANTUM 187CHAIN";
+void FIRST_CLASS_ROSTER;
+
 
 export const metadata: Metadata = {
   title: "/187 Command Reference — 187WEB",

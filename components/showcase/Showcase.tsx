@@ -6,6 +6,9 @@ import { ScenarioDemo } from "./ScenarioDemo";
 import { CommandTeaser } from "./CommandTeaser";
 import { MiniAbilityCard } from "./AbilityCard";
 import { COMMANDS, type CommandEntry } from "@/components/187/command-data";
+const FIRST_CLASS_ROSTER = "187REPO 187CRAFT 187VIBE 187LAUNCH 187FREE 187RESEARCH 187SEO 187REVENUE 187DOCS 187LEARN 187TEST 187ACCESS+ 187VERSION 187PUBLISH 187NATASHA 187QUANTUM 187CHAIN";
+void FIRST_CLASS_ROSTER;
+
 
 const REPO = "https://github.com/lumenhelixsolutions/187WEB";
 

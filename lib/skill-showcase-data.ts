@@ -30,6 +30,60 @@ export type SkillShowcaseData = {
 
 export const skillShowcases: SkillShowcaseData[] = [
   {
+    id: "natasha",
+    name: "187NATASHA",
+    tagline: "Multi-agent operator stack",
+    color: "#39FF14",
+    description:
+      "NATASHA orchestrates THREAD, COMPRESS, TENSION, SPARK, CORD, SCOUT, LAB, and FUSE with bounded subagents and evidence-weighted synthesis.",
+    triggers: ["/187natasha", "NATASHA", "natasha stack", "multi-agent"],
+    useCases: [
+      "Multi-stage agentic workflows with ownership and retries",
+      "Context compression before specialist dispatch",
+      "Compliant research + isolated verification",
+    ],
+    outputs: [
+      "NATASHA context packet",
+      "Subagent handoffs",
+      "FUSE synthesis record",
+      "Provenance / run lineage",
+    ],
+    routesTo: [
+      { name: "187QUANTUM", when: "circuit or algorithm work" },
+      { name: "187CHAIN", when: "contract or DeFi assurance" },
+    ],
+    templates: [
+      { name: "natasha-context-packet.md", when: "Compressing a mission" },
+      { name: "natasha-subagent-task.md", when: "Dispatching a role" },
+    ],
+    related: ["quantum", "chain", "repo"],
+  },
+  {
+    id: "quantum",
+    name: "187QUANTUM",
+    tagline: "Quantum circuits with claim discipline",
+    color: "#a78bfa",
+    description:
+      "Algorithm selection, circuit specs, optimization metrics, resource estimates, and non-claims for unsupported advantage.",
+    triggers: ["/187 quantum", "187QUANTUM", "qiskit", "circuit optimize"],
+    useCases: ["Design a circuit", "Benchmark depth/2q gates", "Audit a quantum claim"],
+    outputs: ["Circuit metrics", "Equivalence notes", "Resource estimate", "Non-claims"],
+    related: ["natasha", "chain"],
+  },
+  {
+    id: "chain",
+    name: "187CHAIN",
+    tagline: "EVM and DeFi assurance",
+    color: "#f59e0b",
+    description:
+      "Scoped smart-contract review with separate severity and confidence, DeFi risk vectors, and responsible disclosure — no live keys or exploits.",
+    triggers: ["/187 chain", "187CHAIN", "solidity audit", "defi risk"],
+    useCases: ["Scope an audit", "Map DeFi risks", "Retest findings"],
+    outputs: ["Findings", "Severity/confidence", "DeFi vector report", "Disclosure notes"],
+    related: ["natasha", "quantum"],
+  },
+
+  {
     id: "free",
     name: "187FREE",
     tagline: "No-cost stack engine",
