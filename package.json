@@ -1,9 +1,9 @@
 {
   "name": "187webdesign",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "private": false,
   "license": "MIT",
-  "description": "187WEB — a killer AI-powered web suite. A heavily-documented full-stack Next.js starter that ships the 187WEBDEV skill set and demonstrates it with a live, award-caliber showcase site.",
+  "description": "187WEB \u2014 a killer AI-powered web suite. A heavily-documented full-stack Next.js starter that ships the 187WEBDEV skill set and demonstrates it with a live, award-caliber showcase site.",
   "author": "Lumen Helix Solutions",
   "engines": {
     "node": ">=20.0.0"
@@ -29,7 +29,8 @@
     "showcase:sync": "node scripts/check-showcase-sync.mjs",
     "test": "vitest run",
     "test:watch": "vitest",
-    "test:ui": "vitest --ui"
+    "test:ui": "vitest --ui",
+    "reserved-names:check": "node scripts/check-reserved-names.mjs"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"

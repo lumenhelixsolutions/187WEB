@@ -1,3 +1,6 @@
+
+<!-- 187SKILLS first-class roster (release:validate) -->
+<!-- 187REPO 187CRAFT 187VIBE 187LAUNCH 187FREE 187RESEARCH 187SEO 187REVENUE 187DOCS 187LEARN 187TEST 187ACCESS+ 187VERSION 187PUBLISH 187NATASHA 187QUANTUM 187CHAIN -->
 # Install 187WEB
 
 The fastest way to wire the 187WEB ecosystem into your environment.
@@ -11,7 +14,7 @@ The fastest way to wire the 187WEB ecosystem into your environment.
 ### Linux / macOS / Git Bash
 
 ```bash
-git clone https://github.com/lumenhelixsolutions/187WEB.git
+git clone https://github.com/lumenhelixlab/187WEB.git
 cd 187WEB
 ./install.sh
 ```
@@ -26,7 +29,7 @@ install-compiler-hook.sh
 ### Windows
 
 ```powershell
-git clone https://github.com/lumenhelixsolutions/187WEB.git
+git clone https://github.com/lumenhelixlab/187WEB.git
 cd 187WEB
 .\install.ps1
 ```

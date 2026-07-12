@@ -151,6 +151,6 @@ export const siteConfig = {
   tagline: "A killer AI-powered web suite: spin sharper sites, ship smarter systems.",
   description:
     "187WEB is a killer AI-powered web suite for building sharper sites and shipping smarter systems with AI-assisted skills for repos, design, docs, launch, research, SEO, revenue, testing, accessibility, versioning, and publishing.",
-  repo: "https://github.com/lumenhelixsolutions/187WEB",
-  url: "https://lumenhelixsolutions.github.io/187WEB/",
+  repo: "https://github.com/lumenhelixlab/187WEB",
+  url: "https://lumenhelixlab.github.io/187WEB/",
 };

@@ -18,6 +18,9 @@ export const FIRST_CLASS_SKILLS = [
   { id: "access-plus", name: "187ACCESS+", route: "access", docs: "187ACCESS" },
   { id: "version", name: "187VERSION", route: "version", docs: "187VERSION" },
   { id: "publish", name: "187PUBLISH", route: "publish", docs: "187PUBLISH" },
+  { id: "natasha", name: "187NATASHA", route: "natasha", docs: "187NATASHA" },
+  { id: "quantum", name: "187QUANTUM", route: "quantum", docs: "187QUANTUM" },
+  { id: "chain", name: "187CHAIN", route: "chain", docs: "187CHAIN" },
 ];
 
 export const SUBSKILLS = [

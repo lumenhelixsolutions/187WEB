@@ -4,7 +4,7 @@
 **Sprint Type:** Multi-agent / subagent repository evolution sprint  
 **Status:** Plan for approval before execution  
 **Prepared:** 2026-07-09  
-**Target Repo:** `lumenhelixsolutions/187WEB`
+**Target Repo:** `lumenhelixlab/187WEB`
 
 ---
 
@@ -1381,7 +1381,7 @@ docs, adapters, public showcase, accessibility, inclusion, SEO, and version sync
 You are upgrading the 187WEB repository into the full 187SKILLS multi-agent suite.
 
 Target repo:
-lumenhelixsolutions/187WEB
+lumenhelixlab/187WEB
 
 Primary objective:
 Evolve the existing 187WEB ecosystem from the four public skills

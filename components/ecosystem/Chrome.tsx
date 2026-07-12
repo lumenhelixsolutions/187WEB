@@ -7,7 +7,7 @@ import type { ReactNode } from "react";
  * per page; pages differ only in nav items and the primary CTA target.
  */
 
-const REPO_URL = "https://github.com/lumenhelixsolutions/187WEB";
+const REPO_URL = "https://github.com/lumenhelixlab/187WEB";
 
 type NavItem = { href: string; label: string };
 type Cta = { href: string; label: string };

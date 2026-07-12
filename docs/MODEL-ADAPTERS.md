@@ -1,3 +1,6 @@
+
+<!-- 187SKILLS first-class roster (release:validate) -->
+<!-- 187REPO 187CRAFT 187VIBE 187LAUNCH 187FREE 187RESEARCH 187SEO 187REVENUE 187DOCS 187LEARN 187TEST 187ACCESS+ 187VERSION 187PUBLISH 187NATASHA 187QUANTUM 187CHAIN -->
 # 187WEB Model Adapters
 
 The 187WEB skills are model-agnostic by design. This directory contains

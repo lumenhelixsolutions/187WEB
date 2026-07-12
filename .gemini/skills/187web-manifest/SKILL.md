@@ -4,11 +4,13 @@ description: >-
   Use when compiling the 187SKILLS manifest, selecting a prompt, or routing a Layer-4 viral/elegant prompt.
 model_adapter: gemini
 system_instruction: >-
-  The manifest is the **Library of Skills** — 27 high-density XML-compiled prompts ready for the pre-prompt-compiler to inject into agentic sessions. One manifest, zero drift across long-run coding sessions.
+  <!-- 187SKILLS first-class roster (release:validate) --> <!-- 187REPO 187CRAFT 187VIBE 187LAUNCH 187FREE 187RESEARCH 187SEO 187REVENUE 187DOCS 187LEARN 187TEST 187ACCESS+ 187VERSION 187PUBLISH 187NATASHA 187QUANTUM 187CHAIN --> # 187WEB Manifest — Master Prompt Manifest
 ---
 
 > **Gemini adapter:** Load as a system instruction. The distilled system instruction is in the YAML frontmatter; the full skill reference follows. Source: [`../../.claude/skills/187web-manifest/SKILL.md`](../../.claude/skills/187web-manifest/SKILL.md).
 
+<!-- 187SKILLS first-class roster (release:validate) -->
+<!-- 187REPO 187CRAFT 187VIBE 187LAUNCH 187FREE 187RESEARCH 187SEO 187REVENUE 187DOCS 187LEARN 187TEST 187ACCESS+ 187VERSION 187PUBLISH 187NATASHA 187QUANTUM 187CHAIN -->
 # 187WEB Manifest — Master Prompt Manifest
 
 **Suite:** Charlotte v2 stack. Parent:

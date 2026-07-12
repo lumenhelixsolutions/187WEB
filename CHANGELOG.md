@@ -1,3 +1,30 @@
+
+<!-- 187SKILLS first-class roster (release:validate) -->
+<!-- 187REPO 187CRAFT 187VIBE 187LAUNCH 187FREE 187RESEARCH 187SEO 187REVENUE 187DOCS 187LEARN 187TEST 187ACCESS+ 187VERSION 187PUBLISH 187NATASHA 187QUANTUM 187CHAIN -->
+# Changelog
+
+## [0.3.0] - 2026-07-12
+
+### Added
+- **NATASHA v3** multi-agent architecture (THREAD, COMPRESS, TENSION, SPARK, CORD, SCOUT, LAB, FUSE)
+- Skills: `natasha-scout`, `neuro-tension`, `token-web`, `idea-spark`, `187quantum`, `187chain`
+- Runtime skeletons: `tools/natasha/`, `tools/qchain/`
+- Packs: `natasha`, `qchain-lab` install profiles
+- Public routes: `/187natasha`, `/187quantum`, `/187chain`
+- Local Brain NATASHA dashboards and templates
+- Migration: `docs/migrations/CHARLOTTE-TO-NATASHA.md`
+- CI: `reserved-names:check`
+
+### Changed
+- Ecosystem skill **3.0.0** — operator **NATASHA** (Charlotte reserved)
+- `agent-charlotte` / `neuro-toxin` deprecated routers
+- Package version **0.3.0**
+
+### Security
+- SCOUT forbids fingerprint spoofing, auth/paywall bypass
+- CHAIN forbids live keys, live exploits, investment advice
+
+
 # Changelog
 
 All notable changes to the 187WEB / 187SKILLS project are documented in this file.

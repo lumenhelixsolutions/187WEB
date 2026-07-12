@@ -1,8 +1,25 @@
 # 187WEB Long-Run Session Plan
 
-**Active phase:** Phase II — Agentic Sovereignty
-**Last updated:** 2026-07-09
-**Roadmap:** `.claude/skills/187web-manifest/references/PHASE-ROADMAP.md`
+**Active phase:** **NATASHA v3** Phase 0 complete → Phase 1 next (`feat/natasha-v3-qchain`)  
+**Last updated:** 2026-07-12  
+**Roadmap:** `.claude/skills/187web-manifest/references/PHASE-ROADMAP.md`  
+**NATASHA sprint:** `docs/plans/natasha-v3-master-sprint.md`  
+**Baseline audit:** `docs/audits/natasha-v3-baseline-audit.md`
+
+## NATASHA v3 (2026-07-12)
+
+| Phase | Status | Notes |
+|-------|--------|-------|
+| 0 Recon / DAG | **done** | Branch from `13395e3` (≠ handoff `84917d0`) |
+| 1 Identity foundation | **done** | Ecosystem v3, stubs, reserved-names, foundation tests green |
+| 2–7 | **done (sprint) ** | Skills, tools, routes, 0.3.0; build OOM noted |
+
+---
+
+**Legacy plan section (prior session track):**
+
+**Prior active phase:** Phase II — Agentic Sovereignty  
+**Prior updated:** 2026-07-09
 
 ## Brand lock
 

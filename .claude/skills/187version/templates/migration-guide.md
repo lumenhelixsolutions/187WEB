@@ -54,5 +54,5 @@ If the migration causes issues, revert to `{{previous_version}}` and contact the
 
 ## Support
 
-- Open an issue: [https://github.com/lumenhelixsolutions/187WEB/issues](https://github.com/lumenhelixsolutions/187WEB/issues)
+- Open an issue: [https://github.com/lumenhelixlab/187WEB/issues](https://github.com/lumenhelixlab/187WEB/issues)
 - Review the full changelog: `CHANGELOG.md`

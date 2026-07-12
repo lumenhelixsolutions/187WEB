@@ -47,5 +47,5 @@ See [docs/MIGRATION-{{version}}.md](docs/MIGRATION-{{version}}.md).
 ## Comparison link
 
 ```markdown
-[{{version}}]: https://github.com/lumenhelixsolutions/187WEB/compare/v{{previous_version}}...v{{version}}
+[{{version}}]: https://github.com/lumenhelixlab/187WEB/compare/v{{previous_version}}...v{{version}}
 ```

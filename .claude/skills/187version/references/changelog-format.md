@@ -48,7 +48,7 @@ Link each version heading to the GitHub release comparison:
 ```markdown
 ## [1.2.0]
 
-[1.2.0]: https://github.com/lumenhelixsolutions/187WEB/compare/v1.1.0...v1.2.0
+[1.2.0]: https://github.com/lumenhelixlab/187WEB/compare/v1.1.0...v1.2.0
 ```
 
 ## Unreleased section

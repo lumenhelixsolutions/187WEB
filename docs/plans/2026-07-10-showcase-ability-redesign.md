@@ -2,7 +2,7 @@
 
 ## Problem statement
 
-The current landing page (`app/page.tsx` / `components/showcase/Showcase.tsx`) and README list the 187SKILLS names, aliases, and one-line purposes, but they do **not** show what each skill can actually *do* for a user. A visitor to https://lumenhelixsolutions.github.io/187WEB/ sees:
+The current landing page (`app/page.tsx` / `components/showcase/Showcase.tsx`) and README list the 187SKILLS names, aliases, and one-line purposes, but they do **not** show what each skill can actually *do* for a user. A visitor to https://lumenhelixlab.github.io/187WEB/ sees:
 
 - a grid of skill cards with short labels (`187CRAFT` → “Design, UX, frontend”)
 - a command palette that looks up commands
