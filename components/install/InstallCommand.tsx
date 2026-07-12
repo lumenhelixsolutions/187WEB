@@ -10,7 +10,7 @@ const commands: Record<Platform, { label: string; prefix: string; lines: string[
     label: "Linux / macOS",
     prefix: "$",
     lines: [
-      "git clone https://github.com/lumenhelixsolutions/187WEB.git",
+      "git clone https://github.com/LumenHelixLab/187WEB.git",
       "cd 187webDESIGN",
       "./install.sh",
     ],
@@ -19,7 +19,7 @@ const commands: Record<Platform, { label: string; prefix: string; lines: string[
     label: "Windows",
     prefix: ">",
     lines: [
-      "git clone https://github.com/lumenhelixsolutions/187WEB.git",
+      "git clone https://github.com/LumenHelixLab/187WEB.git",
       "cd 187webDESIGN",
       ".\\install.ps1",
     ],

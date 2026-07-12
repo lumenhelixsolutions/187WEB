@@ -27,7 +27,7 @@ export function TemplateBar({
         </Link>
         <span className="truncate font-semibold tracking-tight">{name}</span>
         <a
-          href="https://github.com/lumenhelixsolutions/187WEB"
+          href="https://github.com/LumenHelixLab/187WEB"
           target="_blank"
           rel="noreferrer noopener"
           className="shrink-0 opacity-60 transition-opacity hover:opacity-100"

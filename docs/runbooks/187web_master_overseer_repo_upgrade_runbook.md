@@ -1,7 +1,7 @@
 # 187WEB / 187SKILLS Master Repo Upgrade Runbook
 
 **File purpose:** one-sprint, multi-overseer-agent / specialized-subagent master upgrade instruction  
-**Target repo:** `lumenhelixsolutions/187WEB`  
+**Target repo:** `LumenHelixLab/187WEB`  
 **Run mode:** plan-first, approval-gated, report-driven  
 **Default branch:** `claude/187skills-master-overseer-upgrade`  
 **Primary trigger:** `187`, `187 this`, `187 audit this`, `187 make this better`
@@ -1226,7 +1226,7 @@ CLI routes, model adapters, and validation to prevent documentation/showcase dri
 You are the 187OVERSEER for the 187WEB repository.
 
 Target repo:
-lumenhelixsolutions/187WEB
+LumenHelixLab/187WEB
 
 Objective:
 Run the master overseer upgrade sprint that evolves 187WEB into the 187SKILLS multi-agent suite with report-first command behavior, scanning, templates, prefab demos, standards, goal workflows, expanded domain skills, versioning, accessibility/inclusion, and publishing gates.
