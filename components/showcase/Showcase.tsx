@@ -10,7 +10,7 @@ const FIRST_CLASS_ROSTER = "187REPO 187CRAFT 187VIBE 187LAUNCH 187FREE 187RESEAR
 void FIRST_CLASS_ROSTER;
 
 
-const REPO = "https://github.com/lumenhelixsolutions/187WEB";
+const REPO = "https://github.com/lumenhelixlab/187WEB";
 
 function uniqueByStatus(status: CommandEntry["status"]) {
   const seen = new Set<string>();

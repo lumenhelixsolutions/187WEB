@@ -12,9 +12,9 @@
 <p align="center">A command-driven AI web suite that turns intent into research-grade pages, design systems, and docs.</p>
 
 <p align="center">
-  <a href="https://lumenhelixsolutions.github.io/187WEB/">Launch Page</a>
+  <a href="https://lumenhelixlab.github.io/187WEB/">Launch Page</a>
   <span> · </span>
-  <a href="https://github.com/lumenhelixsolutions/187WEB">GitHub</a>
+  <a href="https://github.com/lumenhelixlab/187WEB">GitHub</a>
   <span> · </span>
   <a href="https://lumenhelix.com">LumenHelix</a>
 </p>
@@ -34,7 +34,7 @@
 ### macOS / Linux
 
 ```bash
-git clone https://github.com/lumenhelixsolutions/187WEB.git
+git clone https://github.com/lumenhelixlab/187WEB.git
 cd 187WEB
 npm install
 npm run db:push
@@ -45,7 +45,7 @@ npm run dev
 ### Windows (PowerShell)
 
 ```powershell
-git clone https://github.com/lumenhelixsolutions/187WEB.git
+git clone https://github.com/lumenhelixlab/187WEB.git
 Set-Location 187WEB
 npm install
 npm run db:push
@@ -56,7 +56,7 @@ npm run dev
 ### Windows (Git Bash / WSL)
 
 ```bash
-git clone https://github.com/lumenhelixsolutions/187WEB.git
+git clone https://github.com/lumenhelixlab/187WEB.git
 cd 187WEB
 npm install
 npm run db:push

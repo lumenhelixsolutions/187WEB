@@ -12,7 +12,7 @@
 
 | Field | Value |
 |-------|--------|
-| Remote | `https://github.com/lumenhelixsolutions/187WEB.git` |
+| Remote | `https://github.com/lumenhelixlab/187WEB.git` |
 | Branch (audit start) | `main` → checked out `feat/natasha-v3-qchain` |
 | **Observed baseline (handoff)** | `84917d05bfd29ee9c5995c695c09f9ad64c6dccf` |
 | **Current HEAD** | `13395e3716280e630cc2dc49430c3e08f652aca6` |
