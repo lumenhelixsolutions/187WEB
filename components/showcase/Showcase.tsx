@@ -7,7 +7,7 @@ import { CommandTeaser } from "./CommandTeaser";
 import { MiniAbilityCard } from "./AbilityCard";
 import { COMMANDS, type CommandEntry } from "@/components/187/command-data";
 
-const REPO = "https://github.com/lumenhelixsolutions/187WEB";
+const REPO = "https://github.com/LumenHelixLab/187WEB";
 
 function uniqueByStatus(status: CommandEntry["status"]) {
   const seen = new Set<string>();

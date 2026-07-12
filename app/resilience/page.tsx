@@ -76,7 +76,7 @@ export default function ResiliencePage() {
           Full write-up:{" "}
           <a
             className="underline hover:text-white"
-            href="https://github.com/lumenhelixsolutions/187WEB/blob/main/.claude/skills/187webdesign/references/RESILIENCE.md"
+            href="https://github.com/LumenHelixLab/187WEB/blob/main/.claude/skills/187webdesign/references/RESILIENCE.md"
           >
             RESILIENCE.md
           </a>

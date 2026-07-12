@@ -91,7 +91,7 @@ export default function DemoPage() {
             </p>
             <div className="mt-10 flex flex-wrap justify-center gap-3">
               <a
-                href="https://lumenhelixsolutions.github.io/187WEB/"
+                href="https://LumenHelixLab.github.io/187WEB/"
                 target="_blank"
                 rel="noreferrer noopener"
                 className="inline-flex h-12 items-center justify-center rounded bg-[#39FF14] px-6 text-sm font-semibold text-[#05060A] transition hover:brightness-110"
@@ -202,12 +202,12 @@ export default function DemoPage() {
               The public demo is deployed from the main branch and stays in sync with the showcase.
             </p>
             <a
-              href="https://lumenhelixsolutions.github.io/187WEB/"
+              href="https://LumenHelixLab.github.io/187WEB/"
               target="_blank"
               rel="noreferrer noopener"
               className="mt-8 inline-flex h-14 items-center justify-center rounded bg-[#39FF14] px-8 text-base font-semibold text-[#05060A] transition hover:brightness-110"
             >
-              Open lumenhelixsolutions.github.io/187WEB
+              Open LumenHelixLab.github.io/187WEB
             </a>
           </Reveal>
         </div>
