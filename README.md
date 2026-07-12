@@ -1,13 +1,14 @@
-
-<!-- 187SKILLS first-class roster (release:validate) -->
-<!-- 187REPO 187CRAFT 187VIBE 187LAUNCH 187FREE 187RESEARCH 187SEO 187REVENUE 187DOCS 187LEARN 187TEST 187ACCESS+ 187VERSION 187PUBLISH 187NATASHA 187QUANTUM 187CHAIN -->
 # 187WEB
 
 <p align="center">
-  <img src="docs/assets/logo.svg" alt="187WEB logo" width="160">
+  <img src="docs/assets/header.png" alt="187WEB header" width="100%">
 </p>
 
-<h3 align="center">Craft. Launch. Ship.</h3>
+<p align="center">
+  <img src="docs/assets/logo.svg" alt="187WEB logo" width="120">
+</p>
+
+<h3 align="center">A killer AI-powered web suite.</h3>
 
 <p align="center">A command-driven AI web suite that turns intent into research-grade pages, design systems, and docs.</p>
 

@@ -1,10 +1,20 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" role="img" aria-label="187WEB logo">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="187WEB logo">
   <defs>
-    <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#4F46E5"/>
-      <stop offset="100%" stop-color="#06B6D4"/>
-    </linearGradient>
+    <radialGradient id="orbGrad" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0%" stop-color="#39FF14" stop-opacity="0.8"/>
+      <stop offset="70%" stop-color="#0B1021" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#0B1021"/>
+    </radialGradient>
+    <pattern id="hex" x="0" y="0" width="12" height="12" patternUnits="userSpaceOnUse">
+      <path d="M6 0 L12 3 V9 L6 12 L0 9 V3 Z" fill="none" stroke="#39FF14" stroke-width="0.5" opacity="0.3"/>
+    </pattern>
   </defs>
-  <rect width="48" height="48" rx="12" fill="url(#logoGrad)"/>
-  <text x="24" y="33" font-family="Space Grotesk, Inter, sans-serif" font-size="22" font-weight="700" fill="#FFFFFF" text-anchor="middle">1</text>
+  <rect width="128" height="128" rx="28" fill="#0B1021"/>
+  <circle cx="64" cy="64" r="50" fill="url(#orbGrad)"/>
+  <circle cx="64" cy="64" r="48" fill="url(#hex)" opacity="0.6"/>
+  <path d="M28 52 L42 52 L42 76 L28 76 Z" fill="#C0C0C0"/>
+  <path d="M48 44 H62 V84 H48 Z" fill="#C0C0C0"/>
+  <path d="M68 52 L82 44 L82 84 L68 76 Z" fill="#C0C0C0"/>
+  <path d="M62 44 L68 44 L65 38 Z" fill="#FF2A2A"/>
+  <circle cx="64" cy="64" r="52" fill="none" stroke="#39FF14" stroke-width="2" opacity="0.4"/>
 </svg>
