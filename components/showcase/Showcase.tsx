@@ -147,8 +147,8 @@ export function Showcase() {
       <section className="relative px-6 py-20 sm:py-28">
         <div className="container-x">
           <Reveal className="mx-auto mb-12 max-w-3xl text-center">
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#39FF14]">Charlotte module array</p>
-            <h2 className="mt-4 text-[clamp(2rem,1.2rem+3vw,3.5rem)] font-bold tracking-tight text-white">THREAD · TUNE · CORD · CHAR · LAB</h2>
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#39FF14]">NATASHA module array</p>
+            <h2 className="mt-4 text-[clamp(2rem,1.2rem+3vw,3.5rem)] font-bold tracking-tight text-white">THREAD · COMPRESS · TENSION · SPARK · CORD · SCOUT · LAB · FUSE</h2>
             <p className="mt-4 text-white/60">Cross-cutting modules that sharpen prompts, tune output profiles, dispatch experts, run local actions, and assist research.</p>
           </Reveal>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">

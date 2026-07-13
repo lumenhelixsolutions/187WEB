@@ -7,6 +7,12 @@
 const isStaticExport = process.env.NEXT_PUBLIC_STATIC_EXPORT === "true";
 const basePath = "/187WEB";
 
+// Expose basePath to client + server so brand (and other) public asset URLs
+// include /187WEB on GitHub Pages. Without this, /images/* 404s at the org root.
+if (isStaticExport && !process.env.NEXT_PUBLIC_BASE_PATH) {
+  process.env.NEXT_PUBLIC_BASE_PATH = basePath;
+}
+
 const nextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
@@ -22,6 +28,9 @@ const nextConfig = {
         assetPrefix: `${basePath}/`,
         images: { unoptimized: true },
         trailingSlash: true,
+        env: {
+          NEXT_PUBLIC_BASE_PATH: basePath,
+        },
       }
     : {
         // Self-contained server bundle for the Docker deploy path.

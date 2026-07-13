@@ -23,6 +23,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       NEXT_PUBLIC_STATIC_EXPORT: "true"
+      NEXT_PUBLIC_BASE_PATH: "/187WEB"
       NEXT_PUBLIC_SITE_URL: "https://lumenhelixlab.github.io/187WEB"
     steps:
       - uses: actions/checkout@v4
