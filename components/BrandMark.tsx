@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { brandAssets } from "@/lib/brand-assets";
 
 type Size = "xs" | "sm" | "md" | "lg" | "xl";
@@ -10,6 +9,40 @@ const ORB_PX: Record<Size, number> = {
   lg: 96,
   xl: 160,
 };
+
+/**
+ * Use plain <img> with basePath-prefixed src.
+ * next/image unoptimized static export was dropping basePath in the HTML.
+ */
+function BrandImg({
+  src,
+  alt,
+  width,
+  height,
+  className = "",
+  priority = false,
+}: {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+  className?: string;
+  priority?: boolean;
+}) {
+  return (
+    // eslint-disable-next-line @next/next/no-img-element -- basePath-safe static export
+    <img
+      src={src}
+      alt={alt}
+      width={width}
+      height={height}
+      className={className}
+      decoding="async"
+      loading={priority ? "eager" : "lazy"}
+      fetchPriority={priority ? "high" : "auto"}
+    />
+  );
+}
 
 /**
  * Primary 187WEB orb (spider / hourglass brand mark).
@@ -28,7 +61,7 @@ export function BrandOrb({
 }) {
   const px = ORB_PX[size];
   return (
-    <Image
+    <BrandImg
       src={brandAssets.orb}
       alt={alt}
       width={px}
@@ -50,7 +83,7 @@ export function LumenHelixBulb({
   alt?: string;
 }) {
   return (
-    <Image
+    <BrandImg
       src={brandAssets.bulb}
       alt={alt}
       width={size}
@@ -68,10 +101,9 @@ export function LabWordmark({
   height?: number;
   className?: string;
 }) {
-  // Source art is wide; width scales from a ~6.5:1 aspect.
   const width = Math.round(height * 6.5);
   return (
-    <Image
+    <BrandImg
       src={brandAssets.labWordmark}
       alt="LumenHelix Lab"
       width={width}
@@ -90,7 +122,7 @@ export function HeaderLockup({
   priority?: boolean;
 }) {
   return (
-    <Image
+    <BrandImg
       src={brandAssets.headerLockup}
       alt="187WEB — A killer AI-powered web suite. Spin sharper sites, ship smarter systems."
       width={1600}
@@ -110,7 +142,7 @@ export function NatashaBlueprint({
   priority?: boolean;
 }) {
   return (
-    <Image
+    <BrandImg
       src={brandAssets.blueprint}
       alt="187WEB NATASHA technical blueprint — coordinate grid map of the mascot geometry"
       width={1600}

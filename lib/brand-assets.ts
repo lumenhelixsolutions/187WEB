@@ -1,19 +1,27 @@
 /**
  * Canonical brand media paths (files live under public/images/).
- * Prefer these constants over hard-coded strings so headers, README, and
- * skill pages stay aligned with the approved LumenHelixLab / 187WEB kit.
+ *
+ * GitHub Pages serves the site under /187WEB (basePath). next/image unoptimized
+ * export was emitting bare /images/... URLs (404 on Pages). Always prefix with
+ * the public base path when set.
  */
+function withBase(path: string): string {
+  const base = (process.env.NEXT_PUBLIC_BASE_PATH ?? "").replace(/\/$/, "");
+  const p = path.startsWith("/") ? path : `/${path}`;
+  return `${base}${p}`;
+}
+
 export const brandAssets = {
   /** 187WEB spider orb — primary product mark */
-  orb: "/images/187web_primary_brand_mark_iconic_mascot_logo.png",
+  orb: withBase("/images/187web_primary_brand_mark_iconic_mascot_logo.png"),
   /** Metallic 187WEB wordmark + taglines — hero / README header */
-  headerLockup: "/images/187web_header_text_lockup.png",
+  headerLockup: withBase("/images/187web_header_text_lockup.png"),
   /** NATASHA technical blueprint — mascot geometry / vibe board */
-  blueprint: "/images/187web_technical_blueprint_coordinate_grid.png",
+  blueprint: withBase("/images/187web_technical_blueprint_coordinate_grid.png"),
   /** LumenHelix DNA lightbulb — org mark */
-  bulb: "/images/lumenhelix-logo-bulb.png",
+  bulb: withBase("/images/lumenhelix-logo-bulb.png"),
   /** LUMENhelix /lab wordmark */
-  labWordmark: "/images/lumenhelixlab-text-logo.png",
+  labWordmark: withBase("/images/lumenhelixlab-text-logo.png"),
 } as const;
 
 export type BrandAssetKey = keyof typeof brandAssets;
