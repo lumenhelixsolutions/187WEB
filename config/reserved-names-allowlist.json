@@ -1,0 +1,74 @@
+{
+  "$schema_comment": "Paths relative to repo root. Exact file match or prefix ending with / for directories.",
+  "description": "Charlotte / CHAR / agent-charlotte allowed only on these paths during NATASHA migration window.",
+  "allowed_path_prefixes": [
+    "docs/migrations/",
+    "docs/decisions/",
+    "docs/audits/",
+    "docs/plans/",
+    "config/reserved-names-allowlist.json",
+    "scripts/check-reserved-names.mjs",
+    "scripts/_natasha_v3_scaffold.py",
+    "scripts/_natasha_v3_finish.py",
+    "docs/reports/",
+    "tests/natasha/",
+    "CHANGELOG.md",
+    ".claude/skills/agent-charlotte/",
+    ".claude/skills/neuro-toxin/",
+    ".claude/skills/natasha-scout/",
+    ".claude/skills/neuro-tension/",
+    ".claude/skills/187web-ecosystem/",
+    ".github/workflows/",
+    "components/187ai-eye/",
+    "docs/superpowers/"
+  ],
+  "allowed_path_globs_note": "Also allow docs that still document legacy CHAR until Phase 6 full rewrite — listed below as transitional.",
+  "transitional_paths": [
+    "docs/187-CHAR.md",
+    "docs/187-MODULES.md",
+    "docs/187-COMMANDS.md",
+    "docs/187-NAMES.md",
+    "docs/187-ABILITIES.md",
+    "docs/187-KERNEL.md",
+    "docs/187SKILLS.md",
+    "docs/INSTALL.md",
+    "docs/ROUTING.md",
+    "docs/MODEL-ADAPTERS.md",
+    "docs/SHOWCASE-SYNC.md",
+    "docs/187-CHAR.md",
+    "config/187-aliases.json",
+    "config/187-command-reference.json",
+    "components/187/command-data.ts",
+    "components/showcase/Showcase.tsx",
+    "AGENTS.md",
+    "public/omniqube.html",
+    "PLAN.md",
+    ".claude/skills/widow-weaver/",
+    ".claude/skills/swarm-mind/",
+    ".claude/skills/silk-sandbox/",
+    ".claude/skills/187web-manifest/",
+    ".claude/skills/187webdesign/",
+    ".claude/skills/187repo-eval/",
+    ".claude/skills/persona-simulation-testing/",
+    ".claude/skills/state-machine-generator/",
+    "docs/187suite-vault/",
+    "docs/187-AUTOCOMPLETE.md"
+  ],
+  "forbidden_patterns": [
+    {
+      "id": "charlotte_operator",
+      "regex": "\\bCharlotte\\b",
+      "message": "Charlotte as 187WEB operator/mascot label — use NATASHA (see migration doc)"
+    },
+    {
+      "id": "agent_charlotte_id",
+      "regex": "\\bagent-charlotte\\b",
+      "message": "Use natasha-scout; agent-charlotte is deprecated"
+    },
+    {
+      "id": "char_module",
+      "regex": "\\bCHAR\\b",
+      "message": "Module CHAR renamed to SCOUT"
+    }
+  ]
+}

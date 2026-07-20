@@ -1,21 +1,19 @@
 name: Deploy showcase to GitHub Pages
 
 # Builds the showcase as a fully static site and publishes it to GitHub Pages.
-# The full-stack app (Prisma + API routes) is excluded from this build — Pages
-# can't run a server — so the deployed site is the visual showcase only.
+# The full-stack app (Prisma + API routes + server actions) is excluded from this
+# build — Pages can't run a server — so the deployed site is the visual showcase only.
 
 on:
   push:
     branches: [main]
   workflow_dispatch:
 
-# Allow this workflow to publish to Pages.
 permissions:
   contents: read
   pages: write
   id-token: write
 
-# One deploy at a time; let an in-progress run finish.
 concurrency:
   group: pages
   cancel-in-progress: false
@@ -25,7 +23,8 @@ jobs:
     runs-on: ubuntu-latest
     env:
       NEXT_PUBLIC_STATIC_EXPORT: "true"
-      NEXT_PUBLIC_SITE_URL: "https://lumenhelixsolutions.github.io/187WEB"
+      NEXT_PUBLIC_BASE_PATH: "/187WEB"
+      NEXT_PUBLIC_SITE_URL: "https://lumenhelixlab.github.io/187WEB"
     steps:
       - uses: actions/checkout@v4
 
@@ -37,8 +36,14 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Remove server-only API routes (incompatible with static export)
-        run: rm -rf app/api
+      - name: Remove server-only modules (incompatible with static export)
+        run: |
+          rm -rf app/api
+          # Fail the build if any Server Action modules remain (static export cannot use them).
+          if grep -R --include='*.ts' --include='*.tsx' -n '"use server"' app 2>/dev/null; then
+            echo "::error::Server Actions found under app/ — remove or gate them for static export"
+            exit 1
+          fi
 
       - name: Build static export
         run: npx next build

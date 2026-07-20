@@ -1,12 +1,12 @@
 {
   "name": "187webdesign",
-  "version": "0.1.0",
+  "version": "0.3.0",
   "private": false,
   "license": "MIT",
-  "description": "A heavily-documented full-stack Next.js starter that ships the 187WEBdesign skill and demonstrates it with a live, award-caliber showcase site.",
+  "description": "187WEB \u2014 a killer AI-powered web suite. A heavily-documented full-stack Next.js starter that ships the 187WEBDEV skill set and demonstrates it with a live, award-caliber showcase site.",
   "author": "Lumen Helix Solutions",
   "engines": {
-    "node": ">=18.18.0"
+    "node": ">=20.0.0"
   },
   "scripts": {
     "dev": "next dev",
@@ -20,22 +20,35 @@
     "db:migrate": "prisma migrate dev",
     "db:studio": "prisma studio",
     "db:seed": "tsx prisma/seed.ts",
-    "manifest:index": "python scripts/generate-manifest-index.py"
+    "manifest:index": "python scripts/generate-manifest-index.py",
+    "skills:validate": "python scripts/validate-skills.py",
+    "release:validate": "node scripts/validate-suite-release.mjs",
+    "docs:drift": "node scripts/check-docs-drift.mjs",
+    "adapters:generate": "python scripts/generate-model-adapters.py",
+    "adapters:drift": "node scripts/check-adapter-drift.mjs",
+    "showcase:sync": "node scripts/check-showcase-sync.mjs",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:ui": "vitest --ui",
+    "reserved-names:check": "node scripts/check-reserved-names.mjs"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"
   },
   "dependencies": {
     "@prisma/client": "^6.2.1",
+    "better-sqlite3": "^12.11.1",
     "next": "15.3.9",
     "react": "19.0.0",
     "react-dom": "19.0.0",
     "zod": "^3.24.1"
   },
   "devDependencies": {
+    "@types/better-sqlite3": "^7.6.13",
     "@types/node": "^22.10.5",
     "@types/react": "^19.0.4",
     "@types/react-dom": "^19.0.2",
+    "@vitest/ui": "^4.1.10",
     "autoprefixer": "^10.4.20",
     "eslint": "^8.57.1",
     "eslint-config-next": "15.3.9",
@@ -45,6 +58,7 @@
     "prisma": "^6.2.1",
     "tailwindcss": "^3.4.17",
     "tsx": "^4.19.2",
-    "typescript": "^5.7.3"
+    "typescript": "^5.7.3",
+    "vitest": "^4.1.10"
   }
 }

@@ -1,16 +1,16 @@
 import type { Metadata } from "next";
-import { Showcase } from "@/components/showcase/Showcase";
+import { LaunchPage } from "@/components/launch/LaunchPage";
 
 export const metadata: Metadata = {
-  title: "187SUITE — Killer Web Design Solutions",
+  title: "187WEB — Type one command. Ship the whole surface.",
   description:
-    "187REPO orchestrates, 187CRAFT designs, 187VIBE delights, and 187LAUNCH ships. The short-name command surface for the 187web ecosystem.",
+    "187WEB is a command-driven web suite for building public pages, launching with standards, and shipping research-grade artifacts with AI-assisted skills.",
   openGraph: {
-    title: "187SUITE — Killer Web Design Solutions",
-    description: "187REPO orchestrates, 187CRAFT designs, 187VIBE delights, and 187LAUNCH ships.",
+    title: "187WEB — Type one command. Ship the whole surface.",
+    description: "Build public pages, launch with standards, and ship research-grade artifacts using the 187 command surface.",
   },
 };
 
 export default function HomePage() {
-  return <Showcase />;
+  return <LaunchPage />;
 }

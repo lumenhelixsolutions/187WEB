@@ -2,7 +2,7 @@ name: CI
 
 on:
   push:
-    branches: [main, "claude/**"]
+    branches: [main, "claude/**", "feat/**"]
   pull_request:
     branches: [main]
 
@@ -35,3 +35,24 @@ jobs:
         run: npm run build
         env:
           NEXT_TELEMETRY_DISABLED: "1"
+
+      - name: Validate skills
+        run: npm run skills:validate
+
+      - name: Reserved names check
+        run: npm run reserved-names:check
+
+      - name: Unit tests
+        run: npm test
+
+      - name: Check adapter drift
+        run: npm run adapters:drift
+
+      - name: Check docs drift
+        run: npm run docs:drift
+
+      - name: Check showcase sync
+        run: npm run showcase:sync
+
+      - name: Validate release surfaces
+        run: npm run release:validate

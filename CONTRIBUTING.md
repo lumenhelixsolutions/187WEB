@@ -2,16 +2,16 @@
 
 <br>
 
-<img src="public/images/187suite-hero.jpg" alt="187SUITE" width="72%" />
+<img src="public/images/187suite-hero.jpg" alt="187WEB — A killer AI-powered web suite" width="72%" />
 
-<h1>Contributing to 187SUITE</h1>
+<h1>Contributing to 187WEB</h1>
 <p><strong>Every element earns its place or it gets cut.</strong></p>
 
 <br>
 
 </div>
 
-Thanks for helping make killer websites. This project is small on purpose — keep changes focused, well-crafted, and aligned with the four layers of the suite: **187REPO**, **187CRAFT**, **187VIBE**, and **187LAUNCH**.
+Thanks for helping make killer websites. This project is small on purpose — keep changes focused, well-crafted, and aligned with the 187WEB suite: **187COMMAND**, **187REPORT**, **187SCAN**, **187KIT**, **187STANDARD**, **187FLOW**, **187REPO**, **187CRAFT**, **187VIBE**, **187LAUNCH**, and the rest of the 187SKILLS roster.
 
 <br>
 
@@ -41,7 +41,7 @@ npm run format
 
 ## ◆ The one house rule
 
-**If your change touches the UI, run the [pre-ship checklist](./.claude/skills/187webdesign/references/CHECKLIST.md) and note what you verified in the PR.** This repo's whole premise is that it's built to its own standard. At minimum confirm:
+**If your change touches the UI, run the [pre-ship checklist](./.claude/skills/187webdesign/references/CHECKLIST.md) and note what you verified in the PR.** This repo's whole premise is that it's not enough to be functional — it has to be polished.
 
 - Responsive at 360 / 768 / 1280.
 - Keyboard operable with a visible focus state.
@@ -61,6 +61,17 @@ npm run format
 
 <br>
 
+## ◆ Licensing note
+
+By contributing, you agree that your contributions may be distributed under the repository license in [LICENSE](./LICENSE).
+
+- Commercial use requires prior written permission from **Lumen Helix Solutions**.
+- **Knotstore intellectual property is excluded** from the repository license and remains reserved.
+
+See [LICENSE-INFO.md](./LICENSE-INFO.md) for a plain-English explanation.
+
+<br>
+
 ## ◆ Commits & PRs
 
 - Write clear, imperative commit messages ("Add lead rate-limiting", not "fixes").
@@ -77,6 +88,6 @@ Open a GitHub issue with steps to reproduce, expected vs actual, and environment
 
 <div align="center">
 
-<strong>187SUITE</strong> — <a href="LICENSE">MIT</a> © 2026 Lumen Helix Solutions
+<strong>187WEB</strong> — <a href="LICENSE">Custom Noncommercial License with Reserved Knotstore IP</a> © 2026 Lumen Helix Solutions
 
 </div>

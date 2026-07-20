@@ -7,7 +7,7 @@ The app is a standard Next.js 15 application with a Prisma/Postgres backend. Two
 | Variable               | Required | Notes |
 |------------------------|----------|-------|
 | `DATABASE_URL`         | For persistence | Postgres connection string. Unset ⇒ preview mode (no writes). |
-| `NEXT_PUBLIC_SITE_URL` | Recommended | Canonical site URL for absolute OG/metadata links, e.g. `https://187webdesign.com`. |
+| `NEXT_PUBLIC_SITE_URL` | Recommended | Canonical site URL for absolute OG/metadata links, e.g. `https://lumenhelixlab.github.io/187WEB/`. |
 
 ## Option A — Vercel
 

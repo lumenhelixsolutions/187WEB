@@ -15,7 +15,7 @@ system_instruction: >-
 
 **Suite:** The 187web Ecosystem v2. Parent index:
 [`187web-ecosystem`](../187web-ecosystem/SKILL.md) · Siblings:
-[neuro-toxin](../neuro-toxin/SKILL.md) · [swarm-mind](../swarm-mind/SKILL.md) · [agent-charlotte](../agent-charlotte/SKILL.md) · [silk-sandbox](../silk-sandbox/SKILL.md)
+[neuro-tension](../neuro-tension/SKILL.md) · [swarm-mind](../swarm-mind/SKILL.md) · [natasha-scout](../natasha-scout/SKILL.md) · [silk-sandbox](../silk-sandbox/SKILL.md)
 
 `widow-weaver` is the central prompt engine of the Killer Web stack. It turns
 raw input — PDFs, transcripts, drafts, notes, code, logic puzzles, legacy
@@ -25,6 +25,28 @@ overhead. Every transformation is bounded by a strict directive.
 Load this skill first when the task starts with text, documents, or code that
 must be understood, condensed, translated, polished, decomposed, explained,
 solved, or refactored before any other layer of the stack acts.
+
+
+## NATASHA THREAD (v3)
+
+Module **THREAD**. Parent: [`187web-ecosystem`](../187web-ecosystem/SKILL.md).
+
+v3 aliases: `TLDR_Distill` (= TLDR_Toxin), `Polyglot_Thread`, `Tone_Polish`,
+`Task_Extractor`, `Code_Explainer`, `Logic_Solver`, `Refactor_Venom`.
+
+### Verification Record
+
+For Logic_Solver / high-risk reasoning emit:
+
+1. Assumptions
+2. Derivation summary (not private scratchpad)
+3. Invariants
+4. Edge cases
+5. Tests
+6. Uncertainty
+
+Do not require hidden chain-of-thought dumps.
+
 
 ## When to use this
 
@@ -50,7 +72,7 @@ threads into 3–5 high-density bullets.
 
 **When to use it.** Before any planning or execution step where the source
 material is too large to hold in context. Use it to feed research to
-[agent-charlotte](../agent-charlotte/SKILL.md) or to [swarm-mind](../swarm-mind/SKILL.md) specialist personas.
+[natasha-scout](../natasha-scout/SKILL.md) or to [swarm-mind](../swarm-mind/SKILL.md) specialist personas.
 
 > **Strict developer directive.** Isolate high-weight semantic nodes. Discard
 > attention sinks and redundant context. Output must be strictly bounded to key

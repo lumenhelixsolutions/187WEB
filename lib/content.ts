@@ -147,10 +147,10 @@ export const checklistCategories: ChecklistCategory[] = [
 export const checklistTotal = checklistCategories.reduce((sum, c) => sum + c.count, 0);
 
 export const siteConfig = {
-  name: "187WEBdesign",
-  tagline: "Make killer websites.",
+  name: "187WEB",
+  tagline: "A killer AI-powered web suite: spin sharper sites, ship smarter systems.",
   description:
-    "A full-stack Next.js starter that ships the 187WEBdesign skill and proves it — an opinionated playbook for websites that win awards and convert.",
-  repo: "https://github.com/lumenhelixsolutions/187WEB",
-  url: "https://github.com/lumenhelixsolutions/187WEB",
+    "187WEB is a killer AI-powered web suite for building sharper sites and shipping smarter systems with AI-assisted skills for repos, design, docs, launch, research, SEO, revenue, testing, accessibility, versioning, and publishing.",
+  repo: "https://github.com/lumenhelixlab/187WEB",
+  url: "https://lumenhelixlab.github.io/187WEB/",
 };

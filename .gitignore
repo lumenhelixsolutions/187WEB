@@ -35,3 +35,20 @@ yarn-error.log*
 .vscode/*
 !.vscode/extensions.json
 .idea
+
+# knotstore preview db
+.knotstore-preview*
+
+__pycache__/
+*.pyc
+*.tmp
+
+
+# Agentic sprint handoff apply backups / local extract
+*.bak-agentic-handoff
+.handoff/
+
+
+# Local patch dumps
+*.patch.txt
+

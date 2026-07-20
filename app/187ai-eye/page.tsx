@@ -5,9 +5,9 @@ import { EyeShell } from "@/components/187ai-eye/EyeShell";
 import { ManifestPromptSchema } from "@/lib/187ai-eye/types";
 
 export const metadata: Metadata = {
-  title: "187aiEYE — Local Brain Command",
+  title: "187aiEYE — 187WEB Local Brain Command",
   description:
-    "Standalone 187web command surface for Obsidian-driven multi-agent orchestration and hyper-skilled manifest sub-agents.",
+    "Standalone 187WEB command surface for multi-agent orchestration and the full 187SKILLS suite of hyper-skilled manifest sub-agents.",
 };
 
 function loadManifestIndex() {

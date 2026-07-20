@@ -212,7 +212,7 @@ export function Hero() {
           style={{ animationDelay: "0.75s" }}
         >
           <MagneticButton href="#gallery">Explore the demo ↓</MagneticButton>
-          <MagneticButton href="https://github.com/lumenhelixsolutions/187WEB" variant="ghost">
+          <MagneticButton href="https://github.com/lumenhelixlab/187WEB" variant="ghost">
             Get the skill ↗
           </MagneticButton>
         </div>

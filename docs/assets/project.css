@@ -1,0 +1,57 @@
+/* 187WEB — product-specific theme */
+
+:root {
+  --bg-deep: #0B1021;
+  --bg-surface: #111827;
+  --text-primary: #FFFFFF;
+  --text-secondary: #E5E7EB;
+  --accent: #4F46E5;
+  --secondary: #06B6D4;
+  --accent-glow: #4F46E559;
+  --accent-soft: #4F46E51A;
+}
+
+.hero {
+  position: relative;
+  background:
+    radial-gradient(ellipse at 70% 50%, var(--accent-glow) 0%, transparent 55%),
+    linear-gradient(180deg, var(--bg-deep) 0%, var(--bg-surface) 100%);
+  overflow: hidden;
+}
+
+.hero-visual {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 5vw;
+  pointer-events: none;
+}
+
+.hero-visual img {
+  width: min(55vw, 520px);
+  height: auto;
+  opacity: 0.45;
+}
+
+@media (max-width: 768px) {
+  .hero-visual {
+    justify-content: center;
+    padding-right: 0;
+    opacity: 0.25;
+  }
+  .hero-visual img { width: 85vw; }
+}
+
+.tagline::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 10px var(--accent-glow);
+}
+
+.stat-value { color: var(--accent); }
+.btn-primary:hover { box-shadow: 0 0 22px var(--accent-glow); }

@@ -1,6 +1,9 @@
-# 187web Model Adapters
 
-The 187web Ecosystem skills are model-agnostic by design. This directory contains
+<!-- 187SKILLS first-class roster (release:validate) -->
+<!-- 187REPO 187CRAFT 187VIBE 187LAUNCH 187FREE 187RESEARCH 187SEO 187REVENUE 187DOCS 187LEARN 187TEST 187ACCESS+ 187VERSION 187PUBLISH 187NATASHA 187QUANTUM 187CHAIN -->
+# 187WEB Model Adapters
+
+The 187WEB skills are model-agnostic by design. This directory contains
 per-model adapters so the same skill library loads cleanly into Gemini, Kimi,
 ChatGPT, Ollama, and Hermes-based local agents.
 
@@ -19,6 +22,14 @@ ChatGPT, Ollama, and Hermes-based local agents.
 .herme/agents/<name>/system.md          # Hermes ChatML system message
 .herme/agents/<name>/SKILL.md           # Hermes usage reference
 ```
+
+## Covered skills
+
+Adapters are generated for the full public 187SKILLS suite:
+**187COMMAND 187REPORT 187SCAN 187KIT 187STANDARD 187FLOW 187REPO 187CRAFT 187VIBE 187LAUNCH 187FREE 187RESEARCH 187SEO 187REVENUE 187DOCS 187WRITE 187LEARN 187TEST 187ACCESS+ 187INCLUDE 187VERSION 187PUBLISH**.
+
+Charlotte module adapters are generated for **THREAD TUNE CORD CHAR LAB**.
+Canonical alias and brand config live in `config/187-aliases.json` and `config/187-brand.json`.
 
 ## Adapter conventions
 

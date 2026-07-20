@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400" preserveAspectRatio="xMidYMid slice" role="img" aria-hidden="true">
+  <rect width="1200" height="400" fill="#0B1021"/>
+  <defs>
+    <radialGradient id="webGlow" cx="0.7" cy="0.5" r="0.6">
+      <stop offset="0%" stop-color="#39FF14" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#39FF14" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="hexGrid" x="0" y="0" width="30" height="26" patternUnits="userSpaceOnUse">
+      <path d="M15 0 L30 7.5 V22.5 L15 30 L0 22.5 V7.5 Z" fill="none" stroke="#39FF14" stroke-width="0.5" opacity="0.15"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="400" fill="url(#hexGrid)"/>
+  <circle cx="850" cy="200" r="220" fill="url(#webGlow)"/>
+  <g transform="translate(740, 100) scale(0.9)">
+    <circle cx="100" cy="100" r="90" fill="none" stroke="#39FF14" stroke-width="3" opacity="0.5"/>
+    <circle cx="100" cy="100" r="70" fill="#0B1021" stroke="#39FF14" stroke-width="2"/>
+    <path d="M50 80 H80 V120 H50 Z" fill="#C0C0C0"/>
+    <path d="M90 65 H115 V135 H90 Z" fill="#C0C0C0"/>
+    <path d="M125 80 H150 V120 H125 Z" fill="#C0C0C0"/>
+    <path d="M112 65 H118 L115 55 Z" fill="#FF2A2A"/>
+    <path d="M40 40 L160 40 M40 160 L160 160 M40 40 L40 160 M160 40 L160 160" stroke="#39FF14" stroke-width="1" opacity="0.3"/>
+  </g>
+  <text x="80" y="170" font-family="Space Grotesk, Inter, sans-serif" font-size="72" font-weight="700" fill="#F8FAFC">187WEB</text>
+  <text x="84" y="230" font-family="Inter, sans-serif" font-size="28" fill="#94A3B8">A killer AI-powered web suite.</text>
+</svg>

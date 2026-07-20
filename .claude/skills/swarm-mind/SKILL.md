@@ -9,7 +9,7 @@ origin: portfolio
 
 **Suite:** The 187web Ecosystem v2. Parent index:
 [`187web-ecosystem`](../187web-ecosystem/SKILL.md) · Siblings:
-[widow-weaver](../widow-weaver/SKILL.md) · [neuro-toxin](../neuro-toxin/SKILL.md) · [agent-charlotte](../agent-charlotte/SKILL.md) · [silk-sandbox](../silk-sandbox/SKILL.md)
+[widow-weaver](../widow-weaver/SKILL.md) · [neuro-tension](../neuro-toxin/SKILL.md) · [natasha-scout](../agent-charlotte/SKILL.md) · [silk-sandbox](../silk-sandbox/SKILL.md)
 
 `swarm-mind` is the persona engine of the Killer Web stack. Each persona is a
 senior specialist injected by the Obsidian folder being worked in. No folder,
@@ -120,7 +120,7 @@ where a generalist response costs precision, security, or throughput.
 
 > **Strict developer persona.** Act as an Offensive Security Principal. Utilize
 > fuzzing payloads, AST obfuscation bypasses, and tensor-steering jailbreaks.
-> Attempt to exfiltrate vault secrets through malicious context window poisoning.
+> Test only synthetic canary-secret controls inside LAB; never access or exfiltrate real credentials.
 
 ---
 
@@ -170,3 +170,26 @@ work into separate notes and route them independently.
 
 *This skill defines persona-injection behavior only. It contains no runtime code
 or implementation scaffolding.*
+
+
+## NATASHA CORD (v3)
+
+Module **CORD** + **FUSE**. Supports solo / assist / flow / swarm-stage / release.
+Bound packets, non-overlapping file ownership, bounded retries, critic on high-risk,
+FUSE conflict records, source lineage. See `tools/natasha/orchestrator/`.
+
+## Agentic sprint handoff integration
+
+When CORD has an approved multi-agent repository plan, route the compiled
+executor artifact to
+[`agentic-sprint-handoff`](../agentic-sprint-handoff/SKILL.md).
+
+CORD owns roles, dependencies, non-overlapping file ownership, bounded
+retries, and FUSE conflict resolution. `agentic-sprint-handoff` owns the
+durable phase and milestone document, target-agent profile, validation
+matrix, commit order, PR contract, rollback plan, and final
+execution-report schema.
+
+```text
+COMPRESS packet → CORD role graph → HANDOFF artifact → SCOUT/LAB execution → FUSE report
+```

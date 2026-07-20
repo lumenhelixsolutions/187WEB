@@ -11,9 +11,9 @@ model_adapter: hermes
 
 **Suite:** The 187web Ecosystem v2. Parent index:
 [`187web-ecosystem`](../187web-ecosystem/SKILL.md) · Siblings:
-[widow-weaver](../widow-weaver/SKILL.md) · [neuro-toxin](../neuro-toxin/SKILL.md) · [swarm-mind](../swarm-mind/SKILL.md) · [agent-charlotte](../agent-charlotte/SKILL.md)
+[widow-weaver](../widow-weaver/SKILL.md) · [neuro-tension](../neuro-toxin/SKILL.md) · [swarm-mind](../swarm-mind/SKILL.md) · [natasha-scout](../agent-charlotte/SKILL.md)
 
-`silk-sandbox` is the Charlotte stack's execution layer. It takes code spun by
+`silk-sandbox` is the NATASHA stack's execution layer. It takes code spun by
 [`swarm-mind`](../swarm-mind/SKILL.md) — or any fenced block in Obsidian — and
 runs it inside a hardened, disposable sandbox. Every byte is wrapped in silk:
 isolated from the host, watched at the syscall layer, and piped back live.
@@ -116,4 +116,13 @@ sandbox images minimal, and rotate audit logs.
 *This skill defines execution policy and isolation rules. No runtime code or
 backend configuration lives here; implementation belongs to the Claudian host
 service and its Firecracker / gVisor drivers.*
+
+
+## NATASHA LAB (v3)
+
+Profiles: `lab:text` · `lab:python` · `lab:node` · `lab:repo` · `lab:web` ·
+`lab:quantum` · `lab:evm`.
+
+Network policy default deny-egress except declared allowlist. Emit run records
+(input hash, tools, exit code, artifacts). No live production exploits.
 
