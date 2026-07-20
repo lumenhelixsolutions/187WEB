@@ -22,6 +22,8 @@ export const brandAssets = {
   bulb: withBase("/images/lumenhelix-logo-bulb.png"),
   /** LUMENhelix /lab wordmark */
   labWordmark: withBase("/images/lumenhelixlab-text-logo.png"),
+  /** Full-reference mascot image — spider-bot with 187 orb and pillars */
+  mascotReference: withBase("/images/187web_mascot_reference.jpg"),
 } as const;
 
 export type BrandAssetKey = keyof typeof brandAssets;
