@@ -1,8 +1,8 @@
 import Link from "next/link";
-import { BrandOrb, NatashaBlueprint } from "@/components/BrandMark";
+import { NatashaBlueprint } from "@/components/BrandMark";
 import { CopyButton } from "@/components/CopyButton";
-import { EcosystemFooter, EcosystemHeader } from "@/components/ecosystem/Chrome";
 import { Reveal } from "@/components/Reveal";
+import { ProductShell } from "@/components/launch/ProductShell";
 import { skillShowcaseIndex, type SkillShowcaseData } from "@/lib/skill-showcase-data";
 
 function relatedHref(id: string): string | null {
@@ -25,74 +25,66 @@ function relatedLabel(id: string): string {
   return map[id] ?? id;
 }
 
-export function SkillShowcase({ skill }: { skill: SkillShowcaseData }) {
-  const nav = [
-    { href: "#triggers", label: "Triggers" },
-    { href: "#use-cases", label: "Use cases" },
-    { href: "#outputs", label: "Outputs" },
-    ...(skill.templates ? [{ href: "#templates", label: "Templates" }] : []),
-    { href: "#related", label: "Related" },
-  ];
-
+function SkillHero({ skill }: { skill: SkillShowcaseData }) {
   return (
-    <div className="relative min-h-screen bg-[#05060A] font-sans text-[#d6deeb]">
-      <div
-        className="pointer-events-none absolute inset-0 opacity-10"
-        style={{
-          backgroundImage:
-            "linear-gradient(rgba(57,255,20,0.15) 1px, transparent 1px), linear-gradient(90deg, rgba(57,255,20,0.15) 1px, transparent 1px)",
-          backgroundSize: "40px 40px",
-          maskImage: "radial-gradient(120% 100% at 50% 0%, #000 40%, transparent 85%)",
-          WebkitMaskImage: "radial-gradient(120% 100% at 50% 0%, #000 40%, transparent 85%)",
-        }}
-        aria-hidden="true"
-      />
-
-      <EcosystemHeader navLabel={skill.name} nav={nav} cta={{ href: "/install", label: "Install" }} />
-
-      <section className="relative overflow-hidden border-b border-white/10 px-6 pb-16 pt-12 sm:pb-24 sm:pt-20">
-        <div className="container-x relative">
-          <div className="mx-auto max-w-4xl text-center">
-            {skill.id === "natasha" ? (
-              <div className="mx-auto mb-10 max-w-3xl overflow-hidden rounded-2xl border border-[#39FF14]/25 bg-black/40 p-2 shadow-[0_0_60px_rgba(57,255,20,0.12)]">
-                <NatashaBlueprint priority className="rounded-xl" />
-              </div>
-            ) : (
-              <div className="mb-8 flex justify-center">
-                <BrandOrb size="lg" alt="" className="h-20 w-20 drop-shadow-[0_0_28px_rgba(57,255,20,0.3)]" />
-              </div>
-            )}
-            <p
-              className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em]"
-              style={{ color: skill.color }}
-            >
-              <span className="h-px w-6" style={{ backgroundColor: skill.color }} aria-hidden="true" />
-              {skill.name} skill
-            </p>
-            <h1 className="mt-6 text-[clamp(2.5rem,1.5rem+5vw,5rem)] font-bold leading-[0.98] tracking-tight text-white">
-              {skill.name} —{" "}
-              <span style={{ color: skill.color }}>{skill.tagline}.</span>
-            </h1>
-            <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-white/60">
-              {skill.description}
-            </p>
-            <div className="mt-10 flex flex-wrap justify-center gap-3">
-              <Link
-                href="/install"
-                className="inline-flex h-12 items-center justify-center rounded bg-[#39FF14] px-6 text-sm font-semibold text-[#05060A] transition hover:brightness-110"
-              >
-                Install the CLI
-              </Link>
-              <Link
-                href="/187repo"
-                className="inline-flex h-12 items-center justify-center rounded border border-white/10 bg-white/5 px-6 text-sm font-semibold text-white transition hover:bg-white/10"
-              >
-                Browse all skills
-              </Link>
+    <section className="relative overflow-hidden border-b border-white/10 px-6 pb-16 pt-12 sm:pb-24 sm:pt-20">
+      <div className="container-x relative">
+        <div className="mx-auto max-w-4xl text-center">
+          <div
+            className="mx-auto mb-10 max-w-3xl overflow-hidden rounded-2xl border p-2 shadow-[0_0_60px_rgba(57,255,20,0.12)]"
+            style={{ borderColor: `${skill.color}40`, boxShadow: `0 0 60px ${skill.color}20` }}
+          >
+            <div className="relative overflow-hidden rounded-xl bg-black/40">
+              <NatashaBlueprint priority className="rounded-xl opacity-90 grayscale-[0.2]" />
+              <div
+                className="absolute inset-0 opacity-60"
+                style={{ backgroundColor: skill.color, mixBlendMode: "color" }}
+              />
+              <div
+                className="absolute inset-0 opacity-20"
+                style={{ backgroundColor: skill.color, mixBlendMode: "overlay" }}
+              />
             </div>
           </div>
+
+          <p
+            className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em]"
+            style={{ color: skill.color }}
+          >
+            <span className="h-px w-6" style={{ backgroundColor: skill.color }} aria-hidden="true" />
+            {skill.name} skill
+          </p>
+          <h1 className="mt-6 text-[clamp(2.5rem,1.5rem+5vw,5rem)] font-bold leading-[0.98] tracking-tight text-white">
+            {skill.name} —{" "}
+            <span style={{ color: skill.color }}>{skill.tagline}.</span>
+          </h1>
+          <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-white/60">
+            {skill.description}
+          </p>
+          <div className="mt-10 flex flex-wrap justify-center gap-3">
+            <Link
+              href="/showcase"
+              className="inline-flex h-12 items-center justify-center rounded border border-white/10 bg-white/5 px-6 text-sm font-semibold text-white transition hover:bg-white/10"
+            >
+              ← Back to all skills
+            </Link>
+            <Link
+              href="/187"
+              className="inline-flex h-12 items-center justify-center rounded border border-white/10 bg-white/5 px-6 text-sm font-semibold text-white transition hover:bg-white/10"
+            >
+              /187 reference
+            </Link>
+          </div>
         </div>
-      </section>
+      </div>
+    </section>
+  );
+}
+
+export function SkillShowcase({ skill }: { skill: SkillShowcaseData }) {
+  return (
+    <ProductShell>
+      <SkillHero skill={skill} />
 
       <section id="triggers" className="px-6 py-20 sm:py-28">
         <div className="container-x">
@@ -183,7 +175,7 @@ export function SkillShowcase({ skill }: { skill: SkillShowcaseData }) {
                 <Reveal key={output} delay={i * 60}>
                   <li className="flex items-start gap-4 rounded-xl border border-white/10 bg-[#0A0C14] p-5">
                     <span
-                      className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full text-xs font-bold text-[#05060A]"
+                      className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full text-xs font-bold text-[#050608]"
                       style={{ backgroundColor: skill.color }}
                     >
                       {i + 1}
@@ -302,36 +294,6 @@ export function SkillShowcase({ skill }: { skill: SkillShowcaseData }) {
           </div>
         </div>
       </section>
-
-      <section className="px-6 py-20 sm:py-28">
-        <div className="container-x">
-          <Reveal className="mx-auto max-w-3xl rounded-2xl border border-[#39FF14]/20 bg-[#39FF14]/5 p-8 text-center sm:p-12">
-            <h2 className="text-[clamp(1.5rem,1rem+2vw,2.25rem)] font-semibold tracking-tight text-white">
-              Wire {skill.name} into your workflow
-            </h2>
-            <p className="mx-auto mt-4 max-w-lg text-white/70">
-              Install the CLI, run <code className="rounded bg-white/5 px-1.5 py-0.5">187repo.sh {skill.id}</code>,
-              and get the full skill prompt on demand.
-            </p>
-            <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <Link
-                href="/install"
-                className="inline-flex h-14 items-center justify-center rounded bg-[#39FF14] px-8 text-base font-semibold text-[#05060A] transition hover:brightness-110"
-              >
-                Go to installer
-              </Link>
-              <Link
-                href="/187repo"
-                className="inline-flex h-14 items-center justify-center rounded border border-white/10 bg-white/5 px-8 text-base font-semibold text-white transition hover:bg-white/10"
-              >
-                View all /commands
-              </Link>
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
-      <EcosystemFooter secondary={{ href: "/187repo", label: "187REPO commands" }} />
-    </div>
+    </ProductShell>
   );
 }
