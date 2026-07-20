@@ -26,6 +26,8 @@ export const brandAssets = {
   labWordmark: withBase("/images/lumenhelixlab-text-logo.png"),
   /** Full-reference mascot image — spider-bot with 187 orb and pillars */
   mascotReference: withBase("/images/187web_mascot_reference.jpg"),
+  /** Transparent extracted spider — white lines on alpha, for agent cards and pages */
+  spiderExtracted: withBase("/images/187web_spider_extracted.png"),
 } as const;
 
 export type BrandAssetKey = keyof typeof brandAssets;
