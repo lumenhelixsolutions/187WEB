@@ -3,12 +3,27 @@
 import { useMemo, useState } from "react";
 import { COMMANDS, COMMAND_GRAMMAR, findCommandSuggestions } from "./command-data";
 
-export function CommandPalette() {
-  const [value, setValue] = useState("/187 s");
+export function CommandPalette({
+  className = "",
+  value: controlledValue,
+  defaultValue = "/187 s",
+  onChange,
+}: {
+  className?: string;
+  value?: string;
+  defaultValue?: string;
+  onChange?: (value: string) => void;
+}) {
+  const [internalValue, setInternalValue] = useState(defaultValue);
+  const value = controlledValue ?? internalValue;
+  const setValue = (next: string) => {
+    setInternalValue(next);
+    onChange?.(next);
+  };
   const suggestions = useMemo(() => findCommandSuggestions(value), [value]);
 
   return (
-    <section className="rounded-3xl border border-white/10 bg-white/[0.04] p-5 shadow-2xl shadow-black/20 sm:p-7">
+    <section className={`rounded-3xl border border-white/10 bg-white/[0.04] p-5 shadow-2xl shadow-black/20 sm:p-7 ${className}`}>
       <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
         <div>
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#39FF14]">/187 command palette</p>

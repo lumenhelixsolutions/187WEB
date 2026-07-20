@@ -1,28 +1,17 @@
 import type { Metadata } from "next";
-import { Showcase } from "@/components/showcase/Showcase";
-const FIRST_CLASS_ROSTER = "187REPO 187CRAFT 187VIBE 187LAUNCH 187FREE 187RESEARCH 187SEO 187REVENUE 187DOCS 187LEARN 187TEST 187ACCESS+ 187VERSION 187PUBLISH 187NATASHA 187QUANTUM 187CHAIN";
-void FIRST_CLASS_ROSTER;
-
+import { LaunchPage } from "@/components/launch/LaunchPage";
 
 export const metadata: Metadata = {
-  title: "187WEB — Type one command. Ship the whole surface.",
+  title: "187WEB — A killer AI-powered web suite",
   description:
-    "187WEB is a command-driven web suite for building public pages, launching with standards, and shipping research-grade artifacts with AI-assisted skills.",
+    "187WEB is a command-driven AI web suite. Use /187 craft, /187 seo, /187 launch, /187 research, and more to generate landing pages, design systems, docs, and research artifacts.",
   openGraph: {
-    title: "187WEB — Type one command. Ship the whole surface.",
-    description: "Build public pages, launch with standards, and ship research-grade artifacts using the 187 command surface.",
+    title: "187WEB — A killer AI-powered web suite",
+    description:
+      "Command-driven AI webcraft. One /187 surface for pages, design systems, docs, research labs, and publish gates.",
   },
 };
 
 export default function HomePage() {
-  return (
-    <>
-      {/*
-        187WEB ability surface: 187REPO 187CRAFT 187VIBE 187LAUNCH 187FREE
-        187RESEARCH 187SEO 187REVENUE 187DOCS 187LEARN 187TEST 187ACCESS+
-        187VERSION 187PUBLISH 187WRITE 187INCLUDE
-      */}
-      <Showcase />
-    </>
-  );
+  return <LaunchPage />;
 }

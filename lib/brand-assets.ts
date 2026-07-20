@@ -16,6 +16,8 @@ export const brandAssets = {
   orb: withBase("/images/187web_primary_brand_mark_iconic_mascot_logo.png"),
   /** Metallic 187WEB wordmark + taglines — hero / README header */
   headerLockup: withBase("/images/187web_header_text_lockup.png"),
+  /** Full 187WEB header infographic with first-class skill modules */
+  headerInfographic: withBase("/images/187web_header_infographic.jpg"),
   /** NATASHA technical blueprint — mascot geometry / vibe board */
   blueprint: withBase("/images/187web_technical_blueprint_coordinate_grid.png"),
   /** LumenHelix DNA lightbulb — org mark */
