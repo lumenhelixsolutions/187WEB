@@ -6,6 +6,8 @@ import { brandAssets } from "@/lib/brand-assets";
 import { skillShowcases, type SkillShowcaseData } from "@/lib/skill-showcase-data";
 import { CommandPalette } from "@/components/187/CommandPalette";
 import { Reveal } from "@/components/Reveal";
+import { ProductShell } from "./ProductShell";
+import { AgentDepartments } from "./AgentDepartments";
 import { natashaModules, quickStats, installSnippets } from "./launch-data";
 
 const REPO = "https://github.com/LumenHelixLab/187WEB";
@@ -17,59 +19,6 @@ const RESEARCH_LAB_COMMANDS = [
   "/187 bench",
   "/187 prov",
 ];
-
-function Header() {
-  return (
-    <header className="fixed inset-x-0 top-0 z-50">
-      <nav className="mx-4 mt-4 flex max-w-6xl items-center justify-between rounded-full border border-white/10 bg-[#050608]/80 px-5 py-2.5 backdrop-blur-xl sm:mx-auto">
-        <Link href="/" className="flex items-center gap-2.5 font-bold tracking-tight text-white">
-          <img
-            src={brandAssets.orb}
-            alt="187WEB"
-            className="h-8 w-8 rounded-full object-cover drop-shadow-[0_0_12px_rgba(57,255,20,0.5)]"
-          />
-          <span className="hidden sm:inline">187WEB</span>
-        </Link>
-        <div className="hidden items-center gap-6 text-sm text-white/60 md:flex">
-          <a href="#skills" className="transition hover:text-[#39FF14]">Skills</a>
-          <a href="#natasha" className="transition hover:text-[#39FF14]">NATASHA</a>
-          <a href="#command" className="transition hover:text-[#39FF14]">/187</a>
-          <Link href="/showcase" className="transition hover:text-[#39FF14]">Showcase</Link>
-          <Link href="/install" className="transition hover:text-[#39FF14]">Install</Link>
-        </div>
-        <a
-          href={REPO}
-          target="_blank"
-          rel="noreferrer noopener"
-          className="inline-flex h-9 items-center justify-center rounded-full border border-white/10 bg-white/5 px-4 text-sm font-medium text-white transition hover:border-[#39FF14]/40 hover:text-[#39FF14]"
-        >
-          GitHub
-        </a>
-      </nav>
-    </header>
-  );
-}
-
-function Background() {
-  return (
-    <div className="pointer-events-none fixed inset-0 z-0" aria-hidden="true">
-      <div
-        className="absolute inset-0 bg-cover bg-center opacity-[0.07]"
-        style={{ backgroundImage: `url(${brandAssets.blueprint})` }}
-      />
-      <div
-        className="absolute inset-0 opacity-[0.04]"
-        style={{
-          backgroundImage: `linear-gradient(30deg, #39FF14 12%, transparent 12.5%, transparent 87%, #39FF14 87.5%, #39FF14), linear-gradient(150deg, #39FF14 12%, transparent 12.5%, transparent 87%, #39FF14 87.5%, #39FF14), linear-gradient(30deg, #39FF14 12%, transparent 12.5%, transparent 87%, #39FF14 87.5%, #39FF14), linear-gradient(150deg, #39FF14 12%, transparent 12.5%, transparent 87%, #39FF14 87.5%, #39FF14), linear-gradient(60deg, rgba(57,255,20,0.1) 25%, transparent 25.5%, transparent 75%, rgba(57,255,20,0.1) 75%, rgba(57,255,20,0.1)), linear-gradient(60deg, rgba(57,255,20,0.1) 25%, transparent 25.5%, transparent 75%, rgba(57,255,20,0.1) 75%, rgba(57,255,20,0.1))`,
-          backgroundSize: "40px 70px",
-          backgroundPosition: "0 0, 0 0, 20px 35px, 20px 35px, 0 0, 20px 35px",
-        }}
-      />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(57,255,20,0.12),transparent_55%)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_100%,rgba(255,0,0,0.06),transparent_45%)]" />
-    </div>
-  );
-}
 
 function OutcomePill({ children }: { children: React.ReactNode }) {
   return (
@@ -87,6 +36,7 @@ function Hero() {
         <div className="mx-auto max-w-5xl text-center">
           <Reveal>
             <div className="mx-auto mb-6 flex max-w-3xl flex-col items-center gap-4">
+              {/* eslint-disable-next-line @next/next/no-img-element -- basePath-safe static export */}
               <img
                 src={brandAssets.headerLockup}
                 alt="187WEB — A killer AI-powered web suite"
@@ -98,6 +48,7 @@ function Hero() {
           <Reveal delay={100}>
             <div className="relative mx-auto max-w-4xl">
               <div className="absolute -inset-4 rounded-full bg-[#39FF14]/10 blur-3xl" />
+              {/* eslint-disable-next-line @next/next/no-img-element -- basePath-safe static export */}
               <img
                 src={brandAssets.headerInfographic}
                 alt="187WEB killer web design solutions: 187REPO, 187CRAFT, 187VIBE, 187LAUNCH"
@@ -539,52 +490,18 @@ function InstallSection() {
   );
 }
 
-function Footer() {
-  return (
-    <footer className="border-t border-white/10 bg-[#050608] px-6 py-12">
-      <div className="container-x flex flex-col items-center justify-between gap-6 sm:flex-row">
-        <div className="flex flex-col items-center gap-2 sm:items-start">
-          <img src={brandAssets.labWordmark} alt="LumenHelix Lab" className="h-5 opacity-90" />
-          <p className="text-sm text-white/50">
-            © {new Date().getFullYear()} LumenHelix Lab · 187WEB · Custom Noncommercial License with Reserved Knotstore
-            IP
-          </p>
-        </div>
-        <div className="flex flex-wrap items-center justify-center gap-6">
-          <Link href="/187" className="text-sm text-white/50 transition hover:text-[#39FF14]">
-            /187 Reference
-          </Link>
-          <Link href="/showcase" className="text-sm text-white/50 transition hover:text-[#39FF14]">
-            Showcase
-          </Link>
-          <Link href="/install" className="text-sm text-white/50 transition hover:text-[#39FF14]">
-            Install
-          </Link>
-          <a href={REPO} target="_blank" rel="noreferrer noopener" className="text-sm text-white/50 transition hover:text-[#39FF14]">
-            GitHub
-          </a>
-        </div>
-      </div>
-    </footer>
-  );
-}
-
 export function LaunchPage() {
   return (
-    <div className="relative min-h-screen overflow-x-hidden bg-[#050608] text-[#ECEDF7]">
-      <Background />
-      <Header />
-      <main className="relative z-10">
-        <Hero />
-        <StatsStrip />
-        <BrandIntelligence />
-        <SkillsGrid />
-        <NatashaModules />
-        <ResearchLab />
-        <CommandSurface />
-        <InstallSection />
-      </main>
-      <Footer />
-    </div>
+    <ProductShell>
+      <Hero />
+      <StatsStrip />
+      <BrandIntelligence />
+      <SkillsGrid />
+      <AgentDepartments />
+      <NatashaModules />
+      <ResearchLab />
+      <CommandSurface />
+      <InstallSection />
+    </ProductShell>
   );
 }
