@@ -17,14 +17,14 @@ requires:
   - docs/SKILL-CONTRACT.md
 ---
 <!-- 187SKILLS first-class roster (release:validate) -->
-<!-- 187REPO 187CRAFT 187VIBE 187LAUNCH 187FREE 187RESEARCH 187SEO 187REVENUE 187DOCS 187LEARN 187TEST 187ACCESS+ 187INCLUDE+ 187VERSION 187PUBLISH 187NATASHA 187QUANTUM 187CHAIN -->
+<!-- 187REPO 187CRAFT 187VIBE 187LAUNCH 187FREE 187RESEARCH 187SEO 187REVENUE 187DOCS 187LEARN 187TEST 187ACCESS+ 187INCLUDE+ 187VERSION 187PUBLISH 187NATASHA 187CHAIN 187GSAP 187TYPE 187MODEL 187SCROLL 187AUDIO 187VIZ 187MOTION 187HERO -->
 # 187WEB Ecosystem v3.0 — NATASHA Integration
 
 **Suite:** 187WEB multi-agent operating layer. Core modules:
 
 **THREAD** · **COMPRESS** · **TENSION** · **SPARK** · **CORD** · **SCOUT** · **LAB** · **FUSE**
 
-Domain skills (installable packs): **187QUANTUM** · **187CHAIN**
+Domain skills (installable packs): **187CHAIN**
 
 **Operator:** **NATASHA** — the 187WEB Black Widow orchestration architecture.  
 **Charlotte** is reserved for a separate technology. See
@@ -40,7 +40,7 @@ For single-layer work, jump directly to the module skill.
 - Multi-stage workflows that need compression, specialist routing, research, and isolated execution.
 - Setting Local Brain / vault behavior and module ownership.
 - User mentions NATASHA, Killer Web, THREAD/TENSION/CORD/SCOUT/LAB, or suite-wide orchestration.
-- Pack install: `natasha` or `qchain-lab`.
+- Pack install: `natasha` or `chain-lab`.
 
 ## When not to use this
 
@@ -124,8 +124,15 @@ compress | cmp → token-web
 spark | brainstorm → idea-spark
 tension → neuro-tension
 scout → natasha-scout
-quantum | quant → 187quantum
 chain | web3 | defi → 187chain
+gsap | gst → 187gsap
+type | typ → 187type
+model | mdl → 187model
+scroll | scr → 187scroll
+audio | aud → 187audio
+viz | vz → 187viz
+motion | mot → 187motion
+hero | hr → 187hero
 ```
 
 Deprecated: `char`, `ch`, `agent-charlotte` → route to **SCOUT** with deprecation notice.

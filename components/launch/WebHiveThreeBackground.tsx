@@ -2,6 +2,9 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
+import { Line } from "@react-three/drei";
+import { EffectComposer, Bloom } from "@react-three/postprocessing";
+import { LineSegments2 } from "three-stdlib";
 import * as THREE from "three";
 import {
   webGeometry,
@@ -13,6 +16,10 @@ import {
   createParticleTexture,
   type Segment,
 } from "@/lib/webhive";
+import { useReducedMotion } from "@/lib/motion/useReducedMotion";
+import { useScrollProgress } from "@/lib/motion/useScrollProgress";
+import { useGsapTimeline } from "@/lib/motion/useGsapTimeline";
+import { gsap } from "@/lib/motion/gsap";
 
 const NEON = "#39FF14";
 
@@ -39,52 +46,6 @@ const WEB_TELEMETRY = 32;
 const HONEY_TELEMETRY = 24;
 const CONNECTOR_OPACITY = 0.04;
 
-function useReducedMotion(): boolean {
-  const [reduced, setReduced] = useState(() =>
-    typeof window !== "undefined"
-      ? window.matchMedia("(prefers-reduced-motion: reduce)").matches
-      : false,
-  );
-
-  useEffect(() => {
-    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const handler = (e: MediaQueryListEvent) => setReduced(e.matches);
-    mq.addEventListener("change", handler);
-    return () => mq.removeEventListener("change", handler);
-  }, []);
-
-  return reduced;
-}
-
-function usePointerInputs() {
-  const target = useRef({ x: 0, y: 0 });
-  useEffect(() => {
-    const onMove = (e: PointerEvent) => {
-      target.current.x = (e.clientX / window.innerWidth) * 2 - 1;
-      target.current.y = -((e.clientY / window.innerHeight) * 2 - 1);
-    };
-    window.addEventListener("pointermove", onMove, { passive: true });
-    return () => window.removeEventListener("pointermove", onMove);
-  }, []);
-  return target;
-}
-
-function useScrollInputs() {
-  const scroll = useRef({ y: 0, progress: 0, height: 1 });
-  useEffect(() => {
-    const onScroll = () => {
-      const h = Math.max(1, document.body.scrollHeight - window.innerHeight);
-      scroll.current.y = window.scrollY;
-      scroll.current.height = h;
-      scroll.current.progress = Math.min(1, window.scrollY / h);
-    };
-    window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-  return scroll;
-}
-
 function lerp(a: number, b: number, t: number) {
   return a + (b - a) * t;
 }
@@ -95,6 +56,15 @@ function eq(a: number, b: number) {
 
 function nodeKey(x: number, y: number, z: number) {
   return `${x.toFixed(6)},${y.toFixed(6)},${z.toFixed(6)}`;
+}
+
+function geometryToPoints(geometry: THREE.BufferGeometry): THREE.Vector3[] {
+  const positions = geometry.attributes.position.array as Float32Array;
+  const points: THREE.Vector3[] = [];
+  for (let i = 0; i < positions.length; i += 3) {
+    points.push(new THREE.Vector3(positions[i], positions[i + 1], positions[i + 2]));
+  }
+  return points;
 }
 
 interface Telemetry {
@@ -119,20 +89,66 @@ function buildTelemetry(segments: Segment[], count: number): Telemetry {
   return { idx, progress, speed, reversed, positions };
 }
 
-function WebHiveScene() {
+function usePointerInputs() {
+  const target = useRef({ x: 0, y: 0 });
+  useEffect(() => {
+    const onMove = (e: PointerEvent) => {
+      target.current.x = (e.clientX / window.innerWidth) * 2 - 1;
+      target.current.y = -((e.clientY / window.innerHeight) * 2 - 1);
+    };
+    window.addEventListener("pointermove", onMove, { passive: true });
+    return () => window.removeEventListener("pointermove", onMove);
+  }, []);
+  return target;
+}
+
+function useBloomEnabled(): boolean {
+  const [enabled, setEnabled] = useState(false);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const explicit = process.env.NEXT_PUBLIC_WEBHIVE_BLOOM;
+    if (explicit === "true" || explicit === "1") {
+      setEnabled(true);
+      return;
+    }
+    if (explicit === "false" || explicit === "0") {
+      setEnabled(false);
+      return;
+    }
+
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+      navigator.userAgent,
+    );
+    const isLowPower =
+      navigator.hardwareConcurrency != null && navigator.hardwareConcurrency <= 4;
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    setEnabled(!isMobile && !isLowPower && !prefersReducedMotion);
+  }, []);
+
+  return enabled;
+}
+
+interface WebHiveSceneProps {
+  enableBloom: boolean;
+}
+
+function WebHiveScene({ enableBloom }: WebHiveSceneProps) {
   const rootRef = useRef<THREE.Group>(null);
   const giantRef = useRef<THREE.Group>(null);
   const honeyRef = useRef<THREE.Group>(null);
   const midRef = useRef<THREE.Group>(null);
   const overlayRef = useRef<THREE.Group>(null);
-  const overlayMatRef = useRef<THREE.LineBasicMaterial>(null);
+  const overlayLineRef = useRef<LineSegments2>(null);
   const connectorRef = useRef<THREE.Group>(null);
   const webTelemetryRef = useRef<THREE.Points>(null);
   const honeyTelemetryRef = useRef<THREE.Points>(null);
 
   const reducedMotion = useReducedMotion();
   const pointerTarget = usePointerInputs();
-  const scroll = useScrollInputs();
+  const scroll = useScrollProgress();
   const { invalidate, camera } = useThree();
 
   const giantGeometry = useMemo(
@@ -159,11 +175,20 @@ function WebHiveScene() {
         GIANT_RINGS,
         HONEY_RADIUS,
         HONEY_RINGS,
-        -1.3,
+        -1.6,
       ),
     [],
   );
   const particleTexture = useMemo(() => createParticleTexture(), []);
+
+  const overlayPoints = useMemo(
+    () => geometryToPoints(overlayGeometry),
+    [overlayGeometry],
+  );
+  const connectorPoints = useMemo(
+    () => geometryToPoints(connectorGeometryMemo),
+    [connectorGeometryMemo],
+  );
 
   const webSegments = useMemo(
     () => webRadialSegments(GIANT_RADIUS, GIANT_SPOKES, GIANT_RINGS),
@@ -197,9 +222,32 @@ function WebHiveScene() {
   );
 
   const pointerSmooth = useRef({ x: 0, y: 0 });
-  const scrollVelocity = useRef(0);
-  const lastScrollProgress = useRef(0);
   const timeRef = useRef(0);
+
+  // GSAP ScrollTrigger scrub: writes scroll progress and smoothed energy into
+  // a plain object that useFrame reads each tick. No per-frame React state.
+  const scrollProxy = useRef({ progress: 0, energy: 0 });
+  useGsapTimeline(() => {
+    const proxy = { progress: 0, energy: 0 };
+    scrollProxy.current = proxy;
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: typeof document !== "undefined" ? document.body : undefined,
+        start: "top top",
+        end: "bottom bottom",
+        scrub: 0.5,
+        onUpdate: (self) => {
+          proxy.progress = self.progress;
+          const target = Math.min(1, Math.abs(scroll.current.velocity) * 8);
+          gsap.to(proxy, { energy: target, duration: 0.25, overwrite: true });
+        },
+      },
+    });
+    tl.to(proxy, { progress: 1, duration: 1, ease: "none" });
+
+    return tl;
+  }, []);
 
   useFrame((_, rawDelta) => {
     if (!rootRef.current || reducedMotion) return;
@@ -207,12 +255,8 @@ function WebHiveScene() {
     timeRef.current += delta;
     const t = timeRef.current;
 
-    const scrollProgress = scroll.current.progress;
-    const rawVelocity =
-      (scrollProgress - lastScrollProgress.current) / Math.max(delta, 0.001);
-    lastScrollProgress.current = scrollProgress;
-    scrollVelocity.current = lerp(scrollVelocity.current, rawVelocity, 0.08);
-    const energy = Math.min(1, Math.abs(scrollVelocity.current) * 8);
+    const scrollProgress = scrollProxy.current.progress;
+    const energy = scrollProxy.current.energy;
 
     pointerSmooth.current.x = lerp(pointerSmooth.current.x, pointerTarget.current.x, 0.06);
     pointerSmooth.current.y = lerp(pointerSmooth.current.y, pointerTarget.current.y, 0.06);
@@ -220,50 +264,58 @@ function WebHiveScene() {
     const py = pointerSmooth.current.y;
     const pointerIntensity = Math.max(0, 1 - Math.hypot(px, py));
 
-    // Root volume: continuous drift + scroll + mouse
+    // Root volume: continuous organic drift + scroll + stronger mouse parallax
     rootRef.current.rotation.x =
-      Math.sin(t * 0.18) * 0.05 + scrollProgress * 0.22 + py * 0.06;
+      Math.sin(t * 0.18) * 0.06 + scrollProgress * 0.28 + py * 0.09;
     rootRef.current.rotation.y =
-      Math.cos(t * 0.14) * 0.04 + scrollProgress * 0.1 + px * 0.06;
-    rootRef.current.rotation.z = Math.sin(t * 0.09) * 0.02;
-    rootRef.current.position.y = Math.sin(t * 0.35) * 0.08;
+      Math.cos(t * 0.14) * 0.05 + scrollProgress * 0.14 + px * 0.09;
+    rootRef.current.rotation.z = Math.sin(t * 0.09) * 0.025;
+    rootRef.current.position.x = px * 0.15;
+    rootRef.current.position.y = Math.sin(t * 0.35) * 0.12 + py * 0.08;
 
     // Giant web: far back, slow counter-rotation
     if (giantRef.current) {
-      giantRef.current.rotation.y = -t * 0.045 - scrollProgress * 0.08 + px * 0.03;
-      giantRef.current.rotation.x = Math.sin(t * 0.11) * 0.03 + 0.04;
-      giantRef.current.rotation.z = Math.cos(t * 0.08) * 0.015;
+      giantRef.current.rotation.y = -t * 0.045 - scrollProgress * 0.1 + px * 0.05;
+      giantRef.current.rotation.x = Math.sin(t * 0.11) * 0.035 + 0.05;
+      giantRef.current.rotation.z = Math.cos(t * 0.08) * 0.02;
+      giantRef.current.position.y = Math.sin(t * 0.22) * 0.1;
     }
 
     // Honeycomb field: offset vertically so it slices through the webs
     if (honeyRef.current) {
-      honeyRef.current.rotation.y = t * 0.075 + scrollProgress * 0.05 - px * 0.04;
-      honeyRef.current.rotation.x = 0.14 + Math.sin(t * 0.13) * 0.02;
-      honeyRef.current.rotation.z = Math.cos(t * 0.07) * 0.01;
-      honeyRef.current.position.y = -1.3 + Math.sin(t * 0.25) * 0.06;
+      honeyRef.current.rotation.y = t * 0.075 + scrollProgress * 0.07 - px * 0.06;
+      honeyRef.current.rotation.x = 0.18 + Math.sin(t * 0.13) * 0.025;
+      honeyRef.current.rotation.z = Math.cos(t * 0.07) * 0.015;
+      honeyRef.current.position.y = -1.6 + Math.sin(t * 0.25) * 0.1;
+      honeyRef.current.position.x = -px * 0.2;
     }
 
     // Mid web: crosses through honeycomb vertically
     if (midRef.current) {
-      midRef.current.rotation.y = -t * 0.16 - scrollProgress * 0.1;
-      midRef.current.rotation.x = -0.1 + Math.cos(t * 0.17) * 0.02;
+      midRef.current.rotation.y = -t * 0.16 - scrollProgress * 0.12;
+      midRef.current.rotation.x = -0.12 + Math.cos(t * 0.17) * 0.025;
       const scale = 1 + Math.sin(t * 2) * 0.04 + energy * 0.15;
       midRef.current.scale.setScalar(scale);
-      midRef.current.position.y = 0.9 + Math.sin(t * 0.3) * 0.05;
+      midRef.current.position.y = 1.1 + Math.sin(t * 0.3) * 0.08;
+      midRef.current.position.x = px * 0.15;
     }
 
     // Overlay web: close, fast, reactive
     if (overlayRef.current) {
-      overlayRef.current.rotation.y = t * 0.5 + scrollProgress * 0.28 + px * 0.1;
-      overlayRef.current.rotation.x = 0.06 + Math.cos(t * 0.3) * 0.03 + py * 0.04;
+      overlayRef.current.rotation.y = t * 0.5 + scrollProgress * 0.32 + px * 0.12;
+      overlayRef.current.rotation.x = 0.08 + Math.cos(t * 0.3) * 0.035 + py * 0.06;
       const pulse =
         1 + Math.sin(t * 3.5) * 0.06 + energy * 0.25 + pointerIntensity * 0.1;
       overlayRef.current.scale.setScalar(pulse);
-      overlayRef.current.position.y = -0.5 + Math.sin(t * 0.4) * 0.04;
+      overlayRef.current.position.y = -0.7 + Math.sin(t * 0.4) * 0.06;
+      overlayRef.current.position.x = px * 0.25;
     }
 
-    if (overlayMatRef.current) {
-      overlayMatRef.current.opacity =
+    if (overlayLineRef.current?.material) {
+      const mat = overlayLineRef.current.material as THREE.Material & {
+        opacity: number;
+      };
+      mat.opacity =
         OVERLAY_OPACITY +
         Math.sin(t * 3.5) * 0.04 +
         energy * 0.12 +
@@ -321,7 +373,8 @@ function WebHiveScene() {
           const nextIdx = candidates[Math.floor(Math.random() * candidates.length)];
           const nextSeg = honeySegments[nextIdx];
           idx[i] = nextIdx;
-          reversed[i] = eq(rx, nextSeg.x2) && eq(ry, nextSeg.y2) && eq(rz, nextSeg.z2) ? 1 : 0;
+          reversed[i] =
+            eq(rx, nextSeg.x2) && eq(ry, nextSeg.y2) && eq(rz, nextSeg.z2) ? 1 : 0;
           progress[i] = 0;
         }
         const seg = honeySegments[idx[i]];
@@ -340,11 +393,11 @@ function WebHiveScene() {
     }
 
     // Camera reacts to scroll and mouse
-    camera.position.x = lerp(camera.position.x, px * 0.3, 0.04);
-    camera.position.y = lerp(camera.position.y, py * 0.22, 0.04);
+    camera.position.x = lerp(camera.position.x, px * 0.45, 0.04);
+    camera.position.y = lerp(camera.position.y, py * 0.32, 0.04);
     camera.position.z = lerp(
       camera.position.z,
-      5.8 + scrollProgress * 1.2 + energy * 0.35,
+      5.8 + scrollProgress * 1.4 + energy * 0.4,
       0.03,
     );
     camera.lookAt(0, 0, 0);
@@ -352,16 +405,20 @@ function WebHiveScene() {
     invalidate();
   });
 
+  const baseLineProps = {
+    color: NEON,
+    transparent: true,
+    blending: enableBloom ? THREE.NormalBlending : THREE.AdditiveBlending,
+    depthWrite: false,
+  };
+
   return (
     <group ref={rootRef}>
-      <group ref={giantRef} position={[0, 0, -4.4]}>
+      <group ref={giantRef} position={[0, 0, -5]}>
         <lineSegments geometry={giantGeometry}>
           <lineBasicMaterial
-            color={NEON}
-            transparent
+            {...baseLineProps}
             opacity={GIANT_OPACITY}
-            blending={THREE.AdditiveBlending}
-            depthWrite={false}
           />
         </lineSegments>
         <points ref={webTelemetryRef}>
@@ -379,32 +436,30 @@ function WebHiveScene() {
             transparent
             opacity={0.9}
             sizeAttenuation
-            blending={THREE.AdditiveBlending}
+            blending={enableBloom ? THREE.NormalBlending : THREE.AdditiveBlending}
             depthWrite={false}
           />
         </points>
       </group>
 
-      <group ref={connectorRef} position={[0, 0, -2.9]}>
-        <lineSegments geometry={connectorGeometryMemo}>
-          <lineBasicMaterial
-            color={NEON}
-            transparent
-            opacity={CONNECTOR_OPACITY}
-            blending={THREE.AdditiveBlending}
-            depthWrite={false}
-          />
-        </lineSegments>
+      <group ref={connectorRef} position={[0, -0.3, -3.2]}>
+        <Line
+          segments
+          points={connectorPoints}
+          color={NEON}
+          lineWidth={1}
+          transparent
+          opacity={CONNECTOR_OPACITY}
+          blending={enableBloom ? THREE.NormalBlending : THREE.AdditiveBlending}
+          depthWrite={false}
+        />
       </group>
 
-      <group ref={honeyRef} position={[0, -1.3, -2.1]}>
+      <group ref={honeyRef} position={[0, -1.6, -2.4]}>
         <lineSegments geometry={honeyGeometry}>
           <lineBasicMaterial
-            color={NEON}
-            transparent
+            {...baseLineProps}
             opacity={HONEY_OPACITY}
-            blending={THREE.AdditiveBlending}
-            depthWrite={false}
           />
         </lineSegments>
         <points ref={honeyTelemetryRef}>
@@ -422,41 +477,44 @@ function WebHiveScene() {
             transparent
             opacity={0.85}
             sizeAttenuation
-            blending={THREE.AdditiveBlending}
+            blending={enableBloom ? THREE.NormalBlending : THREE.AdditiveBlending}
             depthWrite={false}
           />
         </points>
       </group>
 
-      <group ref={midRef} position={[0, 0.9, -0.5]}>
+      <group ref={midRef} position={[0, 1.1, -0.8]}>
         <lineSegments geometry={midGeometry}>
           <lineBasicMaterial
-            color={NEON}
-            transparent
+            {...baseLineProps}
             opacity={MID_OPACITY}
-            blending={THREE.AdditiveBlending}
-            depthWrite={false}
           />
         </lineSegments>
       </group>
 
-      <group ref={overlayRef} position={[0, -0.5, 0.9]}>
-        <lineSegments geometry={overlayGeometry}>
-          <lineBasicMaterial
-            ref={overlayMatRef}
-            color={NEON}
-            transparent
-            opacity={OVERLAY_OPACITY}
-            blending={THREE.AdditiveBlending}
-            depthWrite={false}
-          />
-        </lineSegments>
+      <group ref={overlayRef} position={[0, -0.7, 1.2]}>
+        <Line
+          ref={overlayLineRef}
+          segments
+          points={overlayPoints}
+          color={NEON}
+          lineWidth={1}
+          transparent
+          opacity={OVERLAY_OPACITY}
+          blending={enableBloom ? THREE.NormalBlending : THREE.AdditiveBlending}
+          depthWrite={false}
+        />
       </group>
     </group>
   );
 }
 
 export function WebHiveThreeBackground() {
+  const reducedMotion = useReducedMotion();
+  const enableBloom = useBloomEnabled();
+
+  if (reducedMotion) return null;
+
   return (
     <div
       className="pointer-events-none fixed inset-0 z-0"
@@ -472,7 +530,17 @@ export function WebHiveThreeBackground() {
         gl={{ antialias: false, alpha: true, powerPreference: "low-power" }}
         dpr={[1, 1.25]}
       >
-        <WebHiveScene />
+        <WebHiveScene enableBloom={enableBloom} />
+        {enableBloom && (
+          <EffectComposer>
+            <Bloom
+              intensity={0.6}
+              luminanceThreshold={0.2}
+              luminanceSmoothing={0.9}
+              mipmapBlur
+            />
+          </EffectComposer>
+        )}
       </Canvas>
     </div>
   );

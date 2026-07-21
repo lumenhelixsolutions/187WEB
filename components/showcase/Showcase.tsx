@@ -6,12 +6,13 @@ import { AbilityTabs } from "./AbilityTabs";
 import { ScenarioDemo } from "./ScenarioDemo";
 import { CommandTeaser } from "./CommandTeaser";
 import { DesignMotionLab } from "./DesignMotionLab";
+import { MotionLabSection } from "@/components/motion-lab/MotionLabSection";
 import { ProductShell } from "@/components/launch/ProductShell";
 import { AccessIncludeCTA } from "@/components/launch/AccessIncludeCTA";
 import { skillShowcaseIndex, skillColorValue, skillIsRainbow, skillRainbowTextClass } from "@/lib/skill-showcase-data";
 import { PUBLIC_SKILLS, type SuiteSkill } from "@/lib/first-class-skills";
 
-const FIRST_CLASS_ROSTER = "187REPO 187CRAFT 187VIBE 187LAUNCH 187FREE 187RESEARCH 187SEO 187REVENUE 187DOCS 187LEARN 187TEST 187ACCESS+ 187VERSION 187PUBLISH 187NATASHA 187QUANTUM 187CHAIN 187WRITE 187INCLUDE+";
+const FIRST_CLASS_ROSTER = "187REPO 187CRAFT 187VIBE 187LAUNCH 187FREE 187RESEARCH 187SEO 187REVENUE 187DOCS 187LEARN 187TEST 187ACCESS+ 187VERSION 187PUBLISH 187NATASHA 187CHAIN 187GSAP 187TYPE 187MODEL 187SCROLL 187AUDIO 187VIZ 187MOTION 187HERO 187WRITE 187INCLUDE+";
 void FIRST_CLASS_ROSTER;
 
 function skillColor(skill: SuiteSkill): string {
@@ -275,6 +276,8 @@ export function Showcase() {
       <MotionExamplesStrip />
 
       <DesignMotionLab />
+
+      <MotionLabSection />
 
       <VisualSkillGrid />
 

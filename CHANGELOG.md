@@ -1,7 +1,18 @@
 
 <!-- 187SKILLS first-class roster (release:validate) -->
-<!-- 187REPO 187CRAFT 187VIBE 187LAUNCH 187FREE 187RESEARCH 187SEO 187REVENUE 187DOCS 187LEARN 187TEST 187ACCESS+ 187VERSION 187PUBLISH 187NATASHA 187QUANTUM 187CHAIN -->
+<!-- 187REPO 187CRAFT 187VIBE 187LAUNCH 187FREE 187RESEARCH 187SEO 187REVENUE 187DOCS 187LEARN 187TEST 187ACCESS+ 187VERSION 187PUBLISH 187NATASHA 187CHAIN 187GSAP 187TYPE 187MODEL 187SCROLL 187AUDIO 187VIZ 187MOTION 187HERO -->
 # Changelog
+
+## [Unreleased]
+
+### Added
+- Motion-lab first-class skills: `187GSAP`, `187TYPE`, `187MODEL`, `187SCROLL`, `187AUDIO`, `187VIZ`, `187MOTION`, `187HERO`.
+- Public routes `/187gsap`, `/187type`, `/187model`, `/187scroll`, `/187audio`, `/187viz`, `/187motion`, `/187hero`.
+- Docs and canonical skill files for all motion-lab skills.
+
+### Changed
+- Removed `187QUANTUM` as a first-class skill; quantum topics now route through `187RESEARCH` (algorithms, circuits, resource estimates) and `187NATASHA` (claim audits, non-claim reviews).
+- Updated release-surface rosters and routing docs to reflect the final first-class skill set.
 
 ## [0.3.0] - 2026-07-12
 

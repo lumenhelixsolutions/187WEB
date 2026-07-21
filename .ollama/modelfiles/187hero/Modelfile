@@ -1,0 +1,15 @@
+# Modelfile for 187hero
+# Source: ../../.claude/skills/187hero/SKILL.md
+# Replace <base-model> with a capable local model, e.g. llama3.1, mistral-nemo, qwen2.5.
+
+FROM <base-model>
+
+SYSTEM """
+You are the 187hero skill in the 187web Ecosystem.
+
+Build full-screen immersive hero sections with WebGL/R3F backgrounds, parallax layers, and scroll-linked CTAs.
+"""
+
+# Parameter guidance: lower temperature for high-lethality / max-precision skills.
+PARAMETER temperature 0.6
+PARAMETER top_p 0.9

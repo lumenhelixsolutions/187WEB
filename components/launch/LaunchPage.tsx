@@ -178,8 +178,15 @@ function MarqueeStrip() {
     "187VERSION",
     "187PUBLISH",
     "187NATASHA",
-    "187QUANTUM",
     "187CHAIN",
+    "187GSAP",
+    "187TYPE",
+    "187MODEL",
+    "187SCROLL",
+    "187AUDIO",
+    "187VIZ",
+    "187MOTION",
+    "187HERO",
   ];
   return (
     <section className="relative overflow-hidden border-y border-white/10 bg-[#050608] py-4">

@@ -98,18 +98,18 @@ After installing, run the doctor to verify health:
 Full NATASHA core + domain skills:
 
 - THREAD, COMPRESS, TENSION, SPARK, CORD, SCOUT, LAB
-- 187QUANTUM, 187CHAIN
+- 187CHAIN
 - Local Brain templates
 
 ```text
 /187 install natasha
 ```
 
-### qchain-lab
+### chain-lab
 
-Narrow quantum + Web3 lab pack:
+Narrow Web3 lab pack:
 
-- 187QUANTUM, 187CHAIN, LAB profiles `lab:quantum` / `lab:evm`
+- 187CHAIN, LAB profile `lab:evm`
 
 ```text
 /187 install qchain-lab

@@ -8,7 +8,7 @@ model_adapter: grok
 > **Grok adapter:** Load as repository skill instructions. Canonical source: [`../../.claude/skills/187web-manifest/SKILL.md`](../../.claude/skills/187web-manifest/SKILL.md).
 
 <!-- 187SKILLS first-class roster (release:validate) -->
-<!-- 187REPO 187CRAFT 187VIBE 187LAUNCH 187FREE 187RESEARCH 187SEO 187REVENUE 187DOCS 187LEARN 187TEST 187ACCESS+ 187VERSION 187PUBLISH 187NATASHA 187QUANTUM 187CHAIN -->
+<!-- 187REPO 187CRAFT 187VIBE 187LAUNCH 187FREE 187RESEARCH 187SEO 187REVENUE 187DOCS 187LEARN 187TEST 187ACCESS+ 187VERSION 187PUBLISH 187NATASHA 187CHAIN 187GSAP 187TYPE 187MODEL 187SCROLL 187AUDIO 187VIZ 187MOTION 187HERO -->
 # 187WEB Manifest — Master Prompt Manifest
 
 **Suite:** Charlotte v2 stack. Parent:
@@ -25,12 +25,12 @@ A11y, XSS, state machines).
 
 ## 187SKILLS registry
 
-In addition to the 27 manifest prompts, the registry now routes the 16 first-class
-public skills and 2 suite-wide subskills defined in `docs/SKILL-CONTRACT.md`. The
+In addition to the 27 manifest prompts, the registry now routes the first-class
+public skills and suite-wide subskills defined in `docs/SKILL-CONTRACT.md`. The
 compiler treats each skill as a routable directive with its own frontmatter,
 references, and templates.
 
-**Canonical skill roster:** 187REPO 187CRAFT 187VIBE 187LAUNCH 187FREE 187RESEARCH 187SEO 187REVENUE 187DOCS 187WRITE 187LEARN 187TEST 187ACCESS+ 187INCLUDE 187VERSION 187PUBLISH.
+**Canonical skill roster:** 187REPO 187CRAFT 187VIBE 187LAUNCH 187FREE 187RESEARCH 187SEO 187REVENUE 187DOCS 187WRITE 187LEARN 187TEST 187ACCESS+ 187INCLUDE+ 187VERSION 187PUBLISH 187NATASHA 187CHAIN 187GSAP 187TYPE 187MODEL 187SCROLL 187AUDIO 187VIZ 187MOTION 187HERO.
 
 ## When to use this
 
