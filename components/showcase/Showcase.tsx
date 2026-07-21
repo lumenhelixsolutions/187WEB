@@ -6,6 +6,7 @@ import { AbilityTabs } from "./AbilityTabs";
 import { ScenarioDemo } from "./ScenarioDemo";
 import { CommandTeaser } from "./CommandTeaser";
 import { DesignMotionLab } from "./DesignMotionLab";
+import { MotionLabSection } from "@/components/motion-lab/MotionLabSection";
 import { ProductShell } from "@/components/launch/ProductShell";
 import { AccessIncludeCTA } from "@/components/launch/AccessIncludeCTA";
 import { skillShowcaseIndex, skillColorValue, skillIsRainbow, skillRainbowTextClass } from "@/lib/skill-showcase-data";
@@ -275,6 +276,8 @@ export function Showcase() {
       <MotionExamplesStrip />
 
       <DesignMotionLab />
+
+      <MotionLabSection />
 
       <VisualSkillGrid />
 
