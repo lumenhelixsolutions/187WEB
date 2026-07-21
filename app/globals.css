@@ -372,3 +372,44 @@
     transform: translateX(100%);
   }
 }
+
+/* Infinite marquee row wrapper (content is duplicated so -50% loops cleanly). */
+.sc-marquee {
+  animation: sc-marquee 24s linear infinite;
+}
+
+/* 3D tilt card: perspective lives on a parent, transform lives here. */
+.sc-tilt {
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  transform-style: preserve-3d;
+}
+.sc-tilt:hover {
+  transform: rotateX(6deg) rotateY(-6deg);
+}
+
+/* Glowing CTA button. */
+.sc-glow {
+  transition:
+    box-shadow 0.3s ease,
+    transform 0.2s ease;
+  box-shadow: 0 0 0 rgba(57, 255, 20, 0);
+}
+.sc-glow:hover {
+  box-shadow:
+    0 0 24px rgba(57, 255, 20, 0.55),
+    0 0 48px rgba(57, 255, 20, 0.25);
+  transform: translateY(-2px);
+}
+
+@keyframes sc-glow-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 12px rgba(57, 255, 20, 0.35);
+  }
+  50% {
+    box-shadow: 0 0 28px rgba(57, 255, 20, 0.65);
+  }
+}
+.sc-glow-pulse {
+  animation: sc-glow-pulse 3s ease-in-out infinite;
+}

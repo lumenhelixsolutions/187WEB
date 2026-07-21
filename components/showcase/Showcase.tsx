@@ -4,6 +4,7 @@ import { CommandPalette } from "@/components/187/CommandPalette";
 import { AbilityTabs } from "./AbilityTabs";
 import { ScenarioDemo } from "./ScenarioDemo";
 import { CommandTeaser } from "./CommandTeaser";
+import { DesignMotionLab } from "./DesignMotionLab";
 import { ProductShell } from "@/components/launch/ProductShell";
 import { skillShowcaseIndex } from "@/lib/skill-showcase-data";
 import { PUBLIC_SKILLS, type SuiteSkill } from "@/lib/first-class-skills";
@@ -248,6 +249,8 @@ export function Showcase() {
       </section>
 
       <MotionExamplesStrip />
+
+      <DesignMotionLab />
 
       <VisualSkillGrid />
 
