@@ -4,11 +4,11 @@ import { AgentPage, type AgentConfig } from "@/components/launch/AgentPage";
 const agent: AgentConfig = {
   slug: "charlotte",
   name: "CHARLOTTE",
-  tagline: "Build + ship surface",
+  tagline: "Orchestrate + solve + recycle",
   color: "#39FF14",
-  skillIds: ["repo", "craft", "vibe", "launch", "write"],
+  skillIds: ["repo", "craft", "vibe", "launch", "write", "research"],
   overview:
-    "CHARLOTTE is the build-and-ship crew. She scaffolds repos, crafts design systems, tunes UX vibe, plans launches, and polishes public copy.",
+    "CHARLOTTE threads intent into retrievable info, recycled and upcycled solutions, design-system hybrids, launch plans, and conflict-resolved public copy. She is the green-team counterweight to NATASHA's red team.",
 };
 
 export const metadata: Metadata = {

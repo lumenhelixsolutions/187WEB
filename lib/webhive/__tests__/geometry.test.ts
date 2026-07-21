@@ -1,10 +1,11 @@
 import { describe, it, expect } from "vitest";
 import {
   webGeometry,
+  webRadialSegments,
   honeycombGeometry,
+  honeycombSegments,
+  buildHoneycombAdjacency,
   connectorGeometry,
-  particlePositions,
-  pulsePositions,
 } from "@/lib/webhive";
 
 describe("webGeometry", () => {
@@ -21,6 +22,23 @@ describe("webGeometry", () => {
   });
 });
 
+describe("webRadialSegments", () => {
+  it("returns spokes * rings segments", () => {
+    const segs = webRadialSegments(10, 8, 4);
+    expect(segs.length).toBe(8 * 4);
+  });
+
+  it("segments progress outward from the center", () => {
+    const segs = webRadialSegments(10, 4, 3);
+    const firstSpoke = segs.slice(0, 3);
+    const radii = firstSpoke.map((s) => Math.hypot(s.x1, s.z1));
+    expect(radii[0]).toBe(0);
+    for (let i = 1; i < radii.length; i++) {
+      expect(radii[i]).toBeGreaterThan(radii[i - 1]);
+    }
+  });
+});
+
 describe("honeycombGeometry", () => {
   it("creates geometry for the requested ring count", () => {
     const geo = honeycombGeometry(0.5, 2);
@@ -28,34 +46,33 @@ describe("honeycombGeometry", () => {
   });
 });
 
-describe("connectorGeometry", () => {
-  it("creates one connector segment per honeycomb center", () => {
-    const honeyRings = 2;
-    const centers = 1 + 6 + 12;
-    const geo = connectorGeometry(12, 12, 4, 0.55, honeyRings);
-    expect(geo.attributes.position.count).toBe(centers * 2);
-  });
-});
-
-describe("particlePositions", () => {
-  it("returns a Float32Array of length count * 3", () => {
-    const arr = particlePositions(100, 10);
-    expect(arr.length).toBe(300);
-  });
-
-  it("keeps particles inside the requested radius", () => {
-    const arr = particlePositions(50, 10);
-    for (let i = 0; i < arr.length; i += 3) {
-      const x = arr[i];
-      const z = arr[i + 2];
-      expect(Math.sqrt(x * x + z * z)).toBeLessThanOrEqual(10 + 0.001);
+describe("honeycombSegments", () => {
+  it("returns segments for every hex edge", () => {
+    const segs = honeycombSegments(0.5, 2);
+    expect(segs.length).toBeGreaterThan(0);
+    for (const s of segs) {
+      expect(Math.hypot(s.x2 - s.x1, s.y2 - s.y1, s.z2 - s.z1)).toBeGreaterThan(0);
     }
   });
 });
 
-describe("pulsePositions", () => {
-  it("returns a Float32Array of length count * 3", () => {
-    const arr = pulsePositions(48);
-    expect(arr.length).toBe(144);
+describe("buildHoneycombAdjacency", () => {
+  it("maps each node to its connected segment indices", () => {
+    const segs = honeycombSegments(0.5, 2);
+    const adj = buildHoneycombAdjacency(segs);
+    let maxDegree = 0;
+    for (const [, indices] of adj) {
+      maxDegree = Math.max(maxDegree, indices.length);
+    }
+    expect(maxDegree).toBeGreaterThanOrEqual(2);
+  });
+});
+
+describe("connectorGeometry", () => {
+  it("creates one connector segment per honeycomb center", () => {
+    const honeyRings = 2;
+    const centers = 1 + 6 + 12;
+    const geo = connectorGeometry(12, 12, 4, 0.55, honeyRings, -1.2);
+    expect(geo.attributes.position.count).toBe(centers * 2);
   });
 });

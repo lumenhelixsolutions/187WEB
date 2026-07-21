@@ -6,7 +6,7 @@ export type NatashaModule = {
   color: string;
 };
 
-export const natashaModules: NatashaModule[] = [
+export const charlotteModules: NatashaModule[] = [
   {
     id: "THREAD",
     alias: "th",
@@ -63,7 +63,7 @@ export const natashaModules: NatashaModule[] = [
 
 export const quickStats = [
   { label: "First-class skills", value: "27+" },
-  { label: "NATASHA modules", value: "8" },
+  { label: "CHARLOTTE modules", value: "8" },
   { label: "Install packs", value: "6" },
   { label: "Command grammar", value: "/187" },
 ];

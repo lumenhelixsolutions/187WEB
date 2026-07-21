@@ -4,11 +4,11 @@ import { AgentPage, type AgentConfig } from "@/components/launch/AgentPage";
 const agent: AgentConfig = {
   slug: "natasha",
   name: "NATASHA",
-  tagline: "Multi-agent operator stack",
+  tagline: "Security + red-team ethos",
   color: "#f43f5e",
-  skillIds: ["natasha", "quantum", "chain", "research"],
+  skillIds: ["natasha", "chain", "test", "access-plus"],
   overview:
-    "NATASHA is the command-and-control layer of the 187WEB hive. She compresses context, dispatches specialist subagents, runs isolated labs, and fuses evidence into decision-ready artifacts.",
+    "NATASHA is the 187WEB red-team / security function. She audits threat surfaces, assures contracts and tests, reviews access gates, and researches risks with source-backed claim discipline.",
 };
 
 export const metadata: Metadata = {

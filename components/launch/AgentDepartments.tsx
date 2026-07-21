@@ -11,14 +11,13 @@ import { FIRST_CLASS_SKILLS, SUBSKILLS, type SuiteSkill } from "@/lib/first-clas
  * Top-level 187WEB agent ecosystem.
  *
  * Agent → skill mapping:
- * - NATASHA: natasha, quantum, chain, research (orchestration + deep research)
- * - CHARLOTTE: repo, craft, vibe, launch, write (build + ship surface)
- * - KALI: seo, revenue, access-plus, publish, include (growth + safety gates)
- * - KRISHNA: free, docs, learn, test, version (knowledge + validation)
+ * - NATASHA: natasha, chain, test, access-plus (security + red-team ethos)
+ * - CHARLOTTE: repo, craft, vibe, launch, write, research (orchestrate + solve + recycle)
+ * - KALI: seo, revenue, publish, include (growth + inclusion gates)
+ * - KRISHNA: free, docs, learn, version (knowledge + release control)
  *
- * The subskills 187WRITE and 187INCLUDE are assigned to CHARLOTTE and KALI
- * respectively because editorial polish sits closest to the build/ship loop,
- * while inclusion review gates public pages alongside accessibility.
+ * NATASHA owns the red-team / assurance lens; CHARLOTTE threads intent into
+ * retrievable info, recycled/upcycled solutions, hybrids, and shipped surfaces.
  */
 
 type AgentConfig = {
@@ -34,20 +33,20 @@ const AGENTS: AgentConfig[] = [
   {
     slug: "natasha",
     name: "NATASHA",
-    tagline: "Multi-agent operator stack",
+    tagline: "Security + red-team ethos",
     color: "#f43f5e",
-    skillIds: ["natasha", "quantum", "chain", "research"],
+    skillIds: ["natasha", "chain", "test", "access-plus"],
     overview:
-      "NATASHA orchestrates THREAD, COMPRESS, TENSION, SPARK, CORD, SCOUT, LAB, and FUSE with bounded subagents and evidence-weighted synthesis.",
+      "NATASHA is the red-team / security function: threat-surface audits, contract and test assurance, access-gate review, and source-backed risk research with claim discipline.",
   },
   {
     slug: "charlotte",
     name: "CHARLOTTE",
-    tagline: "Build + ship surface",
+    tagline: "Orchestrate + solve + recycle",
     color: "#39FF14",
-    skillIds: ["repo", "craft", "vibe", "launch", "write"],
+    skillIds: ["repo", "craft", "vibe", "launch", "write", "research"],
     overview:
-      "CHARLOTTE turns intent into repos, design systems, delightful UI, launch plans, and polished public copy.",
+      "CHARLOTTE threads intent into retrievable info, recycled and upcycled solutions, design-system hybrids, launch plans, and conflict-resolved public copy. She is the green-team counterweight to NATASHA's red team.",
   },
   {
     slug: "kali",

@@ -5,7 +5,7 @@ import { ProductShell } from "./ProductShell";
 import { brandAssets } from "@/lib/brand-assets";
 import { skillShowcaseIndex, type SkillShowcaseData } from "@/lib/skill-showcase-data";
 import { FIRST_CLASS_SKILLS, SUBSKILLS, type SuiteSkill } from "@/lib/first-class-skills";
-import { natashaModules } from "./launch-data";
+import { charlotteModules } from "./launch-data";
 
 export type AgentConfig = {
   slug: string;
@@ -160,27 +160,27 @@ function AgentSkills({ agent }: { agent: AgentConfig }) {
 }
 
 function AgentModules({ agent }: { agent: AgentConfig }) {
-  if (agent.slug !== "natasha") return null;
+  if (agent.slug !== "charlotte") return null;
 
   return (
     <section id="modules" className="relative border-y border-white/10 bg-[#080808]/80 px-6 py-20 sm:py-28">
       <div className="container-x">
         <Reveal className="mx-auto mb-12 max-w-3xl text-center">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#39FF14]">NATASHA module array</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#39FF14]">CHARLOTTE module array</p>
           <h2 className="mt-4 text-[clamp(2rem,1.2rem+3vw,3.5rem)] font-bold tracking-tight text-white">
             THREAD · COMPRESS · TENSION · SPARK · CORD · SCOUT · LAB · FUSE
           </h2>
           <p className="mt-4 text-white/60">
-            Cross-cutting modules that sharpen prompts, tune output profiles, dispatch experts, run local actions, and
-            synthesize evidence.
+            Cross-cutting modules that thread intent, retrieve info, recycle solutions, dispatch experts, run isolated
+            actions, and resolve conflicts into decision-ready artifacts.
           </p>
         </Reveal>
 
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {natashaModules.map((module, i) => (
+          {charlotteModules.map((module, i) => (
             <Reveal key={module.id} delay={i * 60}>
               <Link
-                href="/187natasha"
+                href={`/${agent.slug}`}
                 className="group flex h-full flex-col rounded-2xl border border-white/10 bg-[#0A0C14] p-5 transition hover:-translate-y-1 hover:border-white/20"
                 style={{ boxShadow: `0 0 0 1px rgba(255,255,255,0.03), 0 24px 60px -24px ${module.color}22` }}
               >
@@ -194,7 +194,7 @@ function AgentModules({ agent }: { agent: AgentConfig }) {
                   className="mt-auto flex items-center gap-1 pt-4 text-sm font-medium"
                   style={{ color: module.color }}
                 >
-                  <span>Open NATASHA</span>
+                  <span>Open CHARLOTTE</span>
                   <svg
                     className="h-4 w-4 transition group-hover:translate-x-1"
                     viewBox="0 0 24 24"

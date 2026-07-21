@@ -1,5 +1,14 @@
 import * as THREE from "three";
 
+export interface Segment {
+  x1: number;
+  y1: number;
+  z1: number;
+  x2: number;
+  y2: number;
+  z2: number;
+}
+
 export function webGeometry(
   radius: number,
   spokes: number,
@@ -39,6 +48,30 @@ export function webGeometry(
   const geometry = new THREE.BufferGeometry();
   geometry.setAttribute("position", new THREE.Float32BufferAttribute(positions, 3));
   return geometry;
+}
+
+export function webRadialSegments(
+  radius: number,
+  spokes: number,
+  rings: number,
+): Segment[] {
+  const segments: Segment[] = [];
+  for (let i = 0; i < spokes; i++) {
+    const angle = (i * Math.PI * 2) / spokes;
+    for (let r = 0; r < rings; r++) {
+      const r1 = (radius / rings) * r;
+      const r2 = (radius / rings) * (r + 1);
+      segments.push({
+        x1: Math.cos(angle) * r1,
+        y1: 0,
+        z1: Math.sin(angle) * r1,
+        x2: Math.cos(angle) * r2,
+        y2: 0,
+        z2: Math.sin(angle) * r2,
+      });
+    }
+  }
+  return segments;
 }
 
 export function hexCorners(cx: number, cy: number, r: number): THREE.Vector3[] {
@@ -90,12 +123,51 @@ export function honeycombGeometry(radius: number, rings: number): THREE.BufferGe
   return geometry;
 }
 
+export function honeycombSegments(radius: number, rings: number): Segment[] {
+  const segments: Segment[] = [];
+  const centers = honeycombCenters(radius, rings);
+  for (const center of centers) {
+    const corners = hexCorners(center.x, center.y, radius - 0.04);
+    for (let i = 0; i < 6; i++) {
+      const a = corners[i];
+      const b = corners[(i + 1) % 6];
+      segments.push({
+        x1: a.x,
+        y1: a.y,
+        z1: a.z,
+        x2: b.x,
+        y2: b.y,
+        z2: b.z,
+      });
+    }
+  }
+  return segments;
+}
+
+export function buildHoneycombAdjacency(segments: Segment[]): Map<string, number[]> {
+  const map = new Map<string, number[]>();
+  const key = (x: number, y: number, z: number) =>
+    `${x.toFixed(6)},${y.toFixed(6)},${z.toFixed(6)}`;
+
+  for (let i = 0; i < segments.length; i++) {
+    const s = segments[i];
+    const k1 = key(s.x1, s.y1, s.z1);
+    const k2 = key(s.x2, s.y2, s.z2);
+    if (!map.has(k1)) map.set(k1, []);
+    if (!map.has(k2)) map.set(k2, []);
+    map.get(k1)!.push(i);
+    map.get(k2)!.push(i);
+  }
+  return map;
+}
+
 export function connectorGeometry(
   webRadius: number,
   webSpokes: number,
   webRings: number,
   honeyRadius: number,
   honeyRings: number,
+  honeyY = 0,
 ): THREE.BufferGeometry {
   const positions: number[] = [];
   const honeyCenters = honeycombCenters(honeyRadius, honeyRings);
@@ -121,27 +193,10 @@ export function connectorGeometry(
         nearest = p;
       }
     }
-    positions.push(center.x, center.y, center.z, nearest.x, nearest.y, nearest.z);
+    positions.push(center.x, honeyY, center.z, nearest.x, 0, nearest.z);
   }
 
   const geometry = new THREE.BufferGeometry();
   geometry.setAttribute("position", new THREE.Float32BufferAttribute(positions, 3));
   return geometry;
-}
-
-export function particlePositions(count: number, radius: number): Float32Array {
-  const arr = new Float32Array(count * 3);
-  for (let i = 0; i < count; i++) {
-    const r = radius * (0.2 + Math.random() * 0.8);
-    const theta = Math.random() * Math.PI * 2;
-    const y = (Math.random() - 0.5) * radius * 0.5;
-    arr[i * 3] = Math.cos(theta) * r;
-    arr[i * 3 + 1] = y;
-    arr[i * 3 + 2] = Math.sin(theta) * r;
-  }
-  return arr;
-}
-
-export function pulsePositions(count: number): Float32Array {
-  return new Float32Array(count * 3);
 }
