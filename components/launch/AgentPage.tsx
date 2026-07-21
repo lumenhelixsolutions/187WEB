@@ -42,12 +42,6 @@ function AgentHero({ agent }: { agent: AgentConfig }) {
               />
               {/* eslint-disable-next-line @next/next/no-img-element -- basePath-safe static export */}
               <img
-                src={brandAssets.spiderExtracted}
-                alt=""
-                className="absolute inset-0 m-auto h-48 w-auto object-contain drop-shadow-[0_0_40px_rgba(0,0,0,0.8)] sm:h-64"
-              />
-              {/* eslint-disable-next-line @next/next/no-img-element -- basePath-safe static export */}
-              <img
                 src={brandAssets.headerLockup}
                 alt="187WEB"
                 className="absolute bottom-4 left-4 h-8 w-auto opacity-90 sm:h-10"
