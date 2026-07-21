@@ -1,7 +1,7 @@
 # GSAP Sampler + Brand Asset Refresh
 
 **Date:** 2026-07-15  
-**Status:** Design approved, ready for implementation planning  
+**Status:** Implemented on `feat/xavier-phase2` (assets + motion-lab samplers + 187GSAP templates)  
 **Owner:** 187WEB core team
 
 ## 1. Goals

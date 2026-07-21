@@ -50,11 +50,16 @@
 
 ## Templates
 
-| Template | When to use |
-|---|---|
-| `templates/gsap-timeline.md` | A new timeline-driven animation. |
-| `templates/scrolltrigger-map.md` | Mapping scroll progress to animation. |
-| `templates/gsap-react.md` | Using GSAP inside a React component with `useGSAP`. |
+| Template | When to use | Living demo |
+|---|---|---|
+| `templates/gsap-timeline.md` | A new timeline-driven animation. | Motion hooks |
+| `templates/scrolltrigger-map.md` | Mapping scroll progress to animation. | Scroll narrative |
+| `templates/gsap-react.md` | Using GSAP inside a React component with `useGSAP`. | All motion-lab cards |
+| `templates/gsap-cursor-effects.md` | Magnetic / proximity hover. | `MagneticMascot` |
+| `templates/gsap-page-transitions.md` | Flip layout morphs. | `FlipPageSampler` |
+| `templates/gsap-scroll-effects.md` | Scroll reveals + custom scroller. | `ScrollRevealSampler` |
+
+Brand assets for the samplers live under `public/images/` and are keyed in `lib/brand-assets.ts` (`orb`, `headerLockup`, `wordmarkTagline`, `mascotReference`, `mascotWireframe`, `triangleIcon`).
 
 ## Acceptance tests
 

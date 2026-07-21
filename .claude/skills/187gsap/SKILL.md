@@ -36,68 +36,27 @@ origin: motion-lab
 
 ## Templates
 
-### gsap-timeline.md
+| Template | When to use | Living demo |
+|---|---|---|
+| `templates/gsap-timeline.md` | Timeline-driven entrances | Motion hooks |
+| `templates/scrolltrigger-map.md` | Section pin / scrub maps | Scroll narrative |
+| `templates/gsap-react.md` | React + cleanup patterns | All motion-lab cards |
+| `templates/gsap-cursor-effects.md` | Magnetic / proximity hover | `MagneticMascot` |
+| `templates/gsap-page-transitions.md` | Flip layout morphs | `FlipPageSampler` |
+| `templates/gsap-scroll-effects.md` | Scroll reveals + custom scroller | `ScrollRevealSampler` |
 
-Use for a new timeline-driven animation.
+### Brand motion assets
 
-```ts
-import { gsap } from "gsap";
+Samplers use the refreshed brand set from `lib/brand-assets.ts`:
 
-const tl = gsap.timeline({
-  defaults: { duration: 0.6, ease: "power2.out" },
-});
+- `orb` — badge icon
+- `headerLockup` — horizontal lockup
+- `wordmarkTagline` — wordmark + tagline
+- `mascotReference` — full-figure mascot
+- `mascotWireframe` — hologram wireframe
+- `triangleIcon` — Flip grid tiles
 
-tl.from(".hero-headline", { y: 24, autoAlpha: 0 })
-  .from(".hero-subhead", { y: 16, autoAlpha: 0 }, "-=0.4")
-  .from(".hero-cta", { scale: 0.95, autoAlpha: 0 }, "-=0.3");
-```
-
-### scrolltrigger-map.md
-
-Use when scroll progress drives the animation.
-
-```ts
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
-
-const tl = gsap.timeline({
-  scrollTrigger: {
-    trigger: ".narrative-section",
-    start: "top top",
-    end: "+=150%",
-    scrub: 0.5,
-    pin: true,
-  },
-});
-
-tl.to(".panel-1", { xPercent: -100 })
-  .to(".panel-2", { xPercent: -100 }, "<");
-```
-
-### gsap-react.md
-
-Use inside a React component.
-
-```tsx
-import { useRef } from "react";
-import { gsap } from "gsap";
-import { useGSAP } from "@gsap/react";
-
-export function AnimatedCard() {
-  const container = useRef<HTMLDivElement>(null);
-
-  useGSAP(
-    () => {
-      gsap.from(".card", { y: 20, opacity: 0, duration: 0.5 });
-    },
-    { scope: container },
-  );
-
-  return <div ref={container} className="card">...</div>;
-}
-```
+CHARLOTTE can route these patterns through her **GSAP Motion System** skill chain.
 
 ## Routes
 
