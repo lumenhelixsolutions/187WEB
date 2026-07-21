@@ -4,11 +4,11 @@ import { AgentPage, type AgentConfig } from "@/components/launch/AgentPage";
 const agent: AgentConfig = {
   slug: "charlotte",
   name: "CHARLOTTE",
-  tagline: "Orchestrate + solve + recycle",
-  color: "#39FF14",
+  tagline: "Application orchestration",
+  color: "#3b82f6",
   skillIds: ["repo", "craft", "vibe", "launch", "write", "research"],
   overview:
-    "CHARLOTTE threads intent into retrievable info, recycled and upcycled solutions, design-system hybrids, launch plans, and conflict-resolved public copy. With NATASHA and YELENA owning security, she focuses on orchestrating application work, assigning subagents, and appealing to KRISHNA for SkillChains.",
+    "CHARLOTTE threads intent into retrievable info, recycled and upcycled solutions, design-system hybrids, launch plans, and conflict-resolved public copy. With security handled by NATASHA and YELENA, she focuses on application orchestration and can appeal to XAVIER for final production decisions.",
 };
 
 export const metadata: Metadata = {

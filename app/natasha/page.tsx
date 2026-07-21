@@ -4,11 +4,11 @@ import { AgentPage, type AgentConfig } from "@/components/launch/AgentPage";
 const agent: AgentConfig = {
   slug: "natasha",
   name: "NATASHA",
-  tagline: "Security + red-team ethos",
+  tagline: "External + post-launch security",
   color: "#f43f5e",
   skillIds: ["natasha", "chain", "test"],
   overview:
-    "NATASHA is the 187WEB red-team / offensive security function. She audits threat surfaces, assures contracts, and drives test-driven validation. She shares security duties with YELENA, freeing CHARLOTTE and KALI for application work. She can call CHARLOTTE, KALI, or KRISHNA for SkillChain support.",
+    "NATASHA handles external and post-launch security for 187WEB: threat-surface audits, contract and chain assurance, and test-driven validation after ship. She works in tandem with YELENA and can call XAVIER for a council when an incident needs cross-crew coordination.",
 };
 
 export const metadata: Metadata = {
