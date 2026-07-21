@@ -7,7 +7,7 @@ import { ProductShell } from "./ProductShell";
 import { skillShowcaseIndex, type SkillShowcaseData } from "@/lib/skill-showcase-data";
 import { FIRST_CLASS_SKILLS, SUBSKILLS, type SuiteSkill } from "@/lib/first-class-skills";
 import { charlotteModules } from "./launch-data";
-import { AgentMascot } from "./AgentMascot";
+import { AgentMascotStack } from "./AgentMascot";
 import { XavierControlPlane } from "./XavierControlPlane";
 import type { AgentKit, Command, Prompt, SkillChain, Task, Trigger } from "@/lib/agents/agent-kit";
 
@@ -30,19 +30,12 @@ function AgentHero({ agent }: { agent: AgentKit }) {
     <section className="relative overflow-hidden border-b border-white/10 px-6 pb-16 pt-28 sm:pb-24 sm:pt-36">
       <div className="container-x relative">
         <div className="mx-auto max-w-5xl">
-          <div
-            className="relative mx-auto mb-10 max-w-xl overflow-hidden rounded-2xl border p-2 sm:max-w-2xl"
-            style={{
-              borderColor: hexWithAlpha(agent.color, 0.35),
-              boxShadow: `0 0 80px ${hexWithAlpha(agent.color, 0.2)}`,
-            }}
-          >
-            <AgentMascot
+          <div className="relative mx-auto mb-10 max-w-xl sm:max-w-2xl">
+            <AgentMascotStack
               color={agent.color}
               name={agent.name}
               size="hero"
               showWordmark
-              showNameBadge
               priority
             />
           </div>
