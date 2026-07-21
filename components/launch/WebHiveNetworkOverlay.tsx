@@ -2,12 +2,11 @@
 
 import { useEffect, useMemo, useRef } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { Line } from "@react-three/drei";
 import * as THREE from "three";
 import { gsap } from "@/lib/motion/gsap";
 import { useReducedMotion } from "@/lib/motion/useReducedMotion";
+import { HIVE_COLOR_CYCLE_SPEED, RGYB } from "@/lib/brand-palette";
 
-const ACCENT = "#39FF14";
 const HEX_RADIUS = 0.85;
 const HEX_RINGS = 4;
 const LAYERS = 4;
@@ -35,7 +34,6 @@ function buildHoneycombNodes(seed: number): THREE.Vector3[] {
       for (let r = Math.max(-ring, -q - ring); r <= Math.min(ring, -q + ring); r++) {
         const x = w * q + (w / 2) * r;
         const y = h * r;
-        // Skip the exact center occasionally so the hub is not overcrowded.
         if (ring === 0 && rand() > 0.35) continue;
         const z = -Z_SPREAD / 2 + rand() * Z_SPREAD;
         const jitterX = (rand() - 0.5) * HEX_RADIUS * 0.25;
@@ -45,15 +43,17 @@ function buildHoneycombNodes(seed: number): THREE.Vector3[] {
     }
   }
 
-  // Add a few layered rings at varying depths for the "spiderweb" radial feel.
   const layerNodes = LAYERS * 16;
   for (let i = 0; i < layerNodes; i++) {
     const angle = (i / 16) * Math.PI * 2 + (Math.floor(i / 16) * Math.PI) / LAYERS;
     const radius = 2.2 + (i % 4) * 1.4 + rand() * 0.4;
-    const x = Math.cos(angle) * radius;
-    const y = Math.sin(angle) * radius;
-    const z = -Z_SPREAD / 2 + rand() * Z_SPREAD;
-    nodes.push(new THREE.Vector3(x, y, z));
+    nodes.push(
+      new THREE.Vector3(
+        Math.cos(angle) * radius,
+        Math.sin(angle) * radius,
+        -Z_SPREAD / 2 + rand() * Z_SPREAD
+      )
+    );
   }
 
   return nodes;
@@ -80,8 +80,25 @@ function buildEdges(nodes: THREE.Vector3[]): [THREE.Vector3, THREE.Vector3][] {
   return edges;
 }
 
+function lerpPalette(
+  palette: THREE.Color[],
+  phase: number,
+  out: THREE.Color,
+  a: THREE.Color,
+  b: THREE.Color
+) {
+  const n = palette.length;
+  const wrapped = ((phase % n) + n) % n;
+  const idx = Math.floor(wrapped);
+  const next = (idx + 1) % n;
+  const frac = wrapped - idx;
+  const s = frac * frac * (3 - 2 * frac);
+  return out.copy(a.copy(palette[idx])).lerp(b.copy(palette[next]), s);
+}
+
 function NetworkContent() {
   const meshRef = useRef<THREE.InstancedMesh>(null);
+  const edgeMatRef = useRef<THREE.LineBasicMaterial>(null);
   const reducedMotion = useReducedMotion();
   const { invalidate } = useThree();
   const timeRef = useRef(0);
@@ -90,6 +107,26 @@ function NetworkContent() {
   const nodes = useMemo(() => buildHoneycombNodes(0x9e3779b9), []);
   const edges = useMemo(() => buildEdges(nodes), [nodes]);
   const dummy = useMemo(() => new THREE.Object3D(), []);
+  const palette = useMemo(() => RGYB.map((hex) => new THREE.Color(hex)), []);
+  const colorA = useMemo(() => new THREE.Color(), []);
+  const colorB = useMemo(() => new THREE.Color(), []);
+  const scratch = useMemo(() => new THREE.Color(), []);
+
+  const edgeGeometry = useMemo(() => {
+    const positions = new Float32Array(edges.length * 6);
+    edges.forEach(([a, b], i) => {
+      const o = i * 6;
+      positions[o] = a.x;
+      positions[o + 1] = a.y;
+      positions[o + 2] = a.z;
+      positions[o + 3] = b.x;
+      positions[o + 4] = b.y;
+      positions[o + 5] = b.z;
+    });
+    const geo = new THREE.BufferGeometry();
+    geo.setAttribute("position", new THREE.BufferAttribute(positions, 3));
+    return geo;
+  }, [edges]);
 
   useEffect(() => {
     if (reducedMotion) {
@@ -98,7 +135,7 @@ function NetworkContent() {
     }
     const tween = gsap.to(intro.current, {
       value: 1,
-      duration: 1.8,
+      duration: 3.2,
       ease: "power2.out",
       onUpdate: invalidate,
     });
@@ -110,20 +147,31 @@ function NetworkContent() {
   useFrame((_, delta) => {
     if (!meshRef.current) return;
     const dt = Math.min(delta, 0.1);
-    if (!reducedMotion) timeRef.current += dt * 0.35;
+    if (!reducedMotion) timeRef.current += dt * 0.18;
     const t = timeRef.current;
     const p = intro.current.value;
+    const cycle = t * HIVE_COLOR_CYCLE_SPEED;
 
     nodes.forEach((node, i) => {
-      const pulse = Math.sin(t + node.x * 0.4 + node.y * 0.3) * 0.15 + 1;
-      dummy.position.copy(node).multiplyScalar(pulse * 0.15 + 0.85);
+      const pulse = Math.sin(t * 0.55 + node.x * 0.35 + node.y * 0.28) * 0.08 + 1;
+      dummy.position.copy(node).multiplyScalar(pulse * 0.12 + 0.88);
       dummy.position.multiplyScalar(p);
-      dummy.scale.setScalar((0.06 + Math.sin(t * 2 + node.z) * 0.025) * p);
+      dummy.scale.setScalar((0.05 + Math.sin(t * 0.9 + node.z) * 0.015) * p);
       dummy.updateMatrix();
       meshRef.current?.setMatrixAt(i, dummy.matrix);
+
+      lerpPalette(palette, cycle + i * 0.17 + node.x * 0.04, scratch, colorA, colorB);
+      meshRef.current?.setColorAt(i, scratch);
     });
 
     meshRef.current.instanceMatrix.needsUpdate = true;
+    if (meshRef.current.instanceColor) meshRef.current.instanceColor.needsUpdate = true;
+
+    if (edgeMatRef.current) {
+      lerpPalette(palette, cycle * 0.55, scratch, colorA, colorB);
+      edgeMatRef.current.color.copy(scratch);
+    }
+
     invalidate();
   });
 
@@ -131,18 +179,12 @@ function NetworkContent() {
     <group rotation={[0.18, 0, 0]}>
       <instancedMesh ref={meshRef} args={[undefined, undefined, nodes.length]}>
         <sphereGeometry args={[1, 10, 10]} />
-        <meshBasicMaterial color={ACCENT} transparent opacity={0.75} />
+        <meshBasicMaterial transparent opacity={0.4} toneMapped={false} />
       </instancedMesh>
-      <Line
-        segments
-        points={edges.flatMap(([a, b]) => [a, b])}
-        color={ACCENT}
-        lineWidth={1}
-        transparent
-        opacity={0.07}
-      />
-      <ambientLight intensity={0.5} />
-      <pointLight color={ACCENT} intensity={1.2} position={[4, 4, 4]} />
+      <lineSegments geometry={edgeGeometry}>
+        <lineBasicMaterial ref={edgeMatRef} transparent opacity={0.04} toneMapped={false} />
+      </lineSegments>
+      <ambientLight intensity={0.3} />
     </group>
   );
 }
@@ -153,14 +195,14 @@ export function WebHiveNetworkOverlay() {
 
   return (
     <div
-      className="pointer-events-none fixed inset-0 z-[1] overflow-hidden"
+      className="pointer-events-none fixed inset-0 z-[1] overflow-hidden opacity-65 brightness-[0.7]"
       aria-hidden="true"
     >
       <div
         className="absolute inset-0"
         style={{
           background:
-            "radial-gradient(circle at 50% 45%, transparent 0%, transparent 35%, rgba(5,6,8,0.55) 100%)",
+            "radial-gradient(circle at 50% 45%, transparent 0%, transparent 28%, rgba(5,6,8,0.78) 100%)",
         }}
       />
       <Canvas

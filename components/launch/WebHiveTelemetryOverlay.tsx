@@ -2,8 +2,7 @@
 
 import { useMemo } from "react";
 import { useReducedMotion } from "@/lib/motion/useReducedMotion";
-
-const NEON = "#39FF14";
+import { RGYB } from "@/lib/brand-palette";
 
 const CODE_SNIPPETS = [
   'import { hive } from "@/lib/webhive";',
@@ -137,7 +136,7 @@ export function WebHiveTelemetryOverlay() {
 
   return (
     <div
-      className="pointer-events-none fixed inset-0 z-[2] overflow-hidden"
+      className="pointer-events-none fixed inset-0 z-[2] overflow-hidden opacity-40 brightness-[0.75]"
       aria-hidden="true"
     >
       {/* Edge vignette so the overlay stays behind content and fades at borders. */}
@@ -145,82 +144,93 @@ export function WebHiveTelemetryOverlay() {
         className="absolute inset-0"
         style={{
           background:
-            "radial-gradient(circle at 50% 45%, transparent 0%, transparent 40%, rgba(5,6,8,0.65) 100%)",
+            "radial-gradient(circle at 50% 45%, transparent 0%, transparent 35%, rgba(5,6,8,0.8) 100%)",
         }}
       />
 
-      {/* Layer 1: falling hex-byte matrix columns. */}
-      {columns.map((col) => (
-        <div
-          key={col.id}
-          className="absolute top-0 h-full overflow-hidden font-mono leading-tight"
-          style={{
-            left: `${col.left}%`,
-            width: `${col.width}rem`,
-            fontSize: col.fontSize,
-            color: `rgba(57,255,20,${col.opacity})`,
-          }}
-        >
+      {/* Layer 1: falling hex-byte matrix columns — RGYB shift, slower fall. */}
+      {columns.map((col) => {
+        const hue = RGYB[col.id % RGYB.length];
+        return (
           <div
-            className="absolute left-0 top-0 flex flex-col gap-2"
+            key={col.id}
+            className="absolute top-0 h-full overflow-hidden font-mono leading-tight"
             style={{
-              animation: `wh-matrix-fall ${col.duration}s linear infinite`,
-              animationDelay: `${col.delay}s`,
-            }}
-          >
-            {Array.from({ length: 3 }).flatMap((_, copy) =>
-              col.chars.map((c, idx) => (
-                <span key={`${copy}-${idx}`} className="block">
-                  {c}
-                </span>
-              )),
-            )}
-          </div>
-        </div>
-      ))}
-
-      {/* Layer 2: horizontal code/telemetry streams at different depths. */}
-      <div className="absolute inset-0 flex flex-col justify-around py-16">
-        {strips.map((strip) => (
-          <div
-            key={strip.id}
-            className="sc-mask-x overflow-hidden font-mono whitespace-nowrap"
-            style={{
-              opacity: strip.opacity,
-              filter: strip.blur ? `blur(${strip.blur}px)` : undefined,
+              left: `${col.left}%`,
+              width: `${col.width}rem`,
+              fontSize: col.fontSize,
+              color: hue,
+              opacity: Math.min(0.35, col.opacity * 0.55),
             }}
           >
             <div
-              className="inline-flex"
+              className="absolute left-0 top-0 flex flex-col gap-2"
               style={{
-                animation: `wh-code-drift ${strip.duration}s linear infinite`,
-                fontSize: strip.fontSize,
-                color: `rgba(57,255,20,${strip.opacity + 0.1})`,
+                animation: `wh-matrix-fall ${col.duration * 1.75}s linear infinite`,
+                animationDelay: `${col.delay}s`,
               }}
             >
-              <span className="px-8">{strip.content}</span>
-              <span className="px-8">{strip.content}</span>
+              {Array.from({ length: 3 }).flatMap((_, copy) =>
+                col.chars.map((c, idx) => (
+                  <span key={`${copy}-${idx}`} className="block">
+                    {c}
+                  </span>
+                )),
+              )}
             </div>
           </div>
-        ))}
+        );
+      })}
+
+      {/* Layer 2: horizontal code/telemetry streams at different depths. */}
+      <div className="absolute inset-0 flex flex-col justify-around py-16">
+        {strips.map((strip) => {
+          const hue = RGYB[strip.id % RGYB.length];
+          return (
+            <div
+              key={strip.id}
+              className="sc-mask-x overflow-hidden font-mono whitespace-nowrap"
+              style={{
+                opacity: strip.opacity * 0.45,
+                filter: strip.blur ? `blur(${strip.blur}px)` : undefined,
+              }}
+            >
+              <div
+                className="inline-flex"
+                style={{
+                  animation: `wh-code-drift ${strip.duration * 1.6}s linear infinite`,
+                  fontSize: strip.fontSize,
+                  color: hue,
+                }}
+              >
+                <span className="px-8">{strip.content}</span>
+                <span className="px-8">{strip.content}</span>
+              </div>
+            </div>
+          );
+        })}
       </div>
 
-      {/* Layer 3: pulsing system labels scattered through the field. */}
-      {labels.map((label) => (
-        <span
-          key={label.id}
-          className="absolute font-mono text-[10px] font-semibold uppercase tracking-widest"
-          style={{
-            left: `${label.left}%`,
-            top: `${label.top}%`,
-            color: NEON,
-            animation: `wh-pulse-glow 4s ease-in-out infinite`,
-            animationDelay: `${label.delay}s`,
-          }}
-        >
-          {label.text}
-        </span>
-      ))}
+      {/* Layer 3: soft system labels — RGYB, slower pulse. */}
+      {labels.map((label) => {
+        const hue = RGYB[label.id % RGYB.length];
+        return (
+          <span
+            key={label.id}
+            className="absolute font-mono text-[10px] font-semibold uppercase tracking-widest"
+            style={{
+              left: `${label.left}%`,
+              top: `${label.top}%`,
+              color: hue,
+              opacity: 0.45,
+              animation: `wh-pulse-glow 7s ease-in-out infinite`,
+              animationDelay: `${label.delay}s`,
+            }}
+          >
+            {label.text}
+          </span>
+        );
+      })}
     </div>
   );
 }

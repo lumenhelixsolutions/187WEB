@@ -22,29 +22,31 @@ import { useGsapTimeline } from "@/lib/motion/useGsapTimeline";
 import { gsap } from "@/lib/motion/gsap";
 
 const NEON = "#39FF14";
+/** RGYB app palette — background lines slowly shift through these. */
+const HIVE_RGYB = ["#f43f5e", "#39FF14", "#facc15", "#3b82f6"] as const;
 
 const GIANT_RADIUS = 18;
 const GIANT_SPOKES = 48;
 const GIANT_RINGS = 16;
-const GIANT_OPACITY = 0.05;
+const GIANT_OPACITY = 0.028;
 
 const HONEY_RADIUS = 0.5;
 const HONEY_RINGS = 4;
-const HONEY_OPACITY = 0.09;
+const HONEY_OPACITY = 0.05;
 
 const MID_RADIUS = 9;
 const MID_SPOKES = 40;
 const MID_RINGS = 14;
-const MID_OPACITY = 0.08;
+const MID_OPACITY = 0.045;
 
 const OVERLAY_RADIUS = 5;
 const OVERLAY_SPOKES = 32;
 const OVERLAY_RINGS = 12;
-const OVERLAY_OPACITY = 0.16;
+const OVERLAY_OPACITY = 0.09;
 
 const WEB_TELEMETRY = 32;
 const HONEY_TELEMETRY = 24;
-const CONNECTOR_OPACITY = 0.04;
+const CONNECTOR_OPACITY = 0.025;
 
 function lerp(a: number, b: number, t: number) {
   return a + (b - a) * t;
@@ -249,11 +251,39 @@ function WebHiveScene({ enableBloom }: WebHiveSceneProps) {
     return tl;
   }, []);
 
+  const palette = useMemo(() => HIVE_RGYB.map((h) => new THREE.Color(h)), []);
+  const colorA = useMemo(() => new THREE.Color(), []);
+  const colorB = useMemo(() => new THREE.Color(), []);
+  const hiveTint = useMemo(() => new THREE.Color(), []);
+
   useFrame((_, rawDelta) => {
     if (!rootRef.current || reducedMotion) return;
     const delta = Math.min(rawDelta, 0.1);
-    timeRef.current += delta;
+    // Slower organic drift than before
+    timeRef.current += delta * 0.55;
     const t = timeRef.current;
+
+    // Soft RGYB wash across all hive line/point materials
+    {
+      const phase = t * 0.07;
+      const n = palette.length;
+      const wrapped = ((phase % n) + n) % n;
+      const idx = Math.floor(wrapped);
+      const next = (idx + 1) % n;
+      const frac = wrapped - idx;
+      const s = frac * frac * (3 - 2 * frac);
+      hiveTint.copy(colorA.copy(palette[idx])).lerp(colorB.copy(palette[next]), s);
+      rootRef.current.traverse((obj) => {
+        const mat = (obj as THREE.Mesh).material as THREE.Material | THREE.Material[] | undefined;
+        if (!mat) return;
+        const list = Array.isArray(mat) ? mat : [mat];
+        for (const m of list) {
+          if ("color" in m && (m as THREE.MeshBasicMaterial).color) {
+            (m as THREE.MeshBasicMaterial).color.copy(hiveTint);
+          }
+        }
+      });
+    }
 
     const scrollProgress = scrollProxy.current.progress;
     const energy = scrollProxy.current.energy;
@@ -517,11 +547,11 @@ export function WebHiveThreeBackground() {
 
   return (
     <div
-      className="pointer-events-none fixed inset-0 z-0"
+      className="pointer-events-none fixed inset-0 z-0 opacity-55 brightness-[0.62] contrast-[1.05]"
       aria-hidden="true"
       style={{
         background:
-          "radial-gradient(circle at 50% 45%, #07100a 0%, #050608 65%, #000 100%)",
+          "radial-gradient(circle at 50% 45%, #060a08 0%, #050608 65%, #000 100%)",
       }}
     >
       <Canvas
@@ -534,8 +564,8 @@ export function WebHiveThreeBackground() {
         {enableBloom && (
           <EffectComposer>
             <Bloom
-              intensity={0.6}
-              luminanceThreshold={0.2}
+              intensity={0.28}
+              luminanceThreshold={0.35}
               luminanceSmoothing={0.9}
               mipmapBlur
             />

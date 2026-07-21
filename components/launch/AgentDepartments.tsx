@@ -12,13 +12,6 @@ import { useReducedMotion } from "@/lib/motion/useReducedMotion";
 
 /**
  * Top-level 187WEB agent ecosystem.
- *
- * Agent → skill mapping:
- * - NATASHA: natasha, chain, test (external / post-launch security + applications)
- * - YELENA: natasha, test, access-plus, include (pre-launch internal security + safety gates + applications)
- * - CHARLOTTE: repo, craft, vibe, launch, write, research (application orchestration)
- * - KALI: seo, revenue, publish, create, repo, vibe (growth + create assist)
- * - XAVIER: docs, version, publish, launch, natasha, test (final creation / production + council)
  */
 
 const AGENTS: AgentKit[] = [natashaKit, yelenaKit, charlotteKit, kaliKit, xavierKit];
@@ -45,26 +38,54 @@ function AgentCard({
       ref={cardRef}
       href={`/${agent.slug}`}
       data-agent-card
-      className="group flex h-full min-h-[28rem] flex-col rounded-2xl border border-white/10 bg-[#0A0C14]/90 p-1 will-change-transform"
-      style={{ borderColor: `${agent.color}33` }}
+      className="group relative flex h-full min-h-[30rem] flex-col overflow-hidden rounded-2xl border bg-[#0A0C14]/95 p-1 will-change-transform"
+      style={{ borderColor: `${agent.color}40` }}
     >
-      <div
-        className="flex flex-1 flex-col rounded-[0.9rem] px-5 pb-6 pt-8 sm:px-6"
+      {/* Ghost name watermark — sits behind mascot + body text */}
+      <span
+        data-agent-ghost
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 top-[18%] z-0 select-none text-center font-black uppercase leading-none tracking-tighter"
         style={{
-          background: `linear-gradient(180deg, ${agent.color}12 0%, transparent 42%)`,
+          color: "transparent",
+          WebkitTextStroke: `1px ${agent.color}55`,
+          fontSize: "clamp(2.75rem, 1.2rem + 4vw, 4.25rem)",
+          opacity: 0.55,
         }}
       >
-        <div data-agent-mascot className="flex items-center justify-center py-4">
+        {agent.name}
+      </span>
+      <span
+        data-agent-ghost-fill
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 top-[42%] z-0 select-none text-center text-[0.65rem] font-semibold uppercase tracking-[0.35em]"
+        style={{ color: `${agent.color}66` }}
+      >
+        {agent.tagline}
+      </span>
+
+      <div
+        className="relative z-10 flex flex-1 flex-col rounded-[0.9rem] px-5 pb-6 pt-8 sm:px-6"
+        style={{
+          background: `linear-gradient(180deg, ${agent.color}10 0%, rgba(10,12,20,0.92) 38%, rgba(10,12,20,0.98) 100%)`,
+        }}
+      >
+        <div data-agent-mascot className="relative z-10 flex items-center justify-center py-3">
           <AgentMascotStack color={agent.color} name={agent.name} size="lg" showWordmark={false} />
         </div>
 
-        <div className="mt-2 flex flex-1 flex-col">
-          <h3 className="text-xl font-bold tracking-tight text-white sm:text-2xl">{agent.name}</h3>
+        <div className="relative z-10 mt-1 flex flex-1 flex-col">
+          <h3
+            data-agent-title
+            className="text-xl font-bold tracking-tight text-white sm:text-2xl"
+          >
+            {agent.name}
+          </h3>
           <p className="mt-1 text-sm font-medium" style={{ color: agent.color }}>
             {agent.tagline}
           </p>
 
-          <p className="mt-4 text-sm leading-relaxed text-white/60 line-clamp-4">{agent.overview}</p>
+          <p className="mt-4 text-sm leading-relaxed text-white/70 line-clamp-4">{agent.overview}</p>
 
           <div className="mt-5 flex flex-wrap gap-2">
             {skills.map(({ skill }) => (
@@ -124,57 +145,114 @@ export function AgentDepartments() {
     const listenerCleanups: Array<() => void> = [];
 
     const ctx = gsap.context(() => {
-      // Staggered hive entrance
+      // Slow staggered entrance
       gsap.fromTo(
         cards,
-        { opacity: 0, y: 48, scale: 0.92, rotateX: 8 },
+        { opacity: 0, y: 36, scale: 0.96 },
         {
           opacity: 1,
           y: 0,
           scale: 1,
-          rotateX: 0,
-          duration: 0.75,
-          stagger: 0.1,
-          ease: "power3.out",
-          clearProps: "rotateX",
+          duration: 1.45,
+          stagger: 0.18,
+          ease: "power2.out",
         }
       );
 
-      // Soft idle float on mascots (desynced)
+      // Ghost name: slow drift + letter spacing breathe
       cards.forEach((card, i) => {
+        const ghost = card.querySelector<HTMLElement>("[data-agent-ghost]");
+        const ghostFill = card.querySelector<HTMLElement>("[data-agent-ghost-fill]");
+        const title = card.querySelector<HTMLElement>("[data-agent-title]");
         const mascot = card.querySelector<HTMLElement>("[data-agent-mascot]");
-        if (!mascot) return;
-        gsap.to(mascot, {
-          y: -6,
-          duration: 2.2 + i * 0.15,
-          ease: "sine.inOut",
-          yoyo: true,
-          repeat: -1,
-          delay: i * 0.2,
-        });
+
+        if (ghost) {
+          gsap.to(ghost, {
+            y: -8,
+            duration: 5.5 + i * 0.35,
+            ease: "sine.inOut",
+            yoyo: true,
+            repeat: -1,
+            delay: i * 0.4,
+          });
+          gsap.fromTo(
+            ghost,
+            { letterSpacing: "-0.06em", opacity: 0.4 },
+            {
+              letterSpacing: "0.02em",
+              opacity: 0.65,
+              duration: 4.2 + i * 0.2,
+              ease: "sine.inOut",
+              yoyo: true,
+              repeat: -1,
+              delay: i * 0.25,
+            }
+          );
+        }
+
+        if (ghostFill) {
+          gsap.to(ghostFill, {
+            opacity: 0.35,
+            duration: 3.8,
+            ease: "sine.inOut",
+            yoyo: true,
+            repeat: -1,
+            delay: i * 0.3,
+          });
+        }
+
+        if (title) {
+          gsap.fromTo(
+            title,
+            { letterSpacing: "0em" },
+            {
+              letterSpacing: "0.04em",
+              duration: 4.5,
+              ease: "sine.inOut",
+              yoyo: true,
+              repeat: -1,
+              delay: i * 0.2,
+            }
+          );
+        }
+
+        // Very soft mascot float
+        if (mascot) {
+          gsap.to(mascot, {
+            y: -4,
+            duration: 4.8 + i * 0.25,
+            ease: "sine.inOut",
+            yoyo: true,
+            repeat: -1,
+            delay: i * 0.35,
+          });
+        }
       });
 
-      // Hover: lift card + nudge mascot + arrow slide
+      // Gentle hover
       cards.forEach((card) => {
         const mascot = card.querySelector<HTMLElement>("[data-agent-mascot]");
         const arrow = card.querySelector<HTMLElement>("[data-agent-arrow]");
+        const ghost = card.querySelector<HTMLElement>("[data-agent-ghost]");
         const color = getComputedStyle(card).borderColor;
 
         const onEnter = () => {
           gsap.to(card, {
-            y: -10,
-            scale: 1.02,
-            boxShadow: `0 28px 60px -28px ${color}`,
-            borderColor: color,
-            duration: 0.35,
+            y: -6,
+            scale: 1.015,
+            boxShadow: `0 24px 50px -30px ${color}`,
+            duration: 0.75,
             ease: "power2.out",
             overwrite: "auto",
           });
           if (mascot) {
-            gsap.to(mascot, { scale: 1.06, duration: 0.35, ease: "power2.out", overwrite: "auto" });
+            gsap.to(mascot, { scale: 1.04, duration: 0.8, ease: "power2.out", overwrite: "auto" });
           }
           if (arrow) {
-            gsap.to(arrow, { x: 6, duration: 0.3, ease: "power2.out", overwrite: "auto" });
+            gsap.to(arrow, { x: 5, duration: 0.65, ease: "power2.out", overwrite: "auto" });
+          }
+          if (ghost) {
+            gsap.to(ghost, { opacity: 0.85, duration: 0.7, ease: "power2.out", overwrite: "auto" });
           }
         };
 
@@ -183,15 +261,18 @@ export function AgentDepartments() {
             y: 0,
             scale: 1,
             boxShadow: "0 0 0 0 transparent",
-            duration: 0.4,
+            duration: 0.9,
             ease: "power2.out",
             overwrite: "auto",
           });
           if (mascot) {
-            gsap.to(mascot, { scale: 1, duration: 0.4, ease: "power2.out", overwrite: "auto" });
+            gsap.to(mascot, { scale: 1, duration: 0.9, ease: "power2.out", overwrite: "auto" });
           }
           if (arrow) {
-            gsap.to(arrow, { x: 0, duration: 0.35, ease: "power2.out", overwrite: "auto" });
+            gsap.to(arrow, { x: 0, duration: 0.75, ease: "power2.out", overwrite: "auto" });
+          }
+          if (ghost) {
+            gsap.to(ghost, { opacity: 0.55, duration: 0.8, ease: "power2.out", overwrite: "auto" });
           }
         };
 
@@ -211,7 +292,7 @@ export function AgentDepartments() {
   }, [reducedMotion]);
 
   return (
-    <section id="agents" className="relative border-y border-white/10 bg-[#080808]/80 px-4 py-20 sm:px-6 sm:py-28">
+    <section id="agents" className="relative z-10 border-y border-white/10 bg-[#080808]/90 px-4 py-20 sm:px-6 sm:py-28">
       <div className="mx-auto w-full max-w-[90rem]">
         <Reveal className="mx-auto mb-14 max-w-3xl text-center">
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#39FF14]">First-class agents</p>
@@ -227,7 +308,6 @@ export function AgentDepartments() {
         <div
           ref={gridRef}
           className="grid grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-8 lg:grid-cols-3 xl:grid-cols-5 xl:gap-6"
-          style={{ perspective: "1200px" }}
         >
           {AGENTS.map((agent, i) => (
             <AgentCard

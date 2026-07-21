@@ -102,9 +102,14 @@ export function ProductShell({
 
   return (
     <div className={`relative min-h-screen overflow-x-hidden bg-[#050608] text-[#ECEDF7] ${className}`.trim()}>
-      {reducedMotion ? <WebHiveBackground /> : <WebHiveThreeBackground />}
-      <WebHiveNetworkOverlay />
-      <WebHiveTelemetryOverlay />
+      {/* Dimmed hive stack — keep content bright on z-10 */}
+      <div className="pointer-events-none fixed inset-0 z-0" aria-hidden>
+        {reducedMotion ? <WebHiveBackground /> : <WebHiveThreeBackground />}
+        <WebHiveNetworkOverlay />
+        <WebHiveTelemetryOverlay />
+        {/* Extra luminance filter so nodes stay atmospheric, not blinding */}
+        <div className="absolute inset-0 bg-[#050608]/35 backdrop-brightness-[0.85]" />
+      </div>
       <Header />
       <main className="relative z-10">{children}</main>
       <Footer />

@@ -103,23 +103,36 @@ export function AgentMascotStack({
   );
 }
 
-/** Home-hero / ecosystem roster: each agent is mascot-over-wordmark (or name), not a merged card art. */
+/** Home-hero / ecosystem roster: mascot over ghost name — separate, not merged art. */
 export function AgentMascotRoster({
   agents,
 }: {
   agents: Array<{ slug: string; name: string; color: string }>;
 }) {
   return (
-    <div className="mx-auto grid w-full max-w-5xl grid-cols-2 gap-6 sm:grid-cols-5 sm:gap-4">
+    <div className="mx-auto grid w-full max-w-5xl grid-cols-2 gap-8 sm:grid-cols-5 sm:gap-6">
       {agents.map((agent) => (
         <Link
           key={agent.slug}
           href={`/${agent.slug}`}
-          className="group flex flex-col items-center gap-3 rounded-2xl border border-white/10 bg-transparent p-3 transition hover:-translate-y-0.5 hover:border-white/25"
+          className="group relative flex flex-col items-center gap-3 rounded-2xl border border-white/10 bg-[#0A0C14]/40 px-3 py-5 transition hover:-translate-y-0.5 hover:border-white/25"
         >
-          <AgentMascot color={agent.color} name={agent.name} size="md" />
           <span
-            className="text-center text-[11px] font-semibold uppercase tracking-[0.16em] text-white/70 transition group-hover:text-white"
+            aria-hidden
+            className="pointer-events-none absolute inset-x-1 top-1/2 -translate-y-1/2 select-none text-center font-black uppercase leading-none tracking-tighter"
+            style={{
+              color: "transparent",
+              WebkitTextStroke: `1px ${agent.color}44`,
+              fontSize: "1.65rem",
+            }}
+          >
+            {agent.name}
+          </span>
+          <div className="relative z-10">
+            <AgentMascot color={agent.color} name={agent.name} size="md" />
+          </div>
+          <span
+            className="relative z-10 text-center text-[11px] font-semibold uppercase tracking-[0.16em] transition group-hover:tracking-[0.22em]"
             style={{ color: agent.color }}
           >
             {agent.name}
