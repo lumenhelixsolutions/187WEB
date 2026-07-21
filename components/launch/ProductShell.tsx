@@ -5,6 +5,8 @@ import dynamic from "next/dynamic";
 import Link from "next/link";
 import { brandAssets } from "@/lib/brand-assets";
 import { WebHiveBackground } from "./WebHiveBackground";
+import { WebHiveNetworkOverlay } from "./WebHiveNetworkOverlay";
+import { WebHiveTelemetryOverlay } from "./WebHiveTelemetryOverlay";
 
 const REPO = "https://github.com/LumenHelixLab/187WEB";
 
@@ -101,6 +103,8 @@ export function ProductShell({
   return (
     <div className={`relative min-h-screen overflow-x-hidden bg-[#050608] text-[#ECEDF7] ${className}`.trim()}>
       {reducedMotion ? <WebHiveBackground /> : <WebHiveThreeBackground />}
+      <WebHiveNetworkOverlay />
+      <WebHiveTelemetryOverlay />
       <Header />
       <main className="relative z-10">{children}</main>
       <Footer />

@@ -151,12 +151,11 @@ export const yelenaKit: AgentKit = {
       tagline: "IAM → least privilege → public handoff",
       description:
         "An internal IAM audit using 187ACCESS+, 187INCLUDE+, and 187NATASHA, with public-surface gaps sent to NATASHA.",
-      classMix: "1st-class access-plus/include/natasha + 2nd-class repo + 3rd-class IAM hooks",
+      classMix: "1st-class access-plus/include/natasha + 3rd-class IAM hooks",
       steps: [
         { skillId: "access-plus", action: "Map roles and access controls" },
         { skillId: "include", action: "Review identity-safe internal docs" },
         { skillId: "natasha", action: "Hand off public-surface access gaps" },
-        { skillId: "repo", action: "Audit branch protection and deployment secrets" },
       ],
       artifact: "Internal IAM audit",
       artifactExample: "/187access",
@@ -172,7 +171,6 @@ export const yelenaKit: AgentKit = {
         { skillId: "test", action: "Verify integration and coverage impact" },
         { skillId: "version", action: "Check compatibility and migration notes" },
         { skillId: "chain", action: "Audit supply-chain and trust signals" },
-        { skillId: "write", action: "Record accept/reject decision and guardrails" },
       ],
       artifact: "Dependency risk report",
       artifactExample: "/187test",

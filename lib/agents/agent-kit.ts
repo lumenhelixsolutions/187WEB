@@ -53,5 +53,5 @@ export type AgentKit = {
   tasks: Task[];
   triggers: Trigger[];
   commands: Command[];
-  skillChains: SkillChain[];
+  skillChains?: SkillChain[];
 };

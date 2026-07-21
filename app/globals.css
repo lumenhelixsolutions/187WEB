@@ -413,3 +413,39 @@
 .sc-glow-pulse {
   animation: sc-glow-pulse 3s ease-in-out infinite;
 }
+
+/* WebHive telemetry overlay: honeycomb + spiderweb data layers. */
+@keyframes wh-matrix-fall {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+}
+
+@keyframes wh-code-drift {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes wh-pulse-glow {
+  0%,
+  100% {
+    opacity: 0.35;
+    text-shadow: 0 0 0 rgba(57, 255, 20, 0);
+  }
+  50% {
+    opacity: 0.85;
+    text-shadow: 0 0 14px rgba(57, 255, 20, 0.5);
+  }
+}

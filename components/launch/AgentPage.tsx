@@ -9,6 +9,7 @@ import { brandAssets } from "@/lib/brand-assets";
 import { skillShowcaseIndex, type SkillShowcaseData } from "@/lib/skill-showcase-data";
 import { FIRST_CLASS_SKILLS, SUBSKILLS, type SuiteSkill } from "@/lib/first-class-skills";
 import { charlotteModules } from "./launch-data";
+import { XavierControlPlane } from "./XavierControlPlane";
 import type { AgentKit, Command, Prompt, SkillChain, Task, Trigger } from "@/lib/agents/agent-kit";
 
 const skillById = new Map([...FIRST_CLASS_SKILLS, ...SUBSKILLS].map((s) => [s.id, s]));
@@ -114,7 +115,7 @@ function SkillCard({ skill, meta, agentColor, index }: { skill: SuiteSkill; meta
         {meta && (
           <p className="mt-3 line-clamp-2 text-sm leading-relaxed text-white/60">{meta.description}</p>
         )}
-        <code className="mt-4 block rounded bg-white/5 px-2 py-1 text-xs text-[#39FF14]">{trigger}</code>
+        <code className="mt-4 block rounded bg-white/5 px-2 py-1 text-xs" style={{ color: agentColor }}>{trigger}</code>
         <div className="mt-auto flex items-center gap-1 pt-5 text-sm font-medium" style={{ color: agentColor }}>
           <span>Open {skill.name}</span>
           <svg
@@ -461,7 +462,7 @@ function SkillChainCard({ chain, agentColor, index }: { chain: SkillChain; agent
 }
 
 function AgentSkillChains({ agent }: { agent: AgentKit }) {
-  if (agent.skillChains.length === 0) return null;
+  if ((agent.skillChains?.length ?? 0) === 0) return null;
   return (
     <section id="skillchains" className="relative border-y border-white/10 bg-[#080808]/80 px-6 py-20 sm:py-28">
       <div className="container-x">
@@ -478,7 +479,7 @@ function AgentSkillChains({ agent }: { agent: AgentKit }) {
         </Reveal>
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {agent.skillChains.map((chain, i) => (
+          {(agent.skillChains ?? []).map((chain, i) => (
             <SkillChainCard key={chain.id} chain={chain} agentColor={agent.color} index={i} />
           ))}
         </div>
@@ -494,7 +495,7 @@ function AgentModules({ agent }: { agent: AgentKit }) {
     <section id="modules" className="relative border-y border-white/10 bg-[#080808]/80 px-6 py-20 sm:py-28">
       <div className="container-x">
         <Reveal className="mx-auto mb-12 max-w-3xl text-center">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#39FF14]">CHARLOTTE module array</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.2em]" style={{ color: agent.color }}>CHARLOTTE module array</p>
           <h2 className="mt-4 text-[clamp(2rem,1.2rem+3vw,3.5rem)] font-bold tracking-tight text-white">
             THREAD · COMPRESS · TENSION · SPARK · CORD · SCOUT · LAB · FUSE
           </h2>
@@ -514,7 +515,7 @@ function AgentModules({ agent }: { agent: AgentKit }) {
               >
                 <div className="flex items-center justify-between gap-3">
                   <h3 className="font-bold text-white">{module.id}</h3>
-                  <code className="rounded bg-[#39FF14]/10 px-2 py-1 text-xs text-[#39FF14]">/187 {module.alias}</code>
+                  <code className="rounded px-2 py-1 text-xs" style={{ backgroundColor: hexWithAlpha(module.color, 0.1), color: module.color }}>/187 {module.alias}</code>
                 </div>
                 {module.legacy && <p className="mt-1 text-xs text-white/30">legacy: {module.legacy}</p>}
                 <p className="mt-3 text-sm leading-relaxed text-white/60">{module.purpose}</p>
@@ -554,6 +555,7 @@ export function AgentPage({ agent }: { agent: AgentKit }) {
       <AgentCommands agent={agent} />
       <AgentModules agent={agent} />
       <AgentSkillChains agent={agent} />
+      {agent.slug === "xavier" && <XavierControlPlane agent={agent} />}
     </ProductShell>
   );
 }

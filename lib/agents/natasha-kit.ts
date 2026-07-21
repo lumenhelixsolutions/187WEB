@@ -151,12 +151,11 @@ export const natashaKit: AgentKit = {
       tagline: "Report → reproduce → severity → response",
       description:
         "Triage incoming public bounty reports with 187NATASHA, 187TEST, and 187VERSION for severity ranking and response tracking.",
-      classMix: "1st-class natasha/test/version + 2nd-class write + 3rd-class bounty hooks",
+      classMix: "1st-class natasha/test/version + 3rd-class bounty hooks",
       steps: [
         { skillId: "natasha", action: "Reproduce and classify the report" },
         { skillId: "test", action: "Validate the issue and check coverage" },
         { skillId: "version", action: "Tag triage decision and fix release" },
-        { skillId: "write", action: "Draft public response and bounty decision" },
       ],
       artifact: "Triage log and severity ranking",
       artifactExample: "/187natasha",
@@ -167,12 +166,11 @@ export const natashaKit: AgentKit = {
       tagline: "Endpoints → auth → leakage → IAM handoff",
       description:
         "A public-surface access audit using 187NATASHA, 187ACCESS+, and 187INCLUDE+, with internal IAM gaps handed to YELENA.",
-      classMix: "1st-class natasha/access-plus/include + 2nd-class test + 3rd-class IAM hooks",
+      classMix: "1st-class natasha/access-plus/include + 3rd-class IAM hooks",
       steps: [
         { skillId: "natasha", action: "Map public endpoints and auth flows" },
         { skillId: "access-plus", action: "Check WCAG+ and auth control gaps" },
         { skillId: "include", action: "Review identity-safe public copy" },
-        { skillId: "test", action: "Add validation tests for access rules" },
       ],
       artifact: "Public surface access audit",
       artifactExample: "/187access",

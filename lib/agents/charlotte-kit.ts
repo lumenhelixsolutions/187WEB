@@ -7,7 +7,7 @@ export const charlotteKit: AgentKit = {
   tagline: "Application orchestration",
   overview:
     "CHARLOTTE orchestrates application work: design systems, repo scaffolding, launch planning, plain-language copy, and research-backed recycling. Security is handled by NATASHA and YELENA, so she focuses on shipping and can appeal to XAVIER for final production decisions.",
-  skills: ["repo", "craft", "vibe", "launch", "write", "research"],
+  skills: ["repo", "craft", "gsap", "vibe", "launch", "write", "research"],
   prompts: [
     {
       id: "thread-intent",
@@ -36,6 +36,20 @@ export const charlotteKit: AgentKit = {
       whenToUse: "After research is complete and the team needs durable, citable artifacts.",
       body:
         "You are CHARLOTTE. Convert the attached research into a set of reusable notes: key claim, source, confidence, contradiction, and next action. Tag each note with the skill that should consume it next.",
+    },
+    {
+      id: "gsap-choreograph",
+      title: "Choreograph motion with GSAP",
+      whenToUse: "When a page or component needs timeline, scroll, or stagger animation.",
+      body:
+        "You are CHARLOTTE. Scope the animation need: target elements, motion intent (entrance, scroll, micro-interaction), timing, easing, and reduced-motion fallback. Output a GSAP timeline spec or ScrollTrigger map, then route implementation to 187GSAP and 187MOTION.",
+    },
+    {
+      id: "gsap-performance",
+      title: "Audit animation performance",
+      whenToUse: "When an animation feels janky or needs performance and accessibility review.",
+      body:
+        "You are CHARLOTTE. Audit the animation for transform-only properties, will-change usage, layout thrash, scroll-linked cost, and prefers-reduced-motion handling. Output a prioritized fix list and a reduced-motion fallback plan.",
     },
   ],
   tasks: [
@@ -83,6 +97,28 @@ export const charlotteKit: AgentKit = {
       ],
       output: "A deployable prototype plus a refinement plan.",
     },
+    {
+      id: "gsap-hero-sequence",
+      title: "Build a GSAP hero entrance sequence",
+      steps: [
+        "Identify hero elements and motion intent with /187craft.",
+        "Design the GSAP timeline, easing, and stagger with /187gsap.",
+        "Add reduced-motion and accessibility fallbacks with /187access-plus.",
+        "Validate performance and ship through /187publish.",
+      ],
+      output: "A hero section with a GSAP entrance sequence and fallback plan.",
+    },
+    {
+      id: "gsap-scroll-story",
+      title: "Build a scroll-driven narrative section",
+      steps: [
+        "Map the narrative beats and scroll trigger points.",
+        "Build ScrollTrigger pinning/scrub with /187gsap and /187scroll.",
+        "Layer 3D or kinetic type with /187hero or /187type if needed.",
+        "Run reduced-motion and performance checks before publish.",
+      ],
+      output: "A scroll-driven section with GSAP choreography and safety checks.",
+    },
   ],
   triggers: [
     {
@@ -105,12 +141,24 @@ export const charlotteKit: AgentKit = {
       condition: "A decision depends on external evidence or competitive context",
       action: "Invoke /187research and compress results into a decision memo.",
     },
+    {
+      id: "animation-request",
+      condition: "User asks for animation, timeline, ScrollTrigger, stagger, or easing",
+      action: "Invoke /187charlotte animate to scope a GSAP timeline and route to 187GSAP.",
+    },
+    {
+      id: "motion-quality",
+      condition: "Animation feels janky, slow, or lacks reduced-motion handling",
+      action: "Invoke /187charlotte motion-audit and route fixes to 187GSAP and 187ACCESS+.",
+    },
   ],
   commands: [
     { id: "plan", name: "/187 charlotte plan", description: "Turn intent into a build plan with skill owners." },
     { id: "craft", name: "/187 charlotte craft", description: "Emit or refine a design-system token set." },
     { id: "launch", name: "/187 charlotte launch", description: "Draft a launch checklist with gates." },
     { id: "research", name: "/187 charlotte research", description: "Backfill source-backed research for a decision." },
+    { id: "animate", name: "/187 charlotte animate", description: "Scope a GSAP timeline or scroll choreography." },
+    { id: "motion-audit", name: "/187 charlotte motion-audit", description: "Audit animation performance and reduced-motion safety." },
   ],
   skillChains: [
     {
@@ -177,6 +225,7 @@ export const charlotteKit: AgentKit = {
       classMix: "1st-class hero/type/scroll + 2nd-class craft + 3rd-class GSAP hooks",
       steps: [
         { skillId: "hero", action: "Design the immersive hero scene" },
+        { skillId: "gsap", action: "Choreograph the hero entrance timeline and easing" },
         { skillId: "type", action: "Add 3D kinetic typography" },
         { skillId: "scroll", action: "Choreograph scroll-driven camera narrative" },
         { skillId: "craft", action: "Polish layout, glass panels, and responsive grid" },
@@ -185,6 +234,25 @@ export const charlotteKit: AgentKit = {
       ],
       artifact: "Live showcase section with 3D hero, type, and scroll narrative",
       artifactExample: "/showcase",
+    },
+    {
+      id: "gsap-motion-system",
+      name: "GSAP Motion System",
+      tagline: "Timelines → scroll triggers → reduced-motion fallback",
+      description:
+        "Add production-safe motion to a UI surface with 187GSAP timelines, 187SCROLL triggers, 187MOTION hooks, and 187ACCESS+ safety checks, then ship through 187PUBLISH.",
+      classMix: "1st-class gsap/scroll/motion + 2nd-class craft/access-plus + 3rd-class motion hooks",
+      steps: [
+        { skillId: "craft", action: "Identify UI elements that need motion polish" },
+        { skillId: "gsap", action: "Build timeline, easing, and stagger specs" },
+        { skillId: "scroll", action: "Add ScrollTrigger scrub or pin where needed" },
+        { skillId: "motion", action: "Wrap reusable patterns into motion hooks" },
+        { skillId: "access-plus", action: "Add reduced-motion and vestibular fallbacks" },
+        { skillId: "test", action: "Run animation performance validation" },
+        { skillId: "publish", action: "Ship the polished surface" },
+      ],
+      artifact: "UI surface with GSAP-driven motion and accessibility fallbacks",
+      artifactExample: "/187gsap",
     },
   ],
 };
