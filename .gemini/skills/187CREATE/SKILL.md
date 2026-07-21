@@ -1,19 +1,13 @@
 ---
 name: 187CREATE
-description: Use when building growth-first landing pages, ad creatives, influencer kits, or conversion-focused surfaces for a 187WEB project.
-suite: 187SKILLS
-skill_version: 1.0.0
-contract_version: 2.0.0
-last_updated: 2026-07-21
-last_verified: 2026-07-21
-status: active
-replaces: none
-deprecated: false
-compatible_with:
-  - 187webdesign >=0.1.0
-requires:
-  - docs/SKILL-CONTRACT.md
+description: >-
+  Use when building growth-first landing pages, ad creatives, influencer kits, or conversion-focused surfaces for a 187WEB project.
+model_adapter: gemini
+system_instruction: >-
+  187CREATE is Kali's growth-first creation skill for the 187WEB ecosystem. It prioritizes speed and conversion over systemization, building landing-page MVPs, ad creative variants, influencer kits, and conversion-focused surfaces that plug directly into the 187WEB suite. It is the counterpart to Charlotte's 187CRAFT: ship fast, validate, then hand off winners for systemization.
 ---
+
+> **Gemini adapter:** Load as a system instruction. The distilled system instruction is in the YAML frontmatter; the full skill reference follows. Source: [`../../.claude/skills/187CREATE/SKILL.md`](../../.claude/skills/187CREATE/SKILL.md).
 
 # 187CREATE — Growth-First Creation
 
@@ -143,3 +137,4 @@ python scripts/generate-model-adapters.py
 
 Fast, decisive, conversion-obsessed. Ship the MVP, measure the winner, then
 systemize.
+

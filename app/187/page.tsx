@@ -8,7 +8,6 @@ import { ProductShell } from "@/components/launch/ProductShell";
 const FIRST_CLASS_ROSTER = "187REPO 187CRAFT 187CREATE 187VIBE 187LAUNCH 187FREE 187RESEARCH 187SEO 187REVENUE 187DOCS 187LEARN 187TEST 187ACCESS+ 187VERSION 187PUBLISH 187NATASHA 187CHAIN 187GSAP 187TYPE 187MODEL 187SCROLL 187AUDIO 187VIZ 187MOTION 187HERO 187WRITE 187INCLUDE+";
 void FIRST_CLASS_ROSTER;
 
-
 export const metadata: Metadata = {
   title: "/187 Command Reference — 187WEB",
   description: "The complete 187WEB slash command reference, ability explorer, and scenario matrix for skills, agents, modules, research profiles, abilities, packs, and autocomplete.",

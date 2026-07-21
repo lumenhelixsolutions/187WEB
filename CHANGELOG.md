@@ -6,6 +6,7 @@
 ## [Unreleased]
 
 ### Added
+- Growth-first first-class skill `187CREATE` with canonical skill file, docs, showcase route, and model adapters.
 - Motion-lab first-class skills: `187GSAP`, `187TYPE`, `187MODEL`, `187SCROLL`, `187AUDIO`, `187VIZ`, `187MOTION`, `187HERO`.
 - Public routes `/187gsap`, `/187type`, `/187model`, `/187scroll`, `/187audio`, `/187viz`, `/187motion`, `/187hero`.
 - Docs and canonical skill files for all motion-lab skills.

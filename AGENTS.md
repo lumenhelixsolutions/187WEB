@@ -1,6 +1,6 @@
 
 <!-- 187SKILLS first-class roster (release:validate) -->
-<!-- 187REPO 187CRAFT 187VIBE 187LAUNCH 187FREE 187RESEARCH 187SEO 187REVENUE 187DOCS 187LEARN 187TEST 187ACCESS+ 187VERSION 187PUBLISH 187NATASHA 187CHAIN 187GSAP 187TYPE 187MODEL 187SCROLL 187AUDIO 187VIZ 187MOTION 187HERO -->
+<!-- 187REPO 187CRAFT 187CREATE 187VIBE 187LAUNCH 187FREE 187RESEARCH 187SEO 187REVENUE 187DOCS 187LEARN 187TEST 187ACCESS+ 187VERSION 187PUBLISH 187NATASHA 187CHAIN 187GSAP 187TYPE 187MODEL 187SCROLL 187AUDIO 187VIZ 187MOTION 187HERO -->
 <!-- NATASHA v3: see docs/NATASHA-ARCHITECTURE.md and docs/migrations/CHARLOTTE-TO-NATASHA.md -->
 # Agent Guide — 187webdesign / 187WEB
 
@@ -44,6 +44,7 @@ Claude Code / Grok skills live under `.claude/skills/` and `.grok/skills/` respe
 | **agentic-sprint-handoff** | `.claude/skills/agentic-sprint-handoff/SKILL.md` | Phased, milestoned multi-agent coding handoffs for Claude Code, Kimi, Grok, Codex, and local agents |
 | **187REPO** | `.claude/skills/187repo/SKILL.md` | Short-name orchestration, repo generation, GitHub deploy, installer |
 | **187CRAFT** | `.claude/skills/187craft/SKILL.md` | Short-name design + frontend execution |
+| **187CREATE** | `.claude/skills/187create/SKILL.md` | Growth-first creation for landing pages, ad creatives, and conversion surfaces |
 | **187VIBE** | `.claude/skills/187vibe/SKILL.md` | Short-name delight, community, and execution layers |
 | **187LAUNCH** | `.claude/skills/187launch/SKILL.md` | Go-to-market intelligence and early-user acquisition |
 | **187FREE** | `.claude/skills/187free/SKILL.md` | No-cost / open-source / local-first stack scouting |
