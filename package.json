@@ -1,6 +1,6 @@
 {
   "name": "187webdesign",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "private": false,
   "license": "SEE LICENSE IN LICENSE",
   "description": "187WEB — a killer AI-powered web suite. A heavily-documented full-stack Next.js starter that ships the 187WEBDEV skill set and demonstrates it with a live, award-caliber showcase site.",
@@ -10,6 +10,8 @@
   },
   "scripts": {
     "dev": "next dev",
+    "version:stamp": "node scripts/stamp-version.mjs",
+    "prebuild": "node scripts/stamp-version.mjs",
     "build": "prisma generate && next build",
     "start": "next start",
     "lint": "next lint",

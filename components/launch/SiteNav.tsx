@@ -18,6 +18,7 @@ const PRIMARY: NavLink[] = [
   { href: "/#agents", label: "Agents", hint: "Crew control plane" },
   { href: "/187", label: "/187", hint: "Slash command reference" },
   { href: "/brain", label: "Brain", hint: "Local brain + Obsidian" },
+  { href: "/about", label: "About", hint: "LumenHelix Lab + credits" },
   { href: "/showcase", label: "Showcase", hint: "Motion lab demos" },
 ];
 
@@ -27,7 +28,10 @@ const MORE: NavLink[] = [
   { href: "/187hero", label: "Hero", hint: "Immersive WebGL heroes" },
   { href: "/187theme", label: "Theme", hint: "Palettes & tokens" },
   { href: "/187type", label: "Type", hint: "Kinetic headlines" },
+  { href: "/187seo", label: "SEO", hint: "Search & structured data" },
+  { href: "/187vibe", label: "Vibe", hint: "Delight & retention" },
   { href: "/install", label: "Install", hint: "CLI + skill packs" },
+  { href: "/187version", label: "Version", hint: "SemVer & changelog" },
   { href: "/187gsap", label: "GSAP", hint: "Timelines & ScrollTrigger" },
 ];
 

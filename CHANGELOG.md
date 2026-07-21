@@ -15,6 +15,19 @@
 - Removed `187QUANTUM` as a first-class skill; quantum topics now route through `187RESEARCH` (algorithms, circuits, resource estimates) and `187NATASHA` (claim audits, non-claim reviews).
 - Updated release-surface rosters and routing docs to reflect the final first-class skill set.
 
+## [0.4.0] - 2026-07-21
+
+### Added
+- **Site version stamp** (`scripts/stamp-version.mjs` → `lib/generated/site-build.json`) so every build/deploy carries SemVer + git SHA + build time (187VERSION).
+- Footer **version badge** linking to About; CI Pages job runs stamp before export.
+- **About page** (`/about`) — LumenHelix Lab narrative, work pillars, SEO/vibe internal links, open-source & repo credits.
+- **Open-source attribution catalog** (`lib/open-source-attribution.ts`).
+- First-class **187THEME**, Xavier multi-agent surface, brain page, expanded nav, install upgrade (prior 0.4 stream).
+
+### Changed
+- Package version **0.4.0**.
+- `package.json` license field: `SEE LICENSE IN LICENSE`.
+
 ## [0.3.0] - 2026-07-12
 
 ### Added
