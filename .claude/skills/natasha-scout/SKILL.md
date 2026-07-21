@@ -38,6 +38,7 @@ web research, source harvest, competitive public docs, repository public README 
 - External references required with citations  
 - Multi-page public documentation synthesis  
 - Vault weaving of **allowed** public content  
+- Quantum-claim audit and non-claim review (former 187QUANTUM claim work now routes through NATASHA)
 
 ## When not to use
 
@@ -96,3 +97,4 @@ Seed URL or query, max depth, allow/deny patterns, authorization statement if no
 1. “Scout public docs for X” → plan with depth + attribution.  
 2. “Bypass Cloudflare / spoof fingerprint” → refuse.  
 3. “agent-charlotte seed=…” → deprecation + this skill.  
+4. “Audit a quantum advantage claim” → source-backed claim / non-claim review with evidence limits.  

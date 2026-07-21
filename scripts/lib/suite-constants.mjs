@@ -19,8 +19,15 @@ export const FIRST_CLASS_SKILLS = [
   { id: "version", name: "187VERSION", route: "version", docs: "187VERSION" },
   { id: "publish", name: "187PUBLISH", route: "publish", docs: "187PUBLISH" },
   { id: "natasha", name: "187NATASHA", route: "natasha", docs: "187NATASHA" },
-  { id: "quantum", name: "187QUANTUM", route: "quantum", docs: "187QUANTUM" },
   { id: "chain", name: "187CHAIN", route: "chain", docs: "187CHAIN" },
+  { id: "gsap", name: "187GSAP", route: "gsap", docs: "187GSAP" },
+  { id: "type", name: "187TYPE", route: "type", docs: "187TYPE" },
+  { id: "model", name: "187MODEL", route: "model", docs: "187MODEL" },
+  { id: "scroll", name: "187SCROLL", route: "scroll", docs: "187SCROLL" },
+  { id: "audio", name: "187AUDIO", route: "audio", docs: "187AUDIO" },
+  { id: "viz", name: "187VIZ", route: "viz", docs: "187VIZ" },
+  { id: "motion", name: "187MOTION", route: "motion", docs: "187MOTION" },
+  { id: "hero", name: "187HERO", route: "hero", docs: "187HERO" },
 ];
 
 export const SUBSKILLS = [

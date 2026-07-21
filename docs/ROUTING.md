@@ -1,9 +1,19 @@
 
 <!-- 187SKILLS first-class roster (release:validate) -->
-<!-- 187REPO 187CRAFT 187VIBE 187LAUNCH 187FREE 187RESEARCH 187SEO 187REVENUE 187DOCS 187LEARN 187TEST 187ACCESS+ 187VERSION 187PUBLISH 187NATASHA 187QUANTUM 187CHAIN -->
+<!-- 187REPO 187CRAFT 187VIBE 187LAUNCH 187FREE 187RESEARCH 187SEO 187REVENUE 187DOCS 187LEARN 187TEST 187ACCESS+ 187VERSION 187PUBLISH 187NATASHA 187CHAIN 187GSAP 187TYPE 187MODEL 187SCROLL 187AUDIO 187VIZ 187MOTION 187HERO -->
 # 187SKILLS Routing Guide
 
 This doc is the source of truth for how requests map to skills in the 187SKILLS suite.
+
+## Skill class model
+
+The 187SKILLS suite is organized into three classes:
+
+- **1st class** — Public routed skills with dedicated pages, docs, and canonical skill files. These are the primary slash-command surfaces.
+- **2nd class** — Specialist subskills that support 1st-class skills but do not have their own public route (e.g., `187WRITE`, `187INCLUDE+`).
+- **3rd class** — Internal primitives, utilities, templates, and runtime helpers used by 1st- and 2nd-class skills.
+
+> **Note:** 187QUANTUM topics have been redistributed. Quantum algorithm selection, circuit design, and resource estimation now route through **187RESEARCH**; quantum-claim audits and non-claim reviews route through **187NATASHA**.
 
 ## Command grammar
 

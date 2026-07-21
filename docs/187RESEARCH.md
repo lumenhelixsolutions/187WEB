@@ -55,11 +55,22 @@
 | `templates/dataset-card.md`](templates/dataset-card.md` | Documenting a dataset with FAIR metadata. |
 | `templates/claim-audit.md`](templates/claim-audit.md` | Auditing claims against the evidence ladder. |
 
+## Quantum topics
+
+Former 187QUANTUM algorithm, circuit, and resource-estimate work now routes through 187RESEARCH:
+
+- Quantum algorithm selection and source-backed comparison.
+- Circuit design, transpilation metrics, and equivalence notes.
+- Resource estimates with documented assumptions and limitations.
+
+Apply the standard 187RESEARCH claim ladder; flag unsupported advantage claims as speculative or unsupported.
+
 ## Acceptance tests
 
 1. Prompt: "Build a reproducible lab plan for a Golay/Leech lattice visualization with citations and claim discipline." → Expected: 187RESEARCH + 187FREE deployment suggestion.
 2. Prompt: "Find papers and datasets for an ADHD/AuDHD consent-first support tool." → Expected: 187RESEARCH for sources/evidence, 187FREE for stack, consent-check required.
 3. Prompt: "Is this mathematical pattern proof, computation, analogy, or poetic framing?" → Expected: 187RESEARCH + proof-vs-pattern classification.
+4. Prompt: "Design a quantum circuit and estimate resources for a small optimization problem." → Expected: 187RESEARCH with circuit spec, source routes, and resource estimate.
 
 ## Routes
 

@@ -36,18 +36,31 @@ export const skillShowcases: SkillShowcaseData[] = [
     color: "#f43f5e",
     description:
       "NATASHA is the 187WEB red-team / security function: threat-surface audits, contract and test assurance, access-gate review, and source-backed risk research with claim discipline.",
-    triggers: ["/187natasha", "NATASHA", "security audit", "red team", "threat surface", "contract assurance", "risk research"],
+    triggers: [
+      "/187natasha",
+      "NATASHA",
+      "security audit",
+      "red team",
+      "threat surface",
+      "contract assurance",
+      "risk research",
+      "quantum claim audit",
+      "quantum non-claim",
+      "unsupported quantum advantage",
+    ],
     useCases: [
       "Threat-surface and security-gate audits",
       "Contract / DeFi assurance and responsible disclosure",
       "Test and validation review with bias and accessibility checks",
       "Source-backed risk research and claim audit",
+      "Quantum-claim audit and non-claim review (unsupported advantage, hardware results, scalability claims)",
     ],
     outputs: [
       "Security profile and findings",
       "Severity / confidence matrix",
       "Access-gate review",
       "Risk research packet",
+      "Quantum claim / non-claim review",
       "Provenance / run lineage",
     ],
     routesTo: [
@@ -62,18 +75,6 @@ export const skillShowcases: SkillShowcaseData[] = [
     related: ["chain", "test", "scan", "standard"],
   },
   {
-    id: "quantum",
-    name: "187QUANTUM",
-    tagline: "Quantum circuits with claim discipline",
-    color: "#a78bfa",
-    description:
-      "Algorithm selection, circuit specs, optimization metrics, resource estimates, and non-claims for unsupported advantage.",
-    triggers: ["/187 quantum", "187QUANTUM", "qiskit", "circuit optimize"],
-    useCases: ["Design a circuit", "Benchmark depth/2q gates", "Audit a quantum claim"],
-    outputs: ["Circuit metrics", "Equivalence notes", "Resource estimate", "Non-claims"],
-    related: ["natasha", "chain"],
-  },
-  {
     id: "chain",
     name: "187CHAIN",
     tagline: "EVM and DeFi assurance",
@@ -83,7 +84,255 @@ export const skillShowcases: SkillShowcaseData[] = [
     triggers: ["/187 chain", "187CHAIN", "solidity audit", "defi risk"],
     useCases: ["Scope an audit", "Map DeFi risks", "Retest findings"],
     outputs: ["Findings", "Severity/confidence", "DeFi vector report", "Disclosure notes"],
-    related: ["natasha", "quantum"],
+    related: ["natasha", "research"],
+  },
+  {
+    id: "gsap",
+    name: "187GSAP",
+    tagline: "GSAP timeline + ScrollTrigger foundation",
+    color: "#85c918",
+    description:
+      "Animation choreography with GSAP timelines, ScrollTrigger pinning/scrubbing, and performance-safe motion patterns for React and Next.js.",
+    triggers: ["/187gsap", "187GSAP", "gsap timeline", "scrolltrigger", "animation choreograph", "gsap react"],
+    useCases: [
+      "Build a GSAP timeline for a page or component",
+      "Add ScrollTrigger pinning, scrub, or progress-linked animation",
+      "Standardize easing, stagger, and reduced-motion fallbacks",
+    ],
+    outputs: [
+      "Timeline spec (targets, duration, easing, stagger)",
+      "ScrollTrigger map (trigger, start/end, scrub, pin)",
+      "Easing and performance notes",
+      "Reduced-motion fallback plan",
+      "Next actions",
+    ],
+    routesTo: [
+      { name: "187MOTION", when: "the work should become a reusable hook" },
+      { name: "187SCROLL", when: "scroll drives a 3D camera or scene" },
+      { name: "187ACCESS+", when: "motion triggers vestibular or photosensitive concerns" },
+    ],
+    templates: [
+      { name: "gsap-timeline.md", when: "A new timeline-driven animation" },
+      { name: "scrolltrigger-map.md", when: "Mapping scroll progress to animation" },
+    ],
+    related: ["motion", "scroll", "type", "craft"],
+  },
+  {
+    id: "type",
+    name: "187TYPE",
+    tagline: "Kinetic / variable 3D typography",
+    color: "#f472b6",
+    description:
+      "Reactive, variable, and three-dimensional typography systems that respond to scroll, audio, or interaction.",
+    triggers: ["/187type", "187TYPE", "kinetic type", "variable font", "3d typography", "text motion", "typography animation"],
+    useCases: [
+      "Design kinetic headlines and hero type",
+      "Animate variable-font axes on interaction or scroll",
+      "Build 3D text scenes with R3F/Three.js",
+    ],
+    outputs: [
+      "Type motion spec",
+      "Variable-font axis plan",
+      "3D text render notes",
+      "Readability / accessibility review",
+      "Next actions",
+    ],
+    routesTo: [
+      { name: "187GSAP", when: "timeline or scrolltrigger sequencing is needed" },
+      { name: "187HERO", when: "type lives inside a full-screen hero" },
+      { name: "187ACCESS+", when: "readability, motion, or photosensitive review is required" },
+    ],
+    templates: [
+      { name: "kinetic-type-spec.md", when: "Designing animated type" },
+      { name: "variable-font-plan.md", when: "Animating font axes" },
+    ],
+    related: ["gsap", "motion", "hero", "craft"],
+  },
+  {
+    id: "model",
+    name: "187MODEL",
+    tagline: "3D product showcase / configurator",
+    color: "#22d3ee",
+    description:
+      "Interactive 3D product viewers with model loading, material variants, camera presets, and configurator UX.",
+    triggers: ["/187model", "187MODEL", "product viewer", "3d configurator", "model showcase", "three.js product", "r3f product"],
+    useCases: [
+      "Build a 3D product viewer",
+      "Add material, color, or feature variants",
+      "Define camera presets and orbit constraints",
+    ],
+    outputs: [
+      "Model loading and format plan",
+      "Variant state map",
+      "Camera rig spec",
+      "Performance budget",
+      "Next actions",
+    ],
+    routesTo: [
+      { name: "187CRAFT", when: "UI/UX and design-token work is needed" },
+      { name: "187HERO", when: "the model anchors a full-screen hero" },
+      { name: "187ACCESS+", when: "the viewer needs keyboard/screen-reader support" },
+    ],
+    templates: [
+      { name: "product-viewer-spec.md", when: "A 3D product showcase" },
+      { name: "configurator-state-map.md", when: "Variant selection and state" },
+    ],
+    related: ["craft", "viz", "hero", "motion"],
+  },
+  {
+    id: "scroll",
+    name: "187SCROLL",
+    tagline: "Scroll-driven 3D camera narratives",
+    color: "#a78bfa",
+    description:
+      "Long-form scroll narratives that drive 3D camera paths, scene transitions, and progress-based reveals.",
+    triggers: ["/187scroll", "187SCROLL", "scroll narrative", "camera scroll", "3d scroll story", "scroll-driven scene", "scroll camera"],
+    useCases: [
+      "Build a scroll-driven 3D scene",
+      "Animate a camera path tied to scroll progress",
+      "Sequence scene reveals and transitions",
+    ],
+    outputs: [
+      "Scroll progress map",
+      "Camera path spec",
+      "Scene sequence",
+      "Performance notes",
+      "Next actions",
+    ],
+    routesTo: [
+      { name: "187GSAP", when: "GSAP ScrollTrigger drives the scroll layer" },
+      { name: "187HERO", when: "the narrative starts with an immersive hero" },
+      { name: "187ACCESS+", when: "scroll hijacking or motion sensitivity is a concern" },
+    ],
+    templates: [
+      { name: "scroll-narrative-spec.md", when: "A scroll-driven 3D story" },
+      { name: "camera-path-plan.md", when: "Defining a scroll-linked camera" },
+    ],
+    related: ["gsap", "hero", "viz", "motion"],
+  },
+  {
+    id: "audio",
+    name: "187AUDIO",
+    tagline: "Audio-reactive 3D geometry",
+    color: "#f87171",
+    description:
+      "Web Audio and Three.js geometry that reacts to frequency data, beats, and microphone input in real time.",
+    triggers: ["/187audio", "187AUDIO", "audio reactive", "music visualizer", "frequency mesh", "mic input", "audio three.js"],
+    useCases: [
+      "Build audio-reactive mesh or particle systems",
+      "Sync visuals to frequency bands or beat detection",
+      "Add microphone-driven motion with permission handling",
+    ],
+    outputs: [
+      "Audio node graph",
+      "Frequency-band mapping",
+      "Geometry reactivity spec",
+      "Permission and performance notes",
+      "Next actions",
+    ],
+    routesTo: [
+      { name: "187VIZ", when: "the output is a data-driven visualization" },
+      { name: "187MOTION", when: "reusable audio-reactive hooks are needed" },
+      { name: "187ACCESS+", when: "auto-play audio or flashing motion is involved" },
+    ],
+    templates: [
+      { name: "audio-reactive-spec.md", when: "Building a music-reactive scene" },
+      { name: "frequency-mapping.md", when: "Mapping audio bands to geometry" },
+    ],
+    related: ["viz", "motion", "model", "hero"],
+  },
+  {
+    id: "viz",
+    name: "187VIZ",
+    tagline: "3D network / node-edge data visualization",
+    color: "#2dd4bf",
+    description:
+      "Three.js data visualizations for networks, graphs, force layouts, and spatial data stories.",
+    triggers: ["/187viz", "187VIZ", "network viz", "node graph", "3d data viz", "force layout", "spatial data story"],
+    useCases: [
+      "Build a 3D network or node-edge graph",
+      "Animate data updates and selection states",
+      "Create spatial data stories with camera guidance",
+    ],
+    outputs: [
+      "Data schema and source plan",
+      "Layout algorithm choice",
+      "Interaction plan (hover, select, filter)",
+      "Render performance notes",
+      "Next actions",
+    ],
+    routesTo: [
+      { name: "187MODEL", when: "nodes need detailed 3D product/model representations" },
+      { name: "187SCROLL", when: "the visualization is part of a scroll narrative" },
+      { name: "187ACCESS+", when: "the graph needs screen-reader or keyboard navigation" },
+    ],
+    templates: [
+      { name: "network-viz-spec.md", when: "A node-edge network visualization" },
+      { name: "data-storyboard.md", when: "A spatial data story" },
+    ],
+    related: ["model", "scroll", "audio", "motion"],
+  },
+  {
+    id: "motion",
+    name: "187MOTION",
+    tagline: "Reusable R3F/GSAP animation hooks",
+    color: "#fbbf24",
+    description:
+      "A library of reusable React Three Fiber and GSAP hooks for common animation patterns, entrance sequences, and scroll triggers.",
+    triggers: ["/187motion", "187MOTION", "motion hooks", "r3f animation", "usegsap", "animation hook", "reusable animation"],
+    useCases: [
+      "Create reusable animation hooks",
+      "Standardize entrance and transition effects",
+      "Compose scroll-triggered and interaction-driven animations",
+    ],
+    outputs: [
+      "Hook API and signature",
+      "Usage examples",
+      "Dependency list",
+      "Motion accessibility notes",
+      "Next actions",
+    ],
+    routesTo: [
+      { name: "187GSAP", when: "the hook wraps GSAP timelines or ScrollTrigger" },
+      { name: "187TYPE", when: "typography-specific motion is needed" },
+      { name: "187ACCESS+", when: "reduced-motion or vestibular safety must be handled" },
+    ],
+    templates: [
+      { name: "motion-hook-spec.md", when: "Designing a reusable animation hook" },
+      { name: "entrance-sequence-plan.md", when: "Standardizing entrance effects" },
+    ],
+    related: ["gsap", "type", "scroll", "craft"],
+  },
+  {
+    id: "hero",
+    name: "187HERO",
+    tagline: "Full-screen immersive 3D hero systems",
+    color: "#39FF14",
+    description:
+      "Full-screen immersive hero sections with WebGL/R3F backgrounds, parallax layers, and scroll-linked CTAs.",
+    triggers: ["/187hero", "187HERO", "hero scene", "immersive hero", "webgl background", "full screen 3d", "hero three.js"],
+    useCases: [
+      "Build a WebGL/R3F hero background",
+      "Add parallax or depth layers to a hero",
+      "Link the hero to a scroll CTA or transition",
+    ],
+    outputs: [
+      "Hero scene spec",
+      "Layer stack (background, mid, foreground, CTA)",
+      "Scroll / link integration plan",
+      "Performance budget",
+      "Next actions",
+    ],
+    routesTo: [
+      { name: "187MODEL", when: "the hero features a 3D product or model" },
+      { name: "187SCROLL", when: "the hero transitions into a scroll narrative" },
+      { name: "187ACCESS+", when: "the hero has motion, auto-play, or contrast concerns" },
+    ],
+    templates: [
+      { name: "hero-scene-spec.md", when: "A full-screen immersive hero" },
+      { name: "hero-performance-budget.md", when: "Defining hero load and runtime limits" },
+    ],
+    related: ["scroll", "model", "type", "motion"],
   },
 
   {
@@ -124,11 +373,25 @@ export const skillShowcases: SkillShowcaseData[] = [
     color: "#6366f1",
     description:
       "Routes research questions through scientific, mathematical, biomedical, software, and scholarly databases; classifies claims; builds reproducible lab artifacts; and converts findings into source-backed notes.",
-    triggers: ["/187research", "187RESEARCH", "research this", "source this", "build a lab", "literature review", "claim audit"],
+    triggers: [
+      "/187research",
+      "187RESEARCH",
+      "research this",
+      "source this",
+      "build a lab",
+      "literature review",
+      "claim audit",
+      "quantum algorithm",
+      "quantum circuit design",
+      "quantum resource estimate",
+      "qiskit",
+      "circuit optimize",
+    ],
     useCases: [
       "Searching scholarly, biomedical, mathematical, or software sources",
       "Building a reproducible computational lab or public research page",
       "Auditing claims and separating proof from pattern",
+      "Quantum algorithm selection, circuit design, and resource estimation",
     ],
     outputs: [
       "Research need & domain classification",
@@ -137,6 +400,7 @@ export const skillShowcases: SkillShowcaseData[] = [
       "Lab artifact plan",
       "Reproducibility checklist",
       "Citation / source lineage",
+      "Quantum circuit metrics, equivalence notes, and resource estimates (when applicable)",
     ],
     routesTo: [
       { name: "187free", when: "the lab needs free hosting or tooling" },

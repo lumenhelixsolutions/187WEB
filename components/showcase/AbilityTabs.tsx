@@ -8,6 +8,7 @@ const tabs = [
   { id: "build", label: "Build", skills: ["craft", "repo", "kit", "docs", "write", "access", "include"] },
   { id: "research", label: "Research", skills: ["research", "free", "seo", "test"] },
   { id: "launch", label: "Launch", skills: ["launch", "revenue", "vibe", "learn"] },
+  { id: "motion", label: "Motion", skills: ["gsap", "type", "model", "scroll", "audio", "viz", "motion", "hero"] },
   { id: "operate", label: "Operate", skills: ["command", "report", "scan", "standard", "flow", "version", "publish"] },
 ] as const;
 

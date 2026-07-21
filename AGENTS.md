@@ -1,6 +1,6 @@
 
 <!-- 187SKILLS first-class roster (release:validate) -->
-<!-- 187REPO 187CRAFT 187VIBE 187LAUNCH 187FREE 187RESEARCH 187SEO 187REVENUE 187DOCS 187LEARN 187TEST 187ACCESS+ 187VERSION 187PUBLISH 187NATASHA 187QUANTUM 187CHAIN -->
+<!-- 187REPO 187CRAFT 187VIBE 187LAUNCH 187FREE 187RESEARCH 187SEO 187REVENUE 187DOCS 187LEARN 187TEST 187ACCESS+ 187VERSION 187PUBLISH 187NATASHA 187CHAIN 187GSAP 187TYPE 187MODEL 187SCROLL 187AUDIO 187VIZ 187MOTION 187HERO -->
 <!-- NATASHA v3: see docs/NATASHA-ARCHITECTURE.md and docs/migrations/CHARLOTTE-TO-NATASHA.md -->
 # Agent Guide — 187webdesign / 187WEB
 
@@ -59,6 +59,14 @@ Claude Code / Grok skills live under `.claude/skills/` and `.grok/skills/` respe
 | **187INCLUDE+** | `.claude/skills/187include/SKILL.md` | Inclusive language, pronouns, identity-field design, community safety |
 | **187VERSION** | `.claude/skills/187version/SKILL.md` | Versioning, changelogs, releases, migration notes, adapter sync |
 | **187PUBLISH** | `.claude/skills/187publish/SKILL.md` | Final release synchronization of docs, demos, showcases, public surfaces |
+| **187GSAP** | `.claude/skills/187gsap/SKILL.md` | GSAP timeline + ScrollTrigger foundation |
+| **187TYPE** | `.claude/skills/187type/SKILL.md` | Kinetic / variable 3D typography |
+| **187MODEL** | `.claude/skills/187model/SKILL.md` | 3D product showcase / configurator |
+| **187SCROLL** | `.claude/skills/187scroll/SKILL.md` | Scroll-driven 3D camera narratives |
+| **187AUDIO** | `.claude/skills/187audio/SKILL.md` | Audio-reactive 3D geometry |
+| **187VIZ** | `.claude/skills/187viz/SKILL.md` | 3D network / node-edge data visualization |
+| **187MOTION** | `.claude/skills/187motion/SKILL.md` | Reusable R3F/GSAP animation hooks |
+| **187HERO** | `.claude/skills/187hero/SKILL.md` | Full-screen immersive 3D hero systems |
 | 187web-manifest | `.claude/skills/187web-manifest/SKILL.md` | Project manifest, compiler, and 27 prompt skills |
 
 ### NATASHA modules
