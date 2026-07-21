@@ -122,6 +122,8 @@ function WebHiveScene() {
   const overlayRef = useRef<THREE.Group>(null);
   const overlayMatRef = useRef<THREE.LineBasicMaterial>(null);
   const scrollRef = useRef(0);
+  const scrollProgressRef = useRef(0);
+  const pageHeightRef = useRef(1);
   const reducedMotion = useReducedMotion();
   const { invalidate, camera } = useThree();
 
@@ -133,6 +135,8 @@ function WebHiveScene() {
     if (reducedMotion) return;
     const onScroll = () => {
       scrollRef.current = window.scrollY;
+      pageHeightRef.current = Math.max(1, document.body.scrollHeight - window.innerHeight);
+      scrollProgressRef.current = Math.min(1, scrollRef.current / pageHeightRef.current);
       invalidate();
     };
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -144,39 +148,44 @@ function WebHiveScene() {
     if (!rootRef.current || reducedMotion) return;
 
     const time = performance.now() * 0.00003;
-    const scroll = scrollRef.current;
-    const scrollRad = scroll * 0.00005;
+    const scrollProgress = scrollProgressRef.current;
 
-    // Root group: gentle bob/tip driven by time and scroll.
-    rootRef.current.rotation.y = time * 0.04 + scrollRad * 0.08;
-    rootRef.current.rotation.x = Math.sin(time * 0.3) * 0.03 + scrollRad * 0.12;
-    rootRef.current.rotation.z = Math.cos(time * 0.2) * 0.015;
+    // Root group: gentle tip driven by scroll (0 -> max page height -> ~0.2 rad)
+    // plus a slow ambient bob so it never feels static.
+    rootRef.current.rotation.y = time * 0.04 + scrollProgress * 0.2;
+    rootRef.current.rotation.x = Math.sin(time * 0.3) * 0.03 + scrollProgress * 0.2;
+    rootRef.current.rotation.z = Math.cos(time * 0.2) * 0.015 + scrollProgress * 0.05;
     rootRef.current.position.y = Math.sin(time * 0.5) * 0.05;
 
-    // Giant web: slowest, extends far off-screen.
+    // Giant web: slow counter-clockwise rotation + slight X/Y wobble.
     if (giantRef.current) {
-      giantRef.current.rotation.y = time * 0.08 + scrollRad * 0.05;
+      giantRef.current.rotation.y = -time * 0.08 - scrollProgress * 0.05;
+      giantRef.current.rotation.x = Math.sin(time * 0.15) * 0.02;
+      giantRef.current.rotation.z = Math.cos(time * 0.12) * 0.015;
     }
 
-    // Honeycomb: medium speed, opposite direction.
+    // Honeycomb: gentle clockwise rotation at a different speed, with a slow
+    // vertical drift tied to scroll.
     if (honeyRef.current) {
-      honeyRef.current.rotation.y = -time * 0.15 - scrollRad * 0.08;
+      honeyRef.current.rotation.y = time * 0.12 + scrollProgress * 0.08;
       honeyRef.current.rotation.z = Math.sin(time * 0.1) * 0.01;
+      honeyRef.current.position.y = Math.sin(time * 0.25) * 0.04 + scrollRef.current * 0.00015;
     }
 
-    // Overlay web: fastest, sits visually in front.
+    // Overlay spiderweb: faster clockwise + pulsing scale/opacity.
     if (overlayRef.current) {
-      overlayRef.current.rotation.y = time * 0.35 + scrollRad * 0.15;
-      overlayRef.current.rotation.x = Math.cos(time * 0.25) * 0.02;
+      overlayRef.current.rotation.y = time * 0.45 + scrollProgress * 0.18;
+      overlayRef.current.rotation.x = Math.cos(time * 0.35) * 0.025;
+      const pulse = 1 + Math.sin(time * 3.5) * 0.06;
+      overlayRef.current.scale.setScalar(pulse);
     }
 
-    // Subtle pulsing opacity on the overlay web.
     if (overlayMatRef.current) {
-      overlayMatRef.current.opacity = OVERLAY_OPACITY + Math.sin(time * 2.5) * 0.035;
+      overlayMatRef.current.opacity = OVERLAY_OPACITY + Math.sin(time * 3.5) * 0.04;
     }
 
-    // Slight camera z-translation for depth as the user scrolls.
-    camera.position.z = 5.8 + scroll * 0.0004;
+    // Subtle camera z-translation for depth as the user scrolls.
+    camera.position.z = 5.8 + scrollRef.current * 0.0004;
 
     // Demand-render: schedule the next frame so the ambient motion keeps playing.
     invalidate();
@@ -184,7 +193,7 @@ function WebHiveScene() {
 
   return (
     <group ref={rootRef}>
-      <group ref={giantRef}>
+      <group ref={giantRef} position={[0, 0, -1.6]}>
         <lineSegments geometry={giantGeometry}>
           <lineBasicMaterial
             color={NEON}
@@ -196,7 +205,7 @@ function WebHiveScene() {
         </lineSegments>
       </group>
 
-      <group ref={honeyRef} position={[0, 0, 0.2]}>
+      <group ref={honeyRef} position={[0, 0, -0.1]}>
         <lineSegments geometry={honeyGeometry}>
           <lineBasicMaterial
             color={NEON}
@@ -208,7 +217,7 @@ function WebHiveScene() {
         </lineSegments>
       </group>
 
-      <group ref={overlayRef} position={[0, 0, 0.4]}>
+      <group ref={overlayRef} position={[0, 0, 0.8]}>
         <lineSegments geometry={overlayGeometry}>
           <lineBasicMaterial
             ref={overlayMatRef}
