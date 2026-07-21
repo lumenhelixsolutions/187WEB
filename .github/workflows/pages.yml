@@ -36,6 +36,14 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Stamp site version (187VERSION)
+        run: node scripts/stamp-version.mjs
+        env:
+          GITHUB_SHA: ${{ github.sha }}
+          GITHUB_REF_NAME: ${{ github.ref_name }}
+          NEXT_PUBLIC_STATIC_EXPORT: "true"
+          NEXT_PUBLIC_SITE_URL: "https://lumenhelixlab.github.io/187WEB"
+
       - name: Remove server-only modules (incompatible with static export)
         run: |
           rm -rf app/api
@@ -47,6 +55,10 @@ jobs:
 
       - name: Build static export
         run: npx next build
+        env:
+          NEXT_PUBLIC_STATIC_EXPORT: "true"
+          NEXT_PUBLIC_BASE_PATH: "/187WEB"
+          NEXT_PUBLIC_SITE_URL: "https://lumenhelixlab.github.io/187WEB"
 
       - name: Disable Jekyll (serve _next/ assets verbatim)
         run: touch out/.nojekyll

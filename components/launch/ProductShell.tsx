@@ -8,6 +8,7 @@ import { WebHiveBackground } from "./WebHiveBackground";
 import { WebHiveNetworkOverlay } from "./WebHiveNetworkOverlay";
 import { WebHiveTelemetryOverlay } from "./WebHiveTelemetryOverlay";
 import { SiteNav } from "./SiteNav";
+import { SiteVersionBadge } from "@/components/version/SiteVersionBadge";
 import { useClientMounted } from "@/lib/motion/useClientMounted";
 
 const REPO = "https://github.com/LumenHelixLab/187WEB";
@@ -35,18 +36,18 @@ function Footer() {
             Knotstore IP
           </p>
         </div>
-        <div className="flex flex-wrap items-center justify-center gap-6">
+        <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6">
           <Link href="/187" className="text-sm text-white/50 transition hover:text-[#39FF14]">
-            /187 Reference
+            /187
+          </Link>
+          <Link href="/about" className="text-sm text-white/50 transition hover:text-[#39FF14]">
+            About
           </Link>
           <Link href="/brain" className="text-sm text-white/50 transition hover:text-[#39FF14]">
-            Brain / Obsidian
+            Brain
           </Link>
           <Link href="/showcase" className="text-sm text-white/50 transition hover:text-[#39FF14]">
             Showcase
-          </Link>
-          <Link href="/187motion" className="text-sm text-white/50 transition hover:text-[#39FF14]">
-            Motion
           </Link>
           <Link href="/install" className="text-sm text-white/50 transition hover:text-[#39FF14]">
             Install
@@ -59,6 +60,7 @@ function Footer() {
           >
             GitHub
           </a>
+          <SiteVersionBadge />
         </div>
       </div>
     </footer>

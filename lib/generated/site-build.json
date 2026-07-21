@@ -1,0 +1,12 @@
+{
+  "name": "187WEB",
+  "version": "0.4.0",
+  "packageName": "187webdesign",
+  "builtAt": "2026-07-21T23:00:19.913Z",
+  "gitSha": "ebacedbb1c150ff2b57aaac4259a8c4d7159c20d",
+  "gitShort": "ebacedb",
+  "branch": "feat/xavier-phase2",
+  "channel": "app",
+  "siteUrl": "http://localhost:3000",
+  "label": "v0.4.0+ebacedb"
+}
