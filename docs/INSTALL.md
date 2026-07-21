@@ -106,7 +106,7 @@ After install, the following short-name entry points are on your PATH. Run `187r
 | `learn` / `edu` | **187LEARN** | Curriculum and knowledge capture |
 | `test` / `quiz` | **187TEST** | Assessment, QA, and eval gates |
 | `ax` / `a11y` | **187ACCESS+** | Accessibility and inclusive design |
-| `inc` / `incl` | **187INCLUDE** | Identity-safe, inclusive language |
+| `inc` / `incl` | **187INCLUDE+** | Identity-safe, inclusive language |
 | `ver` / `v` | **187VERSION** | Versioning, tagging, and release metadata |
 | `pub` / `sync` | **187PUBLISH** | Release sync and distribution |
 

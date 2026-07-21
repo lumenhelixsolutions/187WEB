@@ -85,7 +85,7 @@ npm run dev
 | Feature | What it gives you |
 |---------|-------------------|
 | Command palette web builder | Use /187 craft, /187 kit, /187 docs, and /187 write to generate pages, design systems, docs, and copy. |
-| Standards-first launch gate | Run /187 seo, /187 access-plus, /187 include, /187 revenue, /187 launch, and /187 publish before going live. |
+| Standards-first launch gate | Run /187 seo, /187 access-plus, /187 include, /187 revenue, /187 launch, and /187 publish before going live. Or run `/187++` for the combined access + inclusion sweep. |
 | Research-grade labs | Ship reproducible experiments, dataset cards, API contracts, benchmarks, and Research Release Packets via /187 research, /187 labs, /187 data, and /187 crate. |
 | KNOTstore memory layer | Pluggable agentic memory with SQLite, KNOT-point, and hybrid backends, plus a Vault-style preview at /knotstore. |
 
@@ -97,7 +97,7 @@ Public slash-command surfaces in the 187 suite:
 |--------|--------|
 | Build & ship | **187REPO**, **187CRAFT**, **187VIBE**, **187LAUNCH**, **187FREE** |
 | Research & standards | **187RESEARCH**, **187SEO**, **187REVENUE**, **187DOCS** |
-| Learn & access | **187LEARN**, **187TEST**, **187ACCESS+** |
+| Learn & access | **187LEARN**, **187TEST**, **187ACCESS+**, **187INCLUDE+** |
 | Release | **187VERSION**, **187PUBLISH** |
 | NATASHA multi-agent | **187NATASHA**, **187QUANTUM**, **187CHAIN** |
 

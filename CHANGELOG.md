@@ -7,6 +7,10 @@
 
 ### Added
 - **NATASHA v3** multi-agent architecture (THREAD, COMPRESS, TENSION, SPARK, CORD, SCOUT, LAB, FUSE)
+- Unified `/187++` access & inclusion sweep page and launch/showcase CTAs
+- `187INCLUDE+` rebrand with rainbow color, neurodivergence focus, and expanded triggers
+- Reusable `Tooltip` component across skill cards, agent cards, and command chips
+- Showcase motion utilities (.sc-grad-text, .sc-float, .sc-pulse, .sc-marquee, .sc-draw-path, .sc-glow) on the launch page
 - Skills: `natasha-scout`, `neuro-tension`, `token-web`, `idea-spark`, `187quantum`, `187chain`
 - Runtime skeletons: `tools/natasha/`, `tools/qchain/`
 - Packs: `natasha`, `qchain-lab` install profiles
@@ -58,7 +62,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - **187SKILLS public suite** — 16 first-class skills and 2 subskills under universal contract v2.0.0:
   187REPO, 187CRAFT, 187VIBE, 187LAUNCH, 187FREE, 187RESEARCH, 187SEO, 187REVENUE,
-  187DOCS, 187WRITE, 187LEARN, 187TEST, 187ACCESS+, 187INCLUDE, 187VERSION, 187PUBLISH.
+  187DOCS, 187WRITE, 187LEARN, 187TEST, 187ACCESS+, 187INCLUDE+, 187VERSION, 187PUBLISH.
 - **Skill validation pipeline** — `scripts/validate-skills.py` enforces the universal skill contract.
 - **Release validation** — `scripts/validate-suite-release.mjs` confirms every public skill name appears on required public surfaces.
 - **Drift detection** — `scripts/check-docs-drift.mjs`, `scripts/check-adapter-drift.mjs`, and `scripts/check-showcase-sync.mjs` keep docs, adapters, and showcases in sync.

@@ -56,7 +56,7 @@ Claude Code / Grok skills live under `.claude/skills/` and `.grok/skills/` respe
 | **187LEARN** | `.claude/skills/187learn/SKILL.md` | Courses, study plans, lessons, workshops |
 | **187TEST** | `.claude/skills/187test/SKILL.md` | Quizzes, tests, polls, surveys, rubrics |
 | **187ACCESS+** | `.claude/skills/187access-plus/SKILL.md` | Disability accessibility, neurodivergence, WCAG+, inclusion review |
-| **187INCLUDE** | `.claude/skills/187include/SKILL.md` | Inclusive language, pronouns, identity-field design, community safety |
+| **187INCLUDE+** | `.claude/skills/187include/SKILL.md` | Inclusive language, pronouns, identity-field design, community safety |
 | **187VERSION** | `.claude/skills/187version/SKILL.md` | Versioning, changelogs, releases, migration notes, adapter sync |
 | **187PUBLISH** | `.claude/skills/187publish/SKILL.md` | Final release synchronization of docs, demos, showcases, public surfaces |
 | 187web-manifest | `.claude/skills/187web-manifest/SKILL.md` | Project manifest, compiler, and 27 prompt skills |
