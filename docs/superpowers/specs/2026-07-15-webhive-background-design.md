@@ -19,7 +19,14 @@ cinematic, layered, scroll-reactive result.
    counter-rotate so the relationship between them is visually obvious.
 4. **Scroll reactivity**: scrolling should tilt the scene, change camera depth,
    and modulate motion energy.
-5. **Performance first**: must stay at 60fps on mid-range devices, respect
+5. **Mouse parallax**: cursor position should gently tilt the root scene and
+   shift layer positions so the background feels tracked and alive.
+6. **Continuous motion**: layers must never feel static; they rotate, drift,
+   and pulse even when the user is not scrolling.
+7. **Interconnected network feel**: the web and honeycomb must read as one
+   living data-net — with traveling pulses along spokes and thin connector
+   filaments between web nodes and honeycomb cells.
+8. **Performance first**: must stay at 60fps on mid-range devices, respect
    `prefers-reduced-motion`, and not add heavy dependencies.
 6. **No new runtime dependencies**: keep using `three` and `@react-three/fiber`
    only; avoid `@react-three/drei`, `@react-three/postprocessing`, and GLTFs.
@@ -44,6 +51,10 @@ Patterns from recent R3F / Three.js work that fit this use-case:
 - **Scroll as a shared signal** (raw scroll progress + velocity) is enough to
   drive camera, rotation speed, and pulse intensity.
 - **Additive-blended `Points`** are cheap "energy" particles that sell motion.
+- **Mouse-parallax via smoothed pointer refs** keeps the scene responsive without
+  per-frame React state.
+- **Traveling pulses on line geometry** can be simulated with a small `Points`
+  system riding the same radial spokes.
 - **Instancing / BufferGeometry reuse** keeps draw calls low; avoid creating
   geometry per frame.
 
@@ -102,17 +113,19 @@ Proceed with **Approach A**.
 
 ### Visual layers (back to front)
 
-| # | Name | Primitive | Approx z | Motion |
-|---|------|-----------|----------|--------|
-| 1 | Deep field web | `LineSegments` giant radial web | -4.0 | Very slow CCW yaw; wobbles in roll/pitch; scroll drives camera toward it |
-| 2 | Honeycomb field | `LineSegments` hex grid, large radius | -2.2 | Slow CW yaw; gentle vertical drift tied to scroll; opacity lower than web |
-| 3 | Energy motes | `Points` (512 particles) | -1.0 | Slow outward/inward drift, twinkle via size/opacity |
-| 4 | Mid spiderweb | `LineSegments` dense web | -0.4 | Moderate CCW yaw; scale pulses with scroll velocity |
-| 5 | Overlay web | `LineSegments` tight web | +0.8 | Fast CW rotation; strong pulse; reacts to scroll progress |
+| # | Name | Primitive | Approx z | Continuous motion | Scroll | Mouse |
+|---|------|-----------|----------|-------------------|--------|-------|
+| 1 | Deep field web | `LineSegments` giant radial web | -4.0 | Very slow CCW yaw; constant roll/pitch wobble | Drives camera forward | Subtle look-at tilt |
+| 2 | Honeycomb field | `LineSegments` hex grid, large radius | -2.2 | Slow CW yaw; gentle vertical bob | Adds drift speed | Position shifts opposite cursor |
+| 3 | Energy motes | `Points` (512 particles) | -1.0 | Perpetual outward/inward drift; twinkle | Density/speed modulated | Drift direction influenced |
+| 4 | Mid spiderweb | `LineSegments` dense web | -0.4 | Moderate CCW yaw; scale pulse | Velocity amplifies pulse | Brightens near cursor |
+| 5 | Overlay web | `LineSegments` tight web | +0.8 | Fast CW rotation; strong pulse | Reacts to scroll progress | Tilts toward cursor, intensity scales |
+| 6 | Data pulses | `Points` (48 traveling dots) | mixed | Travel outward along giant-web spokes in loops | Speed up with scroll velocity | Spawn rate rises near cursor |
 
-All layers are children of a root `<group>` that is tilted by scroll and by a
-slow ambient bob. The camera sits at z ≈ 5.5 and is pushed forward on scroll
-(so the world feels closer / larger as the user descends).
+All layers are children of a root `<group>` that is continuously tilted by a
+slow ambient bob, by scroll progress, and by smoothed mouse position. The
+camera sits at z ≈ 5.5 and is pushed forward on scroll; mouse position nudges
+the camera look target so the volume feels tracked.
 
 ### Shader / material choices
 
@@ -132,9 +145,25 @@ Use `useFrame((state, delta) => ...)` where `delta` is clamped to avoid spikes.
   ref, updated by a passive scroll listener).
 - `scrollVelocity` is derived from the delta of `scroll` and smoothed with an
   exponential moving average.
-- Root group rotation is a sum of slow ambient sine waves plus scroll * k.
+- Root group rotation is a sum of slow ambient sine waves plus scroll * k plus
+  mouse * mouseK.
 - Each layer multiplies `t` by a different factor and adds scroll * its own k.
 - Camera z = base + scroll * depthK + scrollVelocity * velocityK.
+- Mouse values are normalized to [-1, 1] from the viewport center and lerped
+  with a 0.08 factor so movement feels weighted, not twitchy.
+
+### Interconnected network feel
+
+- **Data pulses**: 48 small points ride the giant web's radial spokes outward
+  from the center, looping back when they reach the rim. Their speed scales
+  with scroll velocity and cursor proximity, making the net feel energized.
+- **Connector filaments**: a static second `LineSegments` geometry joins each
+  honeycomb cell center to the nearest giant-web intersection. These lines are
+  very low opacity and pulse in sync with the overlay web so the two grids read
+  as one connected organism.
+- **Node highlights**: energy motes are attracted to the web spokes; their color
+  matches the neon accent and they twinkle with a deterministic pseudo-random
+  function based on particle index and time.
 
 ### Reduced motion
 
@@ -148,9 +177,10 @@ When `prefers-reduced-motion: reduce` is detected:
 - `frameloop="demand"` with explicit `invalidate()` each frame.
 - Geometry created once with `useMemo`.
 - No new objects/array allocations inside `useFrame`.
-- Particle count capped at 512 (mobile-friendly).
+- Particle count capped at 512 motes + 48 pulses + 128 connector endpoints
+  (mobile-friendly).
 - Line segment counts capped: giant web 36x12 rings, mid web 48x16, overlay 28x10,
-  honeycomb 3 rings (~61 hexagons).
+  honeycomb 3 rings (~61 hexagons), connector filaments ~128.
 
 ### File changes
 
@@ -170,14 +200,10 @@ When `prefers-reduced-motion: reduce` is detected:
 
 ## Open Questions
 
-1. Does the partner want mouse parallax as well, or is scroll + ambient motion
-   enough for this pass?
-2. Should the neon color stay `#39FF14` exclusively, or can it shift per page
-   context (e.g., agent pages)?
-
-For this iteration we will keep the existing single neon accent and skip mouse
-parallax unless the partner requests it; this keeps scope focused on the core
-"more dynamic / more layered" complaint.
+1. **Mouse parallax** — yes, included as a smoothed pointer-to-scene tilt and
+   per-layer offset.
+2. **Neon color** — keep the existing `#39FF14` accent globally for this pass.
+   Page-specific tints can be added later without changing the layer system.
 
 ## Approval
 
