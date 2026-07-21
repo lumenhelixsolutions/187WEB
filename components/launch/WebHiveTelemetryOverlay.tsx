@@ -2,6 +2,7 @@
 
 import { useMemo } from "react";
 import { useReducedMotion } from "@/lib/motion/useReducedMotion";
+import { useClientMounted } from "@/lib/motion/useClientMounted";
 import { RGYB } from "@/lib/brand-palette";
 
 const CODE_SNIPPETS = [
@@ -17,7 +18,7 @@ const CODE_SNIPPETS = [
   "TELEMETRY_STREAM_OK",
   "checksum(artifact) === 0x9f3b",
   "while (alive) { route(pulse); }",
-];
+] as const;
 
 const LABELS = [
   "HIVE.NODE",
@@ -28,7 +29,7 @@ const LABELS = [
   "NATASHA.LINK",
   "YELENA.GATE",
   "XAVIER.SHIP",
-];
+] as const;
 
 function mulberry32(seed: number) {
   return function () {
@@ -39,9 +40,25 @@ function mulberry32(seed: number) {
   };
 }
 
+/** Round to fixed decimals so SSR and client serialize identical style strings. */
+function r2(n: number) {
+  return Math.round(n * 100) / 100;
+}
+
 function randHexByte(rand: () => number) {
   const n = Math.floor(rand() * 256);
   return `0x${n.toString(16).padStart(2, "0").toUpperCase()}`;
+}
+
+/** Deterministic Fisher–Yates (never use Array.sort with a random comparator). */
+function shuffleInPlace<T>(arr: T[], rand: () => number): T[] {
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(rand() * (i + 1));
+    const tmp = arr[i];
+    arr[i] = arr[j];
+    arr[j] = tmp;
+  }
+  return arr;
 }
 
 type MatrixColumn = {
@@ -60,16 +77,16 @@ function buildColumns(seed: number, count: number): MatrixColumn[] {
   const cols: MatrixColumn[] = [];
   const band = 100 / count;
   for (let i = 0; i < count; i++) {
-    const left = i * band + rand() * band * 0.7;
+    const left = r2(i * band + rand() * band * 0.7);
     const chars = Array.from({ length: 14 }, () => randHexByte(rand));
     cols.push({
       id: i,
       left,
-      width: 1.5 + rand() * 1.5,
-      duration: 7 + rand() * 8,
-      delay: -(rand() * 20),
-      fontSize: 10 + rand() * 6,
-      opacity: 0.08 + rand() * 0.2,
+      width: r2(1.5 + rand() * 1.5),
+      duration: r2(7 + rand() * 8),
+      delay: r2(-(rand() * 20)),
+      fontSize: r2(10 + rand() * 6),
+      opacity: r2(0.08 + rand() * 0.2),
       chars,
     });
   }
@@ -87,15 +104,15 @@ type CodeStrip = {
 
 function buildStrips(seed: number, count: number): CodeStrip[] {
   const rand = mulberry32(seed);
-  const shuffled = [...CODE_SNIPPETS].sort(() => rand() - 0.5);
+  const shuffled = shuffleInPlace([...CODE_SNIPPETS], rand);
   const strips: CodeStrip[] = [];
   for (let i = 0; i < count; i++) {
     const chunk = shuffled.slice(i * 2, i * 2 + 3).join("  //  ");
     strips.push({
       id: i,
-      fontSize: 10 + rand() * 4,
-      opacity: 0.06 + rand() * 0.12,
-      duration: 22 + rand() * 20,
+      fontSize: r2(10 + rand() * 4),
+      opacity: r2(0.06 + rand() * 0.12),
+      duration: r2(22 + rand() * 20),
       blur: rand() > 0.6 ? 1 : 0,
       content: `${chunk}  //  ${chunk}`,
     });
@@ -117,29 +134,29 @@ function buildLabels(seed: number, count: number): TelemetryLabel[] {
   for (let i = 0; i < count; i++) {
     labels.push({
       id: i,
-      left: 4 + rand() * 88,
-      top: 6 + rand() * 84,
+      left: r2(4 + rand() * 88),
+      top: r2(6 + rand() * 84),
       text: LABELS[i % LABELS.length],
-      delay: rand() * 4,
+      delay: r2(rand() * 4),
     });
   }
   return labels;
 }
 
 export function WebHiveTelemetryOverlay() {
+  const mounted = useClientMounted();
   const reducedMotion = useReducedMotion();
   const columns = useMemo(() => buildColumns(0x9e3779b9, 18), []);
   const strips = useMemo(() => buildStrips(0x6d2b79f5, 6), []);
   const labels = useMemo(() => buildLabels(0x7f4a7c13, 8), []);
 
-  if (reducedMotion) return null;
+  if (!mounted || reducedMotion) return null;
 
   return (
     <div
       className="pointer-events-none fixed inset-0 z-[2] overflow-hidden opacity-40 brightness-[0.75]"
       aria-hidden="true"
     >
-      {/* Edge vignette so the overlay stays behind content and fades at borders. */}
       <div
         className="absolute inset-0"
         style={{
@@ -148,7 +165,6 @@ export function WebHiveTelemetryOverlay() {
         }}
       />
 
-      {/* Layer 1: falling hex-byte matrix columns — RGYB shift, slower fall. */}
       {columns.map((col) => {
         const hue = RGYB[col.id % RGYB.length];
         return (
@@ -160,13 +176,13 @@ export function WebHiveTelemetryOverlay() {
               width: `${col.width}rem`,
               fontSize: col.fontSize,
               color: hue,
-              opacity: Math.min(0.35, col.opacity * 0.55),
+              opacity: r2(Math.min(0.35, col.opacity * 0.55)),
             }}
           >
             <div
               className="absolute left-0 top-0 flex flex-col gap-2"
               style={{
-                animation: `wh-matrix-fall ${col.duration * 1.75}s linear infinite`,
+                animation: `wh-matrix-fall ${r2(col.duration * 1.75)}s linear infinite`,
                 animationDelay: `${col.delay}s`,
               }}
             >
@@ -175,14 +191,13 @@ export function WebHiveTelemetryOverlay() {
                   <span key={`${copy}-${idx}`} className="block">
                     {c}
                   </span>
-                )),
+                ))
               )}
             </div>
           </div>
         );
       })}
 
-      {/* Layer 2: horizontal code/telemetry streams at different depths. */}
       <div className="absolute inset-0 flex flex-col justify-around py-16">
         {strips.map((strip) => {
           const hue = RGYB[strip.id % RGYB.length];
@@ -191,14 +206,14 @@ export function WebHiveTelemetryOverlay() {
               key={strip.id}
               className="sc-mask-x overflow-hidden font-mono whitespace-nowrap"
               style={{
-                opacity: strip.opacity * 0.45,
+                opacity: r2(strip.opacity * 0.45),
                 filter: strip.blur ? `blur(${strip.blur}px)` : undefined,
               }}
             >
               <div
                 className="inline-flex"
                 style={{
-                  animation: `wh-code-drift ${strip.duration * 1.6}s linear infinite`,
+                  animation: `wh-code-drift ${r2(strip.duration * 1.6)}s linear infinite`,
                   fontSize: strip.fontSize,
                   color: hue,
                 }}
@@ -211,7 +226,6 @@ export function WebHiveTelemetryOverlay() {
         })}
       </div>
 
-      {/* Layer 3: soft system labels — RGYB, slower pulse. */}
       {labels.map((label) => {
         const hue = RGYB[label.id % RGYB.length];
         return (
@@ -223,7 +237,7 @@ export function WebHiveTelemetryOverlay() {
               top: `${label.top}%`,
               color: hue,
               opacity: 0.45,
-              animation: `wh-pulse-glow 7s ease-in-out infinite`,
+              animation: "wh-pulse-glow 7s ease-in-out infinite",
               animationDelay: `${label.delay}s`,
             }}
           >

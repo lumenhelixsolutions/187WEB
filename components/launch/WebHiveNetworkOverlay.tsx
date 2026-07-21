@@ -5,6 +5,7 @@ import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import * as THREE from "three";
 import { gsap } from "@/lib/motion/gsap";
 import { useReducedMotion } from "@/lib/motion/useReducedMotion";
+import { useClientMounted } from "@/lib/motion/useClientMounted";
 import { HIVE_COLOR_CYCLE_SPEED, RGYB } from "@/lib/brand-palette";
 
 const HEX_RADIUS = 0.85;
@@ -190,8 +191,9 @@ function NetworkContent() {
 }
 
 export function WebHiveNetworkOverlay() {
+  const mounted = useClientMounted();
   const reducedMotion = useReducedMotion();
-  if (reducedMotion) return null;
+  if (!mounted || reducedMotion) return null;
 
   return (
     <div
