@@ -4,11 +4,11 @@ import { AgentPage, type AgentConfig } from "@/components/launch/AgentPage";
 const agent: AgentConfig = {
   slug: "kali",
   name: "KALI",
-  tagline: "Growth + design/dev assist",
-  color: "#a855f7",
-  skillIds: ["seo", "revenue", "publish", "craft", "repo", "vibe"],
+  tagline: "Growth + create assist",
+  color: "#39FF14",
+  skillIds: ["seo", "revenue", "publish", "create", "repo", "vibe"],
   overview:
-    "KALI drives growth and assists CHARLOTTE with direct web design and development: SEO, revenue systems, publish gate, craft, repo, and vibe. With security handled by NATASHA and YELENA, she is free for application work and can appeal to KRISHNA for SkillChains.",
+    "KALI drives growth and assists CHARLOTTE with direct web creation: SEO, revenue systems, publish gate, repo/vibe support, and 187CREATE for landing pages and campaign assets. She appeals to NATASHA/YELENA for security gates and to XAVIER for final ship calls.",
 };
 
 export const metadata: Metadata = {

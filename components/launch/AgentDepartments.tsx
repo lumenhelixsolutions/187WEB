@@ -11,15 +11,15 @@ import { FIRST_CLASS_SKILLS, SUBSKILLS, type SuiteSkill } from "@/lib/first-clas
  * Top-level 187WEB agent ecosystem.
  *
  * Agent → skill mapping:
- * - NATASHA: natasha, chain, test (security + red-team / offensive assurance)
- * - YELENA: natasha, test, access-plus, include (security + blue-team / safety gates)
- * - CHARLOTTE: repo, craft, vibe, launch, write, research (orchestrate + solve + recycle)
- * - KALI: seo, revenue, publish, craft, repo, vibe (growth + direct web design/dev assist)
- * - KRISHNA: free, docs, learn, test, version, natasha (knowledge + validation + SkillChains)
+ * - NATASHA: natasha, chain, test (external / post-launch security + applications)
+ * - YELENA: natasha, test, access-plus, include (pre-launch internal security + safety gates + applications)
+ * - CHARLOTTE: repo, craft, vibe, launch, write, research (application orchestration)
+ * - KALI: seo, revenue, publish, create, repo, vibe (growth + create assist)
+ * - XAVIER: docs, version, publish, launch, natasha, test (final creation / production + council)
  *
- * NATASHA and YELENA now share security duties so CHARLOTTE and KALI can focus
+ * NATASHA and YELENA split security duties so CHARLOTTE and KALI stay focused
  * on application work. Any agent can jump in, assign subagents, call any 1st/2nd/3rd
- * class skill when triggered, or appeal to KRISHNA to provide or create a SkillChain.
+ * class skill when triggered, or appeal to XAVIER for a council or SkillChain.
  */
 
 type AgentConfig = {
@@ -35,47 +35,47 @@ const AGENTS: AgentConfig[] = [
   {
     slug: "natasha",
     name: "NATASHA",
-    tagline: "Security + red-team ethos",
+    tagline: "External + post-launch security",
     color: "#f43f5e",
     skillIds: ["natasha", "chain", "test"],
     overview:
-      "NATASHA is the red-team / offensive security function: threat-surface audits, contract assurance, and test-driven validation. She shares security duties with YELENA and can call on CHARLOTTE, KALI, or KRISHNA for application, growth, or SkillChain support.",
+      "NATASHA handles external and post-launch security: threat-surface audits, contract and chain assurance, and test-driven validation after ship. She shares the security workload with YELENA and can call XAVIER for a council when a post-launch incident escalates.",
   },
   {
     slug: "yelena",
     name: "YELENA",
-    tagline: "Security + blue-team operations",
-    color: "#f97316",
+    tagline: "Pre-launch internal safety gates",
+    color: "#facc15",
     skillIds: ["natasha", "test", "access-plus", "include"],
     overview:
-      "YELENA shares security duties with NATASHA from the blue-team side: access gates, inclusion checks, test-driven assurance, and safety-net validation. She frees CHARLOTTE and KALI to focus on application work while standing ready to assist any agent that triggers a security or safety review.",
+      "YELENA owns pre-launch internal security and safety gates: access checks, inclusion review, test-driven CI gates, and release readiness. She frees CHARLOTTE and KALI to build applications while standing ready to jump in when a safety review is triggered.",
   },
   {
     slug: "charlotte",
     name: "CHARLOTTE",
-    tagline: "Orchestrate + solve + recycle",
-    color: "#39FF14",
+    tagline: "Application orchestration",
+    color: "#3b82f6",
     skillIds: ["repo", "craft", "vibe", "launch", "write", "research"],
     overview:
-      "CHARLOTTE threads intent into retrievable info, recycled and upcycled solutions, design-system hybrids, launch plans, and conflict-resolved public copy. Security is now handled by NATASHA and YELENA, freeing her to orchestrate application work, assign subagents, and appeal to KRISHNA for SkillChains.",
+      "CHARLOTTE orchestrates application work: design systems, repo scaffolding, launch planning, plain-language copy, and research-backed recycling. Security is handled by NATASHA and YELENA, so she focuses on shipping and can appeal to XAVIER for final production decisions.",
   },
   {
     slug: "kali",
     name: "KALI",
-    tagline: "Growth + design/dev assist",
-    color: "#a855f7",
-    skillIds: ["seo", "revenue", "publish", "craft", "repo", "vibe"],
+    tagline: "Growth + create assist",
+    color: "#39FF14",
+    skillIds: ["seo", "revenue", "publish", "create", "repo", "vibe"],
     overview:
-      "KALI drives growth and assists CHARLOTTE with direct web design and development: SEO, revenue systems, publish gate, craft, repo, and vibe. She can jump in when called, assign subagents, or appeal to NATASHA/YELENA for security gates and KRISHNA for SkillChains.",
+      "KALI drives growth and assists CHARLOTTE with direct web creation: SEO, revenue architecture, publish gate, and the new 187CREATE skill for landing pages and campaign assets. She can appeal to NATASHA/YELENA for security gates and to XAVIER for final ship calls.",
   },
   {
-    slug: "krishna",
-    name: "KRISHNA",
-    tagline: "Knowledge + validation + SkillChains",
-    color: "#3b82f6",
-    skillIds: ["free", "docs", "learn", "test", "version", "natasha"],
+    slug: "xavier",
+    name: "XAVIER",
+    tagline: "Final creation + council",
+    color: "#a855f7",
+    skillIds: ["docs", "version", "publish", "launch", "natasha", "test"],
     overview:
-      "KRISHNA curates knowledge, validates releases, and controls versions. He assists NATASHA and YELENA with security-flavored research, and any agent can appeal to him to provide or create a SkillChain — an end-to-end combination of 1st, 2nd, and 3rd class skills that produces a real artifact.",
+      "XAVIER is the only male-coded agent and the crew's final creation / production lead. He sees across all crews, can call a council huddle or Q&A, and owns the publish/launch/version skills that turn work into shipped artifacts.",
   },
 ];
 

@@ -95,7 +95,7 @@ Public slash-command surfaces in the 187 suite:
 
 | Domain | Skills |
 |--------|--------|
-| Build & ship | **187REPO**, **187CRAFT**, **187VIBE**, **187LAUNCH**, **187FREE** |
+| Build & ship | **187REPO**, **187CRAFT**, **187CREATE**, **187VIBE**, **187LAUNCH**, **187FREE** |
 | Research & standards | **187RESEARCH**, **187SEO**, **187REVENUE**, **187DOCS** |
 | Learn & access | **187LEARN**, **187TEST**, **187ACCESS+**, **187INCLUDE+** |
 | Release | **187VERSION**, **187PUBLISH** |
