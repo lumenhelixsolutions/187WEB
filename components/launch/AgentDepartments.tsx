@@ -1,12 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import { NatashaBlueprint } from "@/components/BrandMark";
 import { Reveal } from "@/components/Reveal";
 import { Tooltip } from "@/components/Tooltip";
 import { skillShowcaseIndex, type SkillShowcaseData } from "@/lib/skill-showcase-data";
 import { FIRST_CLASS_SKILLS, SUBSKILLS, type SuiteSkill } from "@/lib/first-class-skills";
 import { natashaKit, yelenaKit, charlotteKit, kaliKit, xavierKit, type AgentKit } from "@/lib/agents";
+import { AgentMascot } from "./AgentMascot";
 
 /**
  * Top-level 187WEB agent ecosystem.
@@ -44,24 +44,13 @@ function AgentCard({ agent, index }: { agent: AgentKit; index: number }) {
           className="group flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-[#0A0C14] transition hover:-translate-y-1 hover:border-white/20"
           style={{ boxShadow: `0 0 0 1px rgba(255,255,255,0.03), 0 24px 60px -24px ${agent.color}22` }}
         >
-          <div className="relative h-56 overflow-hidden bg-black/40 sm:h-64">
-            <NatashaBlueprint className="absolute inset-0 h-full w-full object-cover opacity-70" />
-            <div
-              className="absolute inset-0 opacity-60"
-              style={{ backgroundColor: agent.color, mixBlendMode: "color" }}
-            />
-            <div
-              className="absolute inset-0 opacity-20"
-              style={{ backgroundColor: agent.color, mixBlendMode: "overlay" }}
-            />
-
-            <span
-              className="absolute right-4 top-4 rounded-full px-3 py-1 text-xs font-bold text-[#050608]"
-              style={{ backgroundColor: agent.color }}
-            >
-              {agent.name}
-            </span>
-          </div>
+          <AgentMascot
+            color={agent.color}
+            name={agent.name}
+            size="md"
+            showNameBadge
+            className="rounded-none border-0"
+          />
 
           <div className="flex flex-1 flex-col p-5 sm:p-6">
             <div className="flex items-start justify-between gap-3">

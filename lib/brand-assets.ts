@@ -18,8 +18,6 @@ export const brandAssets = {
   headerLockup: withBase("/images/187web_lockup_horizontal.png"),
   /** Wordmark + tagline strip for hero / sampler surfaces */
   wordmarkTagline: withBase("/images/187web_wordmark_tagline.png"),
-  /** Full 187WEB header infographic with first-class skill modules */
-  headerInfographic: withBase("/images/187web_header_infographic.jpg"),
   /** NATASHA technical blueprint — mascot geometry / vibe board */
   blueprint: withBase("/images/187web_technical_blueprint_coordinate_grid.png"),
   /** LumenHelix DNA lightbulb — org mark */

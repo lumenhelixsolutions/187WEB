@@ -11,7 +11,15 @@ import { Tooltip } from "@/components/Tooltip";
 import { ProductShell } from "./ProductShell";
 import { AgentDepartments } from "./AgentDepartments";
 import { AccessIncludeCTA } from "./AccessIncludeCTA";
+import { AgentMascotRoster } from "./AgentMascot";
 import { charlotteModules, quickStats, installSnippets } from "./launch-data";
+import { natashaKit, yelenaKit, charlotteKit, kaliKit, xavierKit } from "@/lib/agents";
+
+const HERO_AGENTS = [natashaKit, yelenaKit, charlotteKit, kaliKit, xavierKit].map((a) => ({
+  slug: a.slug,
+  name: a.name,
+  color: a.color,
+}));
 
 const REPO = "https://github.com/LumenHelixLab/187WEB";
 const RESEARCH_LAB_COMMANDS = [
@@ -60,25 +68,23 @@ function Hero() {
       <div className="container-x relative">
         <div className="mx-auto max-w-5xl text-center">
           <Reveal>
-            <div className="mx-auto mb-6 flex max-w-3xl flex-col items-center gap-4">
+            <div className="mx-auto mb-8 flex max-w-3xl flex-col items-center gap-4">
               {/* eslint-disable-next-line @next/next/no-img-element -- basePath-safe static export */}
               <img
-                src={brandAssets.headerLockup}
+                src={brandAssets.wordmarkTagline}
                 alt="187WEB — A killer AI-powered web suite"
-                className="w-full max-w-2xl drop-shadow-[0_0_40px_rgba(57,255,20,0.25)]"
+                className="w-full max-w-xl drop-shadow-[0_0_40px_rgba(57,255,20,0.25)]"
               />
             </div>
           </Reveal>
 
           <Reveal delay={100}>
             <div className="relative mx-auto max-w-4xl">
-              <div className="absolute -inset-4 rounded-full bg-[#39FF14]/10 blur-3xl" />
-              {/* eslint-disable-next-line @next/next/no-img-element -- basePath-safe static export */}
-              <img
-                src={brandAssets.headerInfographic}
-                alt="187WEB killer web design solutions: 187REPO, 187CRAFT, 187VIBE, 187LAUNCH"
-                className="relative w-full rounded-2xl border border-white/10 shadow-2xl shadow-black/40"
-              />
+              <div className="absolute -inset-6 rounded-full bg-[#39FF14]/10 blur-3xl" aria-hidden />
+              <p className="relative mb-4 text-center text-[10px] font-semibold uppercase tracking-[0.22em] text-white/45">
+                Color-coded crew mascots
+              </p>
+              <AgentMascotRoster agents={HERO_AGENTS} />
             </div>
           </Reveal>
 

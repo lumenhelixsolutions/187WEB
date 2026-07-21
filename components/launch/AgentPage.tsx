@@ -2,13 +2,12 @@
 
 import { useCallback, useState } from "react";
 import Link from "next/link";
-import { NatashaBlueprint } from "@/components/BrandMark";
 import { Reveal } from "@/components/Reveal";
 import { ProductShell } from "./ProductShell";
-import { brandAssets } from "@/lib/brand-assets";
 import { skillShowcaseIndex, type SkillShowcaseData } from "@/lib/skill-showcase-data";
 import { FIRST_CLASS_SKILLS, SUBSKILLS, type SuiteSkill } from "@/lib/first-class-skills";
 import { charlotteModules } from "./launch-data";
+import { AgentMascot } from "./AgentMascot";
 import { XavierControlPlane } from "./XavierControlPlane";
 import type { AgentKit, Command, Prompt, SkillChain, Task, Trigger } from "@/lib/agents/agent-kit";
 
@@ -32,26 +31,20 @@ function AgentHero({ agent }: { agent: AgentKit }) {
       <div className="container-x relative">
         <div className="mx-auto max-w-5xl">
           <div
-            className="relative mx-auto mb-10 max-w-3xl overflow-hidden rounded-2xl border p-2"
-            style={{ borderColor: hexWithAlpha(agent.color, 0.25), boxShadow: `0 0 60px ${hexWithAlpha(agent.color, 0.12)}` }}
+            className="relative mx-auto mb-10 max-w-xl overflow-hidden rounded-2xl border p-2 sm:max-w-2xl"
+            style={{
+              borderColor: hexWithAlpha(agent.color, 0.35),
+              boxShadow: `0 0 80px ${hexWithAlpha(agent.color, 0.2)}`,
+            }}
           >
-            <div className="relative overflow-hidden rounded-xl bg-black/40">
-              <NatashaBlueprint priority className="rounded-xl opacity-90" />
-              <div
-                className="absolute inset-0 opacity-60"
-                style={{ backgroundColor: agent.color, mixBlendMode: "color" }}
-              />
-              <div
-                className="absolute inset-0 opacity-20"
-                style={{ backgroundColor: agent.color, mixBlendMode: "overlay" }}
-              />
-              {/* eslint-disable-next-line @next/next/no-img-element -- basePath-safe static export */}
-              <img
-                src={brandAssets.headerLockup}
-                alt="187WEB"
-                className="absolute bottom-4 left-4 h-8 w-auto opacity-90 sm:h-10"
-              />
-            </div>
+            <AgentMascot
+              color={agent.color}
+              name={agent.name}
+              size="hero"
+              showWordmark
+              showNameBadge
+              priority
+            />
           </div>
 
           <div className="text-center">
@@ -75,7 +68,7 @@ function AgentHero({ agent }: { agent: AgentKit }) {
                 ← Back to showcase
               </Link>
               <Link
-                href="/"
+                href="/#agents"
                 className="inline-flex h-12 items-center justify-center rounded border border-white/10 bg-white/5 px-6 text-sm font-semibold text-white transition hover:bg-white/10"
               >
                 Agent ecosystem
