@@ -51,8 +51,12 @@ function Footer() {
     <footer className="relative z-10 border-t border-white/10 bg-[#050608] px-6 py-12">
       <div className="container-x flex flex-col items-center justify-between gap-6 sm:flex-row">
         <div className="flex flex-col items-center gap-2 sm:items-start">
-          {/* eslint-disable-next-line @next/next/no-img-element -- basePath-safe static export */}
-          <img src={brandAssets.labWordmark} alt="LumenHelix Lab" className="h-5 opacity-90" />
+          <div className="flex items-center gap-3">
+            {/* eslint-disable-next-line @next/next/no-img-element -- basePath-safe static export */}
+            <img src={brandAssets.knotstoreLogo} alt="KNOTstore" className="h-6 w-auto" />
+            {/* eslint-disable-next-line @next/next/no-img-element -- basePath-safe static export */}
+            <img src={brandAssets.labWordmark} alt="LumenHelix Lab" className="h-5 opacity-90" />
+          </div>
           <p className="text-sm text-white/50">
             © {new Date().getFullYear()} LumenHelix Lab · 187WEB · Custom Noncommercial License with Reserved Knotstore
             IP

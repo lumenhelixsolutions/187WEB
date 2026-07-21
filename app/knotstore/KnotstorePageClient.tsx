@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useState, useTransition } from "react";
+import { brandAssets } from "@/lib/brand-assets";
 import { sampleSeedPayload } from "@/lib/knotstore/seed-preview";
 import { KNOTRecord, KNOTStats } from "@/lib/knotstore/types";
 
@@ -118,9 +119,13 @@ export function KnotstorePageClient({ initial }: { initial: SeedResult }) {
         <span className="inline-flex items-center gap-2 rounded-full bg-[#3DDC97]/10 px-3 py-1 text-xs font-semibold text-[#3DDC97] ring-1 ring-[#3DDC97]/30">
           Agentic memory layer
         </span>
-        <h1 className="mt-5 text-[clamp(2.2rem,1.4rem+4vw,4rem)] font-bold leading-[1.02] tracking-tight">
-          KNOTstore
-        </h1>
+        {/* eslint-disable-next-line @next/next/no-img-element -- basePath-safe static export */}
+        <img
+          src={brandAssets.knotstoreLogo}
+          alt="KNOTstore"
+          className="mt-5 h-16 w-auto"
+        />
+        <h1 className="sr-only">KNOTstore</h1>
         <p className="mt-4 max-w-md text-white/60">
           Local crawl storage, bidirectional wikilinks, connection health, and KNOT point anchors.
         </p>

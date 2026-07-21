@@ -461,6 +461,12 @@ function ResearchLab() {
 
           <Reveal delay={100}>
             <div className="rounded-3xl border border-white/10 bg-[#0A0C14] p-6 sm:p-8">
+              {/* eslint-disable-next-line @next/next/no-img-element -- basePath-safe static export */}
+              <img
+                src={brandAssets.knotstoreLogo}
+                alt="KNOTstore"
+                className="mb-4 h-12 w-auto"
+              />
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#39FF14]">KNOTstore memory layer</p>
               <h3 className="mt-3 text-2xl font-bold text-white">Agentic memory, local-first</h3>
               <p className="mt-3 text-white/60">
