@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { NatashaBlueprint } from "@/components/BrandMark";
 import { Reveal } from "@/components/Reveal";
-import { brandAssets } from "@/lib/brand-assets";
 import { skillShowcaseIndex, type SkillShowcaseData } from "@/lib/skill-showcase-data";
 import { FIRST_CLASS_SKILLS, SUBSKILLS, type SuiteSkill } from "@/lib/first-class-skills";
 
@@ -96,22 +95,6 @@ function AgentCard({ agent, index }: { agent: AgentConfig; index: number }) {
           <div
             className="absolute inset-0 opacity-20"
             style={{ backgroundColor: agent.color, mixBlendMode: "overlay" }}
-          />
-
-          {/* Extracted spider hero visual */}
-          {/* eslint-disable-next-line @next/next/no-img-element -- basePath-safe static export */}
-          <img
-            src={brandAssets.spiderExtracted}
-            alt=""
-            className="absolute inset-0 m-auto h-40 w-auto object-contain drop-shadow-[0_0_30px_rgba(0,0,0,0.8)] transition duration-500 group-hover:scale-105 sm:h-48"
-          />
-
-          {/* 187WEB text lockup */}
-          {/* eslint-disable-next-line @next/next/no-img-element -- basePath-safe static export */}
-          <img
-            src={brandAssets.headerLockup}
-            alt="187WEB"
-            className="absolute bottom-4 left-4 h-7 w-auto opacity-90 sm:h-8"
           />
 
           <span
