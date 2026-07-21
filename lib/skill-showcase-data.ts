@@ -209,7 +209,7 @@ export const skillShowcases: SkillShowcaseData[] = [
       { name: "187craft", when: "checkout, pricing page, or dashboard UI" },
       { name: "187launch", when: "GTM, campaign, and sponsorship timing" },
       { name: "187seo", when: "deal-page and product-page strategy" },
-      { name: "187access-plus + 187include", when: "public checkout, forms, and pricing pages" },
+      { name: "187ACCESS+ / 187INCLUDE+", when: "public checkout, forms, and pricing pages" },
     ],
     templates: [
       { name: "pricing-architecture.md", when: "Designing tiers and offer ladders" },
@@ -246,7 +246,7 @@ export const skillShowcases: SkillShowcaseData[] = [
     routesTo: [
       { name: "187write", when: "polishing public-facing copy" },
       { name: "187research", when: "docs cite papers, APIs, or datasets" },
-      { name: "187access-plus + 187include", when: "publishing public docs" },
+      { name: "187ACCESS+ / 187INCLUDE+", when: "publishing public docs" },
       { name: "187publish", when: "final sync across surfaces" },
     ],
     templates: [
@@ -289,7 +289,7 @@ export const skillShowcases: SkillShowcaseData[] = [
     routesTo: [
       { name: "187write", when: "polishing public course copy" },
       { name: "187test", when: "quizzes and knowledge checks" },
-      { name: "187access-plus", when: "accessible learning design" },
+      { name: "187ACCESS+", when: "accessible learning design" },
       { name: "187seo", when: "course discoverability" },
       { name: "187revenue", when: "paid course or certification offers" },
       { name: "187publish", when: "final course surface sync" },
@@ -327,8 +327,8 @@ export const skillShowcases: SkillShowcaseData[] = [
     ],
     routesTo: [
       { name: "187learn", when: "assessments belong inside a course" },
-      { name: "187access-plus", when: "public-facing assessment" },
-      { name: "187include", when: "forms collect identity data" },
+      { name: "187ACCESS+", when: "public-facing assessment" },
+      { name: "187INCLUDE+", when: "forms collect identity data" },
       { name: "187publish", when: "final surface sync" },
     ],
     templates: [
@@ -342,35 +342,70 @@ export const skillShowcases: SkillShowcaseData[] = [
   {
     id: "access",
     name: "187ACCESS+",
-    tagline: "Accessibility & inclusion engine",
+    tagline: "Disability access + assistive-tech engine",
     color: "#ec4899",
     description:
-      "Audits and improves disability accessibility, neurodivergent access, sensory access, assistive-technology support, WCAG+, and inclusive access systems.",
-    triggers: ["/187access-plus", "187ACCESS+", "a11y", "wcag", "accessibility audit", "neurodivergent access", "screen reader audit"],
+      "Audits and improves disability access and assistive-technology support: blind/low-vision, Deaf/HoH, motor/physical, speech, vestibular, photosensitive, and assistive-tech compatibility. Keeps WCAG, ARIA, screen-reader, keyboard/switch, caption/transcript, and focus-order concerns in one place.",
+    triggers: [
+      "/187access-plus",
+      "187ACCESS+",
+      "a11y",
+      "wcag",
+      "accessibility audit",
+      "blind user",
+      "screen reader",
+      "low vision",
+      "color contrast",
+      "deaf",
+      "captions",
+      "transcripts",
+      "audio description",
+      "motor access",
+      "switch control",
+      "keyboard navigation",
+      "focus order",
+      "tremor friendly",
+      "voice control",
+      "braille display",
+      "magnifier",
+      "WCAG",
+      "ARIA",
+      "a11y audit",
+    ],
     useCases: [
-      "Page, app, form, checkout, course, quiz, or docs audit",
-      "Screen-reader, keyboard, low-vision, Deaf/HoH, motor, and cognitive review",
-      "Accommodation plans and assistive-tech scouts",
+      "Blind / screen-reader audit for pages, apps, forms, and docs",
+      "Low-vision review: contrast, zoom, reflow, focus indicators",
+      "Deaf/HoH captions, transcripts, and audio-description planning",
+      "Motor/switch/eye-gaze navigation and keyboard maps",
+      "Physical/tremor-friendly target sizing and gesture review",
+      "Vestibular motion review and photosensitive safety checks",
+      "Accessible forms, errors, and assistive-tech compatibility",
     ],
     outputs: [
-      "Audit scope & profile",
-      "Findings with severity & standard references",
-      "Concrete recommendations",
-      "Plain-language summary",
+      "Accessibility profile",
+      "WCAG/ARIA findings with severity",
+      "Screen-reader test plan",
+      "Caption/transcript plan",
+      "Keyboard/switch map",
+      "Color-contrast report",
+      "Focus-order diagram",
       "Accommodation plan",
       "Validation steps",
     ],
     routesTo: [
-      { name: "187include", when: "forms or content touch identity" },
+      { name: "187INCLUDE+", when: "forms or content touch identity" },
       { name: "187craft", when: "design-level fixes" },
       { name: "187test", when: "accessible quiz or survey review" },
       { name: "187publish", when: "gating public pages before release" },
+      { name: "187docs", when: "access statements and docs" },
     ],
     templates: [
       { name: "access-audit-report.md", when: "Structured findings for a page or flow" },
       { name: "accommodation-plan.md", when: "Consent-first support plan" },
       { name: "wcag-plus-checklist.md", when: "Pre-publish WCAG+ checklist" },
       { name: "assistive-tech-scout.md", when: "Tool recommendations for an access need" },
+      { name: "screen-reader-test-plan.md", when: "Planning screen-reader validation" },
+      { name: "caption-transcript-plan.md", when: "Planning media accessibility" },
     ],
     related: ["include", "craft", "test", "docs", "publish"],
   },
@@ -540,8 +575,8 @@ export const skillShowcases: SkillShowcaseData[] = [
     ],
     routesTo: [
       { name: "187standard", when: "findings need scoring against 187WEB quality standards" },
-      { name: "187access-plus", when: "the scan touches disability access" },
-      { name: "187include", when: "the scan touches identity-safe language" },
+      { name: "187ACCESS+", when: "the scan touches disability access" },
+      { name: "187INCLUDE+", when: "the scan touches identity-safe language" },
       { name: "187seo", when: "findings are search-visibility related" },
     ],
     templates: [
@@ -607,7 +642,7 @@ export const skillShowcases: SkillShowcaseData[] = [
     ],
     routesTo: [
       { name: "187scan", when: "the standard check requires an inspection pass" },
-      { name: "187access-plus", when: "standards touch accessibility" },
+      { name: "187ACCESS+", when: "standards touch accessibility" },
       { name: "187publish", when: "standard checks gate a public release" },
     ],
     templates: [
@@ -709,8 +744,8 @@ export const skillShowcases: SkillShowcaseData[] = [
     ],
     outputs: ["Mode", "Design direction and tokens", "Component plan", "Accessibility notes", "Audit findings", "Next actions"],
     routesTo: [
-      { name: "187access-plus", when: "accessibility-only reviews" },
-      { name: "187include", when: "inclusion-only language reviews" },
+      { name: "187ACCESS+", when: "accessibility-only reviews" },
+      { name: "187INCLUDE+", when: "inclusion-only language reviews" },
       { name: "187seo", when: "SEO implications arise" },
       { name: "187launch", when: "launch copy is needed" },
     ],
@@ -814,7 +849,7 @@ export const skillShowcases: SkillShowcaseData[] = [
       { name: "187docs", when: "document structure or docs architecture is needed" },
       { name: "187seo", when: "search-targeted content is needed" },
       { name: "187launch", when: "campaign copy is needed" },
-      { name: "187include", when: "inclusion or identity language review is needed" },
+      { name: "187INCLUDE+", when: "inclusion or identity language review is needed" },
     ],
     templates: [
       { name: "content-brief.md", when: "Before drafting long-form content" },
@@ -825,43 +860,60 @@ export const skillShowcases: SkillShowcaseData[] = [
   },
   {
     id: "include",
-    name: "187INCLUDE",
-    tagline: "Inclusion + identity safety",
-    color: "#be185d",
+    name: "187INCLUDE+",
+    tagline: "Inclusion + neurodivergence + identity safety",
+    color: "rainbow",
     description:
-      "Suite-wide inclusion engine for LGBTQ+ inclusion, identity-safe language, pronoun-safe systems, anti-bias review, and community safety.",
+      "Broad inclusion engine for neurodivergence (Autism, ADHD, OCD, dyslexia, dyspraxia, Tourette’s), identity safety (LGBTQ+, pronouns), anti-bias, plain language, sensory safety, predictable interfaces, cognitive-load reduction, and emotional safety.",
     triggers: [
-      "/187include",
-      "187INCLUDE",
+      "/187INCLUDE+",
+      "187INCLUDE+",
       "include",
+      "neurodivergent",
+      "autism friendly",
+      "ADHD friendly",
+      "OCD friendly",
+      "sensory safe",
+      "plain language",
+      "cognitive load",
+      "executive function",
+      "dyslexia friendly",
+      "identity safe",
       "pronouns",
       "inclusive language",
-      "pronoun review",
+      "anti-bias",
+      "deadname check",
+      "gender inclusive",
       "LGBTQ inclusion",
+      "pronoun review",
       "gender inclusive forms",
-      "anti-bias review",
     ],
     useCases: [
-      "Reviewing public copy and forms for identity safety",
-      "Designing name, pronoun, gender, and title fields",
-      "Assessing deadname or misgendering risk",
-      "Drafting community safety language",
+      "Autism/ADHD/OCD-friendly UX review",
+      "Sensory-safe design and motion reviews",
+      "Plain-language rewrite and cognitive-load reduction",
+      "Predictable navigation and executive-function support",
+      "Identity-safe forms, pronouns, and name handling",
+      "Anti-bias copy review and deadname/misgendering risk checks",
+      "Community safety language and inclusive style guides",
     ],
     outputs: [
-      "Mode",
+      "Inclusion mode",
       "Scope",
-      "Terminology review",
+      "Neurodivergent review",
+      "Sensory profile",
+      "Plain-language score",
       "Identity field design",
       "Pronoun handling",
       "Deadname/misgendering risk",
       "Inclusive rewrite",
-      "Privacy and consent controls",
+      "Cognitive-load map",
       "Community safety notes",
       "Prioritized recommendations",
       "Validation steps",
     ],
     routesTo: [
-      { name: "187access-plus", when: "forms or auth touch disability access and identity data" },
+      { name: "187ACCESS+", when: "forms or auth touch disability access and identity data" },
       { name: "187docs", when: "updating inclusion statements and style guides" },
       { name: "187write", when: "final copy polish after inclusion edits" },
       { name: "187publish", when: "gating a public page before release" },
@@ -870,9 +922,32 @@ export const skillShowcases: SkillShowcaseData[] = [
       { name: "inclusion-review-report.md", when: "Structured findings for a page or form" },
       { name: "gender-inclusive-form-template.md", when: "Designing identity fields" },
       { name: "community-safety-plan.md", when: "Code of conduct and support response language" },
+      { name: "neurodivergent-ux-checklist.md", when: "Autism/ADHD/OCD-friendly review" },
+      { name: "plain-language-rewrite.md", when: "Simplifying public copy" },
     ],
     related: ["access", "docs", "write", "publish"],
   },
 ];
 
 export const skillShowcaseIndex = new Map(skillShowcases.map((s) => [s.id, s]));
+
+/**
+ * Helpers for the special `rainbow` color used by 187INCLUDE+.
+ * Returns a concrete hex fallback for inline style props (box-shadow, borders,
+ * solid backgrounds) and a Tailwind gradient class for text/background accents.
+ */
+export function skillColorValue(color: string): string {
+  return color === "rainbow" ? "#ec4899" : color;
+}
+
+export function skillIsRainbow(color: string): boolean {
+  return color === "rainbow";
+}
+
+export function skillRainbowClass(): string {
+  return "bg-gradient-to-r from-red-500 via-yellow-500 via-green-500 via-blue-500 to-purple-500";
+}
+
+export function skillRainbowTextClass(): string {
+  return `${skillRainbowClass()} bg-clip-text text-transparent`;
+}

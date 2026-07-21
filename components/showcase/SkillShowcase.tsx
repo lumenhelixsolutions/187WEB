@@ -3,7 +3,7 @@ import { NatashaBlueprint } from "@/components/BrandMark";
 import { CopyButton } from "@/components/CopyButton";
 import { Reveal } from "@/components/Reveal";
 import { ProductShell } from "@/components/launch/ProductShell";
-import { skillShowcaseIndex, type SkillShowcaseData } from "@/lib/skill-showcase-data";
+import { skillShowcaseIndex, type SkillShowcaseData, skillColorValue, skillIsRainbow, skillRainbowTextClass } from "@/lib/skill-showcase-data";
 
 function relatedHref(id: string): string | null {
   if (skillShowcaseIndex.has(id)) return `/187${id}`;
@@ -20,43 +20,46 @@ function relatedLabel(id: string): string {
     vibe: "187VIBE",
     launch: "187LAUNCH",
     write: "187WRITE",
-    include: "187INCLUDE",
+    include: "187INCLUDE+",
   };
   return map[id] ?? id;
 }
 
 function SkillHero({ skill }: { skill: SkillShowcaseData }) {
+  const solidColor = skillColorValue(skill.color);
   return (
     <section className="relative overflow-hidden border-b border-white/10 px-6 pb-16 pt-12 sm:pb-24 sm:pt-20">
       <div className="container-x relative">
         <div className="mx-auto max-w-4xl text-center">
           <div
             className="mx-auto mb-10 max-w-3xl overflow-hidden rounded-2xl border p-2 shadow-[0_0_60px_rgba(57,255,20,0.12)]"
-            style={{ borderColor: `${skill.color}40`, boxShadow: `0 0 60px ${skill.color}20` }}
+            style={{ borderColor: `${solidColor}40`, boxShadow: `0 0 60px ${solidColor}20` }}
           >
             <div className="relative overflow-hidden rounded-xl bg-black/40">
               <NatashaBlueprint priority className="rounded-xl opacity-90 grayscale-[0.2]" />
               <div
                 className="absolute inset-0 opacity-60"
-                style={{ backgroundColor: skill.color, mixBlendMode: "color" }}
+                style={{ backgroundColor: solidColor, mixBlendMode: "color" }}
               />
               <div
                 className="absolute inset-0 opacity-20"
-                style={{ backgroundColor: skill.color, mixBlendMode: "overlay" }}
+                style={{ backgroundColor: solidColor, mixBlendMode: "overlay" }}
               />
             </div>
           </div>
 
           <p
             className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em]"
-            style={{ color: skill.color }}
+            style={{ color: solidColor }}
           >
-            <span className="h-px w-6" style={{ backgroundColor: skill.color }} aria-hidden="true" />
+            <span className="h-px w-6" style={{ backgroundColor: solidColor }} aria-hidden="true" />
             {skill.name} skill
           </p>
           <h1 className="mt-6 text-[clamp(2.5rem,1.5rem+5vw,5rem)] font-bold leading-[0.98] tracking-tight text-white">
             {skill.name} —{" "}
-            <span style={{ color: skill.color }}>{skill.tagline}.</span>
+            <span className={skillIsRainbow(skill.color) ? skillRainbowTextClass() : ""} style={skillIsRainbow(skill.color) ? undefined : { color: solidColor }}>
+              {skill.tagline}.
+            </span>
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-white/60">
             {skill.description}
@@ -140,12 +143,12 @@ export function SkillShowcase({ skill }: { skill: SkillShowcaseData }) {
               <Reveal key={useCase} delay={i * 80}>
                 <div
                   className="h-full rounded-xl border border-white/10 bg-[#05060A] p-6 transition hover:-translate-y-1"
-                  style={{ boxShadow: `0 0 0 1px rgba(255,255,255,0.06), 0 24px 60px -24px ${skill.color}22` }}
+                  style={{ boxShadow: `0 0 0 1px rgba(255,255,255,0.06), 0 24px 60px -24px ${skillColorValue(skill.color)}22` }}
                 >
                   <div className="flex items-center gap-3">
                     <span
                       className="inline-flex h-2.5 w-2.5 rounded-full"
-                      style={{ backgroundColor: skill.color, boxShadow: `0 0 10px ${skill.color}` }}
+                      style={{ backgroundColor: skillColorValue(skill.color), boxShadow: `0 0 10px ${skillColorValue(skill.color)}` }}
                       aria-hidden="true"
                     />
                     <p className="leading-relaxed text-white/80">{useCase}</p>
@@ -176,7 +179,7 @@ export function SkillShowcase({ skill }: { skill: SkillShowcaseData }) {
                   <li className="flex items-start gap-4 rounded-xl border border-white/10 bg-[#0A0C14] p-5">
                     <span
                       className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full text-xs font-bold text-[#050608]"
-                      style={{ backgroundColor: skill.color }}
+                      style={{ backgroundColor: skillColorValue(skill.color) }}
                     >
                       {i + 1}
                     </span>

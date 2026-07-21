@@ -35,7 +35,7 @@ export const FIRST_CLASS_SKILLS: SuiteSkill[] = [
 
 export const SUBSKILLS: SuiteSkill[] = [
   { id: "write", name: "187WRITE", docs: "187WRITE" },
-  { id: "include", name: "187INCLUDE", docs: "187INCLUDE" },
+  { id: "include", name: "187INCLUDE+", docs: "187INCLUDE+" },
 ] as SuiteSkill[];
 
 export const PUBLIC_SKILLS: SuiteSkill[] = [...FIRST_CLASS_SKILLS, ...SUBSKILLS];

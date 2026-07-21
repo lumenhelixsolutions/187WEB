@@ -246,9 +246,9 @@ export const COMMANDS: CommandEntry[] = [
     "category": "Core Suite",
     "cmd": "/187 inc",
     "alias": "inc",
-    "id": "187INCLUDE",
+    "id": "187INCLUDE+",
     "status": "core",
-    "purpose": "Inclusive language, identity-safe copy, representation checks."
+    "purpose": "Neurodivergence-friendly UX, identity-safe copy, inclusive language, and community safety."
   },
   {
     "category": "Core Suite",

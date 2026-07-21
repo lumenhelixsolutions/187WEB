@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Reveal } from "@/components/Reveal";
-import { skillShowcaseIndex, type SkillShowcaseData } from "@/lib/skill-showcase-data";
+import { skillShowcaseIndex, type SkillShowcaseData, skillColorValue, skillIsRainbow, skillRainbowTextClass } from "@/lib/skill-showcase-data";
 import { COMMANDS } from "@/components/187/command-data";
 
 function IconArrowRight({ className }: { className?: string }) {
@@ -28,26 +28,33 @@ export function AbilityCard({
   const trigger = skill.triggers[0] ?? `/187 ${alias}`;
   const useCase = skill.useCases[0] ?? "";
   const output = skill.outputs[0] ?? "";
+  const solidColor = skillColorValue(skill.color);
 
   return (
     <Reveal delay={delay}>
       <Link
         href={`/187${skill.id}`}
         className="group flex h-full flex-col rounded-2xl border border-white/10 bg-[#0A0C14] p-5 transition hover:-translate-y-1 hover:border-[#39FF14]/30 hover:bg-[#0A0C14]/80"
-        style={{ boxShadow: `0 0 0 1px rgba(255,255,255,0.04), 0 24px 60px -24px ${skill.color}22` }}
+        style={{ boxShadow: `0 0 0 1px rgba(255,255,255,0.04), 0 24px 60px -24px ${solidColor}22` }}
       >
         <div className="flex items-start justify-between gap-3">
           <div>
             <h3 className="font-bold text-white">{skill.name}</h3>
-            <p className="text-sm" style={{ color: skill.color }}>
+            <p className={`text-sm ${skillIsRainbow(skill.color) ? skillRainbowTextClass() : ""}`} style={skillIsRainbow(skill.color) ? undefined : { color: solidColor }}>
               {skill.tagline}
             </p>
           </div>
           <span
-            className="grid h-8 w-8 flex-shrink-0 place-items-center rounded-lg text-xs font-bold text-[#05060A]"
-            style={{ backgroundColor: skill.color }}
+            className={`grid h-8 w-8 flex-shrink-0 place-items-center rounded-lg text-xs font-bold ${skillIsRainbow(skill.color) ? "text-white" : "text-[#050608]"}`}
+            style={skillIsRainbow(skill.color) ? {} : { backgroundColor: solidColor }}
           >
-            {alias.slice(0, 2).toUpperCase()}
+            {skillIsRainbow(skill.color) ? (
+              <span className="bg-gradient-to-r from-red-500 via-yellow-500 via-green-500 via-blue-500 to-purple-500 bg-clip-text text-transparent">
+                {alias.slice(0, 2).toUpperCase()}
+              </span>
+            ) : (
+              alias.slice(0, 2).toUpperCase()
+            )}
           </span>
         </div>
 
@@ -66,7 +73,7 @@ export function AbilityCard({
           </div>
         </div>
 
-        <div className="mt-auto flex items-center gap-1 pt-5 text-sm font-medium" style={{ color: skill.color }}>
+        <div className="mt-auto flex items-center gap-1 pt-5 text-sm font-medium" style={{ color: solidColor }}>
           <span>Explore {skill.name}</span>
           <IconArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
         </div>

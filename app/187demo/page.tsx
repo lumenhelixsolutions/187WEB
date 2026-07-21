@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { EcosystemFooter, EcosystemHeader } from "@/components/ecosystem/Chrome";
 import { Reveal } from "@/components/Reveal";
-import { skillShowcases } from "@/lib/skill-showcase-data";
+import { skillShowcases, skillColorValue } from "@/lib/skill-showcase-data";
 
 export const metadata: Metadata = {
   title: "187WEB Demo Abilities",
@@ -176,7 +176,7 @@ export default function DemoPage() {
                 >
                   <span
                     className="h-3 w-3 rounded-full"
-                    style={{ backgroundColor: skill.color, boxShadow: `0 0 10px ${skill.color}` }}
+                    style={{ backgroundColor: skillColorValue(skill.color), boxShadow: `0 0 10px ${skillColorValue(skill.color)}` }}
                     aria-hidden="true"
                   />
                   <div>
