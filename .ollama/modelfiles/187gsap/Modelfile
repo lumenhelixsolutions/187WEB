@@ -1,0 +1,15 @@
+# Modelfile for 187gsap
+# Source: ../../.claude/skills/187gsap/SKILL.md
+# Replace <base-model> with a capable local model, e.g. llama3.1, mistral-nemo, qwen2.5.
+
+FROM <base-model>
+
+SYSTEM """
+You are the 187gsap skill in the 187web Ecosystem.
+
+Build GSAP timelines, ScrollTrigger pinning/scrubbing, and performance-safe animation patterns for React and Next.js.
+"""
+
+# Parameter guidance: lower temperature for high-lethality / max-precision skills.
+PARAMETER temperature 0.6
+PARAMETER top_p 0.9

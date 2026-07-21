@@ -60,6 +60,11 @@ system_instruction: >-
 - `academic standard`
 - `research dashboard`
 - `publication ready`
+- `quantum algorithm`
+- `quantum circuit design`
+- `quantum resource estimate`
+- `qiskit`
+- `circuit optimize`
 
 ## Automatic trigger contexts
 
@@ -77,6 +82,11 @@ Use 187RESEARCH when the task includes or implies:
 - evidence, peer-reviewed
 - clinical, biomedical, mathematical
 - coding research, repository analysis, package analysis
+- quantum algorithm selection, circuit design, or resource estimation
+
+## Quantum topics
+
+Former 187QUANTUM algorithm / circuit / resource-estimate work routes through 187RESEARCH. Use the claim ladder; flag unsupported advantage claims as speculative or unsupported.
 
 ## Required output format
 
