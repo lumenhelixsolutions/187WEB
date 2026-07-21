@@ -25,7 +25,7 @@ export const FIRST_CLASS_SKILLS = [
 
 export const SUBSKILLS = [
   { id: "write", name: "187WRITE", docs: "187WRITE" },
-  { id: "include", name: "187INCLUDE+", docs: "187INCLUDE+" },
+  { id: "include", name: "187INCLUDE+", docs: "187INCLUDE" },
 ];
 
 export const PUBLIC_SKILLS = [...FIRST_CLASS_SKILLS, ...SUBSKILLS];
