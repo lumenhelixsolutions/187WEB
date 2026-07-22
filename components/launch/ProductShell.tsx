@@ -7,6 +7,7 @@ import { brandAssets } from "@/lib/brand-assets";
 import { WebHiveBackground } from "./WebHiveBackground";
 import { WebHiveNetworkOverlay } from "./WebHiveNetworkOverlay";
 import { WebHiveTelemetryOverlay } from "./WebHiveTelemetryOverlay";
+import { WebHiveHoloMascot } from "./WebHiveHoloMascot";
 import { SiteNav } from "./SiteNav";
 import { SiteVersionBadge } from "@/components/version/SiteVersionBadge";
 import { useClientMounted } from "@/lib/motion/useClientMounted";
@@ -23,15 +24,23 @@ const WebHiveThreeBackground = dynamic(
 function Footer() {
   return (
     <footer className="relative z-10 border-t border-white/10 bg-[#050608] px-6 py-12">
-      <div className="container-x flex flex-col items-center justify-between gap-6 sm:flex-row">
-        <div className="flex flex-col items-center gap-2 sm:items-start">
-          <div className="flex items-center gap-3">
+      <div className="container-x flex flex-col items-center justify-between gap-8 sm:flex-row sm:items-end">
+        <div className="flex flex-col items-center gap-3 sm:items-start">
+          <div className="flex flex-wrap items-center justify-center gap-4 sm:justify-start">
             {/* eslint-disable-next-line @next/next/no-img-element -- basePath-safe static export */}
-            <img src={brandAssets.knotstoreLogo} alt="KNOTstore" className="h-6 w-auto" />
+            <img
+              src={brandAssets.bulb}
+              alt="LumenHelix Lab"
+              className="h-14 w-14 object-contain drop-shadow-[0_0_20px_rgba(57,255,20,0.25)] sm:h-16 sm:w-16"
+            />
             {/* eslint-disable-next-line @next/next/no-img-element -- basePath-safe static export */}
-            <img src={brandAssets.labWordmark} alt="LumenHelix Lab" className="h-5 opacity-90" />
+            <img src={brandAssets.labWordmark} alt="LumenHelix Lab" className="h-6 w-auto opacity-95 sm:h-7" />
+            {/* eslint-disable-next-line @next/next/no-img-element -- basePath-safe static export */}
+            <img src={brandAssets.orb} alt="" className="h-10 w-10 rounded-full object-contain opacity-90" />
+            {/* eslint-disable-next-line @next/next/no-img-element -- basePath-safe static export */}
+            <img src={brandAssets.knotstoreLogo} alt="KNOTstore" className="h-7 w-auto opacity-90" />
           </div>
-          <p className="text-sm text-white/50">
+          <p className="text-center text-sm text-white/50 sm:text-left">
             © {COPYRIGHT_YEAR} LumenHelix Lab · 187WEB · Custom Noncommercial License with Reserved
             Knotstore IP
           </p>
@@ -71,6 +80,7 @@ function HiveAtmosphere({ reducedMotion }: { reducedMotion: boolean }) {
   return (
     <div className="pointer-events-none fixed inset-0 z-0" aria-hidden>
       {reducedMotion ? <WebHiveBackground /> : <WebHiveThreeBackground />}
+      <WebHiveHoloMascot />
       {!reducedMotion && (
         <>
           <WebHiveNetworkOverlay />

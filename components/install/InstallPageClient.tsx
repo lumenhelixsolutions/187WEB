@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { brandAssets } from "@/lib/brand-assets";
 import { KineticHeadline } from "@/components/type/KineticHeadline";
 import { InstallCommand } from "@/components/install/InstallCommand";
 import { Reveal } from "@/components/Reveal";
@@ -76,6 +77,12 @@ export function InstallPageClient() {
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#39FF14]">
             Preflight · install · onboard
           </p>
+          {/* eslint-disable-next-line @next/next/no-img-element -- basePath-safe static export */}
+          <img
+            src={brandAssets.bulb}
+            alt="LumenHelix Lab"
+            className="mx-auto mt-6 h-16 w-16 object-contain opacity-90 sm:h-20 sm:w-20"
+          />
           <KineticHeadline
             text="Install what you need."
             accent="Skip the rest."

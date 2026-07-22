@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { brandAssets } from "@/lib/brand-assets";
 import { KineticHeadline } from "@/components/type/KineticHeadline";
 import { COMMAND_CATEGORY_HELP } from "@/components/187/CommandReference";
 
@@ -44,6 +45,12 @@ export function LocalBrainPage() {
       <div className="container-x">
         <section className="mx-auto max-w-3xl text-center">
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#39FF14]">Operators · local-first</p>
+          {/* eslint-disable-next-line @next/next/no-img-element -- basePath-safe static export */}
+          <img
+            src={brandAssets.bulb}
+            alt="LumenHelix Lab"
+            className="mx-auto mt-6 h-14 w-14 object-contain opacity-90 sm:h-16 sm:w-16"
+          />
           <KineticHeadline
             text="Local brain."
             accent="Obsidian weave."
