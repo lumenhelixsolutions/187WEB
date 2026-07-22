@@ -62,17 +62,17 @@ function Hero() {
         <HeroJazz>
           <div className="mx-auto max-w-5xl text-center">
             <div className="relative mx-auto flex max-w-3xl flex-col items-center">
-              {/* CORE mascot — primary product figure */}
+              {/* Official web shield / badge — hero mark (mascot lives in 187VIBE companions) */}
               {/* eslint-disable-next-line @next/next/no-img-element -- basePath-safe static export */}
               <img
                 data-hero-badge
-                src={brandAssets.mascotCore}
-                alt="187WEB core mascot"
+                src={brandAssets.heroBadge}
+                alt="187WEB shield badge"
                 width={800}
                 height={800}
                 decoding="async"
                 fetchPriority="high"
-                className="h-auto w-full max-w-[15rem] object-contain drop-shadow-[0_0_48px_rgba(57,255,20,0.28)] sm:max-w-[18rem] md:max-w-[22rem] lg:max-w-[24rem]"
+                className="h-auto w-full max-w-[14rem] object-contain drop-shadow-[0_0_48px_rgba(57,255,20,0.35)] sm:max-w-[17rem] md:max-w-[20rem] lg:max-w-[22rem]"
               />
               {/* Official wordmark */}
               {/* eslint-disable-next-line @next/next/no-img-element -- basePath-safe static export */}
