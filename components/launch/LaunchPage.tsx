@@ -561,6 +561,12 @@ function CreateGrowthHook() {
             Open 187CREATE
           </Link>
           <Link
+            href="/influencer-kit"
+            className="inline-flex h-12 items-center justify-center rounded border border-[#39FF14]/35 bg-[#39FF14]/10 px-6 text-sm font-semibold text-[#39FF14] transition hover:bg-[#39FF14]/15"
+          >
+            Influencer kit
+          </Link>
+          <Link
             href="/187craft"
             className="inline-flex h-12 items-center justify-center rounded border border-white/10 bg-white/5 px-6 text-sm font-semibold text-white transition hover:border-white/25"
           >

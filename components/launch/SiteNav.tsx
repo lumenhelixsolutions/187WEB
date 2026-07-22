@@ -28,6 +28,7 @@ const MORE: NavLink[] = [
   { href: "/brain", label: "Brain", hint: "Local brain + Obsidian" },
   { href: "/187craft", label: "Craft", hint: "UI / UX / design system" },
   { href: "/187create", label: "Create", hint: "Growth landings & creatives" },
+  { href: "/influencer-kit", label: "Creator kit", hint: "Influencer kit · Access+ story" },
   { href: "/187motion", label: "Motion", hint: "R3F + GSAP hooks" },
   { href: "/showcase", label: "Showcase", hint: "Motion lab demos" },
   { href: "/187theme", label: "Theme", hint: "Palettes & tokens" },
