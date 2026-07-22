@@ -48,6 +48,7 @@ export type AgentKit = {
   color: string;
   tagline: string;
   overview: string;
+  /** Routed skill ids (first-class + subskills). Peer agents aim for parity; XAVIER ~2×. */
   skills: string[];
   prompts: Prompt[];
   tasks: Task[];
@@ -55,3 +56,9 @@ export type AgentKit = {
   commands: Command[];
   skillChains?: SkillChain[];
 };
+
+/** Peer crew target counts (CHARLOTTE · KALI · NATASHA · YELENA). XAVIER ≈ 2×. */
+export const AGENT_EQUITY = {
+  peer: { skills: 8, prompts: 8, tasks: 8, triggers: 8, commands: 6, skillChains: 6 },
+  xavier: { skills: 14, prompts: 14, tasks: 14, triggers: 14, commands: 10, skillChains: 11 },
+} as const;

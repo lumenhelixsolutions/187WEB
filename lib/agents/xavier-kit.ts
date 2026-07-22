@@ -1,20 +1,40 @@
 import type { AgentKit } from "./agent-kit";
 
+/**
+ * XAVIER — final creation + council (~2× peer equity).
+ * Cross-layer ownership + 187SPIDER-SENSE project aura for novel/successful skillchains,
+ * goal planning, build calls, and HITL Q&A before execute.
+ */
 export const xavierKit: AgentKit = {
   slug: "xavier",
   name: "XAVIER",
   color: "#a855f7",
-  tagline: "Final creation + council",
+  tagline: "Final creation · council · project aura",
   overview:
-    "XAVIER owns final creation and production responsibility, cross-crew vision, and the council command. He can call huddles, interject across teams, and appeal to any 1st, 2nd, or 3rd class skill to ship the final artifact.",
-  skills: ["docs", "version", "publish", "launch", "natasha", "test"],
+    "XAVIER owns final creation and production responsibility, cross-crew vision, council, brood, and audit. Because he spans every layer of the ecosystem, his kit is approximately twice peer depth. He holds 187SPIDER-SENSE (project aura): when a skillchain succeeds or a novel skill/chain emerges, he conceives a logical goal plan, calls for a build, and advances only through human-in-the-loop Q&A before executing a new feature or skill.",
+  skills: [
+    "docs",
+    "version",
+    "publish",
+    "launch",
+    "natasha",
+    "test",
+    "spider-sense",
+    "repo",
+    "craft",
+    "create",
+    "write",
+    "access-plus",
+    "include",
+    "research",
+  ],
   prompts: [
     {
       id: "final-ship",
       title: "Make a final ship decision",
       whenToUse: "When all crews have done their work and the artifact needs a production sign-off.",
       body:
-        "You are XAVIER. Review the attached release packet: changes since last version, security gate status, docs completeness, test results, and rollback plan. Make a final ship decision: ship, block, or council. Give one-sentence rationale.",
+        "You are XAVIER. Review the attached release packet: changes since last version, security gate status, Access+/Include+, docs completeness, test results, and rollback plan. Make a final ship decision: ship, block, or council. Give one-sentence rationale.",
     },
     {
       id: "council-decision",
@@ -37,13 +57,83 @@ export const xavierKit: AgentKit = {
       body:
         "You are XAVIER. Run a release huddle: pull status from CHARLOTTE, KALI, NATASHA, and YELENA. Surface blockers, assign final owners, confirm rollback plan, and set the go/no-go time.",
     },
+    {
+      id: "spider-sense-detect",
+      title: "Run project aura / spider-sense detection",
+      whenToUse: "When a skillchain completes successfully or a novel skill/chain appears in the suite.",
+      body:
+        "You are XAVIER using 187SPIDER-SENSE. Detect aura signal type: (1) successful skillchain, (2) novel skill or skillchain emerging, or (3) none. Summarize evidence, ecosystem fit, risks, and whether a build call is warranted. Do not execute a build without HITL Q&A.",
+    },
+    {
+      id: "spider-sense-plan",
+      title: "Conceive a logic plan for a new skill or feature",
+      whenToUse: "After spider-sense flags a successful or novel chain worth promoting.",
+      body:
+        "You are XAVIER. From the aura signal, conceive a logic plan: goal, success metrics, owning agents, skill chain draft, dependencies, Access+/Include+ gates, and non-goals. Output a build proposal ready for HITL Q&A — not an automatic execute.",
+    },
+    {
+      id: "spider-sense-hitl",
+      title: "HITL Q&A gate before execute",
+      whenToUse: "When a build proposal needs human approval before implementing a new skill or feature.",
+      body:
+        "You are XAVIER. Run human-in-the-loop Q&A: present plan, risks, alternatives, cost, and rollback. Ask numbered questions the human must answer. Only after explicit go may you call /187repo, /187craft, /187create, or related builds. Log decision with 187VERSION.",
+    },
+    {
+      id: "spider-sense-build-call",
+      title: "Call a build after HITL go",
+      whenToUse: "When HITL has approved a spider-sense plan.",
+      body:
+        "You are XAVIER. Issue a build call: target skill/feature, owners (CHARLOTTE/KALI/etc.), acceptance criteria, gates (YELENA/NATASHA), and version tag. Route implementation; you remain accountable for final ship.",
+    },
+    {
+      id: "ecosystem-equity-check",
+      title: "Check agent kit equity and routing balance",
+      whenToUse: "When agent kits or skill ownership look lopsided.",
+      body:
+        "You are XAVIER. Audit agent kit depth (skills, prompts, tasks, chains) against peer equity targets. Flag under-served agents and propose balanced routing. Peers should be roughly equal; you may remain ~2× by design.",
+    },
+    {
+      id: "cross-layer-interject",
+      title: "Interject across layers with ownership",
+      whenToUse: "When a stuck workstream needs cross-crew re-routing.",
+      body:
+        "You are XAVIER. Interject: name the stuck layer, reassign owners among CHARLOTTE/KALI/NATASHA/YELENA, set a timebox, and record the interjection in the audit ledger. Prefer council if disagreement is high-stakes.",
+    },
+    {
+      id: "publish-authority",
+      title: "Exercise publish authority",
+      whenToUse: "When publish gate is green but political or multi-crew risk remains.",
+      body:
+        "You are XAVIER. Review publish readiness beyond CI: product risk, claim discipline, Access+/Include+, and rollback. Ship, delay, or council. Never skip YELENA critical blockers without a recorded override reason.",
+    },
+    {
+      id: "novel-skill-charter",
+      title: "Charter a novel skill",
+      whenToUse: "When spider-sense and HITL approve a new skill in the suite.",
+      body:
+        "You are XAVIER. Charter the skill: name, triggers, contract, owner agent, routes, templates, acceptance tests, and version 0.1.0 plan. Route scaffolding to CHARLOTTE/REPO and docs to 187DOCS. HITL sign-off required on charter.",
+    },
+    {
+      id: "chain-success-retro",
+      title: "Retro a successful skillchain",
+      whenToUse: "When a multi-skill chain just succeeded and may be reusable.",
+      body:
+        "You are XAVIER. Run a short retro: what worked, what to promote to a named skillchain, what gates were skipped, and whether spider-sense should open a promotion plan. Log artifact and version.",
+    },
+    {
+      id: "emergency-kill",
+      title: "Emergency brood kill framing",
+      whenToUse: "When brood subagents must stop immediately.",
+      body:
+        "You are XAVIER. Issue kill: list active brood ids, reason, preserve artifacts if safe, notify owners, and write audit event. Do not resume without explicit human or council go.",
+    },
   ],
   tasks: [
     {
       id: "final-ship",
       title: "Final ship sign-off",
       steps: [
-        "Gather version diff, security gates, and test results.",
+        "Gather version diff, security gates, Access+/Include+, and test results.",
         "Verify docs and publish gate completeness.",
         "Run /187version to tag the release.",
         "Make ship/block/council decision and record rationale.",
@@ -83,6 +173,116 @@ export const xavierKit: AgentKit = {
       ],
       output: "Aligned release decision and published huddle notes.",
     },
+    {
+      id: "aura-detect",
+      title: "Spider-sense aura detection",
+      steps: [
+        "Scan recent skillchain completions and novel skill drafts.",
+        "Classify signal: success | novel | none.",
+        "Attach evidence and ecosystem fit notes.",
+        "If signal warrants build, open logic plan task — do not execute yet.",
+      ],
+      output: "Aura signal record with evidence and next action.",
+    },
+    {
+      id: "aura-logic-plan",
+      title: "Conceive logic plan from aura signal",
+      steps: [
+        "Define goal, metrics, non-goals.",
+        "Draft skillchain or skill charter skeleton.",
+        "Assign agent owners and gates (YELENA/NATASHA).",
+        "Package plan for HITL Q&A.",
+      ],
+      output: "Build proposal ready for HITL.",
+    },
+    {
+      id: "aura-hitl-gate",
+      title: "HITL Q&A before execute",
+      steps: [
+        "Present plan, risks, alternatives, rollback.",
+        "Collect explicit human answers to numbered questions.",
+        "Record go / no-go / revise with timestamp.",
+        "On go, open build-call task; on no-go, archive signal.",
+      ],
+      output: "HITL decision log (go/no-go/revise).",
+    },
+    {
+      id: "aura-build-execute",
+      title: "Execute build after HITL go",
+      steps: [
+        "Issue build call to owning agents (CHARLOTTE/KALI/etc.).",
+        "Track acceptance criteria and gates.",
+        "Run version tag and docs updates.",
+        "Remain accountable for final ship.",
+      ],
+      output: "Executed build with gate status and version tag.",
+    },
+    {
+      id: "novel-skill-charter",
+      title: "Charter a novel skill",
+      steps: [
+        "Confirm HITL go on novel skill.",
+        "Write skill contract: triggers, IO, routes, templates.",
+        "Scaffold skill folder and showcase entry via CHARLOTTE/REPO.",
+        "Version 0.1.0 and publish docs stub.",
+      ],
+      output: "Skill charter + scaffold + versioned stub.",
+    },
+    {
+      id: "promote-successful-chain",
+      title: "Promote a successful skillchain",
+      steps: [
+        "Retro the successful chain with spider-sense.",
+        "Name and document the chain in agent kits / docs.",
+        "HITL approve promotion.",
+        "Version and announce in release notes.",
+      ],
+      output: "Named skillchain entry + version note.",
+    },
+    {
+      id: "equity-audit",
+      title: "Agent equity audit",
+      steps: [
+        "Count skills/prompts/tasks/chains per agent.",
+        "Compare to peer vs XAVIER targets.",
+        "Propose rebalancing tasks for under-served peers.",
+        "Log audit in docs/version.",
+      ],
+      output: "Equity report with rebalance actions.",
+    },
+    {
+      id: "cross-layer-reroute",
+      title: "Cross-layer re-route",
+      steps: [
+        "Identify stuck workstream and layer.",
+        "Reassign owners with timebox.",
+        "Update triggers if routing was wrong.",
+        "Audit ledger interjection event.",
+      ],
+      output: "Reroute record with owners and timebox.",
+    },
+    {
+      id: "publish-override-review",
+      title: "Publish override review",
+      steps: [
+        "List remaining non-critical blockers.",
+        "Document override rationale if any.",
+        "Require YELENA/NATASHA acknowledge on criticals.",
+        "Ship or delay with ledger entry.",
+      ],
+      output: "Publish decision with override notes if used.",
+    },
+    {
+      id: "emergency-brood-kill",
+      title: "Emergency brood kill",
+      steps: [
+        "List active brood subagents.",
+        "Issue kill and preserve safe artifacts.",
+        "Notify owners and human stakeholders.",
+        "Write audit event; require go to resume.",
+      ],
+      output: "Kill log + preserved artifact inventory.",
+    },
   ],
   triggers: [
     {
@@ -105,6 +305,56 @@ export const xavierKit: AgentKit = {
       condition: "A release window is approaching and crews need alignment",
       action: "Invoke /187xavier huddle to run a go/no-go check.",
     },
+    {
+      id: "chain-succeeded",
+      condition: "A multi-skill skillchain completes successfully with artifacts",
+      action: "Invoke /187xavier aura (spider-sense) to detect promotion opportunity.",
+    },
+    {
+      id: "novel-skill-detected",
+      condition: "A new skill folder, chain, or pattern appears without a charter",
+      action: "Invoke spider-sense novel detection and open logic plan if warranted.",
+    },
+    {
+      id: "hitl-required",
+      condition: "A build would create a new skill, chain, or product feature",
+      action: "Block auto-execute; open HITL Q&A gate under spider-sense.",
+    },
+    {
+      id: "hitl-go",
+      condition: "Human answers HITL questions with explicit go",
+      action: "Invoke build-call and route owners; track to ship.",
+    },
+    {
+      id: "hitl-nogo",
+      condition: "Human answers HITL with no-go or revise",
+      action: "Archive or revise plan; do not execute build.",
+    },
+    {
+      id: "peer-underweight",
+      condition: "An agent kit falls below peer equity targets",
+      action: "Invoke equity audit and assign rebalance work.",
+    },
+    {
+      id: "stuck-stream",
+      condition: "Workstream idle across two standups or equivalent",
+      action: "Invoke cross-layer interject with new owners and timebox.",
+    },
+    {
+      id: "critical-gate-fail",
+      condition: "YELENA or NATASHA reports critical blocker on release",
+      action: "Block ship; optional council; no override without recorded rationale.",
+    },
+    {
+      id: "brood-runaway",
+      condition: "Brood concurrency exceeds cap or produces thrash",
+      action: "Invoke emergency kill and reassess scope.",
+    },
+    {
+      id: "publish-green-risk",
+      condition: "Publish CI green but multi-crew product risk remains",
+      action: "Invoke publish authority review before ship.",
+    },
   ],
   commands: [
     { id: "ship", name: "/187 xavier ship", description: "Make the final production sign-off." },
@@ -112,18 +362,24 @@ export const xavierKit: AgentKit = {
     { id: "brood", name: "/187 xavier brood", description: "Spawn subagent clones for parallel work.", premium: true },
     { id: "audit", name: "/187 xavier audit", description: "Open the audit ledger.", premium: true },
     { id: "kill", name: "/187 xavier kill", description: "Emergency kill switch for all brood subagents.", premium: true },
+    { id: "aura", name: "/187 xavier aura", description: "Run spider-sense / project aura detection.", premium: true },
+    { id: "plan", name: "/187 xavier plan", description: "Conceive logic plan from aura signal.", premium: true },
+    { id: "hitl", name: "/187 xavier hitl", description: "HITL Q&A gate before execute.", premium: true },
+    { id: "build", name: "/187 xavier build", description: "Call a build after HITL go.", premium: true },
+    { id: "huddle", name: "/187 xavier huddle", description: "Run a release huddle go/no-go." },
   ],
   skillChains: [
     {
       id: "final-ship",
       name: "Final Ship",
       tagline: "Gates → docs → version → publish",
-      description:
-        "The terminal production chain: gather NATASHA/YELENA gates, finalize 187DOCS, tag with 187VERSION, and ship with 187PUBLISH.",
-      classMix: "1st-class docs/version/publish + 2nd-class test + 3rd-class release hooks",
+      description: "Terminal production chain with NATASHA/YELENA gates, docs, version, publish.",
+      classMix: "natasha/test/access-plus/include/docs/version/publish",
       steps: [
         { skillId: "natasha", action: "Confirm external security gate status" },
         { skillId: "test", action: "Confirm CI and validation results" },
+        { skillId: "access-plus", action: "Confirm Access+ gate" },
+        { skillId: "include", action: "Confirm Include+ gate" },
         { skillId: "docs", action: "Finalize release notes and reference docs" },
         { skillId: "version", action: "Tag release and migration notes" },
         { skillId: "publish", action: "Run final publish gate and deploy" },
@@ -135,9 +391,8 @@ export const xavierKit: AgentKit = {
       id: "council-decision",
       name: "Council Decision",
       tagline: "Topic → stances → resolution → log",
-      description:
-        "A recorded council decision pulling input from any agent and logging the resolution with 187DOCS and 187VERSION.",
-      classMix: "1st-class docs/version + 2nd-class write + 3rd-class decision hooks",
+      description: "Recorded council decision with docs and version.",
+      classMix: "write/docs/version/publish",
       steps: [
         { skillId: "write", action: "Frame topic, options, and recommended path" },
         { skillId: "docs", action: "Collect agent stances and context" },
@@ -145,15 +400,14 @@ export const xavierKit: AgentKit = {
         { skillId: "publish", action: "Publish the council log" },
       ],
       artifact: "Council decision log",
-      artifactExample: "/showcase",
+      artifactExample: "/xavier",
     },
     {
       id: "brood-sprint",
       name: "Brood Sprint",
       tagline: "Scope → spawn → track → collect",
-      description:
-        "A parallel subagent sprint managed by XAVIER, tracked with 187VERSION, and concluded with 187PUBLISH.",
-      classMix: "1st-class version/publish + 2nd-class write + 3rd-class lifecycle hooks",
+      description: "Parallel subagent sprint with version and publish closeout.",
+      classMix: "write/version/test/publish",
       steps: [
         { skillId: "write", action: "Define scope, acceptance, and kill conditions" },
         { skillId: "version", action: "Tag sprint baseline and checkpoints" },
@@ -161,15 +415,14 @@ export const xavierKit: AgentKit = {
         { skillId: "publish", action: "Collect artifacts and close sprint" },
       ],
       artifact: "Subagent artifact collection + lifecycle log",
-      artifactExample: "/showcase",
+      artifactExample: "/xavier",
     },
     {
       id: "release-huddle",
       name: "Release Huddle",
       tagline: "Status → blockers → go/no-go",
-      description:
-        "A pre-release alignment huddle that pulls crew status and produces a go/no-go decision log via 187DOCS and 187VERSION.",
-      classMix: "1st-class docs/version + 2nd-class test + 3rd-class huddle hooks",
+      description: "Pre-release alignment huddle with docs, test, version, publish notes.",
+      classMix: "docs/test/version/publish",
       steps: [
         { skillId: "docs", action: "Collect crew status and rollback plan" },
         { skillId: "test", action: "Verify CI and gate status" },
@@ -177,7 +430,127 @@ export const xavierKit: AgentKit = {
         { skillId: "publish", action: "Publish huddle notes" },
       ],
       artifact: "Release huddle notes and go/no-go decision",
-      artifactExample: "/showcase",
+      artifactExample: "/xavier",
+    },
+    {
+      id: "spider-sense-success",
+      name: "Spider-Sense · Successful Chain",
+      tagline: "Detect → plan → HITL → promote",
+      description:
+        "When a skillchain succeeds, aura detects, plans promotion, HITL gates, then versions a named chain.",
+      classMix: "spider-sense/docs/version/test/publish",
+      steps: [
+        { skillId: "spider-sense", action: "Detect successful chain and evidence" },
+        { skillId: "docs", action: "Draft promotion brief and chain definition" },
+        { skillId: "spider-sense", action: "HITL Q&A go/no-go" },
+        { skillId: "version", action: "Tag promoted skillchain" },
+        { skillId: "publish", action: "Announce promotion in release notes" },
+      ],
+      artifact: "Promoted skillchain definition + HITL log",
+      artifactExample: "/187spider-sense",
+    },
+    {
+      id: "spider-sense-novel",
+      name: "Spider-Sense · Novel Skill",
+      tagline: "Sense → charter → HITL → scaffold → ship stub",
+      description:
+        "Novel skill detection through charter, HITL, scaffold (repo/craft), docs, version, publish stub.",
+      classMix: "spider-sense/repo/craft/docs/version/publish",
+      steps: [
+        { skillId: "spider-sense", action: "Detect novel skill/pattern" },
+        { skillId: "spider-sense", action: "Conceive logic plan and skill charter" },
+        { skillId: "spider-sense", action: "HITL Q&A before execute" },
+        { skillId: "repo", action: "Scaffold skill folder and wiring" },
+        { skillId: "craft", action: "UI/docs surfaces if public-facing" },
+        { skillId: "docs", action: "Write skill contract and triggers" },
+        { skillId: "version", action: "Tag 0.1.0 stub" },
+        { skillId: "publish", action: "Sync showcase/docs stub" },
+      ],
+      artifact: "New skill charter + scaffold + versioned stub",
+      artifactExample: "/187spider-sense",
+    },
+    {
+      id: "spider-sense-build-feature",
+      name: "Spider-Sense · Feature Build",
+      tagline: "Aura → plan → HITL → create/craft → gates → ship",
+      description:
+        "Full path from aura signal to feature build with create/craft, access gates, and XAVIER ship.",
+      classMix: "spider-sense/create/craft/access-plus/include/test/version/publish",
+      steps: [
+        { skillId: "spider-sense", action: "Aura signal and goal plan" },
+        { skillId: "spider-sense", action: "HITL Q&A go" },
+        { skillId: "create", action: "Growth surface if conversion-first" },
+        { skillId: "craft", action: "Systemize UI and tokens" },
+        { skillId: "access-plus", action: "Disability access gate" },
+        { skillId: "include", action: "Inclusion gate" },
+        { skillId: "test", action: "Validation matrix" },
+        { skillId: "version", action: "Tag feature release" },
+        { skillId: "publish", action: "Final publish under XAVIER ship" },
+      ],
+      artifact: "Shipped feature + HITL log + gates",
+      artifactExample: "/xavier",
+    },
+    {
+      id: "equity-rebalance",
+      name: "Agent Equity Rebalance",
+      tagline: "Audit → plan → assign → version",
+      description: "Keep peer agents equitable; XAVIER remains ~2× by design.",
+      classMix: "spider-sense/docs/version/write",
+      steps: [
+        { skillId: "spider-sense", action: "Sense imbalance in kits or routing" },
+        { skillId: "docs", action: "Write equity report" },
+        { skillId: "write", action: "Draft rebalance tasks per agent" },
+        { skillId: "version", action: "Tag equity audit release" },
+      ],
+      artifact: "Equity report + rebalance tasks",
+      artifactExample: "/xavier",
+    },
+    {
+      id: "cross-layer-rescue",
+      name: "Cross-Layer Rescue",
+      tagline: "Interject → reassign → timebox → log",
+      description: "Unstick workstreams with reassignment and audit logging.",
+      classMix: "docs/write/version/test",
+      steps: [
+        { skillId: "docs", action: "Capture stuck state and owners" },
+        { skillId: "write", action: "Issue reassignment and timebox" },
+        { skillId: "test", action: "Define acceptance for unstick" },
+        { skillId: "version", action: "Tag interjection event" },
+      ],
+      artifact: "Interjection ledger entry",
+      artifactExample: "/xavier",
+    },
+    {
+      id: "incident-council-ship",
+      name: "Incident Council Ship",
+      tagline: "NATASHA → council → fix → ship",
+      description: "Security incident path through council and controlled ship.",
+      classMix: "natasha/test/docs/version/publish",
+      steps: [
+        { skillId: "natasha", action: "Contain and assess" },
+        { skillId: "docs", action: "Council packet and comms notes" },
+        { skillId: "test", action: "Validate mitigation" },
+        { skillId: "version", action: "Tag incident release" },
+        { skillId: "publish", action: "Controlled ship after XAVIER decision" },
+      ],
+      artifact: "Incident release + council decision",
+      artifactExample: "/187natasha",
+    },
+    {
+      id: "access-include-authority",
+      name: "Access+ · Include+ Authority Ship",
+      tagline: "Dual gate → residual risk → ship",
+      description: "XAVIER ship only after premier Access+/Include+ gates clear.",
+      classMix: "access-plus/include/test/version/publish",
+      steps: [
+        { skillId: "access-plus", action: "Confirm disability access gate" },
+        { skillId: "include", action: "Confirm inclusion gate" },
+        { skillId: "test", action: "Confirm regression coverage" },
+        { skillId: "version", action: "Tag access-ready candidate" },
+        { skillId: "publish", action: "Ship under XAVIER authority" },
+      ],
+      artifact: "Access-ready release",
+      artifactExample: "/187plusplus",
     },
   ],
 };

@@ -1,27 +1,31 @@
 import type { AgentKit } from "./agent-kit";
 
+/**
+ * KALI — growth + create assist (peer equity target).
+ * SEO, revenue, create, publish, launch, free, write, vibe.
+ */
 export const kaliKit: AgentKit = {
   slug: "kali",
   name: "KALI",
   color: "#39FF14",
   tagline: "Growth + create assist",
   overview:
-    "KALI drives growth and assists CHARLOTTE with direct web creation: SEO, revenue architecture, publish gate, and the 187CREATE skill for landing pages and campaign assets. She appeals to NATASHA/YELENA for security gates and to XAVIER for final ship calls.",
-  skills: ["seo", "revenue", "publish", "create", "repo", "vibe"],
+    "KALI drives growth and assists CHARLOTTE with direct web creation: SEO, revenue architecture, 187CREATE landings, free-stack scouting, launch assist, and publish handoff. She routes public gates to NATASHA/YELENA and final ship calls to XAVIER — peer-depth kit equal to other crew agents.",
+  skills: ["seo", "revenue", "publish", "create", "repo", "vibe", "launch", "write"],
   prompts: [
     {
       id: "growth-landing",
       title: "Build a growth landing page",
       whenToUse: "When the user needs a conversion-focused landing page fast.",
       body:
-        "You are KALI. Build a growth landing page brief: target audience, hero claim, supporting proof, CTA hierarchy, SEO target phrase, and conversion event. Recommend 187CREATE for the surface and 187SEO for the keyword strategy.",
+        "You are KALI. Build a growth landing page brief: target audience, hero claim, supporting proof, CTA hierarchy, SEO target phrase, and conversion event. Recommend 187CREATE for the surface and 187SEO for the keyword strategy. Note Access+/Include+ gates before publish.",
     },
     {
       id: "ad-creative",
       title: "Spin up ad creative variants",
       whenToUse: "When a campaign needs headline/copy/creative variants for testing.",
       body:
-        "You are KALI. Generate 3–5 ad creative variants (headline, body, CTA, visual direction) for the described campaign. Include a variant testing plan with primary metric and audience split. Tag output for 187CREATE assembly.",
+        "You are KALI. Generate 3–5 ad creative variants (headline, body, CTA, visual direction) for the described campaign. Include a variant testing plan with primary metric and audience split. Tag output for 187CREATE assembly and 187INCLUDE+ language check.",
     },
     {
       id: "seo-sprint",
@@ -37,6 +41,34 @@ export const kaliKit: AgentKit = {
       body:
         "You are KALI. Draft a revenue architecture map for the described offer: pricing tiers, funnel stages, conversion events, payment handoff, and post-conversion retention signal. Note any NATASHA/YELENA compliance gates.",
     },
+    {
+      id: "free-stack-mvp",
+      title: "Scout a free-stack MVP",
+      whenToUse: "When budget is zero and the team needs a shippable free tier path.",
+      body:
+        "You are KALI. Scout a free-stack MVP: hosting, auth, analytics, forms, and CDN within free tiers. List limits, upgrade triggers, and how 187CREATE/187REPO will assemble the surface. Flag when free tier blocks Access+ requirements.",
+    },
+    {
+      id: "launch-growth-plan",
+      title: "Draft a growth launch plan",
+      whenToUse: "When a campaign or product needs a coordinated go-to-market plan.",
+      body:
+        "You are KALI. Draft a growth launch plan: channels, creatives, SEO footholds, revenue events, measurement, and handoffs to CHARLOTTE (craft/systemize) and XAVIER (ship). Include Access+/Include+ as non-optional gates.",
+    },
+    {
+      id: "conversion-rewrite",
+      title: "Rewrite for conversion + plain language",
+      whenToUse: "When a page has traffic but weak conversion or heavy jargon.",
+      body:
+        "You are KALI. Rewrite the surface for conversion and plain language: one primary CTA, scannable proof, remove dark patterns, and hand copy through 187WRITE + 187INCLUDE+ for cognitive load and identity safety.",
+    },
+    {
+      id: "create-to-craft-handoff",
+      title: "Handoff validated growth winner to craft",
+      whenToUse: "When a growth MVP has a winning variant ready to systemize.",
+      body:
+        "You are KALI. Package the winning growth surface for CHARLOTTE/187CRAFT: tokens needed, components to extract, SEO keepers, conversion metrics, and residual access debt. Output a handoff brief, not a redesign.",
+    },
   ],
   tasks: [
     {
@@ -46,7 +78,7 @@ export const kaliKit: AgentKit = {
         "Write the brief with audience, claim, proof, and CTA.",
         "Use /187create to generate the page surface.",
         "Run /187seo for keyword targets and meta copy.",
-        "Send public surface to NATASHA/YELENA for review before /187publish.",
+        "Route Access+/Include+ via YELENA/NATASHA before /187publish.",
       ],
       output: "A live growth landing page with SEO targets and conversion events.",
     },
@@ -55,9 +87,9 @@ export const kaliKit: AgentKit = {
       title: "Assemble an influencer kit",
       steps: [
         "Define creator tier, talking points, and usage rights.",
-        "Generate asset briefs (graphics, captions, links) with /187create.",
-        "Build a tracking link and UTM scheme.",
-        "Package everything into a shareable kit page or doc.",
+        "Generate asset briefs with /187create and /187write.",
+        "Build tracking links and UTM scheme with /187revenue.",
+        "Package into a shareable kit page or doc.",
       ],
       output: "A creator-ready influencer kit with assets, copy, and tracking.",
     },
@@ -83,6 +115,50 @@ export const kaliKit: AgentKit = {
       ],
       output: "A revised page with an SEO measurement plan.",
     },
+    {
+      id: "free-stack-bootstrap",
+      title: "Bootstrap a free-stack growth MVP",
+      steps: [
+        "Run /187free for hosting, forms, and analytics options.",
+        "Scaffold with /187repo or /187create as appropriate.",
+        "Wire conversion events and tracking.",
+        "Document free-tier limits and upgrade triggers.",
+      ],
+      output: "Runnable free-tier MVP with limit notes and next paid gate.",
+    },
+    {
+      id: "revenue-funnel-map",
+      title: "Map revenue funnel to surfaces",
+      steps: [
+        "Define offer, tiers, and conversion events with /187revenue.",
+        "Assign each funnel stage a 187CREATE or product surface.",
+        "Add compliance and access notes for payment/auth steps.",
+        "Hand systemization to CHARLOTTE; ship call to XAVIER.",
+      ],
+      output: "Funnel map linked to surfaces and skill owners.",
+    },
+    {
+      id: "growth-launch-sprint",
+      title: "Run a growth launch sprint",
+      steps: [
+        "Draft channel plan with /187launch + /187seo.",
+        "Produce creatives and landing with /187create.",
+        "Set measurement and revenue events.",
+        "Clear YELENA gate and XAVIER ship for public go-live.",
+      ],
+      output: "Launch sprint packet with assets, metrics, and gate status.",
+    },
+    {
+      id: "create-craft-promotion",
+      title: "Promote growth winner into design system",
+      steps: [
+        "Capture winning variant metrics and copy.",
+        "Write craft handoff brief (tokens, components, SEO keepers).",
+        "Route to CHARLOTTE /187craft for systemization.",
+        "Keep growth tracking intact through /187version notes.",
+      ],
+      output: "Handoff brief + craft ticket for systemized winner.",
+    },
   ],
   triggers: [
     {
@@ -105,43 +181,65 @@ export const kaliKit: AgentKit = {
       condition: "User asks about pricing, revenue, or funnel design",
       action: "Invoke /187revenue and map the architecture to 187CREATE surfaces.",
     },
+    {
+      id: "zero-budget",
+      condition: "User needs to ship with no paid services",
+      action: "Invoke /187free then /187create or /187repo for a free-stack MVP.",
+    },
+    {
+      id: "launch-campaign",
+      condition: "User plans a product or campaign launch",
+      action: "Invoke /187launch + /187create + /187seo growth plan; schedule YELENA gate.",
+    },
+    {
+      id: "conversion-stuck",
+      condition: "Traffic exists but conversion is weak",
+      action: "Invoke conversion rewrite with /187write, /187seo, and /187include.",
+    },
+    {
+      id: "winner-systemize",
+      condition: "A growth variant wins and needs design-system promotion",
+      action: "Invoke create→craft handoff brief and route to CHARLOTTE.",
+    },
   ],
   commands: [
     { id: "create", name: "/187 kali create", description: "Build a growth-first landing page or campaign asset." },
     { id: "seo", name: "/187 kali seo", description: "Run a focused SEO sprint with keyword targets." },
     { id: "ads", name: "/187 kali ads", description: "Generate ad creative variants and a test plan." },
     { id: "revenue", name: "/187 kali revenue", description: "Draft a revenue architecture map." },
+    { id: "free", name: "/187 kali free", description: "Scout a free-stack MVP path." },
+    { id: "launch", name: "/187 kali launch", description: "Draft a growth launch plan with measurement." },
   ],
   skillChains: [
     {
       id: "growth-landing-page",
       name: "Growth Landing Page",
-      tagline: "Brief → page → SEO → publish",
+      tagline: "Brief → page → SEO → access → publish",
       description:
-        "A conversion-focused landing page built with 187CREATE, optimized with 187SEO, and shipped through 187PUBLISH.",
-      classMix: "1st-class create/seo/publish + 2nd-class write + 3rd-class analytics hooks",
+        "Conversion landing built with 187CREATE, optimized with 187SEO, gated with Access+/Include+, shipped through 187PUBLISH.",
+      classMix: "create/seo/write/access-plus/include/publish",
       steps: [
         { skillId: "write", action: "Draft audience, claim, proof, and CTA copy" },
         { skillId: "create", action: "Generate the landing page surface" },
-        { skillId: "craft", action: "Polish tokens and responsive layout" },
         { skillId: "seo", action: "Target keywords and rewrite meta" },
-        { skillId: "natasha", action: "Run public-surface threat audit" },
+        { skillId: "access-plus", action: "WCAG+ and assistive-tech pass" },
+        { skillId: "include", action: "Identity-safe and plain-language pass" },
         { skillId: "publish", action: "Run publish gate and deploy" },
       ],
-      artifact: "Live growth landing page + SEO brief + publish record",
-      artifactExample: "/showcase",
+      artifact: "Live growth landing page + SEO brief + access notes + publish record",
+      artifactExample: "/187create",
     },
     {
       id: "ad-creative-pack",
-      name: "Ad Creative",
+      name: "Ad Creative Pack",
       tagline: "Variants → visuals → test plan",
-      description:
-        "A full ad creative pack: headline/copy variants from 187WRITE, visual direction from 187CREATE, and a test plan routed through 187REVENUE.",
-      classMix: "1st-class create/revenue + 2nd-class write + 3rd-class platform hooks",
+      description: "Ad creative pack via 187WRITE, 187CREATE, and 187REVENUE test plan.",
+      classMix: "create/revenue/write/publish",
       steps: [
         { skillId: "write", action: "Generate headline, body, and CTA variants" },
         { skillId: "create", action: "Produce visual direction and asset sizes" },
         { skillId: "revenue", action: "Define audience split and primary metric" },
+        { skillId: "include", action: "Anti-bias and inclusive language check" },
         { skillId: "publish", action: "Package kit and sync to campaign folder" },
       ],
       artifact: "Ad creative variant pack + test plan + asset folder",
@@ -151,9 +249,8 @@ export const kaliKit: AgentKit = {
       id: "influencer-kit",
       name: "Influencer Kit",
       tagline: "Creator brief → assets → tracking",
-      description:
-        "A creator-ready influencer kit built with 187CREATE, 187WRITE, and 187REVENUE tracking links.",
-      classMix: "1st-class create/revenue + 2nd-class write + 3rd-class UTM hooks",
+      description: "Creator-ready kit with 187CREATE, 187WRITE, and 187REVENUE tracking.",
+      classMix: "create/revenue/write/publish",
       steps: [
         { skillId: "write", action: "Draft talking points, captions, and CTAs" },
         { skillId: "create", action: "Build graphics and story asset sizes" },
@@ -167,9 +264,8 @@ export const kaliKit: AgentKit = {
       id: "seo-sprint",
       name: "SEO Sprint",
       tagline: "Audit → keywords → rewrite → measure",
-      description:
-        "A 30-day search-recovery sprint using 187SEO, 187WRITE, and 187VERSION to track changes.",
-      classMix: "1st-class seo/version + 2nd-class write + 3rd-class rank hooks",
+      description: "30-day search sprint using 187SEO, 187WRITE, and 187VERSION.",
+      classMix: "seo/write/version/publish",
       steps: [
         { skillId: "seo", action: "Audit current page and pick keyword targets" },
         { skillId: "write", action: "Rewrite title, meta, headers, and body copy" },
@@ -178,6 +274,37 @@ export const kaliKit: AgentKit = {
       ],
       artifact: "Revised page + keyword brief + 30-day measurement plan",
       artifactExample: "/187seo",
+    },
+    {
+      id: "free-stack-mvp",
+      name: "Free-Stack Growth MVP",
+      tagline: "Free tools → surface → track → handoff",
+      description: "Zero-budget MVP via 187FREE + 187CREATE/REPO with measurement and craft handoff.",
+      classMix: "free/create/repo/seo/revenue",
+      steps: [
+        { skillId: "free", action: "Select free hosting, forms, and analytics" },
+        { skillId: "create", action: "Ship one-section growth surface" },
+        { skillId: "seo", action: "Set baseline SEO and intent keywords" },
+        { skillId: "revenue", action: "Define conversion events within free tools" },
+        { skillId: "version", action: "Tag MVP baseline" },
+      ],
+      artifact: "Free-tier MVP + limit notes + upgrade triggers",
+      artifactExample: "/187free",
+    },
+    {
+      id: "create-to-craft",
+      name: "Create → Craft Promotion",
+      tagline: "Winner → handoff → systemize",
+      description: "Promote a validated growth winner into design-system work under CHARLOTTE.",
+      classMix: "create/write/craft/version",
+      steps: [
+        { skillId: "create", action: "Capture winning surface and metrics" },
+        { skillId: "write", action: "Freeze winning copy and CTA hierarchy" },
+        { skillId: "craft", action: "Extract tokens and components (CHARLOTTE)" },
+        { skillId: "version", action: "Tag promotion and residual growth debt" },
+      ],
+      artifact: "Craft handoff brief + systemization ticket",
+      artifactExample: "/187craft",
     },
   ],
 };
