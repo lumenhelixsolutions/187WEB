@@ -115,47 +115,40 @@ function Hero() {
 
             <div className="mt-8 flex flex-wrap justify-center gap-3">
               <span data-hero-pill>
-                <OutcomePill>Launch a landing page this afternoon</OutcomePill>
+                <OutcomePill>Ship a conversion landing this afternoon</OutcomePill>
               </span>
               <span data-hero-pill>
-                <OutcomePill>Find a free stack for any MVP</OutcomePill>
+                <OutcomePill>Spin ad creatives with /187create</OutcomePill>
               </span>
               <span data-hero-pill>
-                <OutcomePill>Ship a reproducible research lab</OutcomePill>
+                <OutcomePill>Systemize winners with /187craft</OutcomePill>
               </span>
               <span data-hero-pill>
-                <OutcomePill>Audit before you publish</OutcomePill>
+                <OutcomePill>Gate publish with audits</OutcomePill>
               </span>
             </div>
 
             <div className="mt-10 flex flex-wrap justify-center gap-3">
               <Link
                 data-hero-cta
-                href="/187"
+                href="/187create"
                 className="sc-glow sc-glow-pulse inline-flex h-12 items-center justify-center rounded bg-[#39FF14] px-6 text-sm font-semibold text-[#050608] will-change-transform"
               >
-                Explore /187 Commands
+                Start with /187create
               </Link>
               <Link
                 data-hero-cta
-                href="/brain"
+                href="/#skills"
                 className="inline-flex h-12 items-center justify-center rounded border border-[#39FF14]/30 bg-[#39FF14]/5 px-6 text-sm font-semibold text-[#39FF14] will-change-transform"
               >
-                Local brain / Obsidian
+                Browse skill dossiers
               </Link>
               <Link
                 data-hero-cta
-                href="/showcase"
+                href="/187"
                 className="inline-flex h-12 items-center justify-center rounded border border-white/10 bg-white/5 px-6 text-sm font-semibold text-white will-change-transform"
               >
-                Motion showcase
-              </Link>
-              <Link
-                data-hero-cta
-                href="/187motion"
-                className="inline-flex h-12 items-center justify-center rounded border border-white/10 bg-white/5 px-6 text-sm font-semibold text-white will-change-transform"
-              >
-                187MOTION
+                /187 command surface
               </Link>
               <Link
                 data-hero-cta
@@ -423,12 +416,12 @@ function ResearchLab() {
 }
 
 const COMMAND_CHIPS = [
+  "/187 create",
   "/187 craft",
-  "/187 seo",
   "/187 launch",
+  "/187 seo",
   "/187 research",
   "/187 free",
-  "/187 scan",
   "/187 publish",
   "/187 th",
 ];
@@ -509,6 +502,95 @@ function DrawingAccent() {
   );
 }
 
+/** Growth hook — primary path into /187create (187webdesign conversion narrative). */
+function CreateGrowthHook() {
+  const hooks = [
+    {
+      title: "Landing in one afternoon",
+      body: "One offer, one audience, one CTA — ship a conversion surface before the campaign meeting ends.",
+      cmd: "/187create",
+    },
+    {
+      title: "Ad creatives that hand off",
+      body: "Three variants with hook, visual direction, and CTA — then route winners into 187CRAFT.",
+      cmd: "/187 create · ad kit",
+    },
+    {
+      title: "Growth MVP → systemize",
+      body: "Validate fast, then promote the winner into design-system components and a publish gate.",
+      cmd: "/187create → /187craft → /187publish",
+    },
+  ];
+
+  return (
+    <section id="create" className="relative border-y border-white/10 bg-[#080808]/90 px-6 py-20 sm:py-28">
+      <div
+        className="pointer-events-none absolute inset-0 opacity-[0.06]"
+        style={{
+          backgroundImage:
+            "linear-gradient(rgba(57,255,20,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(57,255,20,0.5) 1px, transparent 1px)",
+          backgroundSize: "32px 32px",
+        }}
+        aria-hidden
+      />
+      <div className="container-x relative">
+        <div className="mx-auto mb-12 max-w-3xl text-center">
+          <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.28em] text-[#39FF14]">
+            Growth path · 187CREATE
+          </p>
+          <KineticHeadline
+            text="Need a page that converts?"
+            accent="Start here."
+            as="h2"
+            className="mt-4 font-display text-[clamp(2rem,1.2rem+3vw,3.5rem)] font-bold leading-[0.95] tracking-tight text-white"
+          />
+          <p className="mt-4 text-lg text-white/60">
+            Skip the blank canvas. Hook → offer → proof → CTA. Then hand the winner to craft and publish.
+          </p>
+        </div>
+
+        <div className="grid gap-4 md:grid-cols-3">
+          {hooks.map((h, i) => (
+            <Reveal key={h.title} delay={i * 80}>
+              <div className="flex h-full flex-col rounded-2xl border border-white/10 bg-[#0A0C14] p-6">
+                <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-white/35">
+                  HOOK {String(i + 1).padStart(2, "0")}
+                </p>
+                <h3 className="mt-3 font-display text-xl font-bold text-white">{h.title}</h3>
+                <p className="mt-2 flex-1 text-sm leading-relaxed text-white/55">{h.body}</p>
+                <code className="mt-4 block truncate rounded-lg border border-[#39FF14]/15 bg-[#39FF14]/5 px-3 py-2 font-mono text-xs text-[#39FF14]">
+                  {h.cmd}
+                </code>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+
+        <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
+          <Link
+            href="/187create"
+            className="sc-glow inline-flex h-12 items-center justify-center rounded bg-[#39FF14] px-7 text-sm font-semibold text-[#050608]"
+          >
+            Open 187CREATE
+          </Link>
+          <Link
+            href="/187craft"
+            className="inline-flex h-12 items-center justify-center rounded border border-white/10 bg-white/5 px-6 text-sm font-semibold text-white transition hover:border-white/25"
+          >
+            Then systemize with 187CRAFT
+          </Link>
+          <Link
+            href="/#skills"
+            className="inline-flex h-12 items-center justify-center rounded border border-white/10 bg-white/5 px-6 text-sm font-semibold text-white transition hover:border-white/25"
+          >
+            Full skill registry
+          </Link>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function InstallSection() {
   const [tab, setTab] = useState<keyof typeof installSnippets>("macos");
   return (
@@ -566,6 +648,7 @@ export function LaunchPage() {
       <Hero />
       <StatsStrip />
       <MarqueeStrip />
+      <CreateGrowthHook />
       <BrandIntelligence />
       <SkillCardsGrid />
       <AgentDepartments />

@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { Reveal } from "@/components/Reveal";
 import { ProductShell } from "./ProductShell";
@@ -9,6 +9,9 @@ import { FIRST_CLASS_SKILLS, SUBSKILLS, type SuiteSkill } from "@/lib/first-clas
 import { charlotteModules } from "./launch-data";
 import { AgentMascotStack } from "./AgentMascot";
 import { XavierControlPlane } from "./XavierControlPlane";
+import { KineticHeadline } from "@/components/type/KineticHeadline";
+import { gsap, registerGsap } from "@/lib/motion/gsap";
+import { useReducedMotion } from "@/lib/motion/useReducedMotion";
 import type { AgentKit, Command, Prompt, SkillChain, Task, Trigger } from "@/lib/agents/agent-kit";
 
 const skillById = new Map([...FIRST_CLASS_SKILLS, ...SUBSKILLS].map((s) => [s.id, s]));
@@ -26,10 +29,68 @@ function hexWithAlpha(hex: string, alpha: number): string {
 }
 
 function AgentHero({ agent }: { agent: AgentKit }) {
+  const heroRef = useRef<HTMLElement>(null);
+  const reduced = useReducedMotion();
+  const skillCount = agent.skills.length;
+  const promptCount = agent.prompts.length;
+  const taskCount = agent.tasks.length;
+
+  useEffect(() => {
+    if (reduced || !heroRef.current) return;
+    registerGsap();
+    const root = heroRef.current;
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        root.querySelectorAll("[data-agent-metric]"),
+        { y: 16, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.55, stagger: 0.08, delay: 0.2, ease: "power3.out" }
+      );
+      gsap.fromTo(
+        root.querySelectorAll("[data-agent-scan]"),
+        { scaleX: 0 },
+        { scaleX: 1, duration: 0.9, ease: "power2.out", delay: 0.1 }
+      );
+    }, root);
+    return () => ctx.revert();
+  }, [reduced, agent.slug]);
+
   return (
-    <section className="relative overflow-hidden border-b border-white/10 px-6 pb-16 pt-28 sm:pb-24 sm:pt-36">
+    <section
+      ref={heroRef}
+      className="relative overflow-hidden border-b border-white/10 px-6 pb-16 pt-28 sm:pb-24 sm:pt-36"
+    >
+      {/* Technical infographic field */}
+      <div
+        className="pointer-events-none absolute inset-0 opacity-[0.07]"
+        style={{
+          backgroundImage:
+            "linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)",
+          backgroundSize: "40px 40px",
+        }}
+        aria-hidden
+      />
+      <div
+        className="pointer-events-none absolute -right-24 top-24 h-72 w-72 rounded-full blur-3xl"
+        style={{ backgroundColor: hexWithAlpha(agent.color, 0.18) }}
+        aria-hidden
+      />
+      <div
+        data-agent-scan
+        className="pointer-events-none absolute inset-x-0 top-0 h-px origin-left"
+        style={{ background: `linear-gradient(90deg, transparent, ${agent.color}, transparent)` }}
+        aria-hidden
+      />
+
       <div className="container-x relative">
         <div className="mx-auto max-w-5xl">
+          <div className="mb-6 flex flex-wrap items-center justify-between gap-3 font-mono text-[10px] uppercase tracking-[0.22em] text-white/40">
+            <span>
+              AGT · {agent.slug.toUpperCase()}
+            </span>
+            <span style={{ color: agent.color }}>STATUS · ONLINE</span>
+            <span>SUITE · 187WEB</span>
+          </div>
+
           <div className="relative mx-auto mb-10 max-w-xl sm:max-w-2xl">
             <AgentMascotStack
               color={agent.color}
@@ -42,23 +103,54 @@ function AgentHero({ agent }: { agent: AgentKit }) {
 
           <div className="text-center">
             <p
-              className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em]"
+              className="inline-flex items-center gap-2 font-mono text-[10px] font-semibold uppercase tracking-[0.28em]"
               style={{ color: agent.color }}
             >
-              <span className="h-px w-6" style={{ backgroundColor: agent.color }} aria-hidden="true" />
-              187WEB Agent
+              <span className="h-px w-8" style={{ backgroundColor: agent.color }} aria-hidden="true" />
+              187WEB Agent dossier
+              <span className="h-px w-8" style={{ backgroundColor: agent.color }} aria-hidden="true" />
             </p>
-            <h1 className="mt-6 text-[clamp(2.75rem,1.4rem+6vw,6rem)] font-bold leading-[0.92] tracking-tight text-white">
-              {agent.name} —{" "}
-              <span style={{ color: agent.color }}>{agent.tagline}.</span>
-            </h1>
+            <KineticHeadline
+              as="h1"
+              text={`${agent.name} —`}
+              accent={`${agent.tagline}.`}
+              className="mt-6 font-display text-[clamp(2.5rem,1.3rem+5vw,5.5rem)] font-bold leading-[0.92] tracking-tight text-white"
+            />
             <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-white/65">{agent.overview}</p>
+
+            {/* Metric strip */}
+            <div className="mx-auto mt-10 grid max-w-2xl grid-cols-3 gap-3">
+              {[
+                { label: "Skills", value: skillCount },
+                { label: "Prompts", value: promptCount },
+                { label: "Tasks", value: taskCount },
+              ].map((m) => (
+                <div
+                  key={m.label}
+                  data-agent-metric
+                  className="rounded-xl border border-white/10 bg-black/30 px-3 py-3"
+                >
+                  <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-white/40">{m.label}</p>
+                  <p className="mt-1 font-display text-2xl font-bold tabular-nums" style={{ color: agent.color }}>
+                    {String(m.value).padStart(2, "0")}
+                  </p>
+                </div>
+              ))}
+            </div>
+
             <div className="mt-10 flex flex-wrap justify-center gap-3">
               <Link
-                href="/showcase"
-                className="inline-flex h-12 items-center justify-center rounded border border-white/10 bg-white/5 px-6 text-sm font-semibold text-white transition hover:bg-white/10"
+                href="#skills"
+                className="inline-flex h-12 items-center justify-center rounded px-6 text-sm font-semibold text-[#050608] transition hover:brightness-110"
+                style={{ backgroundColor: agent.color }}
               >
-                ← Back to showcase
+                Open skill map
+              </Link>
+              <Link
+                href="/187create"
+                className="inline-flex h-12 items-center justify-center rounded border border-[#39FF14]/40 bg-[#39FF14]/10 px-6 text-sm font-semibold text-[#39FF14] transition hover:bg-[#39FF14]/15"
+              >
+                Ship a growth surface → /187create
               </Link>
               <Link
                 href="/#agents"
@@ -77,43 +169,63 @@ function AgentHero({ agent }: { agent: AgentKit }) {
 function SkillCard({ skill, meta, agentColor, index }: { skill: SuiteSkill; meta: SkillShowcaseData | undefined; agentColor: string; index: number }) {
   const trigger = meta?.triggers[0] ?? `/187 ${skill.id}`;
   const tagline = meta?.tagline ?? skill.name;
+  const outCount = meta?.outputs?.length ?? 0;
+  const code = String(index + 1).padStart(2, "0");
   return (
-    <Reveal delay={index * 60}>
+    <Reveal delay={index * 50}>
       <Link
         href={`/187${skill.id}`}
-        className="group flex h-full flex-col rounded-2xl border border-white/10 bg-[#0A0C14] p-5 transition hover:-translate-y-1 hover:border-white/20"
-        style={{ boxShadow: `0 0 0 1px rgba(255,255,255,0.03), 0 24px 60px -24px ${hexWithAlpha(agentColor, 0.13)}` }}
+        data-agent-skill-card
+        className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-[#0A0C14] transition hover:-translate-y-1 hover:border-white/25"
+        style={{ boxShadow: `0 0 0 1px rgba(255,255,255,0.03), 0 24px 60px -24px ${hexWithAlpha(agentColor, 0.18)}` }}
       >
-        <div className="flex items-start justify-between gap-3">
-          <div>
-            <h3 className="font-bold text-white">{skill.name}</h3>
-            <p className="text-sm" style={{ color: agentColor }}>
-              {tagline}
-            </p>
+        <div className="h-1 w-full" style={{ backgroundColor: agentColor }} aria-hidden />
+        <div className="flex flex-1 flex-col p-5">
+          <div className="flex items-start justify-between gap-3">
+            <div>
+              <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-white/35">
+                SKL-{code} · {skill.id}
+              </p>
+              <h3 className="mt-1.5 font-display font-bold tracking-tight text-white">{skill.name}</h3>
+              <p className="text-sm font-medium" style={{ color: agentColor }}>
+                {tagline}
+              </p>
+            </div>
+            <span
+              className="grid h-10 w-10 flex-shrink-0 place-items-center rounded-lg font-mono text-xs font-bold text-[#050608]"
+              style={{ backgroundColor: agentColor }}
+            >
+              {skill.id.slice(0, 2).toUpperCase()}
+            </span>
           </div>
-          <span
-            className="grid h-9 w-9 flex-shrink-0 place-items-center rounded-lg text-xs font-bold text-[#050608]"
-            style={{ backgroundColor: agentColor }}
-          >
-            {skill.id.slice(0, 2).toUpperCase()}
-          </span>
-        </div>
-        {meta && (
-          <p className="mt-3 line-clamp-2 text-sm leading-relaxed text-white/60">{meta.description}</p>
-        )}
-        <code className="mt-4 block rounded bg-white/5 px-2 py-1 text-xs" style={{ color: agentColor }}>{trigger}</code>
-        <div className="mt-auto flex items-center gap-1 pt-5 text-sm font-medium" style={{ color: agentColor }}>
-          <span>Open {skill.name}</span>
-          <svg
-            className="h-4 w-4 transition group-hover:translate-x-1"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-          >
-            <path d="M5 12h14" />
-            <path d="m12 5 7 7-7 7" />
-          </svg>
+          {meta && (
+            <p className="mt-3 line-clamp-2 text-sm leading-relaxed text-white/55">{meta.description}</p>
+          )}
+          <div className="mt-4 flex gap-4 border-t border-white/8 pt-3 font-mono text-[10px] uppercase tracking-wider text-white/40">
+            <span>
+              Out <strong className="text-white/80">{outCount || "—"}</strong>
+            </span>
+            <span className="truncate" style={{ color: agentColor }}>
+              {trigger}
+            </span>
+          </div>
+          <div className="mt-auto flex items-center justify-between gap-1 pt-4 text-sm font-semibold" style={{ color: agentColor }}>
+            <span className="font-mono text-[10px] uppercase tracking-wider text-white/35">Dossier</span>
+            <span className="inline-flex items-center gap-1">
+              Open
+              <svg
+                className="h-4 w-4 transition group-hover:translate-x-1"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                aria-hidden
+              >
+                <path d="M5 12h14" />
+                <path d="m12 5 7 7-7 7" />
+              </svg>
+            </span>
+          </div>
         </div>
       </Link>
     </Reveal>
@@ -129,14 +241,20 @@ function AgentSkills({ agent }: { agent: AgentKit }) {
     <section id="skills" className="relative px-6 py-20 sm:py-28">
       <div className="container-x">
         <Reveal className="mx-auto mb-12 max-w-3xl text-center">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em]" style={{ color: agent.color }}>
-            {agent.name} skills
+          <p
+            className="font-mono text-[10px] font-semibold uppercase tracking-[0.28em]"
+            style={{ color: agent.color }}
+          >
+            {agent.name} · skill map
           </p>
-          <h2 className="mt-4 text-[clamp(2rem,1.2rem+3vw,3.5rem)] font-bold tracking-tight text-white">
-            Routed skills
-          </h2>
+          <KineticHeadline
+            text="Routed skills."
+            accent="Actionable dossiers."
+            as="h2"
+            className="mt-4 font-display text-[clamp(2rem,1.2rem+3vw,3.5rem)] font-bold tracking-tight text-white"
+          />
           <p className="mt-4 text-white/60">
-            Each card links to a dedicated skill page with triggers, outputs, routing, and templates.
+            Each card is an infographic entry point — trigger, outputs, and a hard link into the skill surface.
           </p>
         </Reveal>
 
