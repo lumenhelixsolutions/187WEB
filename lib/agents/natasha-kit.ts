@@ -1,13 +1,17 @@
 import type { AgentKit } from "./agent-kit";
 
+/**
+ * NATASHA — external + post-launch security (peer equity target).
+ * Threat, chain, test, scan-adjacent, access, docs, version, publish awareness.
+ */
 export const natashaKit: AgentKit = {
   slug: "natasha",
   name: "NATASHA",
   color: "#f43f5e",
   tagline: "External + post-launch security",
   overview:
-    "NATASHA handles external and post-launch security for 187WEB: threat-surface audits, contract and chain assurance, and test-driven validation after ship. She works in tandem with YELENA and can call XAVIER for a council when an incident needs cross-crew coordination.",
-  skills: ["natasha", "chain", "test"],
+    "NATASHA handles external and post-launch security for 187WEB: threat-surface audits, chain/contract assurance, claim discipline, public access exposure, and incident escalation. She works with YELENA on internal gates and can call XAVIER for council when severity or disputes require it — peer-depth kit equal to other crew agents.",
+  skills: ["natasha", "chain", "test", "access-plus", "include", "docs", "version", "research"],
   prompts: [
     {
       id: "threat-sweep",
@@ -36,6 +40,34 @@ export const natashaKit: AgentKit = {
       whenToUse: "When a public surface exposes auth, admin, or data endpoints.",
       body:
         "You are NATASHA. Review external access exposure: enumerate public endpoints, check auth/authorization gaps, verify rate limiting, scan for sensitive data leakage, and recommend YELENA for internal IAM follow-up.",
+    },
+    {
+      id: "claim-discipline",
+      title: "Enforce claim discipline on public copy",
+      whenToUse: "When marketing or research claims risk overstatement.",
+      body:
+        "You are NATASHA. Audit public claims for evidence, confidence, and unsupported advantage language (including quantum/web3 hype). Separate severity from confidence. Route rewrites to 187WRITE; block publish if claims fail discipline.",
+    },
+    {
+      id: "incident-response",
+      title: "Open a post-launch incident response",
+      whenToUse: "When a live security incident is suspected or confirmed.",
+      body:
+        "You are NATASHA. Open incident response: timeline, blast radius, containment options, communication plan, and council need. Coordinate with YELENA for internal access and XAVIER for public decision authority.",
+    },
+    {
+      id: "supply-chain-signal",
+      title: "Assess supply-chain trust signals",
+      whenToUse: "When a dependency or third-party integration looks risky.",
+      body:
+        "You are NATASHA. Assess supply-chain trust: package provenance, maintainer signals, known advisories, and integration blast radius. Pair with YELENA dependency vetting; use 187CHAIN when contracts are involved.",
+    },
+    {
+      id: "public-include-threat",
+      title: "Review identity-safety threats on public forms",
+      whenToUse: "When public forms handle names, pronouns, or sensitive identity data.",
+      body:
+        "You are NATASHA. Review identity-safety threats: enumeration, deadnaming risk, over-collection, and leakage. Partner with Include+ for language/fields and Access+ for assistive flows. Produce severity-ranked findings.",
     },
   ],
   tasks: [
@@ -83,6 +115,50 @@ export const natashaKit: AgentKit = {
       ],
       output: "Public surface access audit with remediation list.",
     },
+    {
+      id: "claim-discipline-audit",
+      title: "Claim discipline audit",
+      steps: [
+        "Collect public claims from copy and docs.",
+        "Score evidence and confidence per claim.",
+        "Route rewrites to 187WRITE; block unsupported claims.",
+        "Log decisions with /187version tags if publish was gated.",
+      ],
+      output: "Claim matrix with rewrite or block decisions.",
+    },
+    {
+      id: "incident-response-run",
+      title: "Incident response run",
+      steps: [
+        "Open timeline and blast-radius assessment.",
+        "Contain and coordinate with YELENA internal access.",
+        "Call XAVIER council if public communication is required.",
+        "Publish postmortem outline in docs.",
+      ],
+      output: "Incident record + containment + council decision if any.",
+    },
+    {
+      id: "supply-chain-review",
+      title: "Supply-chain review",
+      steps: [
+        "Inventory new or critical third parties.",
+        "Assess advisories and trust signals.",
+        "Pair with YELENA dependency vetting.",
+        "Recommend accept, reject, or monitor.",
+      ],
+      output: "Supply-chain risk note with recommendation.",
+    },
+    {
+      id: "identity-form-threat-review",
+      title: "Identity form threat review",
+      steps: [
+        "Map identity fields and storage paths.",
+        "Run threat model for enumeration and leakage.",
+        "Coordinate Include+ field design and Access+ assistive paths.",
+        "File findings with severity/confidence.",
+      ],
+      output: "Identity-form threat report + remediation list.",
+    },
   ],
   triggers: [
     {
@@ -105,11 +181,33 @@ export const natashaKit: AgentKit = {
       condition: "Public endpoint, admin panel, or API key is suspected exposed",
       action: "Invoke /187natasha external access review and hand internal gaps to YELENA.",
     },
+    {
+      id: "hype-claims",
+      condition: "Public copy makes strong technical or advantage claims",
+      action: "Invoke claim discipline audit before /187publish.",
+    },
+    {
+      id: "live-incident",
+      condition: "Security incident is suspected or confirmed in production",
+      action: "Invoke incident response; council XAVIER if public comms needed.",
+    },
+    {
+      id: "third-party-add",
+      condition: "New third-party service or critical dependency is introduced",
+      action: "Invoke supply-chain review with YELENA vetting.",
+    },
+    {
+      id: "identity-data",
+      condition: "Public form collects pronouns, legal names, or sensitive identity data",
+      action: "Invoke identity form threat review with Include+/Access+.",
+    },
   ],
   commands: [
     { id: "sweep", name: "/187 natasha sweep", description: "Run a post-launch external threat sweep." },
     { id: "audit", name: "/187 natasha audit", description: "Scope and run a contract/API audit chain." },
     { id: "triage", name: "/187 natasha triage", description: "Triage a public bounty report." },
+    { id: "claims", name: "/187 natasha claims", description: "Run claim-discipline audit on public copy." },
+    { id: "incident", name: "/187 natasha incident", description: "Open post-launch incident response." },
     { id: "escalate", name: "/187 natasha escalate", description: "Escalate a critical finding to XAVIER council." },
   ],
   skillChains: [
@@ -117,9 +215,8 @@ export const natashaKit: AgentKit = {
       id: "post-launch-threat-sweep",
       name: "Post-Launch Threat Sweep",
       tagline: "Shipped surface → audit → patch plan",
-      description:
-        "A post-launch external security review using 187NATASHA, 187CHAIN, 187TEST, and 187VERSION to track fixes.",
-      classMix: "1st-class natasha/chain/test/version + 2nd-class write + 3rd-class scan hooks",
+      description: "Post-launch external security review with NATASHA, CHAIN, TEST, VERSION.",
+      classMix: "natasha/chain/test/version",
       steps: [
         { skillId: "natasha", action: "Map attack surface and trust boundaries" },
         { skillId: "chain", action: "Check contract/API risk vectors" },
@@ -133,9 +230,8 @@ export const natashaKit: AgentKit = {
       id: "contract-audit-chain",
       name: "Contract Audit Chain",
       tagline: "Scope → static → dynamic → report",
-      description:
-        "A scoped smart-contract or API audit combining 187CHAIN, 187NATASHA, 187TEST, and 187DOCS.",
-      classMix: "1st-class chain/natasha/test/docs + 2nd-class research + 3rd-class disclosure hooks",
+      description: "Scoped smart-contract or API audit with CHAIN, NATASHA, TEST, DOCS.",
+      classMix: "chain/natasha/test/docs",
       steps: [
         { skillId: "chain", action: "Scope the audit and run static analysis" },
         { skillId: "natasha", action: "Add threat-surface and claim-discipline review" },
@@ -149,13 +245,13 @@ export const natashaKit: AgentKit = {
       id: "public-bounty-triage",
       name: "Public Bounty Triage",
       tagline: "Report → reproduce → severity → response",
-      description:
-        "Triage incoming public bounty reports with 187NATASHA, 187TEST, and 187VERSION for severity ranking and response tracking.",
-      classMix: "1st-class natasha/test/version + 3rd-class bounty hooks",
+      description: "Triage bounty reports with NATASHA, TEST, VERSION.",
+      classMix: "natasha/test/version",
       steps: [
         { skillId: "natasha", action: "Reproduce and classify the report" },
         { skillId: "test", action: "Validate the issue and check coverage" },
         { skillId: "version", action: "Tag triage decision and fix release" },
+        { skillId: "docs", action: "Draft response packet" },
       ],
       artifact: "Triage log and severity ranking",
       artifactExample: "/187natasha",
@@ -164,16 +260,46 @@ export const natashaKit: AgentKit = {
       id: "external-access-review",
       name: "External Access Review",
       tagline: "Endpoints → auth → leakage → IAM handoff",
-      description:
-        "A public-surface access audit using 187NATASHA, 187ACCESS+, and 187INCLUDE+, with internal IAM gaps handed to YELENA.",
-      classMix: "1st-class natasha/access-plus/include + 3rd-class IAM hooks",
+      description: "Public-surface access audit with NATASHA, ACCESS+, INCLUDE+.",
+      classMix: "natasha/access-plus/include",
       steps: [
         { skillId: "natasha", action: "Map public endpoints and auth flows" },
         { skillId: "access-plus", action: "Check WCAG+ and auth control gaps" },
-        { skillId: "include", action: "Review identity-safe public copy" },
+        { skillId: "include", action: "Review identity-safe public copy and fields" },
+        { skillId: "docs", action: "Write remediation list" },
       ],
       artifact: "Public surface access audit",
       artifactExample: "/187access",
+    },
+    {
+      id: "claim-discipline-gate",
+      name: "Claim Discipline Gate",
+      tagline: "Claims → evidence → rewrite or block",
+      description: "Evidence discipline for public claims before publish.",
+      classMix: "natasha/research/write/publish",
+      steps: [
+        { skillId: "natasha", action: "Score claims severity vs confidence" },
+        { skillId: "research", action: "Attach sources where required" },
+        { skillId: "write", action: "Rewrite unsupported language" },
+        { skillId: "publish", action: "Clear or block publish gate" },
+      ],
+      artifact: "Claim matrix + publish decision",
+      artifactExample: "/187natasha",
+    },
+    {
+      id: "incident-to-council",
+      name: "Incident → Council",
+      tagline: "Contain → coordinate → decide → log",
+      description: "Incident path from NATASHA containment to XAVIER council when needed.",
+      classMix: "natasha/test/docs/version",
+      steps: [
+        { skillId: "natasha", action: "Contain and assess blast radius" },
+        { skillId: "test", action: "Validate fix or mitigation" },
+        { skillId: "docs", action: "Draft incident and communication notes" },
+        { skillId: "version", action: "Tag incident response release" },
+      ],
+      artifact: "Incident record + optional council decision",
+      artifactExample: "/xavier",
     },
   ],
 };

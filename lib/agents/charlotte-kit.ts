@@ -1,13 +1,17 @@
 import type { AgentKit } from "./agent-kit";
 
+/**
+ * CHARLOTTE — application orchestration (peer equity target).
+ * Repo, craft, motion, vibe, launch, write, research, docs.
+ */
 export const charlotteKit: AgentKit = {
   slug: "charlotte",
   name: "CHARLOTTE",
   color: "#3b82f6",
   tagline: "Application orchestration",
   overview:
-    "CHARLOTTE orchestrates application work: design systems, repo scaffolding, launch planning, plain-language copy, and research-backed recycling. Security is handled by NATASHA and YELENA, so she focuses on shipping and can appeal to XAVIER for final production decisions.",
-  skills: ["repo", "craft", "gsap", "vibe", "launch", "write", "research"],
+    "CHARLOTTE orchestrates application work: design systems, repo scaffolding, motion lab, launch planning, plain-language copy, and research-backed recycling. Security is handled by NATASHA and YELENA; she appeals to XAVIER for final production decisions — peer-depth kit equal to other crew agents.",
+  skills: ["repo", "craft", "gsap", "vibe", "launch", "write", "research", "docs"],
   prompts: [
     {
       id: "thread-intent",
@@ -50,6 +54,20 @@ export const charlotteKit: AgentKit = {
       whenToUse: "When an animation feels janky or needs performance and accessibility review.",
       body:
         "You are CHARLOTTE. Audit the animation for transform-only properties, will-change usage, layout thrash, scroll-linked cost, and prefers-reduced-motion handling. Output a prioritized fix list and a reduced-motion fallback plan.",
+    },
+    {
+      id: "docs-architecture",
+      title: "Architect docs for a new surface",
+      whenToUse: "When a feature ships without install, reference, or how-to docs.",
+      body:
+        "You are CHARLOTTE. Architect docs: audience paths, install/how-to/reference split, ownership, and drift checks. Use 187DOCS patterns; hand claim-sensitive copy through NATASHA discipline.",
+    },
+    {
+      id: "kali-handoff-systemize",
+      title: "Accept KALI growth handoff into craft",
+      whenToUse: "When KALI promotes a winning growth surface for systemization.",
+      body:
+        "You are CHARLOTTE. Accept a KALI create→craft handoff: extract tokens/components, preserve SEO/conversion keepers, clear residual access debt with YELENA, and version the promotion. Do not re-open growth experiments.",
     },
   ],
   tasks: [
@@ -119,6 +137,28 @@ export const charlotteKit: AgentKit = {
       ],
       output: "A scroll-driven section with GSAP choreography and safety checks.",
     },
+    {
+      id: "docs-surface-pack",
+      title: "Ship a docs surface pack",
+      steps: [
+        "Map audience paths and doc types with /187docs.",
+        "Write install/how-to/reference with /187write polish.",
+        "Link to skills and commands; check drift.",
+        "Publish via /187publish sync.",
+      ],
+      output: "Docs pack with install, how-to, and reference pages.",
+    },
+    {
+      id: "systemize-growth-winner",
+      title: "Systemize a KALI growth winner",
+      steps: [
+        "Ingest KALI handoff brief.",
+        "Extract components and tokens with /187craft.",
+        "Preserve conversion and SEO keepers.",
+        "Clear residual access debt with YELENA before version tag.",
+      ],
+      output: "Systemized components + versioned promotion record.",
+    },
   ],
   triggers: [
     {
@@ -151,6 +191,16 @@ export const charlotteKit: AgentKit = {
       condition: "Animation feels janky, slow, or lacks reduced-motion handling",
       action: "Invoke /187charlotte motion-audit and route fixes to 187GSAP and 187ACCESS+.",
     },
+    {
+      id: "docs-missing",
+      condition: "Feature ships without install or reference docs",
+      action: "Invoke /187docs architecture and docs surface pack task.",
+    },
+    {
+      id: "growth-promotion",
+      condition: "KALI hands off a winning growth surface",
+      action: "Invoke systemize-growth-winner craft task.",
+    },
   ],
   commands: [
     { id: "plan", name: "/187 charlotte plan", description: "Turn intent into a build plan with skill owners." },
@@ -165,9 +215,8 @@ export const charlotteKit: AgentKit = {
       id: "secure-landing-page",
       name: "Secure Landing Page",
       tagline: "Design → audit → launch with gates",
-      description:
-        "A complete public landing page built with 187CRAFT, validated by 187NATASHA, and shipped through 187LAUNCH and 187PUBLISH.",
-      classMix: "1st-class craft/launch + 2nd-class write/include + 3rd-class motion hooks",
+      description: "Public landing page with craft, write, NATASHA/YELENA gates, launch, publish.",
+      classMix: "craft/write/natasha/access-plus/include/launch/publish",
       steps: [
         { skillId: "craft", action: "Design the page system and component tokens" },
         { skillId: "write", action: "Draft accessible, claim-safe landing copy" },
@@ -184,9 +233,8 @@ export const charlotteKit: AgentKit = {
       id: "research-lab",
       name: "Reproducible Research Lab",
       tagline: "Sources → free stack → docs → publish",
-      description:
-        "Turn a research question into a citable, reproducible public lab using 187RESEARCH, 187FREE, 187DOCS, and 187PUBLISH.",
-      classMix: "1st-class research/docs + 2nd-class write + 3rd-class data utilities",
+      description: "Citable lab using research, free, docs, write, version, publish.",
+      classMix: "research/free/docs/write/version/publish",
       steps: [
         { skillId: "research", action: "Route question to databases and evidence ladder" },
         { skillId: "free", action: "Pick no-cost hosting and tooling" },
@@ -202,9 +250,8 @@ export const charlotteKit: AgentKit = {
       id: "starter-repo",
       name: "Shipped Starter Repo",
       tagline: "Scaffold → UI → copy → version",
-      description:
-        "Generate a working starter repository from 187REPO, customize the UI with 187CRAFT, refine copy with 187WRITE, and version it with 187VERSION.",
-      classMix: "1st-class repo/craft + 2nd-class write + 3rd-class lint/format hooks",
+      description: "Starter repo via REPO, CRAFT, WRITE, TEST, VERSION, PUBLISH.",
+      classMix: "repo/craft/write/test/version/publish",
       steps: [
         { skillId: "repo", action: "Scaffold the repo and CI pipeline" },
         { skillId: "craft", action: "Apply design system and components" },
@@ -220,9 +267,8 @@ export const charlotteKit: AgentKit = {
       id: "motion-hero",
       name: "Motion-Lab Hero",
       tagline: "3D hero → kinetic type → scroll narrative",
-      description:
-        "Build an immersive 3D hero section with 187HERO, add kinetic typography with 187TYPE, and choreograph scroll-driven camera moves with 187SCROLL.",
-      classMix: "1st-class hero/type/scroll + 2nd-class craft + 3rd-class GSAP hooks",
+      description: "Immersive hero with HERO, GSAP, TYPE, SCROLL, ACCESS+, PUBLISH.",
+      classMix: "hero/gsap/type/scroll/craft/access-plus/publish",
       steps: [
         { skillId: "hero", action: "Design the immersive hero scene" },
         { skillId: "gsap", action: "Choreograph the hero entrance timeline and easing" },
@@ -239,9 +285,8 @@ export const charlotteKit: AgentKit = {
       id: "gsap-motion-system",
       name: "GSAP Motion System",
       tagline: "Timelines → scroll triggers → reduced-motion fallback",
-      description:
-        "Add production-safe motion to a UI surface with 187GSAP timelines, 187SCROLL triggers, 187MOTION hooks, and 187ACCESS+ safety checks, then ship through 187PUBLISH.",
-      classMix: "1st-class gsap/scroll/motion + 2nd-class craft/access-plus + 3rd-class motion hooks",
+      description: "Production-safe motion with GSAP, SCROLL, MOTION, ACCESS+, TEST, PUBLISH.",
+      classMix: "gsap/scroll/motion/craft/access-plus/test/publish",
       steps: [
         { skillId: "craft", action: "Identify UI elements that need motion polish" },
         { skillId: "gsap", action: "Build timeline, easing, and stagger specs" },
@@ -253,6 +298,21 @@ export const charlotteKit: AgentKit = {
       ],
       artifact: "UI surface with GSAP-driven motion and accessibility fallbacks",
       artifactExample: "/187gsap",
+    },
+    {
+      id: "docs-product-surface",
+      name: "Docs Product Surface",
+      tagline: "Architecture → write → version → publish",
+      description: "Ship durable docs for a feature with DOCS, WRITE, VERSION, PUBLISH.",
+      classMix: "docs/write/version/publish",
+      steps: [
+        { skillId: "docs", action: "Map install/how-to/reference architecture" },
+        { skillId: "write", action: "Draft and polish plain-language docs" },
+        { skillId: "version", action: "Tag docs release with product version" },
+        { skillId: "publish", action: "Sync docs surfaces and README" },
+      ],
+      artifact: "Docs pack linked to product version",
+      artifactExample: "/187docs",
     },
   ],
 };
