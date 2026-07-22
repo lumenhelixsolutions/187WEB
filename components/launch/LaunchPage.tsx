@@ -13,6 +13,7 @@ import { AccessIncludeCTA } from "./AccessIncludeCTA";
 import { SkillCardsGrid } from "./SkillCardsGrid";
 import { HeroJazz } from "./HeroJazz";
 import { charlotteModules, quickStats, installSnippets } from "./launch-data";
+import { PrideCta, PrideUnityRail } from "@/components/access/PrideSpectrum";
 
 const RESEARCH_LAB_COMMANDS = [
   "/187 research",
@@ -131,35 +132,21 @@ function Hero() {
               </span>
             </div>
 
-            <div className="mt-10 flex flex-wrap justify-center gap-3">
-              <Link
-                data-hero-cta
-                href="/187plusplus"
-                className="sc-glow sc-glow-pulse inline-flex h-12 min-h-[44px] items-center justify-center rounded bg-[#39FF14] px-6 text-sm font-semibold text-[#050608] will-change-transform"
-              >
+            <PrideUnityRail className="mx-auto mt-8 max-w-sm" />
+
+            <div className="mt-8 flex flex-wrap justify-center gap-3">
+              <PrideCta data-hero-cta href="/187plusplus" spectrum="full">
                 Run /187++
-              </Link>
-              <Link
-                data-hero-cta
-                href="/#access-include"
-                className="inline-flex h-12 min-h-[44px] items-center justify-center rounded border border-[#ec4899]/40 bg-[#ec4899]/10 px-6 text-sm font-semibold text-[#ec4899] will-change-transform"
-              >
-                Access+ &amp; Include+
-              </Link>
-              <Link
-                data-hero-cta
-                href="/187access"
-                className="inline-flex h-12 min-h-[44px] items-center justify-center rounded border border-white/10 bg-white/5 px-6 text-sm font-semibold text-white will-change-transform"
-              >
+              </PrideCta>
+              <PrideCta data-hero-cta href="/187access" spectrum="access">
                 187ACCESS+
-              </Link>
-              <Link
-                data-hero-cta
-                href="/187include"
-                className="inline-flex h-12 min-h-[44px] items-center justify-center rounded border border-white/10 bg-white/5 px-6 text-sm font-semibold text-white will-change-transform"
-              >
+              </PrideCta>
+              <PrideCta data-hero-cta href="/187include" spectrum="include">
                 187INCLUDE+
-              </Link>
+              </PrideCta>
+              <PrideCta data-hero-cta href="/#access-include" spectrum="full" variant="outline">
+                Spectrum map
+              </PrideCta>
             </div>
           </div>
         </HeroJazz>

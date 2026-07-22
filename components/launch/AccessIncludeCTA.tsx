@@ -1,9 +1,20 @@
 "use client";
 
+import { useRef } from "react";
 import Link from "next/link";
 import { skillShowcaseIndex } from "@/lib/skill-showcase-data";
 import { Reveal } from "@/components/Reveal";
 import { KineticHeadline } from "@/components/type/KineticHeadline";
+import {
+  AutismPuzzleIcon,
+  GRAD_ACCESS,
+  GRAD_INCLUDE,
+  GRAD_PRIDE_FULL,
+  PRIDE,
+  PrideCta,
+  PrideUnityRail,
+  usePrideCtaEntrance,
+} from "@/components/access/PrideSpectrum";
 
 const access = skillShowcaseIndex.get("access")!;
 const include = skillShowcaseIndex.get("include")!;
@@ -14,73 +25,88 @@ const ENGINEERING_PILLARS = [
     title: "Disability access",
     body: "Screen readers, keyboard/switch paths, captions, contrast, focus order, motor targets — WCAG+ as product quality, not a pre-ship scramble.",
     href: "/187access",
-    color: "#ec4899",
+    spectrum: "access" as const,
   },
   {
     id: "adhd",
     title: "ADHD & neurodivergent UX",
     body: "Predictable structure, reduced cognitive load, clear next actions, sensory-safe motion, plain language — usable for brains that are not “default.”",
     href: "/187include",
-    color: "#a855f7",
+    spectrum: "include" as const,
   },
   {
     id: "lgbtq",
     title: "LGBTQ+ & identity safety",
-    body: "Pronoun-safe systems, inclusive fields, anti-bias copy, community safety language — identity is data architecture, not a rainbow badge.",
+    body: "Pronoun-safe systems, inclusive fields, anti-bias copy, community safety language — identity is data architecture, not a sticker.",
     href: "/187include",
-    color: "#22d3ee",
+    spectrum: "include" as const,
   },
   {
     id: "chain",
     title: "Skillchains, not checklists",
     body: "Access+ and Include+ route into craft, write, test, docs, scan, standard, and publish — the same pipeline that ships features.",
     href: "/187plusplus",
-    color: "#39FF14",
+    spectrum: "full" as const,
   },
 ] as const;
 
 const SKILLCHAIN = [
-  { cmd: "/187access", label: "ACCESS+" },
-  { cmd: "/187include", label: "INCLUDE+" },
-  { cmd: "/187++", label: "FULL SWEEP" },
-  { cmd: "/187craft", label: "FIX UI" },
-  { cmd: "/187write", label: "FIX COPY" },
-  { cmd: "/187test", label: "VALIDATE" },
-  { cmd: "/187publish", label: "GATE" },
+  { cmd: "/187access", label: "ACCESS+", spectrum: "access" as const },
+  { cmd: "/187include", label: "INCLUDE+", spectrum: "include" as const },
+  { cmd: "/187++", label: "FULL SWEEP", spectrum: "full" as const },
+  { cmd: "/187craft", label: "FIX UI", spectrum: "full" as const },
+  { cmd: "/187write", label: "FIX COPY", spectrum: "full" as const },
+  { cmd: "/187test", label: "VALIDATE", spectrum: "full" as const },
+  { cmd: "/187publish", label: "GATE", spectrum: "full" as const },
 ] as const;
 
 function PillarCard({
   title,
   body,
   href,
-  color,
+  spectrum,
   index,
 }: {
   title: string;
   body: string;
   href: string;
-  color: string;
+  spectrum: "access" | "include" | "full";
   index: number;
 }) {
+  const grad = spectrum === "access" ? GRAD_ACCESS : spectrum === "include" ? GRAD_INCLUDE : GRAD_PRIDE_FULL;
   return (
     <Reveal delay={index * 70}>
       <Link
         href={href}
-        className="group flex h-full flex-col rounded-2xl border border-white/10 bg-[#0A0C14] p-5 transition hover:-translate-y-1 hover:border-white/25 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#39FF14]"
-        style={{ boxShadow: `0 0 0 1px rgba(255,255,255,0.03), 0 24px 50px -28px ${color}33` }}
+        className="group flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-[#0A0C14] transition hover:-translate-y-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
       >
-        <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-white/35">
-          CORE · {String(index + 1).padStart(2, "0")}
-        </p>
-        <h3 className="mt-2 font-display text-lg font-bold tracking-tight text-white">{title}</h3>
-        <p className="mt-2 flex-1 text-sm leading-relaxed text-white/55">{body}</p>
-        <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold" style={{ color }}>
-          Open path
-          <svg className="h-4 w-4 transition group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
-            <path d="M5 12h14" />
-            <path d="m12 5 7 7-7 7" />
-          </svg>
-        </span>
+        <div className="h-1.5 w-full" style={{ backgroundImage: grad }} aria-hidden />
+        <div className="flex flex-1 flex-col p-5">
+          <div className="mb-2 flex items-center gap-2">
+            <AutismPuzzleIcon spectrum={spectrum} className="h-7 w-7" decorative />
+            <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-white/35">
+              CORE · {String(index + 1).padStart(2, "0")}
+            </p>
+          </div>
+          <h3 className="font-display text-lg font-bold tracking-tight text-white">{title}</h3>
+          <p className="mt-2 flex-1 text-sm leading-relaxed text-white/55">{body}</p>
+          <span
+            className="mt-4 inline-flex items-center gap-1 text-sm font-semibold"
+            style={
+              spectrum === "access"
+                ? { color: PRIDE.orange }
+                : spectrum === "include"
+                  ? { color: "#8b9cf7" }
+                  : { color: PRIDE.brandGreen }
+            }
+          >
+            Open path
+            <svg className="h-4 w-4 transition group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
+              <path d="M5 12h14" />
+              <path d="m12 5 7 7-7 7" />
+            </svg>
+          </span>
+        </div>
       </Link>
     </Reveal>
   );
@@ -88,9 +114,12 @@ function PillarCard({
 
 /**
  * Premier launch thesis: Access+ and Include+ as first-class engineering systems.
- * Not a compliance footer — the differentiator of 187WEB.
+ * Pride spectrum CTAs: Access = red→green, Include = green→purple, united by green.
  */
 export function AccessIncludeCTA() {
+  const ctaRef = useRef<HTMLDivElement>(null);
+  usePrideCtaEntrance(ctaRef);
+
   return (
     <section
       id="access-include"
@@ -98,113 +127,122 @@ export function AccessIncludeCTA() {
       aria-labelledby="access-include-heading"
     >
       <div
-        className="pointer-events-none absolute inset-0 opacity-[0.05]"
+        className="pointer-events-none absolute inset-0 opacity-[0.06]"
         style={{
-          backgroundImage:
-            "linear-gradient(rgba(236,72,153,0.6) 1px, transparent 1px), linear-gradient(90deg, rgba(57,255,20,0.45) 1px, transparent 1px)",
-          backgroundSize: "36px 36px",
+          backgroundImage: `${GRAD_PRIDE_FULL}`,
+          backgroundSize: "200% 200%",
+          maskImage: "radial-gradient(ellipse 70% 50% at 50% 0%, black, transparent)",
+          WebkitMaskImage: "radial-gradient(ellipse 70% 50% at 50% 0%, black, transparent)",
+          opacity: 0.12,
         }}
         aria-hidden
       />
 
       <div className="container-x relative">
-        <div className="mx-auto mb-12 max-w-4xl text-center">
-          <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.28em] text-[#39FF14]">
-            Premier systems · not decorative compliance
-          </p>
+        <div className="mx-auto mb-6 max-w-4xl text-center">
+          <div className="mb-4 flex items-center justify-center gap-3">
+            <AutismPuzzleIcon spectrum="access" className="h-9 w-9" decorative />
+            <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.28em] text-white/70">
+              Premier systems · pride spectrum · autism-aware
+            </p>
+            <AutismPuzzleIcon spectrum="include" className="h-9 w-9" decorative />
+          </div>
           <KineticHeadline
             id="access-include-heading"
             text="Access+ and Include+"
             accent="are first-class skills."
             as="h2"
-            className="mt-4 font-display text-[clamp(2.1rem,1.2rem+3.5vw,3.75rem)] font-bold leading-[0.95] tracking-tight text-white"
+            className="mt-2 font-display text-[clamp(2.1rem,1.2rem+3.5vw,3.75rem)] font-bold leading-[0.95] tracking-tight text-white"
           />
+          <PrideUnityRail className="mx-auto mt-6 max-w-md" />
           <p className="mx-auto mt-5 max-w-3xl text-lg leading-8 text-white/65">
             Most suites bolt accessibility on at the end. 187WEB ships{" "}
-            <strong className="text-white">187ACCESS+</strong> and{" "}
-            <strong className="bg-gradient-to-r from-red-500 via-yellow-500 via-green-500 via-blue-500 to-purple-500 bg-clip-text text-transparent">
-              187INCLUDE+
-            </strong>{" "}
-            as premier, command-driven skill systems — disability access, ADHD/neurodivergent usability, LGBTQ+ and
-            identity safety, sensory and cognitive load — engineered into the same skillchains that craft, test, and
-            publish. Run them alone, or as one sweep with{" "}
-            <code className="text-[#39FF14]">/187++</code>.
+            <strong className="pride-text-access">187ACCESS+</strong>
+            <span className="text-white/40"> (red → green)</span> and{" "}
+            <strong className="pride-text-include">187INCLUDE+</strong>
+            <span className="text-white/40"> (green → purple)</span> as premier skill systems — disability access,
+            ADHD/neurodivergent usability, LGBTQ+ and identity safety — united by{" "}
+            <strong className="text-[#39FF14]">green</strong>. Full pride sweep:{" "}
+            <code className="pride-text-full font-semibold">/187++</code>.
           </p>
         </div>
 
-        {/* Engineering pillars */}
         <div className="mb-12 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
           {ENGINEERING_PILLARS.map((p, i) => (
             <PillarCard key={p.id} {...p} index={i} />
           ))}
         </div>
 
-        {/* Dual skill dossiers */}
+        {/* Dual skill dossiers — cards are not links (PrideCta is the CTA) */}
         <div className="mx-auto grid max-w-5xl gap-6 lg:grid-cols-2">
           <Reveal delay={80}>
-            <Link
-              href="/187access"
-              className="group block h-full rounded-3xl border border-white/10 bg-[#0A0C14] p-6 transition hover:-translate-y-1 hover:border-[#ec4899]/45 sm:p-8 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#ec4899]"
-              style={{
-                boxShadow: "0 0 0 1px rgba(255,255,255,0.03), 0 24px 60px -24px rgba(236,72,153,0.22)",
-              }}
-              aria-label={`${access.name}: ${access.tagline}`}
-            >
-              <div className="flex items-start justify-between gap-4">
-                <div>
-                  <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#ec4899]">First-class skill</p>
-                  <h3 className="mt-1 font-display text-2xl font-bold text-white">{access.name}</h3>
-                  <p className="text-[#ec4899]">{access.tagline}</p>
+            <article className="group flex h-full flex-col overflow-hidden rounded-3xl border border-white/10 bg-[#0A0C14] transition hover:-translate-y-0.5">
+              <div className="h-2 w-full" style={{ backgroundImage: GRAD_ACCESS }} aria-hidden />
+              <div className="flex flex-1 flex-col p-6 sm:p-8">
+                <div className="flex items-start justify-between gap-4">
+                  <div>
+                    <p className="font-mono text-[10px] uppercase tracking-[0.2em] pride-text-access">
+                      First-class · red → green
+                    </p>
+                    <h3 className="mt-1 font-display text-2xl font-bold pride-text-access">{access.name}</h3>
+                    <p className="text-white/70">{access.tagline}</p>
+                  </div>
+                  <span
+                    className="grid h-14 w-14 flex-shrink-0 place-items-center rounded-2xl shadow-lg"
+                    style={{ backgroundImage: GRAD_ACCESS }}
+                    aria-hidden
+                  >
+                    <AutismPuzzleIcon spectrum="access" className="h-9 w-9" decorative />
+                  </span>
                 </div>
-                <span className="grid h-12 w-12 flex-shrink-0 place-items-center rounded-xl bg-[#ec4899] text-xs font-bold text-[#050608]">
-                  AX
-                </span>
+                <p className="mt-4 text-sm leading-relaxed text-white/60">{access.description}</p>
+                <ul className="mt-5 space-y-2 text-sm text-white/70">
+                  {[
+                    "Blind / screen-reader + keyboard / switch paths",
+                    "Captions, transcripts, audio description",
+                    "Contrast, zoom, reflow, focus order",
+                    "Motion & photosensitive safety",
+                    "WCAG / ARIA findings with severity",
+                  ].map((line) => (
+                    <li key={line} className="flex items-start gap-2">
+                      <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full" style={{ background: PRIDE.orange }} aria-hidden />
+                      {line}
+                    </li>
+                  ))}
+                </ul>
+                <code
+                  className="mt-5 block rounded-lg border border-white/10 px-3 py-2 font-mono text-xs text-white/90"
+                  style={{ backgroundImage: "linear-gradient(90deg, rgba(228,3,3,0.12), rgba(0,128,38,0.12))" }}
+                >
+                  /187access · /187access-plus
+                </code>
+                <div className="mt-6">
+                  <PrideCta href="/187access" spectrum="access" className="w-full sm:w-auto">
+                    Open Access+ dossier
+                  </PrideCta>
+                </div>
               </div>
-              <p className="mt-4 text-sm leading-relaxed text-white/60">{access.description}</p>
-              <ul className="mt-5 space-y-2 text-sm text-white/70">
-                {[
-                  "Blind / screen-reader + keyboard / switch paths",
-                  "Captions, transcripts, audio description",
-                  "Contrast, zoom, reflow, focus order",
-                  "Motion & photosensitive safety",
-                  "WCAG / ARIA findings with severity",
-                ].map((line) => (
-                  <li key={line} className="flex items-start gap-2">
-                    <span className="mt-1.5 h-1 w-1 flex-shrink-0 rounded-full bg-[#ec4899]" aria-hidden />
-                    {line}
-                  </li>
-                ))}
-              </ul>
-              <code className="mt-5 block rounded-lg border border-[#ec4899]/20 bg-[#ec4899]/10 px-3 py-2 font-mono text-xs text-[#ec4899]">
-                /187access · /187access-plus
-              </code>
-              <div className="mt-6 inline-flex h-11 min-h-[44px] items-center justify-center rounded bg-[#ec4899] px-5 text-sm font-semibold text-[#050608] transition group-hover:brightness-110">
-                Open Access+ dossier
-              </div>
-            </Link>
+            </article>
           </Reveal>
 
           <Reveal delay={140}>
-            <Link
-              href="/187include"
-              className="group relative block h-full overflow-hidden rounded-3xl border border-white/10 bg-[#0A0C14] p-6 transition hover:-translate-y-1 hover:border-white/30 sm:p-8 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-              aria-label={`${include.name}: ${include.tagline}`}
-            >
-              <div
-                className="absolute inset-0 bg-gradient-to-r from-red-500 via-yellow-500 via-green-500 via-blue-500 to-purple-500 opacity-[0.08]"
-                aria-hidden
-              />
-              <div className="relative">
+            <article className="group flex h-full flex-col overflow-hidden rounded-3xl border border-white/10 bg-[#0A0C14] transition hover:-translate-y-0.5">
+              <div className="h-2 w-full" style={{ backgroundImage: GRAD_INCLUDE }} aria-hidden />
+              <div className="flex flex-1 flex-col p-6 sm:p-8">
                 <div className="flex items-start justify-between gap-4">
                   <div>
-                    <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-white/50">First-class skill</p>
-                    <h3 className="mt-1 bg-gradient-to-r from-red-500 via-yellow-500 via-green-500 via-blue-500 to-purple-500 bg-clip-text font-display text-2xl font-bold text-transparent">
-                      {include.name}
-                    </h3>
+                    <p className="font-mono text-[10px] uppercase tracking-[0.2em] pride-text-include">
+                      First-class · green → purple
+                    </p>
+                    <h3 className="mt-1 font-display text-2xl font-bold pride-text-include">{include.name}</h3>
                     <p className="text-sm text-white/70">{include.tagline}</p>
                   </div>
-                  <span className="grid h-12 w-12 flex-shrink-0 place-items-center rounded-xl bg-gradient-to-r from-red-500 via-yellow-500 via-green-500 via-blue-500 to-purple-500 text-xs font-bold text-white">
-                    IN
+                  <span
+                    className="grid h-14 w-14 flex-shrink-0 place-items-center rounded-2xl shadow-lg"
+                    style={{ backgroundImage: GRAD_INCLUDE }}
+                    aria-hidden
+                  >
+                    <AutismPuzzleIcon spectrum="include" className="h-9 w-9" decorative />
                   </span>
                 </div>
                 <p className="mt-4 text-sm leading-relaxed text-white/60">{include.description}</p>
@@ -217,77 +255,100 @@ export function AccessIncludeCTA() {
                     "Community & emotional safety language",
                   ].map((line) => (
                     <li key={line} className="flex items-start gap-2">
-                      <span className="mt-1.5 h-1 w-1 flex-shrink-0 rounded-full bg-white/70" aria-hidden />
+                      <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full" style={{ background: PRIDE.indigo }} aria-hidden />
                       {line}
                     </li>
                   ))}
                 </ul>
-                <code className="mt-5 block rounded-lg border border-white/10 bg-white/5 px-3 py-2 font-mono text-xs text-white/80">
+                <code
+                  className="mt-5 block rounded-lg border border-white/10 px-3 py-2 font-mono text-xs text-white/90"
+                  style={{ backgroundImage: "linear-gradient(90deg, rgba(0,128,38,0.12), rgba(115,41,130,0.18))" }}
+                >
                   /187include · 187INCLUDE+
                 </code>
-                <div className="mt-6 inline-flex h-11 min-h-[44px] items-center justify-center rounded bg-gradient-to-r from-red-500 via-yellow-500 via-green-500 via-blue-500 to-purple-500 px-5 text-sm font-semibold text-white transition group-hover:brightness-110">
-                  Open Include+ dossier
+                <div className="mt-6">
+                  <PrideCta href="/187include" spectrum="include" className="w-full sm:w-auto">
+                    Open Include+ dossier
+                  </PrideCta>
                 </div>
               </div>
-            </Link>
+            </article>
           </Reveal>
         </div>
 
-        {/* Skillchain rail + /187++ */}
+        {/* Skillchain + /187++ full pride */}
         <Reveal delay={200}>
-          <div className="mx-auto mt-12 max-w-5xl rounded-3xl border border-[#39FF14]/25 bg-[#0A0C14] p-6 sm:p-8">
-            <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
-              <div className="max-w-xl">
-                <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.24em] text-[#39FF14]">
-                  Unified command · /187++
-                </p>
-                <h3 className="mt-2 font-display text-2xl font-bold text-white">
-                  One sweep. Two premier systems. One publish gate.
-                </h3>
-                <p className="mt-2 text-sm leading-relaxed text-white/60">
-                  <code className="text-[#39FF14]">/187++</code> coordinates Access+ and Include+ into a single
-                  access-and-inclusion engineering pass — then hands findings into craft, write, test, and publish.
-                  Core pipeline, not a side quest.
-                </p>
+          <div
+            className="mx-auto mt-12 max-w-5xl overflow-hidden rounded-3xl border border-white/10 bg-[#0A0C14]"
+            ref={ctaRef}
+          >
+            <div className="h-1.5 w-full" style={{ backgroundImage: GRAD_PRIDE_FULL }} aria-hidden />
+            <div className="p-6 sm:p-8">
+              <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+                <div className="max-w-xl">
+                  <div className="flex items-center gap-2">
+                    <AutismPuzzleIcon spectrum="full" className="h-8 w-8" decorative />
+                    <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.24em] pride-text-full">
+                      Unified command · /187++ · full pride
+                    </p>
+                  </div>
+                  <h3 className="mt-2 font-display text-2xl font-bold text-white">
+                    One sweep. Two halves of the rainbow. One publish gate.
+                  </h3>
+                  <p className="mt-2 text-sm leading-relaxed text-white/60">
+                    <code className="text-[#39FF14]">/187++</code> joins Access+ (red→green) and Include+
+                    (green→purple) at green — full pride spectrum as an engineering pass into craft, write, test, and
+                    publish.
+                  </p>
+                </div>
+                <div className="flex flex-wrap gap-3">
+                  <PrideCta href="/187plusplus" spectrum="full">
+                    Run /187++
+                  </PrideCta>
+                  <PrideCta href="/187access" spectrum="access" variant="outline">
+                    Access+ only
+                  </PrideCta>
+                  <PrideCta href="/187include" spectrum="include" variant="outline">
+                    Include+ only
+                  </PrideCta>
+                </div>
               </div>
-              <div className="flex flex-wrap gap-3">
-                <Link
-                  href="/187plusplus"
-                  className="inline-flex h-12 min-h-[44px] items-center justify-center rounded bg-[#39FF14] px-6 text-sm font-semibold text-[#050608] transition hover:brightness-110"
-                >
-                  Run /187++
-                </Link>
-                <Link
-                  href="/187access"
-                  className="inline-flex h-12 min-h-[44px] items-center justify-center rounded border border-[#ec4899]/40 bg-[#ec4899]/10 px-5 text-sm font-semibold text-[#ec4899] transition hover:bg-[#ec4899]/15"
-                >
-                  Access+ only
-                </Link>
-                <Link
-                  href="/187include"
-                  className="inline-flex h-12 min-h-[44px] items-center justify-center rounded border border-white/15 bg-white/5 px-5 text-sm font-semibold text-white transition hover:bg-white/10"
-                >
-                  Include+ only
-                </Link>
-              </div>
-            </div>
 
-            <div className="mt-8 overflow-x-auto">
-              <ol className="flex min-w-max items-center gap-2 font-mono text-[11px] uppercase tracking-wider" aria-label="Access and inclusion skillchain">
-                {SKILLCHAIN.map((step, i) => (
-                  <li key={step.cmd} className="flex items-center gap-2">
-                    <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-white/80">
-                      <span className="text-white/40">{String(i + 1).padStart(2, "0")} · </span>
-                      {step.label}
-                    </span>
-                    {i < SKILLCHAIN.length - 1 ? (
-                      <span className="text-[#39FF14]/70" aria-hidden>
-                        →
-                      </span>
-                    ) : null}
-                  </li>
-                ))}
-              </ol>
+              <div className="mt-8 overflow-x-auto">
+                <ol
+                  className="flex min-w-max items-center gap-2 font-mono text-[11px] uppercase tracking-wider"
+                  aria-label="Access and inclusion skillchain"
+                >
+                  {SKILLCHAIN.map((step, i) => {
+                    const g =
+                      step.spectrum === "access"
+                        ? GRAD_ACCESS
+                        : step.spectrum === "include"
+                          ? GRAD_INCLUDE
+                          : GRAD_PRIDE_FULL;
+                    return (
+                      <li key={step.cmd} className="flex items-center gap-2">
+                        <span
+                          className="rounded-full border border-white/10 px-3 py-1.5 text-white/90"
+                          style={{ backgroundImage: `${g}`, backgroundSize: "100%", backgroundBlendMode: "multiply" }}
+                        >
+                          <span
+                            className="inline-block rounded-full bg-[#0A0C14]/85 px-2 py-0.5"
+                          >
+                            <span className="text-white/40">{String(i + 1).padStart(2, "0")} · </span>
+                            {step.label}
+                          </span>
+                        </span>
+                        {i < SKILLCHAIN.length - 1 ? (
+                          <span className="text-[#39FF14]" aria-hidden>
+                            →
+                          </span>
+                        ) : null}
+                      </li>
+                    );
+                  })}
+                </ol>
+              </div>
             </div>
           </div>
         </Reveal>

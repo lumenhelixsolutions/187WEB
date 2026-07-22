@@ -247,6 +247,63 @@
   }
 }
 
+/* Pride spectrum CTAs — Access+ warm half, Include+ cool half, united by green */
+.pride-grad-access {
+  background-image: linear-gradient(105deg, #e40303 0%, #ff8c00 32%, #ffed00 62%, #008026 100%);
+}
+.pride-grad-include {
+  background-image: linear-gradient(105deg, #008026 0%, #24408e 38%, #3b4cca 68%, #732982 100%);
+}
+.pride-grad-full {
+  background-image: linear-gradient(105deg, #e40303, #ff8c00, #ffed00, #008026, #24408e, #732982);
+}
+.pride-text-access {
+  background-image: linear-gradient(100deg, #e40303, #ff8c00, #ffed00, #008026);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+.pride-text-include {
+  background-image: linear-gradient(100deg, #008026, #24408e, #3b4cca, #732982);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+.pride-text-full {
+  background-image: linear-gradient(
+    100deg,
+    #e40303,
+    #ff8c00,
+    #ffed00,
+    #008026,
+    #24408e,
+    #732982,
+    #e40303
+  );
+  background-size: 220% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  animation: sc-pan 12s linear infinite;
+}
+.pride-cta--filled {
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 10px 28px -14px rgba(0, 0, 0, 0.55);
+}
+.pride-cta--outline {
+  /* border handled via border-image in component for multi-stop gradients */
+  box-shadow: 0 8px 24px -16px rgba(0, 0, 0, 0.5);
+}
+@media (prefers-reduced-motion: reduce) {
+  .pride-text-full {
+    animation: none;
+    background-position: 0 center;
+  }
+}
+
 /* Frosted glass surface. */
 .sc-glass {
   background: rgba(255, 255, 255, 0.04);
