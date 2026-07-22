@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { brandAssets } from "@/lib/brand-assets";
 import { KineticHeadline } from "@/components/type/KineticHeadline";
 import { SiteVersionBadge } from "@/components/version/SiteVersionBadge";
 import { siteBuild, siteVersionSummary } from "@/lib/site-version";
@@ -96,11 +97,22 @@ export function AboutPage() {
       <div className="container-x">
         <section className="mx-auto max-w-3xl text-center">
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#39FF14]">About · LumenHelix Lab</p>
+          {/* Official Lab bulb — large hero mark */}
+          {/* eslint-disable-next-line @next/next/no-img-element -- basePath-safe static export */}
+          <img
+            src={brandAssets.bulb}
+            alt="LumenHelix Lab"
+            width={280}
+            height={280}
+            decoding="async"
+            fetchPriority="high"
+            className="mx-auto mt-8 h-auto w-full max-w-[11rem] object-contain drop-shadow-[0_0_40px_rgba(57,255,20,0.35)] sm:max-w-[14rem] md:max-w-[16rem]"
+          />
           <KineticHeadline
             text="Build sharper systems."
             accent="Ship with soul."
             as="h1"
-            className="mt-4 text-[clamp(2.4rem,1.3rem+4vw,4.5rem)] font-bold leading-[0.95] tracking-tight text-white"
+            className="mt-6 text-[clamp(2.4rem,1.3rem+4vw,4.5rem)] font-bold leading-[0.95] tracking-tight text-white"
           />
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-white/65">
             <strong className="text-white/90">LumenHelix Lab</strong> designs AI-assisted web suites, local-first
@@ -119,6 +131,20 @@ export function AboutPage() {
             </Link>{" "}
             is the living skill suite and showcase.
           </p>
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-4">
+            {/* eslint-disable-next-line @next/next/no-img-element -- basePath-safe static export */}
+            <img
+              src={brandAssets.mascotCore}
+              alt="187WEB core mascot"
+              className="h-16 w-16 object-contain opacity-90 sm:h-20 sm:w-20"
+            />
+            {/* eslint-disable-next-line @next/next/no-img-element -- basePath-safe static export */}
+            <img
+              src={brandAssets.wordmark}
+              alt="187WEB"
+              className="h-8 w-auto max-w-[12rem] object-contain opacity-90 sm:h-10"
+            />
+          </div>
           <div className="mt-6 flex flex-wrap justify-center gap-3">
             {EXTERNAL.map((e) => (
               <a

@@ -12,31 +12,35 @@ function withBase(path: string): string {
 }
 
 export const brandAssets = {
-  /** 187WEB badge / spider orb — primary product mark */
+  /** Official 187WEB badge icon — nav mark, favicon contexts */
   orb: withBase("/images/187web_badge_icon.png"),
-  /** Horizontal 187WEB lockup — agent hero / README header */
-  headerLockup: withBase("/images/187web_lockup_horizontal.png"),
-  /** Wordmark + tagline strip for hero / sampler surfaces */
-  wordmarkTagline: withBase("/images/187web_wordmark_tagline.png"),
-  /** Clean 187WEB wordmark (hero primary) */
+  /** Official 187WEB wordmark */
   wordmark: withBase("/images/187web_wordmark.png"),
-  /** Large hero badge / spider mark above wordmark */
+  /** Wordmark + tagline strip (legacy / alternate) */
+  wordmarkTagline: withBase("/images/187web_wordmark_tagline.png"),
+  /** Horizontal lockup */
+  headerLockup: withBase("/images/187web_lockup_horizontal.png"),
+  /** Large hero badge (same official badge asset) */
   heroBadge: withBase("/images/187web_hero_badge.png"),
-  /** Red blueprint mascot — alternate figure surfaces */
+  /** CORE mascot — primary product figure */
+  mascotCore: withBase("/images/187web_mascot_core.png"),
+  /** Full-figure mascot alias for older call sites */
+  mascotReference: withBase("/images/187web_mascot_core.png"),
+  /** Hologram background mascot for animated hive layer */
+  mascotHoloBg: withBase("/images/187web_mascot_holo_bg.png"),
+  /** Wireframe / hologram line art for agent recolors */
+  mascotWireframe: withBase("/images/187web_mascot_wireframe.png"),
+  /** Red blueprint mascot — alternate */
   mascotBlueprint: withBase("/images/187web_mascot_blueprint.png"),
-  /** NATASHA technical blueprint — mascot geometry / vibe board */
+  /** NATASHA technical blueprint grid */
   blueprint: withBase("/images/187web_technical_blueprint_coordinate_grid.png"),
-  /** LumenHelix DNA lightbulb — org mark */
+  /** LumenHelix Lab DNA lightbulb — org icon */
   bulb: withBase("/images/lumenhelix-logo-bulb.png"),
   /** LUMENhelix /lab wordmark */
   labWordmark: withBase("/images/lumenhelixlab-text-logo.png"),
-  /** Full-figure mascot — hero reveals and Flip detail panel */
-  mascotReference: withBase("/images/187web_mascot_full_figure.png"),
-  /** Hologram / wireframe mascot for scroll and magnetic samplers */
-  mascotWireframe: withBase("/images/187web_mascot_wireframe.png"),
-  /** Triangle icon for Flip sampler grid */
+  /** Triangle icon for Flip sampler */
   triangleIcon: withBase("/images/187web_triangle_icon.png"),
-  /** KNOTstore agent-memory layer logo */
+  /** KNOTstore logo */
   knotstoreLogo: withBase("/images/KNOTSTORELOGO.png"),
 } as const;
 
@@ -46,8 +50,10 @@ export type BrandAssetKey = keyof typeof brandAssets;
 export const brandAssetsDocs = {
   orb: "docs/assets/187orblogo.png",
   headerLockup: "docs/assets/header.png",
+  wordmark: "docs/assets/header.png",
   blueprint: "docs/assets/natasha-tech-blueprint.png",
   bulb: "docs/assets/lumenhelix-logo-bulb.png",
   labWordmark: "docs/assets/lumenhelixlab-text-logo.png",
   mascotReference: "docs/assets/natasha187mascot.png",
+  mascotCore: "docs/assets/natasha187mascot.png",
 } as const;

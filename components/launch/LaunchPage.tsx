@@ -61,32 +61,43 @@ function Hero() {
         <HeroJazz>
           <div className="mx-auto max-w-5xl text-center">
             <div className="relative mx-auto flex max-w-3xl flex-col items-center">
+              {/* CORE mascot — primary product figure */}
               {/* eslint-disable-next-line @next/next/no-img-element -- basePath-safe static export */}
               <img
                 data-hero-badge
-                src={brandAssets.heroBadge}
-                alt="187WEB"
-                width={1024}
-                height={1024}
+                src={brandAssets.mascotCore}
+                alt="187WEB core mascot"
+                width={800}
+                height={800}
                 decoding="async"
                 fetchPriority="high"
-                className="h-auto w-full max-w-[16rem] object-contain drop-shadow-[0_0_48px_rgba(57,255,20,0.22)] sm:max-w-[20rem] md:max-w-[24rem] lg:max-w-[28rem]"
+                className="h-auto w-full max-w-[15rem] object-contain drop-shadow-[0_0_48px_rgba(57,255,20,0.28)] sm:max-w-[18rem] md:max-w-[22rem] lg:max-w-[24rem]"
               />
+              {/* Official wordmark */}
               {/* eslint-disable-next-line @next/next/no-img-element -- basePath-safe static export */}
               <img
                 data-hero-word
                 src={brandAssets.wordmark}
-                alt="187WEB wordmark"
+                alt="187WEB"
                 width={800}
                 height={200}
                 decoding="async"
-                className="mt-5 h-auto w-full max-w-md object-contain sm:mt-7 sm:max-w-lg md:max-w-xl"
+                className="mt-5 h-auto w-full max-w-sm object-contain sm:mt-7 sm:max-w-md md:max-w-lg"
               />
               <p data-hero-tag className="brand-hero-tagline mt-5 max-w-xl text-center sm:mt-6">
                 a Killer{" "}
                 <span className="sc-grad-text">AI-Powered</span>{" "}
                 <span className="text-[#39FF14]">WEB</span> Toolkit Suite
               </p>
+              {/* Lab mark — subtle brand pepper */}
+              {/* eslint-disable-next-line @next/next/no-img-element -- basePath-safe static export */}
+              <img
+                src={brandAssets.bulb}
+                alt="LumenHelix Lab"
+                width={64}
+                height={64}
+                className="mt-6 h-10 w-10 object-contain opacity-80 sm:h-12 sm:w-12"
+              />
             </div>
 
             <KineticHeadline

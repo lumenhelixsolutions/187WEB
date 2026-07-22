@@ -108,21 +108,24 @@ export function SiteNav() {
     <header ref={navRef} className="fixed inset-x-0 top-0 z-50">
       <div
         ref={barRef}
-        className="mx-3 mt-3 max-w-7xl rounded-2xl border border-white/10 bg-[#050608]/85 px-3 py-2 shadow-[0_12px_40px_-20px_rgba(0,0,0,0.8)] backdrop-blur-xl sm:mx-auto sm:px-4"
+        className="mx-3 mt-3 max-w-7xl rounded-2xl border border-white/10 bg-[#050608]/85 px-3 py-2.5 shadow-[0_12px_40px_-20px_rgba(0,0,0,0.8)] backdrop-blur-xl sm:mx-auto sm:px-4"
       >
         <nav className="flex items-center justify-between gap-2" aria-label="Primary">
           <Link
             href="/"
-            className="group flex shrink-0 items-center gap-2.5 font-bold tracking-tight text-white"
+            className="group flex shrink-0 items-center gap-3 font-bold tracking-tight text-white"
             data-nav-link
           >
+            {/* Official badge — larger mark in top menu */}
             {/* eslint-disable-next-line @next/next/no-img-element -- basePath-safe static export */}
             <img
               src={brandAssets.orb}
               alt=""
-              className="h-8 w-8 rounded-full object-cover drop-shadow-[0_0_12px_rgba(57,255,20,0.5)] transition group-hover:scale-105"
+              width={56}
+              height={56}
+              className="h-11 w-11 rounded-full object-contain drop-shadow-[0_0_16px_rgba(57,255,20,0.55)] transition group-hover:scale-105 sm:h-12 sm:w-12 md:h-14 md:w-14"
             />
-            <span className="hidden sm:inline">187WEB</span>
+            <span className="hidden text-base sm:inline md:text-lg">187WEB</span>
           </Link>
 
           {/* Desktop primary links */}
