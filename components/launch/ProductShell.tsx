@@ -11,6 +11,7 @@ import { WebHiveHoloMascot } from "./WebHiveHoloMascot";
 import { SiteNav } from "./SiteNav";
 import { SiteVersionBadge } from "@/components/version/SiteVersionBadge";
 import { useClientMounted } from "@/lib/motion/useClientMounted";
+import { SpiderVibe } from "@/components/vibe/SpiderVibe";
 
 const REPO = "https://github.com/LumenHelixLab/187WEB";
 /** Freeze year for SSR/client parity (avoid Date() hydration drift near year boundaries). */
@@ -124,6 +125,8 @@ export function ProductShell({
       )}
       <SiteNav />
       <main className="relative z-10">{children}</main>
+      {/* 187VIBE: spider companion (cursor follow on showcase, wander elsewhere) */}
+      {mounted && !reducedMotion ? <SpiderVibe /> : null}
       <Footer />
     </div>
   );
