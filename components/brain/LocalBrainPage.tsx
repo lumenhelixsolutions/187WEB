@@ -101,7 +101,7 @@ export function LocalBrainPage() {
                 Obsidian (design directions, audits, research packets).
               </li>
               <li>
-                Claudian / agent-charlotte-style flows (SCOUT, weave) are designed to write back into a vault without
+                Claudian / SCOUT vault-weave flows are designed to write back into a vault without
                 requiring a SaaS wiki.
               </li>
               <li>

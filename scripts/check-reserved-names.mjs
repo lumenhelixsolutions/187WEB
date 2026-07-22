@@ -22,6 +22,8 @@ const SKIP_DIR = new Set([
   "coverage",
   ".turbo",
   "out",
+  // Local superpowers brainstorm dumps — not product surface
+  ".superpowers",
   // Model adapters are generated from .claude/skills (Phase 7 regenerate)
   ".chatgpt",
   ".grok",

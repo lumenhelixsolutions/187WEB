@@ -24,7 +24,7 @@ export const COMMAND_CATEGORY_HELP: Record<
     try: "/187 craft · /187 hero · /187 theme · /187 publish",
   },
   Modules: {
-    blurb: "NATASHA / Charlotte module aliases (THREAD, COMPRESS, SCOUT, LAB…) for agentic sub-routines.",
+    blurb: "NATASHA module aliases (THREAD, COMPRESS, SCOUT, LAB…) for agentic sub-routines.",
     when: "You are shaping prompts, compressing context, or running a local lab action.",
     try: "/187 th · /187 compress · /187 scout · /187 lab",
   },
