@@ -6,7 +6,8 @@
 **Org:** LumenHelix Lab · https://lumenhelix.com  
 **Live:** https://lumenhelixlab.github.io/187WEB/  
 **Kit version:** 0.1.0 · 2026-07-22  
-**Status:** Creator-ready (growth MVP kit — promote winners to 187CRAFT)
+**Status:** Creator-ready · **Live kit page:** `/influencer-kit`  
+**Public URL:** https://lumenhelixlab.github.io/187WEB/influencer-kit/
 
 ---
 
@@ -263,7 +264,7 @@ Questions → reply here (KALI growth lane).
 | Rights & disclosure | Short legal |
 | CTA | Live suite + GitHub |
 
-**Suggested route:** `/docs/growth/influencer-kit` (this doc) → later public page under create/craft.
+**Live route:** [`/influencer-kit`](https://lumenhelixlab.github.io/187WEB/influencer-kit/) — public `/187create` growth surface (shipped).
 
 ### Handoffs
 
