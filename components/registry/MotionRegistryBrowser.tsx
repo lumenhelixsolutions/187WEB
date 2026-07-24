@@ -9,6 +9,8 @@ import {
   type MotionSkillId,
 } from "@/lib/motion-registry";
 import { skillShowcaseIndex, skillColorValue } from "@/lib/skill-showcase-data";
+import { classifyPreview } from "@/lib/motion-registry-preview";
+import { PatternPreview } from "./PatternPreview";
 
 const OWNER_COUNTS = motionRegistryCountByOwner();
 const HYBRID_COUNT = MOTION_REGISTRY.filter((e) => e.hybrid).length;
@@ -71,6 +73,8 @@ function EntryCard({ entry }: { entry: (typeof MOTION_REGISTRY)[number] }) {
           {entry.command}
         </code>
       </div>
+
+      <PatternPreview kind={classifyPreview(entry)} color={owner.color} seed={entry.id} />
 
       <h3 className="text-base font-bold leading-snug text-white">{entry.name}</h3>
       <p className="text-sm leading-relaxed text-white/60">{entry.logic}</p>
