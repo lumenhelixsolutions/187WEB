@@ -101,6 +101,7 @@ Public slash-command surfaces in the 187 suite:
 | Release | **187VERSION**, **187PUBLISH** |
 | NATASHA multi-agent | **187NATASHA**, **187CHAIN** |
 | Motion lab | **187GSAP**, **187TYPE**, **187MODEL**, **187SCROLL**, **187AUDIO**, **187VIZ**, **187MOTION**, **187HERO**, **187THEME** |
+| Agentic UI | **187AGENT-UI** |
 
 Workflow support includes `/187 handoff` (`agentic-sprint-handoff`) for phased multi-agent coding handoffs. See [docs/NATASHA-AGENTIC-HANDOFFS.md](docs/NATASHA-AGENTIC-HANDOFFS.md).
 
