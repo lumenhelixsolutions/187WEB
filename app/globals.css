@@ -770,6 +770,13 @@
 }
 .tp-drop { animation: tp-drop 2.6s ease-out infinite; }
 
+/* 187VIZ column visualizer bar */
+@keyframes tp-vizbar {
+  0%, 100% { transform: scaleY(0.2); }
+  50% { transform: scaleY(1); }
+}
+.tp-vizbar { animation: tp-vizbar 1.1s ease-in-out infinite; }
+
 /* WebHive telemetry overlay: honeycomb + spiderweb data layers. */
 @keyframes wh-matrix-fall {
   0% {

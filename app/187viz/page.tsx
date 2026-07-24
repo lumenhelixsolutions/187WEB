@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { SkillShowcase } from "@/components/showcase/SkillShowcase";
 import { skillShowcaseIndex } from "@/lib/skill-showcase-data";
+import { VizShowcase } from "@/components/viz-lab/VizShowcase";
 
 const skill = skillShowcaseIndex.get("viz");
 
@@ -14,5 +15,9 @@ export const metadata: Metadata = {
 
 export default function VizSkillPage() {
   if (!skill) notFound();
-  return <SkillShowcase skill={skill} />;
+  return (
+    <SkillShowcase skill={skill}>
+      <VizShowcase />
+    </SkillShowcase>
+  );
 }

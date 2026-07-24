@@ -95,6 +95,9 @@ export function SkillShowcase({
     <ProductShell>
       <SkillHero skill={skill} />
 
+      {/* Interactive lab sits right under the hero — show, then tell. */}
+      {children}
+
       <section id="triggers" className="px-6 py-20 sm:py-28">
         <div className="container-x">
           <Reveal className="mx-auto mb-14 max-w-prose text-center">
@@ -303,8 +306,6 @@ export function SkillShowcase({
           </div>
         </div>
       </section>
-
-      {children}
     </ProductShell>
   );
 }
