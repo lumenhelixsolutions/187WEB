@@ -75,7 +75,7 @@ export function MotionLabSection() {
             href="/187gsap#registry"
             className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-sc-primary transition hover:brightness-110"
           >
-            Browse all 207 catalogued patterns
+            Browse the motion technique gallery
             <span aria-hidden>→</span>
           </Link>
         </Reveal>

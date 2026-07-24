@@ -115,7 +115,10 @@ function ProductShellInner({
       {/* Not <main> — root layout owns the single main landmark (#main). */}
       <div className="relative z-10">{children}</div>
       {mounted && !motionSuppressed ? <SpiderVibe /> : null}
-      <div className="fixed bottom-4 right-4 z-[60] sm:bottom-6 sm:right-6">
+      {/* Floating control on the right rail, lower-middle so it stands out
+          clear of the nav and hero; above content (z-10), below the nav
+          dropdown (z-50). */}
+      <div className="fixed right-3 top-[62%] z-40 sm:right-5">
         <CalmModeToggle />
       </div>
       <Footer />
