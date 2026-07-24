@@ -19,7 +19,7 @@ Two independent, non-blocking workstreams:
 1. **Land the stranded work.** Four commits on `feat/motion-registry` (Hero lab, SaaS template flagship, 187AGENT-UI skill + lab, XAVIER skill-map tie-in) are fully built, tested, and pushed to `origin/feat/motion-registry`, but `main` still only has what PR #13 shipped. Get a PR opened (if not already) and reviewed. **Do not merge to `main` without an explicit human go — merging deploys to GitHub Pages.**
 2. **Continue the established pattern.** Roll the SaaS-template-flagship treatment out to the 13 thin templates, and extend `187motion`'s named skillchain library. Both are additive, independently shippable, and should each land as their own PR — do not bundle unrelated work into one giant commit.
 
-No scope beyond these two workstreams. Do not re-architect the skill suite, do not touch the deprecated Charlotte persona, do not change brand tokens.
+No scope beyond these two workstreams. Do not re-architect the skill suite, do not touch the deprecated pre-NATASHA persona (see `docs/migrations/CHARLOTTE-TO-NATASHA.md`), do not change brand tokens.
 
 ---
 
@@ -31,7 +31,7 @@ No scope beyond these two workstreams. Do not re-architect the skill suite, do n
 - **187SKILLS suite**: canonical skill definitions in `.claude/skills/<name>/SKILL.md`, mirrored to `.gemini/`, `.kimi/`, `.chatgpt/`, `.grok/`, `.ollama/`, `.herme/` via `python scripts/generate-model-adapters.py`. Registry source of truth for which skills are "first-class" (get a route + docs page + must appear in 10 mandatory release surfaces) is `scripts/lib/suite-constants.mjs` (Node-side) mirrored by `lib/first-class-skills.ts` (TypeScript-side, used by client components — **both must be updated together**, they are not the same file).
 - **Skill showcase pages**: `app/187<route>/page.tsx` renders `<SkillShowcase skill={skill}>{lab}</SkillShowcase>` where `skill` comes from `lib/skill-showcase-data.ts`'s `skillShowcases` array. Every motion-lab-style skill (187hero, 187model, 187viz, 187audio, 187type, 187gsap, and now 187agent-ui) ships a **real interactive demo lab** immediately under the hero (see `components/showcase/SkillShowcase.tsx` — lab renders before the `#triggers` section, not at the page bottom). This is an established, hard-won convention — earlier attempts at generic/duplicated preview cards were explicitly rejected by the user as "freshmen level" quality; every demo must be mechanism-faithful to what its caption claims, not a generic shape.
 - **Shared demo-lab kit**: `components/demo-lab/kit.tsx` — `DemoCard`, `useInView`, `useReducedMotion`, `useCanvas2D` (DPR-aware rAF canvas loop). Every lab component (`components/hero-lab/`, `components/model-lab/`, `components/viz-lab/`, `components/audio-lab/`, `components/agent-ui-lab/`, `components/type-lab/`) is built on this kit. Reuse it; do not reinvent per-lab.
-- **Agent persona system**: `app/xavier/`, `app/kali/`, `app/natasha/`, `app/yelena/`, `app/charlotte/` (Charlotte deprecated, see `docs/migrations/CHARLOTTE-TO-NATASHA.md`, but its page/kit still renders — do not delete). Each persona has an `AgentKit` object in `lib/agents/<name>-kit.ts` with a `skills: string[]` array (routed skill ids) rendered as cards by `components/launch/AgentPage.tsx`'s `AgentSkills` section. `lib/agents/agent-kit.ts` defines `AGENT_EQUITY` — peers need ≥8 skills/prompts/tasks/triggers, XAVIER needs ≥14 (~2× peer, enforced by `lib/agents/__tests__/agent-equity.test.ts` via `toBeGreaterThanOrEqual`, so adding skills to any kit is always safe, never breaks equity).
+- **Agent persona system**: `app/xavier/`, `app/kali/`, `app/natasha/`, `app/yelena/`, `app/charlotte/` (the last one is the deprecated pre-NATASHA persona — see `docs/migrations/CHARLOTTE-TO-NATASHA.md` — but its page/kit still renders, do not delete). Each persona has an `AgentKit` object in `lib/agents/<name>-kit.ts` with a `skills: string[]` array (routed skill ids) rendered as cards by `components/launch/AgentPage.tsx`'s `AgentSkills` section. `lib/agents/agent-kit.ts` defines `AGENT_EQUITY` — peers need ≥8 skills/prompts/tasks/triggers, XAVIER needs ≥14 (~2× peer, enforced by `lib/agents/__tests__/agent-equity.test.ts` via `toBeGreaterThanOrEqual`, so adding skills to any kit is always safe, never breaks equity).
 - **Templates**: `app/templates/<name>/page.tsx`, 14 total. 13 are thin (58–83 lines, single/few sections). `app/templates/saas/page.tsx` ("Nimbus") is the flagship at 337 lines / 11 sections (nav, hero, features, bento grid, stats, testimonials, comparison table, FAQ accordion, final CTA, footer — built with `<Reveal>` scroll-entrance wrapping throughout). `components/templates/FaqAccordion.tsx` is a new reusable component built for Nimbus (accessible single-open accordion, `tone="dark"|"light"` prop) — reuse it for other templates' FAQ sections rather than rebuilding.
 
 ### 1b. What "done" looks like for each workstream
@@ -54,7 +54,7 @@ No scope beyond these two workstreams. Do not re-architect the skill suite, do n
 ### Prohibit
 - Do not merge any PR to `main` without explicit human approval (merging deploys via GitHub Pages CI — this is a production action).
 - Do not re-art-direct the "Abyssal Killer" or "Warm Blueprint" palettes — the 187web-ecosystem skill explicitly marks these "preserve; do not re-art-direct."
-- Do not add new work to the Charlotte persona (deprecated) or resurrect `agent-charlotte`/`neuro-toxin` naming.
+- Do not add new work to the deprecated pre-NATASHA persona (`app/charlotte/`) or resurrect its old skill/module naming (see `docs/migrations/CHARLOTTE-TO-NATASHA.md`).
 - Do not skip the `npm run typecheck && npm run lint && npm test && npm run build` + suite-validator sequence before claiming any phase done.
 - Do not fabricate demo mechanisms — every lab-card caption must describe what the code actually does (this was a hard user correction earlier in the project: generic/duplicated previews were rejected as low-quality; every preview must be mechanism-accurate).
 
@@ -221,7 +221,7 @@ app/templates/saas/page.tsx as your quality bar), or Phase 3 (expand
 .claude/skills/187motion/references/SKILLCHAINS.md with new named chains).
 
 Non-negotiables: never merge to main without explicit human approval; never
-touch the deprecated Charlotte persona; every animated element must respect
+touch the deprecated pre-NATASHA persona (app/charlotte/); every animated element must respect
 prefers-reduced-motion; run the full validation matrix (§11 of the handoff)
 before calling any phase done; every demo/preview caption must accurately
 describe what the code does — no generic or fabricated mechanisms.
