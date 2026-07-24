@@ -90,10 +90,11 @@ export function useCalmMode() {
  * always-present hover chip so it stays discoverable and accessible despite
  * being icon-first. Sized ≥44px for the WCAG target.
  */
-// Single puzzle piece (viewBox 0 0 48 48): knob on the top edge, tab on the
-// right edge — the 187 suite's "skills snap together" motif. Body ~12..36 in
-// both axes, so the state dot centers at (24, 32).
-const PUZZLE_PATH = "M12 20 h8 c0 -6 8 -6 8 0 h8 v8 c6 0 6 8 0 8 v8 h-24 z";
+// Classic jigsaw piece (viewBox 0 0 48 48): a knob bumps up off the top edge
+// and out off the right edge, flat left + bottom — the unmistakable puzzle
+// silhouette (the 187 suite's "skills snap together" motif). Body ~8..40, so
+// the state dot centers near (22, 27).
+const PUZZLE_PATH = "M8 12 H18 C18 3 30 3 30 12 H40 V22 C49 22 49 34 40 34 V40 H8 Z";
 
 export function CalmModeToggle({ className = "" }: { className?: string }) {
   const { calm, toggle, reducedMotion } = useCalmMode();
@@ -140,7 +141,7 @@ export function CalmModeToggle({ className = "" }: { className?: string }) {
           strokeWidth={2.5}
           strokeLinejoin="round"
         />
-        <circle cx="24" cy="32" r={rested ? 3.5 : 2.75} fill="currentColor" />
+        <circle cx="23" cy="27" r={rested ? 3.5 : 2.75} fill="currentColor" />
       </svg>
       {/* discoverability chip — appears on hover/focus, aria-hidden so it's not announced twice */}
       <span
