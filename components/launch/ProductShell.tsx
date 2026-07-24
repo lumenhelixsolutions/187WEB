@@ -115,7 +115,11 @@ function ProductShellInner({
       {/* Not <main> — root layout owns the single main landmark (#main). */}
       <div className="relative z-10">{children}</div>
       {mounted && !motionSuppressed ? <SpiderVibe /> : null}
-      <div className="fixed bottom-4 right-4 z-[60] sm:bottom-6 sm:right-6">
+      {/* Up in the top-right corner, in the margin OUTSIDE the centered nav
+          "frame" (mx-auto max-w-7xl) — level with the Obsidian/GitHub buttons
+          but beside the frame, not inside it. Absolute (not fixed) so it
+          scrolls away with the page. */}
+      <div className="absolute right-2 top-4 z-40 sm:right-3 sm:top-5">
         <CalmModeToggle />
       </div>
       <Footer />
