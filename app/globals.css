@@ -686,6 +686,68 @@
   animation: tp-calm-rest 3.5s ease-in-out infinite;
 }
 
+/* ===========================================================================
+   187TYPE demo lab (components/type-lab/*). Real, interactive type effects;
+   these keyframes back the auto-looping / hover ones. All frozen under the
+   global reduced-motion override, and each demo is IntersectionObserver-gated
+   so only visible cards animate.
+   --------------------------------------------------------------------------- */
+/* per-char chromatic wave: gradient position sweeps, phase-offset per letter */
+@keyframes tp-gradwave {
+  to { background-position: 300% 50%; }
+}
+.tp-gradwave {
+  animation: tp-gradwave 2.6s linear infinite;
+}
+/* draw-in underline (::after scaleX) on hover/focus */
+.tp-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -0.15em;
+  height: 2px;
+  width: 100%;
+  transform: scaleX(0);
+  transform-origin: left;
+  background: linear-gradient(90deg, #f472b6, #a855f7);
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.tp-underline:hover::after,
+.tp-underline:focus-visible::after {
+  transform: scaleX(1);
+}
+/* character-stagger button: letters lift on hover, each on its own delay */
+.tp-charstagger span {
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.tp-charstagger:hover span,
+.tp-charstagger:focus-visible span {
+  transform: translateY(-0.28em);
+}
+/* infinite big-type ticker (row duplicated → -50% loops seamlessly) */
+@keyframes tp-bigtype {
+  to { transform: translateX(-50%); }
+}
+.tp-bigtype {
+  animation: tp-bigtype 12s linear infinite;
+}
+/* marquee inside the custom cursor pill */
+@keyframes tp-cursormarq {
+  to { transform: translateX(-50%); }
+}
+.tp-cursormarq {
+  animation: tp-cursormarq 2.5s linear infinite;
+}
+/* skeleton shimmer sweep */
+@keyframes tp-shimmer {
+  to { background-position: -200% 0; }
+}
+.tp-shimmer {
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.06) 25%, rgba(244, 114, 182, 0.22) 50%, rgba(255, 255, 255, 0.06) 75%);
+  background-size: 200% 100%;
+  animation: tp-shimmer 1.4s linear infinite;
+}
+
 /* WebHive telemetry overlay: honeycomb + spiderweb data layers. */
 @keyframes wh-matrix-fall {
   0% {
